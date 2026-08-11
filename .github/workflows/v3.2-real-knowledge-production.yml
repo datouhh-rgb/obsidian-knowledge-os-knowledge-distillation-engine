@@ -2,9 +2,6 @@ name: V3.2 Real Knowledge Production Gate
 
 on:
   workflow_dispatch:
-  pull_request:
-  push:
-    branches: [main]
 
 jobs:
   production-matrix:

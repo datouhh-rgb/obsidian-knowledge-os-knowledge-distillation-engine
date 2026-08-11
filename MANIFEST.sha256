@@ -1,6 +1,6 @@
 f2d3ed919c4cfd42e9010bc7bc8d4a1c2f2b202f8465284c87f2677bb986b7f2  .gitattributes
-07cb1e5f881c43d387c46619384a3d82b5efe7d0b5b1c0a2bcdab465b6da0099  .github/workflows/v3.1-cross-platform.yml
-25f1a4afbd2440fb91f47350433a6c21dc980ccc614fbf1b728631e935512268  .github/workflows/v3.2-real-knowledge-production.yml
+842b8f495befa7be5000bcbfc6e021481b912c17f40c5866a3dd08aacafe6718  .github/workflows/v3.1-cross-platform.yml
+a8cf87e10b9879e7be34efb907592d2dd46ad3b0f7d6a7a7b62e1da84ca2916a  .github/workflows/v3.2-real-knowledge-production.yml
 b972b3e79c4ed8decdd6ed04fd2de9f08f5745525901a5a3c93eb281dfb0864f  .github/workflows/v3.3-knowledge-synthesis.yml
 531c5e0ab612da1f17e959270375a43b99a1e959bf5e7974df974223554c99e6  .gitignore
 62aaca6681ae87e7699c488f1eb2272a10887a524c71448c051cedda74a426a2  CHANGELOG.md
