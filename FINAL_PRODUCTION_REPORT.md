@@ -2,9 +2,9 @@
 
 ## Release decision
 
-Current formal decision: `V3.3_BLOCKED`
+Final decision: `V3.3_KNOWLEDGE_SYNTHESIS_READY`
 
-The implementation, complete local production gate, and real-book regression pass. The sole remaining release blocker is the absence of an identified GitHub repository and downloaded evidence from the required six Actions jobs. The project must not emit `V3.3_KNOWLEDGE_SYNTHESIS_READY` until that evidence attests one tested commit SHA.
+The implementation, complete local production gate, real-book regression, six-environment GitHub Actions matrix, and aggregate release gate all pass.
 
 ## Delivered changes
 
@@ -14,7 +14,7 @@ The implementation, complete local production gate, and real-book regression pas
 - Added `05_Knowledge/Methods` rendering and complete Method → Concept → Evidence links.
 - Added compatible graph relations `Concept supports Method` and `Method generates Skill`.
 - Added all six named regression tests and one end-to-end integration test.
-- Added an exact Windows/Ubuntu/macOS × Python 3.11/3.12 Actions matrix and aggregate fail-closed release gate.
+- Added and executed the exact Windows/Ubuntu/macOS × Python 3.11/3.12 Actions matrix and aggregate fail-closed release gate.
 
 ## Verification evidence
 
@@ -26,7 +26,8 @@ The implementation, complete local production gate, and real-book regression pas
 - Compile: PASS
 - Full pytest: `129 passed, 1 skipped in 325.10s`
 - Local gate: `V3.3_LOCAL_CHECK_PASS`
-- Machine evidence: `FINAL_PRODUCTION_AUDIT/v33_local_full_check.json`
+- Final gate with downloaded CI evidence: `V3.3_KNOWLEDGE_SYNTHESIS_READY`
+- Machine evidence: `FINAL_PRODUCTION_AUDIT/v33_local_full_check.json` and `FINAL_PRODUCTION_AUDIT/final_release_decision.json`
 
 ### Protected-contract hashes
 
@@ -47,41 +48,28 @@ The SHA-256 values of `identity.py`, `evidence.py`, `evidence_selector.py`, `pro
 - Live Vault opened: no
 - Machine evidence: `FINAL_PRODUCTION_AUDIT/stock_operator_v33_regression.json`
 
-## GitHub Actions matrix
+### GitHub Actions matrix
 
-Workflow: `.github/workflows/v3.3-knowledge-synthesis.yml`
+- Repository: [datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine](https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine)
+- Workflow run: [31545647267](https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31545647267)
+- Tested commit: `70a6898bd288534f4be80bc6bce5837aa4184d84`
+- Windows Python 3.11: PASS
+- Windows Python 3.12: PASS
+- Ubuntu Python 3.11: PASS
+- Ubuntu Python 3.12: PASS
+- macOS Python 3.11: PASS
+- macOS Python 3.12: PASS
+- Aggregate exact-six-environment gate: PASS
 
-Required jobs:
-
-- `windows-latest` / Python 3.11
-- `windows-latest` / Python 3.12
-- `ubuntu-latest` / Python 3.11
-- `ubuntu-latest` / Python 3.12
-- `macos-latest` / Python 3.11
-- `macos-latest` / Python 3.12
-
-Repository: not supplied  
-Commit SHA: not available  
-Workflow URL: not available  
-Matrix status: `UNVERIFIED`
-
-No CI result has been inferred or fabricated.
+No CI result was inferred; the downloaded GitHub artifact is stored under `FINAL_PRODUCTION_AUDIT/GITHUB_RUN_31545647267`.
 
 ## Known limitations
 
-- Final cross-platform status is blocked until the six GitHub-hosted jobs run and their artifact is downloaded.
 - V3.3 synthesis is scoped to the active source/conversion transaction; it does not auto-promote cross-book Skills.
 - Real-book conversion text contains pre-existing character-encoding artifacts. Fragment and conflict gates isolated unsafe candidates, and the three accepted Skills remained Evidence-bound; the source and conversion were not rewritten.
 - Candidate approval still requires explicit human review and the existing trigger-evaluation workflow.
+- GitHub reported a non-blocking Node.js runtime deprecation notice for third-party Actions; all jobs were automatically run with Node.js 24 and passed.
 
-## Readiness rule
+## Final status
 
-Only the following successful command may change the decision:
-
-```powershell
-python scripts\final_production_check.py --skip-tests `
-  --ci-evidence FINAL_PRODUCTION_AUDIT\cross_platform_matrix.json `
-  --regression-evidence FINAL_PRODUCTION_AUDIT\stock_operator_v33_regression.json
-```
-
-Until it emits `V3.3_KNOWLEDGE_SYNTHESIS_READY`, the formal state remains `V3.3_BLOCKED`.
+`V3.3_KNOWLEDGE_SYNTHESIS_READY`

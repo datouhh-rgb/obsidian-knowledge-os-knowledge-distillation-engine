@@ -1,15 +1,282 @@
 {
-  "engine_version": "3.3.0",
-  "schema_version": 1,
-  "status": "unverified",
-  "run_url": null,
-  "commit_sha": null,
   "jobs": [
-    {"os": "windows-latest", "python": "3.11", "status": "pending"},
-    {"os": "windows-latest", "python": "3.12", "status": "pending"},
-    {"os": "ubuntu-latest", "python": "3.11", "status": "pending"},
-    {"os": "ubuntu-latest", "python": "3.12", "status": "pending"},
-    {"os": "macos-latest", "python": "3.11", "status": "pending"},
-    {"os": "macos-latest", "python": "3.12", "status": "pending"}
-  ]
+    {
+      "checks": [
+        {
+          "name": "version",
+          "passed": true,
+          "reason": "VERSION must be 3.3.0"
+        },
+        {
+          "name": "immutable_real_failure_fixtures",
+          "observed": {
+            "tests/fixtures/real_failures/case_a/RUN.original.json": "c805af6ba8724be73ce1855e14c9771a83716cbbff95f7d4655a06a0cd497191",
+            "tests/fixtures/real_failures/case_a/binding-cache.original.json": "5c6ffb2b26e19400eb2f5849639ea2fa86e7ef985eb888f7b6c811765a4ced40",
+            "tests/fixtures/real_failures/case_b/RUN.ev629.original.json.b64": "598b2d958aa43e382df54e5cae861b3060de6e9de1c32342c3ca790bb9c1a771",
+            "tests/fixtures/real_failures/case_b/RUN.original.json": "0d08f4b659ae5b35dc813963fd5c1b27b5a5d087d7873067f3d9c755fcd7ba3d"
+          },
+          "passed": true,
+          "reason": ""
+        },
+        {
+          "command": [
+            "/Library/Frameworks/Python.framework/Versions/3.11/bin/python",
+            "-m",
+            "compileall",
+            "-q",
+            "src",
+            "tests"
+          ],
+          "exit_code": 0,
+          "log": "FINAL_PRODUCTION_AUDIT/compile.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "name": "compile",
+          "passed": true,
+          "reason": ""
+        },
+        {
+          "name": "pytest",
+          "passed": true,
+          "reason": "skipped in aggregator; per-job evidence is evaluated below"
+        }
+      ],
+      "commit_sha": "70a6898bd288534f4be80bc6bce5837aa4184d84",
+      "os": "macos-latest",
+      "pytest_exit_code": 0,
+      "python": "3.11",
+      "status": "passed"
+    },
+    {
+      "checks": [
+        {
+          "name": "version",
+          "passed": true,
+          "reason": "VERSION must be 3.3.0"
+        },
+        {
+          "name": "immutable_real_failure_fixtures",
+          "observed": {
+            "tests/fixtures/real_failures/case_a/RUN.original.json": "c805af6ba8724be73ce1855e14c9771a83716cbbff95f7d4655a06a0cd497191",
+            "tests/fixtures/real_failures/case_a/binding-cache.original.json": "5c6ffb2b26e19400eb2f5849639ea2fa86e7ef985eb888f7b6c811765a4ced40",
+            "tests/fixtures/real_failures/case_b/RUN.ev629.original.json.b64": "598b2d958aa43e382df54e5cae861b3060de6e9de1c32342c3ca790bb9c1a771",
+            "tests/fixtures/real_failures/case_b/RUN.original.json": "0d08f4b659ae5b35dc813963fd5c1b27b5a5d087d7873067f3d9c755fcd7ba3d"
+          },
+          "passed": true,
+          "reason": ""
+        },
+        {
+          "command": [
+            "/Library/Frameworks/Python.framework/Versions/3.12/bin/python",
+            "-m",
+            "compileall",
+            "-q",
+            "src",
+            "tests"
+          ],
+          "exit_code": 0,
+          "log": "FINAL_PRODUCTION_AUDIT/compile.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "name": "compile",
+          "passed": true,
+          "reason": ""
+        },
+        {
+          "name": "pytest",
+          "passed": true,
+          "reason": "skipped in aggregator; per-job evidence is evaluated below"
+        }
+      ],
+      "commit_sha": "70a6898bd288534f4be80bc6bce5837aa4184d84",
+      "os": "macos-latest",
+      "pytest_exit_code": 0,
+      "python": "3.12",
+      "status": "passed"
+    },
+    {
+      "checks": [
+        {
+          "name": "version",
+          "passed": true,
+          "reason": "VERSION must be 3.3.0"
+        },
+        {
+          "name": "immutable_real_failure_fixtures",
+          "observed": {
+            "tests/fixtures/real_failures/case_a/RUN.original.json": "c805af6ba8724be73ce1855e14c9771a83716cbbff95f7d4655a06a0cd497191",
+            "tests/fixtures/real_failures/case_a/binding-cache.original.json": "5c6ffb2b26e19400eb2f5849639ea2fa86e7ef985eb888f7b6c811765a4ced40",
+            "tests/fixtures/real_failures/case_b/RUN.ev629.original.json.b64": "598b2d958aa43e382df54e5cae861b3060de6e9de1c32342c3ca790bb9c1a771",
+            "tests/fixtures/real_failures/case_b/RUN.original.json": "0d08f4b659ae5b35dc813963fd5c1b27b5a5d087d7873067f3d9c755fcd7ba3d"
+          },
+          "passed": true,
+          "reason": ""
+        },
+        {
+          "command": [
+            "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python",
+            "-m",
+            "compileall",
+            "-q",
+            "src",
+            "tests"
+          ],
+          "exit_code": 0,
+          "log": "FINAL_PRODUCTION_AUDIT/compile.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "name": "compile",
+          "passed": true,
+          "reason": ""
+        },
+        {
+          "name": "pytest",
+          "passed": true,
+          "reason": "skipped in aggregator; per-job evidence is evaluated below"
+        }
+      ],
+      "commit_sha": "70a6898bd288534f4be80bc6bce5837aa4184d84",
+      "os": "ubuntu-latest",
+      "pytest_exit_code": 0,
+      "python": "3.11",
+      "status": "passed"
+    },
+    {
+      "checks": [
+        {
+          "name": "version",
+          "passed": true,
+          "reason": "VERSION must be 3.3.0"
+        },
+        {
+          "name": "immutable_real_failure_fixtures",
+          "observed": {
+            "tests/fixtures/real_failures/case_a/RUN.original.json": "c805af6ba8724be73ce1855e14c9771a83716cbbff95f7d4655a06a0cd497191",
+            "tests/fixtures/real_failures/case_a/binding-cache.original.json": "5c6ffb2b26e19400eb2f5849639ea2fa86e7ef985eb888f7b6c811765a4ced40",
+            "tests/fixtures/real_failures/case_b/RUN.ev629.original.json.b64": "598b2d958aa43e382df54e5cae861b3060de6e9de1c32342c3ca790bb9c1a771",
+            "tests/fixtures/real_failures/case_b/RUN.original.json": "0d08f4b659ae5b35dc813963fd5c1b27b5a5d087d7873067f3d9c755fcd7ba3d"
+          },
+          "passed": true,
+          "reason": ""
+        },
+        {
+          "command": [
+            "/opt/hostedtoolcache/Python/3.12.13/x64/bin/python",
+            "-m",
+            "compileall",
+            "-q",
+            "src",
+            "tests"
+          ],
+          "exit_code": 0,
+          "log": "FINAL_PRODUCTION_AUDIT/compile.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "name": "compile",
+          "passed": true,
+          "reason": ""
+        },
+        {
+          "name": "pytest",
+          "passed": true,
+          "reason": "skipped in aggregator; per-job evidence is evaluated below"
+        }
+      ],
+      "commit_sha": "70a6898bd288534f4be80bc6bce5837aa4184d84",
+      "os": "ubuntu-latest",
+      "pytest_exit_code": 0,
+      "python": "3.12",
+      "status": "passed"
+    },
+    {
+      "checks": [
+        {
+          "name": "version",
+          "passed": true,
+          "reason": "VERSION must be 3.3.0"
+        },
+        {
+          "name": "immutable_real_failure_fixtures",
+          "observed": {
+            "tests/fixtures/real_failures/case_a/RUN.original.json": "c805af6ba8724be73ce1855e14c9771a83716cbbff95f7d4655a06a0cd497191",
+            "tests/fixtures/real_failures/case_a/binding-cache.original.json": "5c6ffb2b26e19400eb2f5849639ea2fa86e7ef985eb888f7b6c811765a4ced40",
+            "tests/fixtures/real_failures/case_b/RUN.ev629.original.json.b64": "598b2d958aa43e382df54e5cae861b3060de6e9de1c32342c3ca790bb9c1a771",
+            "tests/fixtures/real_failures/case_b/RUN.original.json": "0d08f4b659ae5b35dc813963fd5c1b27b5a5d087d7873067f3d9c755fcd7ba3d"
+          },
+          "passed": true,
+          "reason": ""
+        },
+        {
+          "command": [
+            "C:\\hostedtoolcache\\windows\\Python\\3.11.9\\x64\\python.exe",
+            "-m",
+            "compileall",
+            "-q",
+            "src",
+            "tests"
+          ],
+          "exit_code": 0,
+          "log": "FINAL_PRODUCTION_AUDIT/compile.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "name": "compile",
+          "passed": true,
+          "reason": ""
+        },
+        {
+          "name": "pytest",
+          "passed": true,
+          "reason": "skipped in aggregator; per-job evidence is evaluated below"
+        }
+      ],
+      "commit_sha": "70a6898bd288534f4be80bc6bce5837aa4184d84",
+      "os": "windows-latest",
+      "pytest_exit_code": 0,
+      "python": "3.11",
+      "status": "passed"
+    },
+    {
+      "checks": [
+        {
+          "name": "version",
+          "passed": true,
+          "reason": "VERSION must be 3.3.0"
+        },
+        {
+          "name": "immutable_real_failure_fixtures",
+          "observed": {
+            "tests/fixtures/real_failures/case_a/RUN.original.json": "c805af6ba8724be73ce1855e14c9771a83716cbbff95f7d4655a06a0cd497191",
+            "tests/fixtures/real_failures/case_a/binding-cache.original.json": "5c6ffb2b26e19400eb2f5849639ea2fa86e7ef985eb888f7b6c811765a4ced40",
+            "tests/fixtures/real_failures/case_b/RUN.ev629.original.json.b64": "598b2d958aa43e382df54e5cae861b3060de6e9de1c32342c3ca790bb9c1a771",
+            "tests/fixtures/real_failures/case_b/RUN.original.json": "0d08f4b659ae5b35dc813963fd5c1b27b5a5d087d7873067f3d9c755fcd7ba3d"
+          },
+          "passed": true,
+          "reason": ""
+        },
+        {
+          "command": [
+            "C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe",
+            "-m",
+            "compileall",
+            "-q",
+            "src",
+            "tests"
+          ],
+          "exit_code": 0,
+          "log": "FINAL_PRODUCTION_AUDIT/compile.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "name": "compile",
+          "passed": true,
+          "reason": ""
+        },
+        {
+          "name": "pytest",
+          "passed": true,
+          "reason": "skipped in aggregator; per-job evidence is evaluated below"
+        }
+      ],
+      "commit_sha": "70a6898bd288534f4be80bc6bce5837aa4184d84",
+      "os": "windows-latest",
+      "pytest_exit_code": 0,
+      "python": "3.12",
+      "status": "passed"
+    }
+  ],
+  "run_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31545647267",
+  "schema_version": 1
 }

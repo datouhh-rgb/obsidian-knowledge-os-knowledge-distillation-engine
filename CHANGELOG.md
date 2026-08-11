@@ -11,6 +11,7 @@
 - Re-ran the preserved real book 《股票大作手回忆录》 through the Hybrid pipeline: 42/42 chunks completed, five Method Clusters were retained, three Skill Candidates passed, and two candidates remained blocked by the unchanged quality gate.
 - Verified all generated Skills remained `candidate`; none was approved, exposed, or connected to a project.
 - Added the Windows/Ubuntu/macOS × Python 3.11/3.12 GitHub Actions release workflow and fail-closed V3.3 production gate.
+- Verified all six GitHub Actions jobs and the aggregate release gate against commit `70a6898bd288534f4be80bc6bce5837aa4184d84`; the final gate emitted `V3.3_KNOWLEDGE_SYNTHESIS_READY`.
 
 Source Identity, Conversion Identity, Evidence selection, Concept Canonicalizer, lifecycle states, approval/exposure rules, and the Vault transaction model remain unchanged.
 

@@ -47,6 +47,8 @@ An additional end-to-end integration test verifies Method files, `supports`/`gen
 
 Two further Method-derived candidates were blocked by the existing Skill quality gate. This is expected fail-closed behavior, not a synthesis failure.
 
+The synthesized candidates and real-book evidence were accepted by the final six-environment production gate for commit `70a6898bd288534f4be80bc6bce5837aa4184d84`.
+
 ## Current boundary
 
 Synthesis in V3.3 runs inside one distillation transaction and therefore clusters Concepts from the active source/conversion. The plural `source_books` field and graph contract remain compatible with later reviewed aggregation, but this release does not claim automatic cross-book promotion.

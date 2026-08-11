@@ -4,7 +4,7 @@
 
 Local real-book regression: `PASS`
 
-Formal release state: `V3.3_BLOCKED` until the required GitHub Actions six-environment evidence is available.
+Formal release state: `V3.3_KNOWLEDGE_SYNTHESIS_READY`.
 
 ## Source and provenance
 
@@ -69,3 +69,5 @@ Four additional aggregation groups were rejected before Method creation because 
 - Disposable Vault: removed after the audit.
 
 The complete machine-readable evidence is `FINAL_PRODUCTION_AUDIT/stock_operator_v33_regression.json`.
+
+The regression evidence was accepted by the six-environment aggregate gate in [GitHub Actions run 31545647267](https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31545647267) for commit `70a6898bd288534f4be80bc6bce5837aa4184d84`.
