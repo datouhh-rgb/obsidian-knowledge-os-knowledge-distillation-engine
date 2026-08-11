@@ -1,0 +1,18 @@
+# Generated for the V3.0.0 acceptance environment on 2026-08-10.
+# Runtime dependencies
+filelock==3.32.2
+jsonschema==4.26.0
+attrs==26.1.0
+jsonschema-specifications==2025.9.1
+referencing==0.37.0
+rpds-py==2026.6.3
+
+# Acceptance and Skill validation dependencies
+coverage==7.15.0
+pytest==9.1.1
+PyYAML==6.0.3
+colorama==0.4.6
+iniconfig==2.3.0
+packaging==26.2
+pluggy==1.6.0
+Pygments==2.20.0

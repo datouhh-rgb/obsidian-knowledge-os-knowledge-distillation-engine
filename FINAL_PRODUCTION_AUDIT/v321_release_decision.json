@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "package_version": "3.2.1",
+  "data_contract_version": "3.2.0",
+  "decision": "V3.2.1_EVIDENCE_STABLE",
+  "scope": "Evidence Selection Stability Patch",
+  "checks": {
+    "compile": "passed",
+    "pytest": {
+      "status": "passed",
+      "passed": 121,
+      "skipped": 1,
+      "failed": 0
+    },
+    "immutable_ev629_fixture_sha256": "598b2d958aa43e382df54e5cae861b3060de6e9de1c32342c3ca790bb9c1a771",
+    "stock_operator_real_regression": {
+      "status": "passed",
+      "run_id": "run-0612616f2d21999e726a3ba1",
+      "chunks_completed": 42,
+      "chunks_total": 42,
+      "portable_payloads_validated": 42,
+      "evidence_binding_occurrences": 387,
+      "unknown_evidence_errors": 0,
+      "ev_629_errors": 0,
+      "skills_generated": 0,
+      "formal_assets_written": 0,
+      "pipeline_outcome": "blocked by unchanged concept-conflict quality gate"
+    },
+    "partial_commit": "none",
+    "live_vault_pollution": "none",
+    "live_vault_formal_files": 68,
+    "live_vault_combined_sha256_before": "3bf10d12b87d1d07bcdc4d47caacda2bdbed1644955f6401e6ad08844fcb3b18",
+    "live_vault_combined_sha256_after": "3bf10d12b87d1d07bcdc4d47caacda2bdbed1644955f6401e6ad08844fcb3b18",
+    "protected_subsystem_hashes_unchanged": true
+  },
+  "cross_platform_note": "The six-environment GitHub Actions matrix was not rerun in this patch task; this decision attests the Evidence Selection patch and does not fabricate cross-platform CI evidence."
+}

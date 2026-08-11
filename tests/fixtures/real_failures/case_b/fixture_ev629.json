@@ -1,0 +1,13 @@
+{
+  "case": "B-EV629",
+  "book": "股票大作手回忆录",
+  "run_id": "run-a80c81c42c1f319c7a9c50ff",
+  "failure": "LLM Evidence Selection",
+  "error": "AnalyzerProviderError: Evidence selection blocked: LLM attempted to create or select unknown Evidence: ev-629",
+  "failed_chunk": "chunk-aa139f5098ef00884c7bdd91",
+  "conversion_id": "e8e698f42e6605527f34f0a213f80a0f099c20758923138172fb39cedad45337",
+  "prompt_version": "distillation-map-prompt-v3.2-evidence-select-only",
+  "portable_schema_version": "portable-provider-map-v2",
+  "original_run_sha256": "598b2d958aa43e382df54e5cae861b3060de6e9de1c32342c3ca790bb9c1a771",
+  "readable_copy_sha256": "cb0a51f9c231a3d8827caf85ffcaf68401a75ea977c40bafb11be530a2ce3dfc"
+}

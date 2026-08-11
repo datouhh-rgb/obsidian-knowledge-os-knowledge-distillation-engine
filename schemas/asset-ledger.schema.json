@@ -1,0 +1,213 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "engine_version": {
+      "enum": [
+        "3.1.0",
+        "3.2.0",
+        "3.3.0"
+      ]
+    },
+    "entries": {
+      "additionalProperties": {
+        "additionalProperties": false,
+        "properties": {
+          "assets": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "path": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "role": {
+                  "enum": [
+                    "original",
+                    "source-text",
+                    "conversion-metadata",
+                    "evidence-catalog",
+                    "source-identity",
+                    "structure-normalization",
+                    "concept-canonicalization",
+                    "distillation-manifest",
+                    "skill-version",
+                    "skill-evidence",
+                    "skill-version-record"
+                  ]
+                },
+                "sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "role",
+                "path",
+                "sha256"
+              ],
+              "type": "object"
+            },
+            "minItems": 4,
+            "type": "array"
+          },
+          "conversion_id": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "source_id": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "source_text_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "source_title": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "transaction_revision": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "upper_manifest_path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "upper_manifest_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "source_id",
+          "conversion_id",
+          "source_title",
+          "source_text_sha256",
+          "transaction_revision",
+          "upper_manifest_path",
+          "upper_manifest_sha256",
+          "assets",
+          "created_at"
+        ],
+        "type": "object"
+      },
+      "type": "object"
+    },
+    "previous_ledger_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "revision": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": 1
+    },
+    "skill_versions": {
+      "additionalProperties": {
+        "additionalProperties": false,
+        "properties": {
+          "assets": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "path": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "role": {
+                  "enum": [
+                    "original",
+                    "source-text",
+                    "conversion-metadata",
+                    "evidence-catalog",
+                    "source-identity",
+                    "structure-normalization",
+                    "concept-canonicalization",
+                    "distillation-manifest",
+                    "skill-version",
+                    "skill-evidence",
+                    "skill-version-record"
+                  ]
+                },
+                "sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "role",
+                "path",
+                "sha256"
+              ],
+              "type": "object"
+            },
+            "maxItems": 3,
+            "minItems": 3,
+            "type": "array"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "skill_id": {
+            "type": "string"
+          },
+          "source_conversions": {
+            "items": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "transaction_revision": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "version": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "skill_id",
+          "name",
+          "version",
+          "source_conversions",
+          "transaction_revision",
+          "assets",
+          "created_at"
+        ],
+        "type": "object"
+      },
+      "type": "object"
+    },
+    "updated_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "engine_version",
+    "revision",
+    "previous_ledger_sha256",
+    "updated_at",
+    "entries",
+    "skill_versions"
+  ],
+  "type": "object"
+}

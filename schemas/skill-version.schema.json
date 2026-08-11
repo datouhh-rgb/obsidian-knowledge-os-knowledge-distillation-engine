@@ -1,0 +1,60 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "conversion_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "engine_version": {
+      "enum": [
+        "3.1.0",
+        "3.2.0",
+        "3.3.0"
+      ]
+    },
+    "evidence_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "name": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "proposal_id": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": 4
+    },
+    "skill_id": {
+      "type": "string"
+    },
+    "skill_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "source_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "engine_version",
+    "skill_id",
+    "name",
+    "version",
+    "status",
+    "skill_sha256",
+    "evidence_sha256",
+    "source_id",
+    "conversion_id"
+  ],
+  "type": "object"
+}

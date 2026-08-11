@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "obsidian-knowledge-distillation-engine"
+version = "3.3.0"
+description = "Trusted, immutable, evidence-constrained knowledge production engine for an existing Obsidian Vault"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "Andy"}]
+dependencies = [
+  "filelock==3.32.2",
+  "jsonschema==4.26.0",
+  "pytest==9.1.1",
+  "PyYAML==6.0.3",
+]
+
+[project.optional-dependencies]
+test = [
+  "coverage==7.15.0",
+]
+
+[project.scripts]
+knowledge-engine = "knowledge_engine.cli:main"
+book-distiller = "knowledge_engine.cli:main"
+
+[tool.setuptools]
+packages = ["knowledge_engine", "scripts"]
+package-dir = {knowledge_engine = "src/knowledge_engine", scripts = "scripts"}
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--strict-markers"
+
+[tool.coverage.run]
+branch = true
+source = ["knowledge_engine"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false

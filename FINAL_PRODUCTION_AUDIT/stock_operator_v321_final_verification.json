@@ -1,0 +1,218 @@
+{
+  "analyzer": "HybridAnalyzerProvider(LLMAnalyzerProvider)",
+  "asset_ledger": {
+    "committed": false,
+    "status": "not_committed_fail_closed"
+  },
+  "block_reason": "unresolved-concept-conflict: same-title semantic conflict; automatic merge refused; unresolved-concept-conflict: same-title semantic conflict; automatic merge refused; unresolved-concept-conflict: same-title semantic conflict; automatic merge refused; unresolved-concept-conflict: same-title semantic conflict; automatic merge refused; unresolved-concept-conflict: same-title semantic conflict; automatic merge refused; unresolved-concept-conflict: same-title semantic conflict; automatic merge refused; unresolved-concept-conflict: same-title semantic conflict; automatic merge refused; unresolved-concept-conflict: same-title semantic conflict; automatic merge refused; unresolved-concept-conflict: same-title semantic conflict; automatic merge refused; unresolved-concept-conflict: same-title semantic conflict; automatic merge refused; unresolved-concept-conflict: same-title semantic conflict; automatic merge refused",
+  "book": "股票大作手回忆录",
+  "cache_hits": 0,
+  "chunk_count": 42,
+  "completed_chunks": 42,
+  "concept_fragment_rejections": 12,
+  "conversion_id": "d563d127872852958eb4b6e311258407b5865229e0eb52342963c113ad0a25e3",
+  "conversion_snapshot_path": "C:\\Users\\ThinkPad\\Documents\\Codex\\2026-08-11\\obsidian-knowledge-os-knowledge-distillation-engine\\work\\converted\\股票大作手回忆录--75dba888.md",
+  "conversion_snapshot_sha256": "fe0cacd9cff6e5e3a8d0a712027bfb12339c32730a57c1ebf1002021e24360e8",
+  "data_contract_version": "3.2.0",
+  "engine_package_version": "3.2.1",
+  "ev_629_error": false,
+  "failed_chunk": null,
+  "failed_chunks": 0,
+  "finished_at": "2026-08-11T20:50:12+08:00",
+  "formal_assets_in_disposable_vault": [],
+  "graph": {
+    "committed": false,
+    "identity_collision": false,
+    "status": "not_committed_fail_closed"
+  },
+  "live_vault_opened": false,
+  "mode": "real-azw3-preserved-conversion-codex-llm-temporary-vault",
+  "model": "gpt-5.6-terra",
+  "pipeline_status": "blocked",
+  "pipeline_warnings": [
+    "unresolved-concept-conflict: same-title semantic conflict; automatic merge refused; unresolved-concept-conflict: same-title semantic conflict; automatic merge refused; unresolved-concept-conflict: same-title semantic conflict; automatic merge refused; unresolved-concept-conflict: same-title semantic conflict; automatic merge refused; unresolved-concept-conflict: same-title semantic conflict; automatic merge refused; unresolved-concept-conflict: same-title semantic conflict; automatic merge refused; unresolved-concept-conflict: same-title semantic conflict; automatic merge refused; unresolved-concept-conflict: same-title semantic conflict; automatic merge refused; unresolved-concept-conflict: same-title semantic conflict; automatic merge refused; unresolved-concept-conflict: same-title semantic conflict; automatic merge refused; unresolved-concept-conflict: same-title semantic conflict; automatic merge refused"
+  ],
+  "portable_schema_version": "portable-provider-map-v3",
+  "portable_validation": {
+    "concept_candidates": 293,
+    "evidence_binding_occurrences": 392,
+    "evidence_selection_candidates": 1668,
+    "expected_unique_extraction_hashes": 41,
+    "failures": [],
+    "observed_unique_extraction_hashes": 41,
+    "passed": true,
+    "portable_payloads_checked": 42,
+    "relation_candidates": 0,
+    "skill_candidates": 0
+  },
+  "processed": 42,
+  "prompt_version": "distillation-map-prompt-v3.2.1-index-selection",
+  "reasoning": "low",
+  "registry": {
+    "committed": false,
+    "status": "not_committed_fail_closed"
+  },
+  "release_checks": {
+    "evidence_error_disappeared": true,
+    "fail_closed": true,
+    "live_vault_pollution": false,
+    "no_fragment_concept_committed": true,
+    "no_graph_identity_collision": true,
+    "no_graph_registry_skill_or_ledger_commit": true,
+    "successful_chunk_bindings_legal": true
+  },
+  "run_id": "run-0612616f2d21999e726a3ba1",
+  "run_status": "completed",
+  "run_warnings": [],
+  "schema_version": 1,
+  "skills_generated": 0,
+  "source_id": "75dba888e796b4aae0ef85f99798b6c8eab002e2c2b213e98b9b3e5d5c32b828",
+  "source_path": "C:\\Users\\ThinkPad\\Documents\\知识库\\Andy-PKB\\90_Attachments\\Other\\股票大作手回忆录.azw3",
+  "source_sha256_after": "75dba888e796b4aae0ef85f99798b6c8eab002e2c2b213e98b9b3e5d5c32b828",
+  "source_sha256_before": "75dba888e796b4aae0ef85f99798b6c8eab002e2c2b213e98b9b3e5d5c32b828",
+  "started_at": "2026-08-11T20:40:42+08:00",
+  "temporary_vault_deleted_after_run": true,
+  "unknown_evidence_error": false,
+  "validation_issues": [
+    {
+      "code": "concept-fragment-rejected",
+      "message": "“但我告诉你的: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "“做不来就: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "“因为你们干的这一行就: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "上面介绍的: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "他们统统说宁愿要数额较小但: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "你真该在场亲眼看看那只被做庄的股票、那只被说成谁卖空谁就: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "刚才告诉你的: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "我从报价板上第一眼看到的: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "我打电报发出了一些卖空斯梅尔特的: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "这就: known discourse/chapter fragment, linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "这就: known discourse/chapter fragment, linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "这就: known discourse/chapter fragment, linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved-concept-conflict",
+      "message": "same-title semantic conflict; automatic merge refused",
+      "path": "concept-conflict-1cc9f55829d420ce207988d7",
+      "severity": "error"
+    },
+    {
+      "code": "unresolved-concept-conflict",
+      "message": "same-title semantic conflict; automatic merge refused",
+      "path": "concept-conflict-391d075a8b67162edfe92bba",
+      "severity": "error"
+    },
+    {
+      "code": "unresolved-concept-conflict",
+      "message": "same-title semantic conflict; automatic merge refused",
+      "path": "concept-conflict-3e10371b2724af6317047389",
+      "severity": "error"
+    },
+    {
+      "code": "unresolved-concept-conflict",
+      "message": "same-title semantic conflict; automatic merge refused",
+      "path": "concept-conflict-6cae4dedc3a7189240c090d5",
+      "severity": "error"
+    },
+    {
+      "code": "unresolved-concept-conflict",
+      "message": "same-title semantic conflict; automatic merge refused",
+      "path": "concept-conflict-78302522b5503a8d49cbb2cf",
+      "severity": "error"
+    },
+    {
+      "code": "unresolved-concept-conflict",
+      "message": "same-title semantic conflict; automatic merge refused",
+      "path": "concept-conflict-a62ac44a72856cb411aeeeed",
+      "severity": "error"
+    },
+    {
+      "code": "unresolved-concept-conflict",
+      "message": "same-title semantic conflict; automatic merge refused",
+      "path": "concept-conflict-a70d0f00e0fafbb9f5844765",
+      "severity": "error"
+    },
+    {
+      "code": "unresolved-concept-conflict",
+      "message": "same-title semantic conflict; automatic merge refused",
+      "path": "concept-conflict-a7c392c77684c2d9ae7dc767",
+      "severity": "error"
+    },
+    {
+      "code": "unresolved-concept-conflict",
+      "message": "same-title semantic conflict; automatic merge refused",
+      "path": "concept-conflict-a8dd6c2c9a266eee9107c8a1",
+      "severity": "error"
+    },
+    {
+      "code": "unresolved-concept-conflict",
+      "message": "same-title semantic conflict; automatic merge refused",
+      "path": "concept-conflict-b5b63801f8dc9a4909f632ee",
+      "severity": "error"
+    },
+    {
+      "code": "unresolved-concept-conflict",
+      "message": "same-title semantic conflict; automatic merge refused",
+      "path": "concept-conflict-edc44f1807b20cd1aa80dc98",
+      "severity": "error"
+    }
+  ],
+  "vault_write_status": "no_formal_asset_write",
+  "written_paths": []
+}

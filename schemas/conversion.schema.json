@@ -1,0 +1,82 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "conversion_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "conversion_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "converter": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "converter_config": {
+      "type": "object"
+    },
+    "converter_version": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "engine_version": {
+      "type": "string"
+    },
+    "normalized_text_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "original_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "original_path": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "schema_version": {
+      "enum": [
+        3,
+        4
+      ]
+    },
+    "source_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "source_text_path": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "source_text_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "source_title": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "warnings": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "source_id",
+    "conversion_id",
+    "normalized_text_sha256",
+    "converter",
+    "converter_version",
+    "converter_config",
+    "warnings",
+    "source_title",
+    "original_path",
+    "source_text_path",
+    "source_text_sha256"
+  ],
+  "type": "object"
+}

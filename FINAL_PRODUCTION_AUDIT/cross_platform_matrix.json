@@ -1,0 +1,15 @@
+{
+  "engine_version": "3.3.0",
+  "schema_version": 1,
+  "status": "unverified",
+  "run_url": null,
+  "commit_sha": null,
+  "jobs": [
+    {"os": "windows-latest", "python": "3.11", "status": "pending"},
+    {"os": "windows-latest", "python": "3.12", "status": "pending"},
+    {"os": "ubuntu-latest", "python": "3.11", "status": "pending"},
+    {"os": "ubuntu-latest", "python": "3.12", "status": "pending"},
+    {"os": "macos-latest", "python": "3.11", "status": "pending"},
+    {"os": "macos-latest", "python": "3.12", "status": "pending"}
+  ]
+}

@@ -1,0 +1,465 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "actions": {
+      "items": {
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "origin": {
+                  "const": "source"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "evidence_ids": {
+                  "minItems": 1
+                }
+              }
+            }
+          }
+        ],
+        "properties": {
+          "evidence_ids": {
+            "items": {
+              "maxLength": 100,
+              "minLength": 1,
+              "type": "string"
+            },
+            "maxItems": 100,
+            "type": "array"
+          },
+          "origin": {
+            "enum": [
+              "source",
+              "engine_policy"
+            ],
+            "type": "string"
+          },
+          "text": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "text",
+          "evidence_ids",
+          "origin"
+        ],
+        "type": "object"
+      },
+      "maxItems": 100,
+      "minItems": 2,
+      "type": "array"
+    },
+    "boundaries": {
+      "items": {
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "origin": {
+                  "const": "source"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "evidence_ids": {
+                  "minItems": 1
+                }
+              }
+            }
+          }
+        ],
+        "properties": {
+          "evidence_ids": {
+            "items": {
+              "maxLength": 100,
+              "minLength": 1,
+              "type": "string"
+            },
+            "maxItems": 100,
+            "type": "array"
+          },
+          "origin": {
+            "enum": [
+              "source",
+              "engine_policy"
+            ],
+            "type": "string"
+          },
+          "text": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "text",
+          "evidence_ids",
+          "origin"
+        ],
+        "type": "object"
+      },
+      "maxItems": 100,
+      "minItems": 1,
+      "type": "array"
+    },
+    "confidence": {
+      "maximum": 1,
+      "minimum": 0,
+      "type": "number"
+    },
+    "decision_flow": {
+      "items": {
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "origin": {
+                  "const": "source"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "evidence_ids": {
+                  "minItems": 1
+                }
+              }
+            }
+          }
+        ],
+        "properties": {
+          "evidence_ids": {
+            "items": {
+              "maxLength": 100,
+              "minLength": 1,
+              "type": "string"
+            },
+            "maxItems": 100,
+            "type": "array"
+          },
+          "origin": {
+            "enum": [
+              "source",
+              "engine_policy"
+            ],
+            "type": "string"
+          },
+          "text": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "text",
+          "evidence_ids",
+          "origin"
+        ],
+        "type": "object"
+      },
+      "maxItems": 100,
+      "minItems": 2,
+      "type": "array"
+    },
+    "input_requirements": {
+      "items": {
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "origin": {
+                  "const": "source"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "evidence_ids": {
+                  "minItems": 1
+                }
+              }
+            }
+          }
+        ],
+        "properties": {
+          "evidence_ids": {
+            "items": {
+              "maxLength": 100,
+              "minLength": 1,
+              "type": "string"
+            },
+            "maxItems": 100,
+            "type": "array"
+          },
+          "origin": {
+            "enum": [
+              "source",
+              "engine_policy"
+            ],
+            "type": "string"
+          },
+          "text": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "text",
+          "evidence_ids",
+          "origin"
+        ],
+        "type": "object"
+      },
+      "maxItems": 100,
+      "minItems": 1,
+      "type": "array"
+    },
+    "output_format": {
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "origin": {
+                "const": "source"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "evidence_ids": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ],
+      "properties": {
+        "evidence_ids": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "type": "array"
+        },
+        "origin": {
+          "enum": [
+            "source",
+            "engine_policy"
+          ],
+          "type": "string"
+        },
+        "text": {
+          "maxLength": 10000,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "text",
+        "evidence_ids",
+        "origin"
+      ],
+      "type": "object"
+    },
+    "positioning": {
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "origin": {
+                "const": "source"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "evidence_ids": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ],
+      "properties": {
+        "evidence_ids": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "type": "array"
+        },
+        "origin": {
+          "enum": [
+            "source",
+            "engine_policy"
+          ],
+          "type": "string"
+        },
+        "text": {
+          "maxLength": 10000,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "text",
+        "evidence_ids",
+        "origin"
+      ],
+      "type": "object"
+    },
+    "prohibited_scenarios": {
+      "items": {
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "origin": {
+                  "const": "source"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "evidence_ids": {
+                  "minItems": 1
+                }
+              }
+            }
+          }
+        ],
+        "properties": {
+          "evidence_ids": {
+            "items": {
+              "maxLength": 100,
+              "minLength": 1,
+              "type": "string"
+            },
+            "maxItems": 100,
+            "type": "array"
+          },
+          "origin": {
+            "enum": [
+              "source",
+              "engine_policy"
+            ],
+            "type": "string"
+          },
+          "text": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "text",
+          "evidence_ids",
+          "origin"
+        ],
+        "type": "object"
+      },
+      "maxItems": 100,
+      "minItems": 1,
+      "type": "array"
+    },
+    "provider": {
+      "maxLength": 200,
+      "minLength": 1,
+      "type": "string"
+    },
+    "scenarios": {
+      "items": {
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "origin": {
+                  "const": "source"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "evidence_ids": {
+                  "minItems": 1
+                }
+              }
+            }
+          }
+        ],
+        "properties": {
+          "evidence_ids": {
+            "items": {
+              "maxLength": 100,
+              "minLength": 1,
+              "type": "string"
+            },
+            "maxItems": 100,
+            "type": "array"
+          },
+          "origin": {
+            "enum": [
+              "source",
+              "engine_policy"
+            ],
+            "type": "string"
+          },
+          "text": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "text",
+          "evidence_ids",
+          "origin"
+        ],
+        "type": "object"
+      },
+      "maxItems": 100,
+      "minItems": 1,
+      "type": "array"
+    },
+    "title": {
+      "maxLength": 100,
+      "minLength": 2,
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "positioning",
+    "scenarios",
+    "input_requirements",
+    "decision_flow",
+    "actions",
+    "output_format",
+    "boundaries",
+    "prohibited_scenarios",
+    "provider",
+    "confidence"
+  ],
+  "type": "object"
+}

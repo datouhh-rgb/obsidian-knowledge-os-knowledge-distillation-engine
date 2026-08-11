@@ -1,0 +1,57 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "conversion_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "conversion_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "converter": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "converter_version": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "created_at": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "edition_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "format": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "original_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": 1
+    },
+    "source_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "source_id",
+    "original_hash",
+    "format",
+    "converter",
+    "converter_version",
+    "conversion_id",
+    "conversion_hash",
+    "edition_id",
+    "created_at"
+  ],
+  "type": "object"
+}

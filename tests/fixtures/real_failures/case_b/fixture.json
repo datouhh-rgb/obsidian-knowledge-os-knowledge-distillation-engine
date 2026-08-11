@@ -1,0 +1,12 @@
+{
+  "case": "B",
+  "book": "股票大作手回忆录",
+  "run_id": "run-c6518aded53a1ef9a90dbf59",
+  "failure": "LLM Map/Evidence Binding",
+  "error": "ValueError: Map result references unknown local Evidence: ev-2c33dc964fcacc5b7510abb317a7ae39bc2398ce663066e4bf568ae7a1173472",
+  "failed_chunk": "chunk-f951b007a597219cce6f8cb7",
+  "source_id_v31_converted_markdown": "fe0cacd9cff6e5e3a8d0a712027bfb12339c32730a57c1ebf1002021e24360e8",
+  "original_azw3_hash": "75dba888e796b4aae0ef85f99798b6c8eab002e2c2b213e98b9b3e5d5c32b828",
+  "conversion_id": "a2d6f196b566e7469122afd747f6c14a651e8a794cb23077cc8d93b285ef49db",
+  "original_run_sha256": "0d08f4b659ae5b35dc813963fd5c1b27b5a5d087d7873067f3d9c755fcd7ba3d"
+}

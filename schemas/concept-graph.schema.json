@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "edges": {
+      "additionalProperties": {
+        "additionalProperties": false,
+        "properties": {
+          "approved_by": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "confidence": {
+            "maximum": 1,
+            "minimum": 0,
+            "type": "number"
+          },
+          "conversion_id": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "from": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "provider": {
+            "type": "string"
+          },
+          "source_id": {
+            "type": "string"
+          },
+          "statement": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "candidate",
+              "verified",
+              "approved",
+              "rejected",
+              "deprecated"
+            ]
+          },
+          "to": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "version": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "from",
+          "to",
+          "type",
+          "status",
+          "provider",
+          "confidence",
+          "source_id",
+          "conversion_id",
+          "evidence_ids",
+          "created_at",
+          "approved_by",
+          "version"
+        ],
+        "type": "object"
+      },
+      "type": "object"
+    },
+    "engine_version": {
+      "type": "string"
+    },
+    "nodes": {
+      "additionalProperties": {
+        "additionalProperties": false,
+        "properties": {
+          "aliases": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "skill_id": {
+            "type": "string"
+          },
+          "skill_name": {
+            "type": "string"
+          },
+          "source_id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "book",
+              "concept",
+              "method",
+              "skill",
+              "project"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "title",
+          "created_at"
+        ],
+        "type": "object"
+      },
+      "type": "object"
+    },
+    "revision": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": 3
+    }
+  },
+  "required": [
+    "schema_version",
+    "engine_version",
+    "revision",
+    "nodes",
+    "edges"
+  ],
+  "type": "object"
+}

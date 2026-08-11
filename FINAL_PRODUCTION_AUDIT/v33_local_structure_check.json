@@ -1,0 +1,52 @@
+{
+  "blockers": [],
+  "checks": [
+    {
+      "name": "version",
+      "passed": true,
+      "reason": "VERSION must be 3.3.0"
+    },
+    {
+      "name": "immutable_real_failure_fixtures",
+      "observed": {
+        "tests/fixtures/real_failures/case_a/RUN.original.json": "c805af6ba8724be73ce1855e14c9771a83716cbbff95f7d4655a06a0cd497191",
+        "tests/fixtures/real_failures/case_a/binding-cache.original.json": "5c6ffb2b26e19400eb2f5849639ea2fa86e7ef985eb888f7b6c811765a4ced40",
+        "tests/fixtures/real_failures/case_b/RUN.ev629.original.json.b64": "598b2d958aa43e382df54e5cae861b3060de6e9de1c32342c3ca790bb9c1a771",
+        "tests/fixtures/real_failures/case_b/RUN.original.json": "0d08f4b659ae5b35dc813963fd5c1b27b5a5d087d7873067f3d9c755fcd7ba3d"
+      },
+      "passed": true,
+      "reason": ""
+    },
+    {
+      "command": [
+        "C:\\Users\\ThinkPad\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-m",
+        "compileall",
+        "-q",
+        "src",
+        "tests"
+      ],
+      "exit_code": 0,
+      "log": "FINAL_PRODUCTION_AUDIT/compile.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "compile",
+      "passed": true,
+      "reason": ""
+    },
+    {
+      "name": "pytest",
+      "passed": true,
+      "reason": "skipped in aggregator; per-job evidence is evaluated below"
+    }
+  ],
+  "commit_sha": "unknown",
+  "engine_version": "3.3.0",
+  "generated_at": "2026-08-11T22:46:39+08:00",
+  "matrix_os": "local",
+  "matrix_python": "3.11",
+  "os": "Windows",
+  "pytest_exit_code": 0,
+  "python": "3.11",
+  "schema_version": 1,
+  "status": "passed"
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "executed_at": "2026-08-11T18:07:00+08:00",
+  "mode": "temporary-vault-rule-diagnostic-plus-immutable-fixture-replay",
+  "vault_mutation": "none; temporary Vaults were deleted after execution",
+  "cases": [
+    {
+      "case": "A",
+      "book": "认知觉醒：开启自我改变的原动力",
+      "historical_run_id": "run-7702fa58a7033e0bca678f8d",
+      "original_format": "pdf",
+      "original_size": 5345581,
+      "original_hash": "db48eecb044ede32061660722051a87540cf8f8cb907b2fde860719141ff2734",
+      "diagnostic_input": "previously generated Microsoft MarkItDown Markdown snapshot",
+      "diagnostic_source_id": "84c43279a96e36cf8d2ced44167e3761d215d410d53cffa27a2b1db624ebdfaa",
+      "conversion_id": "f535d4687bace857395bc74f568c073336bf28990ee2265a0d47577cbcb36768",
+      "run_id": "run-cfa2450d63348f3d9a31a1c8",
+      "status": "blocked",
+      "written_paths": 0,
+      "graph_collision": false,
+      "block_reason": "unresolved concept conflicts and one invalid concept title",
+      "full_document_inspection": {
+        "raw_concepts": 40,
+        "canonical_concepts": 40,
+        "accepted_concepts": 36,
+        "rejected_concepts": 4,
+        "forbidden_fragments_accepted": []
+      }
+    },
+    {
+      "case": "B",
+      "book": "股票大作手回忆录",
+      "historical_run_id": "run-c6518aded53a1ef9a90dbf59",
+      "original_format": "azw3",
+      "original_size": 2378383,
+      "original_hash": "75dba888e796b4aae0ef85f99798b6c8eab002e2c2b213e98b9b3e5d5c32b828",
+      "source_id": "75dba888e796b4aae0ef85f99798b6c8eab002e2c2b213e98b9b3e5d5c32b828",
+      "converter": "configured local AZW3 converter using the preserved conversion snapshot",
+      "conversion_id": "e929b46285030385723ba1380ee0922c61a77431b8025165d829f910b2c117a6",
+      "run_id": "run-a2f649beaf346c2d1d7ae43b",
+      "status": "blocked",
+      "written_paths": 0,
+      "fake_evidence_error": false,
+      "block_reason": "unresolved concept conflicts",
+      "full_document_inspection": {
+        "raw_concepts": 40,
+        "canonical_concepts": 40,
+        "accepted_concepts": 39,
+        "rejected_concepts": 1,
+        "forbidden_fragments_accepted": []
+      }
+    }
+  ],
+  "result": "PASS_FAIL_CLOSED_REGRESSION",
+  "note": "Rule Analyzer is diagnostic-only, so these runs intentionally generated no Skill. Exact historical collision and fake-Evidence contracts are separately replayed by the automated regression fixtures."
+}

@@ -1,0 +1,23 @@
+{
+  "case": "A",
+  "book": "认知觉醒：开启自我改变的原动力",
+  "run_id": "run-7702fa58a7033e0bca678f8d",
+  "failure": "Graph edge identity collision",
+  "edge_id": "edge:5e819c85026c841d419bbb9c",
+  "source_id": "db48eecb044ede32061660722051a87540cf8f8cb907b2fde860719141ff2734",
+  "conversion_id": "d13f10b760c3d0a8d9215f3de22fb755cdd767d56b6a362dff59b16f39c34ec7",
+  "original_run_sha256": "c805af6ba8724be73ce1855e14c9771a83716cbbff95f7d4655a06a0cd497191",
+  "original_binding_cache_sha256": "5c6ffb2b26e19400eb2f5849639ea2fa86e7ef985eb888f7b6c811765a4ced40",
+  "candidates": [
+    {
+      "title": "第二节 自控力",
+      "definition": "第二节 自控力：我们生而为人就是为了成为思维舵",
+      "evidence_id": "ev-833e8cdebb8ddac38d21eb9dcc1068636dd2a34e7670e367ee56265e72f9bfb8"
+    },
+    {
+      "title": "第二节 自控力",
+      "definition": "第二节 自控力：我们生而为人就是为了成为思维",
+      "evidence_id": "ev-7d625f3e2dd9fc9d994808637bb0c8513544e667e124b1eef897db3dda8aacbc"
+    }
+  ]
+}

@@ -1,0 +1,5255 @@
+{
+  "cache_key": "acc930244886c551b186f681650689915d9cc6e19b8ccf1bfead7d93645fbccf",
+  "cache_key_fields": {
+    "conversion_id": "d13f10b760c3d0a8d9215f3de22fb755cdd767d56b6a362dff59b16f39c34ec7",
+    "extraction_hashes": [
+      "3224f58e09497a78f6ec2c725aa77ba0f372c371ae130ee82ff376514aac97bf",
+      "2820119654ca8e5ce103b0f68698e6824b186a21e1a872b020b78a5af6c71204",
+      "811b1d91f3d0003c7fe9c6f2c1afe1596b7411b161e040eb9d31369685b7c7c0",
+      "1545608e92f7477838ea9e13611f2d4cf016f86056c6ff74f9a2a78cc446ba10",
+      "23bf3e8cb6c4f2a129d5257061b0c50d61ad7aa532a36faa30aad3d1a7f0d830",
+      "99273640037f690d0f3ab966732762c91c8141e6f70cef62d035e031f3f815ba",
+      "921e4d62be55ab635a24d316af2da8ff88e6dbb60b1407431c5604c0bd334c66",
+      "4d5d8bb3e2a555da5c3f1aeb6b580cad38fc8b73bfbbc6660d1621f114b63294",
+      "b43aba5bc4975ae6d0e3aac16bd0ca8cb54e94c79e058ccbbb88c6d9af33a6b8",
+      "b75f6f3a5e010175e900d3bebfb5e6f4312a8f66f98b1fc5e53073baca093ed5",
+      "0ca9da0bc864728f168b4063246edbf2cabf3607d6be29d717b50ee27cfbf670",
+      "b42acd5241c62de18a3eaa7d6917c4d54b3483b8762b2fee732cba6d5d46a4f3"
+    ],
+    "reducer_version": "provider-map-reducer-v1"
+  },
+  "created_at": "2026-08-11T16:17:31+08:00",
+  "result": {
+    "comparisons": [],
+    "concepts": [
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-1e7f0b848c97c7adced089e412b8f64adfd26706aaa906cc7dc75b804eae043a"
+          ],
+          "origin": "source",
+          "text": "认知觉醒：开启自我改变的原动力"
+        },
+        "provider": "rule",
+        "title": "认知觉醒"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-22c2d574cc4715b38a8e1011891de3da1b18761fb0ef1816916f6ea96980d7c0"
+          ],
+          "origin": "source",
+          "text": "网址 https://www.ptpress.com.cn"
+        },
+        "provider": "rule",
+        "title": "网址 https"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-3b94af79c0ec6d10f54cb05907a1a7710a0cb31a211f666224e851ee09df75d4"
+          ],
+          "origin": "source",
+          "text": "◆ 开本：720×960 1/16"
+        },
+        "provider": "rule",
+        "title": "◆ 开本"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-ef0eed75c19719fedd6db74e31404bcf231f2edec2d531e4791419782bdcbfd9"
+          ],
+          "origin": "source",
+          "text": "印张：17.25 2020年9月第1版"
+        },
+        "provider": "rule",
+        "title": "印张"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-a7831d1174eece061d5de1dd13eb95195e925ac29ae06f9deb41dbf0adf89b36"
+          ],
+          "origin": "source",
+          "text": "字数：222千字 2020年9月北京第1次印刷"
+        },
+        "provider": "rule",
+        "title": "字数"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-c76f26c04d7ab0cd65c098ffb75195d5b9a94b08b610e32746a376d915a47e46"
+          ],
+          "origin": "source",
+          "text": "定价：59.80元"
+        },
+        "provider": "rule",
+        "title": "定价"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-dee54bc5522b597a64aa6fb7a796f17d11ccc97d58f594395d1ca0f974baff3d"
+          ],
+          "origin": "source",
+          "text": "读者服务热线：(010)81055522 印装质量热线："
+        },
+        "provider": "rule",
+        "title": "读者服务热线"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-707b15d764bccadc5e76557d87aa3f59e8e75e47462d3dad414bb97dc7ddd0ff"
+          ],
+          "origin": "source",
+          "text": "反盗版热线：(010)81055315"
+        },
+        "provider": "rule",
+        "title": "反盗版热线"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-b83a8290d2f32c03adc86280f64486e30f308c1d8305da451ca704418998dbc5"
+          ],
+          "origin": "source",
+          "text": "广告经营许可证：京东市监广登字20170147号"
+        },
+        "provider": "rule",
+        "title": "广告经营许可证"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-01ac47ac8207e95a6f0d7d4103093ed80e4da34f174afc824b67955725f57d6f"
+          ],
+          "origin": "source",
+          "text": "第一节 大脑：重新认识你自己"
+        },
+        "provider": "rule",
+        "title": "第一节 大脑"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-b2fee93f241bcc3a83f3651c5adf6f5fe72f53cc49843c3aae908bc7f1e0737d"
+          ],
+          "origin": "source",
+          "text": "第二节 焦虑：焦虑的根源"
+        },
+        "provider": "rule",
+        "title": "第二节 焦虑"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-74c7c0f7f1165f5a93cd93f1e6f2fb2885d24b8fc66b0d7850d78149caaf052c"
+          ],
+          "origin": "source",
+          "text": "第三节 耐心：得耐心者得天下"
+        },
+        "provider": "rule",
+        "title": "第三节 耐心"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-2751a169a603d02984d9824f39e18e15fb8c7448eeebc5ea4df73f804cfadbf6"
+          ],
+          "origin": "source",
+          "text": "第一节 模糊：人生是一场消除模糊的比赛"
+        },
+        "provider": "rule",
+        "title": "第一节 模糊"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-2e88f816dda692126e78c6fd1db655b3fd4493a841a662528c9893c6760b5790"
+          ],
+          "origin": "source",
+          "text": "第二节 感性：顶级的成长竟然是“凭感觉”"
+        },
+        "provider": "rule",
+        "title": "第二节 感性"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-4e1853c8ba8bb307d9674e958522eaa4f693cdb932f1375bd032fc529447c4e7"
+          ],
+          "origin": "source",
+          "text": "第一节 元认知：成长慢，是因为你不会“飞”"
+        },
+        "provider": "rule",
+        "title": "第一节 元认知"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-833e8cdebb8ddac38d21eb9dcc1068636dd2a34e7670e367ee56265e72f9bfb8"
+          ],
+          "origin": "source",
+          "text": "第二节 自控力：我们生而为人就是为了成为思维舵"
+        },
+        "provider": "rule",
+        "title": "第二节 自控力"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-5121c171931699308fed35b6a31b8756f2d8f717d9f48bf855587951fc58e862"
+          ],
+          "origin": "source",
+          "text": "第一节 情绪专注：一招提振你的注意力"
+        },
+        "provider": "rule",
+        "title": "第一节 情绪专注"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-5643cfaba4be3721bbc2e1e646ef5ec5e517136305d12af021c15dd90223701d"
+          ],
+          "origin": "source",
+          "text": "第二节 学习专注：深度沉浸是进化双刃剑的安全剑"
+        },
+        "provider": "rule",
+        "title": "第二节 学习专注"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-effc033eaa1aec23c237298b982b53fa8dad89c83b383fc8138af556e1130b08"
+          ],
+          "origin": "source",
+          "text": "第五章 学习力——学习不是一味地努力"
+        },
+        "provider": "rule",
+        "title": "第五章 学习力——学习不"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-d00a6d942ce034518b6dddc9877e1512a9e119c59b0419a82db71a37cc131f7c"
+          ],
+          "origin": "source",
+          "text": "第一节 匹配：舒适区边缘，适用于万物的方法论"
+        },
+        "provider": "rule",
+        "title": "第一节 匹配"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-f524c61190ca1ac06f54d12bed3f2d134071a952102573378a28c24860ac5e3b"
+          ],
+          "origin": "source",
+          "text": "第二节 深度：深度学习，人生为数不多的好出路"
+        },
+        "provider": "rule",
+        "title": "第二节 深度"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-124b3a57928a9f76e84adfad2c25b148dc5faffe65c1a4d1cc69dfc41cff5e9c"
+          ],
+          "origin": "source",
+          "text": "第三节 关联：高手的“暗箱”"
+        },
+        "provider": "rule",
+        "title": "第三节 关联"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-756ba03169a47f11aa124c221e625b503ad65721855ee301e94e58423d1f6c5d"
+          ],
+          "origin": "source",
+          "text": "第四节 体系：建立个人认知体系其实很简单"
+        },
+        "provider": "rule",
+        "title": "第四节 体系"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-2c7f09cf828355a6a76283da9dd6364b1757e14b7166580107527cb3d269b0f4"
+          ],
+          "origin": "source",
+          "text": "第五节 打卡：莫迷恋打卡，打卡打不出未来"
+        },
+        "provider": "rule",
+        "title": "第五节 打卡"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-f5c8eab069d0d4b224be53189edd6ea66d86ff447474a08f05d3188f58a4520e"
+          ],
+          "origin": "source",
+          "text": "第六节 反馈：是时候告诉你什么是真正的学习了"
+        },
+        "provider": "rule",
+        "title": "第六节 反馈"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-1b2ed2bf0eff908994a05ba75ad49f508a75479e12e1490fd8c3a19da3d88106"
+          ],
+          "origin": "source",
+          "text": "第七节 休息：你没成功，可能是因为太刻苦了"
+        },
+        "provider": "rule",
+        "title": "第七节 休息"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-4246cd4d3b7b8fe2fd54b8ea0ee3b1f9fe83ce7b85e7886f548c58633aa8fbf0"
+          ],
+          "origin": "source",
+          "text": "第一节 清晰：一个观念，重构你的行动力"
+        },
+        "provider": "rule",
+        "title": "第一节 清晰"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-a73288cd103f44b996004bf2a0aec7d0228491e86943bed66e508bf742d7d3fc"
+          ],
+          "origin": "source",
+          "text": "第二节 “傻瓜”：这个世界会奖励那些不计得失"
+        },
+        "provider": "rule",
+        "title": "第二节 “傻瓜”"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-b90e7a4f0d5269545f35662d943c71b3143feb8e017c38866116961eadabcad2"
+          ],
+          "origin": "source",
+          "text": "第三节 行动：“道理都懂，就是不做”怎么破解"
+        },
+        "provider": "rule",
+        "title": "第三节 行动"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-21ce5b38559b72df62515f8191838e1eaba36987e4f1cb56687183fd721946ab"
+          ],
+          "origin": "source",
+          "text": "第七章 情绪力——情绪是多角度看问题的智慧"
+        },
+        "provider": "rule",
+        "title": "第七章 情绪力——情绪"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-fe5837e4c187e6d2a9fa25c2b614648860e08e9d796610d543527deedaca6095"
+          ],
+          "origin": "source",
+          "text": "第一节 心智带宽：唯有富足，方能解忧"
+        },
+        "provider": "rule",
+        "title": "第一节 心智带宽"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-3c2400ec01a7a065dfe3e18b397f360fd6d880f5e6f5e3167de4809b75a0b166"
+          ],
+          "origin": "source",
+          "text": "第二节 单一视角：你的坏情绪，源于视角单一"
+        },
+        "provider": "rule",
+        "title": "第二节 单一视角"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-16bc2a3336681dfd4d18c71a623e40af757ca0df6e9dc3a5deb9ef5a62e1418c"
+          ],
+          "origin": "source",
+          "text": "第三节 游戏心态：幸福的人，总是在做另外一件事"
+        },
+        "provider": "rule",
+        "title": "第三节 游戏心态"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-f7cb7dfbbdbc3ed6e310eaeae38c92ec960e8ea98544f380d76c5545826939f9"
+          ],
+          "origin": "source",
+          "text": "第一节 早起：无闹钟、不参团、不打卡，我是如何"
+        },
+        "provider": "rule",
+        "title": "第一节 早起"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-359f4fdbdb475a115462eea0cc4097ba5e31fac759961788c86aa88c7b4f0fd2"
+          ],
+          "origin": "source",
+          "text": "第二节 冥想：终有一天，你要解锁这条隐藏赛道"
+        },
+        "provider": "rule",
+        "title": "第二节 冥想"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-241011105e19e7ff445d962741caf1ff5f7b8578b997864c4a461217890f9cb3"
+          ],
+          "origin": "source",
+          "text": "第三节 阅读：如何让自己真正爱上阅读"
+        },
+        "provider": "rule",
+        "title": "第三节 阅读"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-933c89d9e843a2338d2b8d9907f7dcfcc6849bee7666beb1164e37db6689470c"
+          ],
+          "origin": "source",
+          "text": "第四节 写作：谢谢你，费曼先生"
+        },
+        "provider": "rule",
+        "title": "第四节 写作"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-7ca4482ad085ec741b04695a8688fba69b13def83f9b4f20b23d4be45b9504e4"
+          ],
+          "origin": "source",
+          "text": "第五节 运动：灵魂想要走得远，身体必须在路上"
+        },
+        "provider": "rule",
+        "title": "第五节 运动"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-f0f70c66b3af25d35219eec509ddfbf6c8332d094a2f3315650329ec43ef53cb"
+          ],
+          "origin": "source",
+          "text": "结语 一流的生活不是富有，而是觉知"
+        },
+        "provider": "rule",
+        "title": "结语 一流的生活不"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-619980064b14c85225ce7ea70bf75c7e7ce595ae1a8da99a60838eb0e147ebc5"
+          ],
+          "origin": "source",
+          "text": "我们是幸运的一代人，赶上了人类社会迄今为止最大的跨"
+        },
+        "provider": "rule",
+        "title": "我们"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-9f0f6986d67a5fafefba3d04bb995f1a06ab9391f3814a4e07da7d9af25d421d"
+          ],
+          "origin": "source",
+          "text": "归结起来，焦虑的原因就两条：想同时做很多事，又想立即"
+        },
+        "provider": "rule",
+        "title": "归结起来，焦虑的原因就两条"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-57d866dd1c7f96b5c8f0889c3b2338d60472ba1488281aa133ceae32d57886cb"
+          ],
+          "origin": "source",
+          "text": "这才是焦虑真正的根源！焦虑是天性，是人类的默认设置。"
+        },
+        "provider": "rule",
+        "title": "这才"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-a0f1f78822a31e0d0d57363939ebed070e3febaec6051ec577ffe698ab7ddc32"
+          ],
+          "origin": "source",
+          "text": "只是这些说辞就像是正确的废话。道理谁不懂呢？关键是如"
+        },
+        "provider": "rule",
+        "title": "只是这些说辞就像"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-8853821caaf0fb65f0e7de0372cf31d6f58f3a72e2abc139da1a91676ccd6ee5"
+          ],
+          "origin": "source",
+          "text": "耐心可以说是人类最珍贵的品质之一了，它直指我们急于求"
+        },
+        "provider": "rule",
+        "title": "耐心可以说"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-5c4adcfb8216f95187841a2e31d7d33c050d7d1c7c2efd59f2535ca487a366d1"
+          ],
+          "origin": "source",
+          "text": "你看，金庸的故事里有很多这样的桥段：一个普通少年，经"
+        },
+        "provider": "rule",
+        "title": "你看，金庸的故事里有很多这样的桥段"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-cc13f7036b0d54a7931dabf1212d3d452959cd7852b3288b309eada4330a30e3"
+          ],
+          "origin": "source",
+          "text": "然而真相根本不是这样的。我们对耐心的理解过于肤浅，以"
+        },
+        "provider": "rule",
+        "title": "然而真相根本不"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-997761ac7ca043b863ca388caec44c6f86d5d582b590491cf77744e81344f1be"
+          ],
+          "origin": "source",
+          "text": "关于这一点，我们已经在本章第一节达成共识：缺乏耐心根"
+        },
+        "provider": "rule",
+        "title": "关于这一点，我们已经在本章第一节达成共识"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-997761ac7ca043b863ca388caec44c6f86d5d582b590491cf77744e81344f1be"
+          ],
+          "origin": "source",
+          "text": "本不是什么可耻的事，和自己的道德品质也全无关系，这仅仅是"
+        },
+        "provider": "rule",
+        "title": "本不"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-a5ea6cc8a0983b6b97200e087f12312eedc885547a0c19fbeadf48cf5044b572"
+          ],
+          "origin": "source",
+          "text": "生6个月之内的宝宝会认为自己是全能的，整个世界会随着自己"
+        },
+        "provider": "rule",
+        "title": "生6个月之内的宝宝会认为自己"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-cc7204659173db3c92535dc355c433d86c63adb23538edf22bc37728333be88d"
+          ],
+          "origin": "source",
+          "text": "的精英通常是那些能更好地克服天性的人，他们的耐心水平更"
+        },
+        "provider": "rule",
+        "title": "的精英通常"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-07d623ab3b216a7597b53fcedc9120c027a6f2f16467518f29c1073c0cdea19a"
+          ],
+          "origin": "source",
+          "text": "的线索都指向了理智脑这块人类独有的前额皮质上——了解这一"
+        },
+        "provider": "rule",
+        "title": "的线索都"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-4ae9a04597bffb8c03da95a976603cb788489678177bbf0a0fd548ca07fc92a7"
+          ],
+          "origin": "source",
+          "text": "复利效应显示了价值积累的普遍规律：前期增长非常缓慢，"
+        },
+        "provider": "rule",
+        "title": "复利效应显示了价值积累的普遍规律"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-4ae9a04597bffb8c03da95a976603cb788489678177bbf0a0fd548ca07fc92a7"
+          ],
+          "origin": "source",
+          "text": "示的正是这种力量，不过要想获得这种力量，我们需要冷静面对"
+        },
+        "provider": "rule",
+        "title": "示的正"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-0c9e9ff3d1639680e3fc5388188df13cce396fd11c8ab5c18393a517c1fc3da3"
+          ],
+          "origin": "source",
+          "text": "舒适区边缘另一个重要的规律是它揭示了能力成长的普遍法"
+        },
+        "provider": "rule",
+        "title": "舒适区边缘另一个重要的规律"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-c0f0ab758e267b76d5f6e5af9e539f07cb97e45f1ebfa4cc1a7298e51592f0c3",
+            "ev-21e21dd6649fb3e0f2db2a246dd5ec3672ec658bb08fa821ce98ae5ac8d9f7c6"
+          ],
+          "origin": "source",
+          "text": "则：无论个体还是群体，其能力都以“舒适区—拉伸区[2]—困"
+        },
+        "provider": "rule",
+        "title": "则：无论个体还"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-acb301401a73d7427b4fb9bbe1e7232f4b331a5feeb1ef894e75a5ffe0ac9ec7"
+          ],
+          "origin": "source",
+          "text": "能也发现了：复利曲线和舒适区边缘是一对好朋友，它们组合在"
+        },
+        "provider": "rule",
+        "title": "能也发现了"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-8b57248d248aff74077da0a2dbd62e91044a4e72b7605ebf71e4583d0ad72fa8",
+            "ev-e33d546d10d2f1d0b858b71b037ae238b5954ab715fed47529cb75cf064fa740"
+          ],
+          "origin": "source",
+          "text": "原因仍然是我们的天性在作祟。因为单纯保持学习输入是简"
+        },
+        "provider": "rule",
+        "title": "原因仍然"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-00cf449066fb53c2f185514b75cba2a8e680b7c9036db7ddcd8faef89414cd5e"
+          ],
+          "origin": "source",
+          "text": "“多即是少，少即是多”的辩证关系在图1-5中也体现得淋"
+        },
+        "provider": "rule",
+        "title": "“多即"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-00cf449066fb53c2f185514b75cba2a8e680b7c9036db7ddcd8faef89414cd5e"
+          ],
+          "origin": "source",
+          "text": "漓尽致：停在表层，我们就会陷入欲望漩涡，什么都想学、什么"
+        },
+        "provider": "rule",
+        "title": "漓尽致"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-184ef3ed6035cf6b5970770d236f01d7245e9886fbc7d6d482764a57472eb02b",
+            "ev-3a5351507f8bfc0db160a1fc57a0822532bc8d7c56be02784fc861b1af924689"
+          ],
+          "origin": "source",
+          "text": "另一个值得关注的微观规律是学习的平台期。这个规律表"
+        },
+        "provider": "rule",
+        "title": "另一个值得关注的微观规律"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-184ef3ed6035cf6b5970770d236f01d7245e9886fbc7d6d482764a57472eb02b",
+            "ev-3a5351507f8bfc0db160a1fc57a0822532bc8d7c56be02784fc861b1af924689"
+          ],
+          "origin": "source",
+          "text": "（学多少是多少），而是呈现一种波浪式上升曲线（见图1-"
+        },
+        "provider": "rule",
+        "title": "（学多少"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-d55a5f1707237ef4e761961b6a8a626db7a0b0c078ac40125b6d03234a885340"
+          ],
+          "origin": "source",
+          "text": "几乎任何学习都是这样，刚开始的时候进步很快，然后会变"
+        },
+        "provider": "rule",
+        "title": "几乎任何学习都"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-5dc93c142adbcbf6a6b4351945d9f74658833af36e443eb3e7d7d9b0894326d7"
+          ],
+          "origin": "source",
+          "text": "失败时做出与他人不同的选择：有人选择放弃，而我们继续坚"
+        },
+        "provider": "rule",
+        "title": "失败时做出与他人不同的选择"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-53ab91f836ec8444142323e43db5f2f69d7a76aa3b7b3b17053959566b14dbc5"
+          ],
+          "origin": "source",
+          "text": "当我们明白缺乏耐心是自己的天性时，就坦然接纳吧！从现"
+        },
+        "provider": "rule",
+        "title": "当我们明白缺乏耐心"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-13238fc08e0abf065d25458b96952b77593b27851de3f5bf5c04b01054cac1a8"
+          ],
+          "origin": "source",
+          "text": "舒适和诱惑是本能脑与情绪脑的最爱，完全放弃舒适和诱惑"
+        },
+        "provider": "rule",
+        "title": "舒适和诱惑"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-1ec15b16f15f085599743bad9606c2dd50d8702f98dad3e16cc6b0d580f3aacb"
+          ],
+          "origin": "source",
+          "text": "开始工作前，我也采用同样的策略，对自己说：“暂时忍耐一"
+        },
+        "provider": "rule",
+        "title": "开始工作前，我也采用同样的策略，对自己说"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-eaf91e54fa0a64562509e7f89a6cdc03dda4b47638fbdb98c1b773404819f73c"
+          ],
+          "origin": "source",
+          "text": "这种“后娱乐”的好处是，将享乐的快感建立在完成重要任"
+        },
+        "provider": "rule",
+        "title": "这种“后娱乐”的好处"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-d81cd22b51ae240b37f3753b51b80e09ea5250cb7af730d4e889702a6fb9cf21"
+          ],
+          "origin": "source",
+          "text": "了，那就再告诉自己：“看完这篇就立即结束。”"
+        },
+        "provider": "rule",
+        "title": "了，那就再告诉自己"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-d81cd22b51ae240b37f3753b51b80e09ea5250cb7af730d4e889702a6fb9cf21"
+          ],
+          "origin": "source",
+          "text": "耐心就是这样，不能急于求成，允许自己缓慢地改变，甚至"
+        },
+        "provider": "rule",
+        "title": "耐心就"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-aaf3e5263cd48f407f242468b86b8d87acb02daf6e78b57f41f3a92c6c516a58",
+            "ev-3fd4c5f24ebc918e936bffdbfd327201a83e82539b3613a7068d6628dcc636ff"
+          ],
+          "origin": "source",
+          "text": "只在乎是否舒适。科学家废寝忘食地沉迷于研究，是因为他们真"
+        },
+        "provider": "rule",
+        "title": "只在乎"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-fe1b7e3d4a5179fab4928794a806ad4196415a17d6dca296412d7713653374d3"
+          ],
+          "origin": "source",
+          "text": "[2] 拉伸区是指一个人的知识和技能从已知到未知、从熟悉"
+        },
+        "provider": "rule",
+        "title": "[2] 拉伸区"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-3e7de9bd35ea74b661824cea90987108524a86b279b95617b94744ffeaa51106"
+          ],
+          "origin": "source",
+          "text": "这就是进化的力量。然而进化是一把双刃剑，意识分层在给"
+        },
+        "provider": "rule",
+        "title": "这就"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-50285c7ebb75ea2c3c0aece8290997b906704d316534b34ab0771cea77202d8e"
+          ],
+          "origin": "source",
+          "text": "道它是什么，回头看去一片模糊。这种模糊让人心生迷茫和恐"
+        },
+        "provider": "rule",
+        "title": "道它"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-c981627ce0071578204713e191178d0489381e5460fbb18363835d8adf15003d"
+          ],
+          "origin": "source",
+          "text": "领域内的精英无不是比其他人了解的知识更多，他们的盲区更"
+        },
+        "provider": "rule",
+        "title": "领域内的精英无不"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-a4bdd32dd634768df8c5cf2bd5fc7e234c7b446ff48cb9869ffa396c1a8359b7"
+          ],
+          "origin": "source",
+          "text": "不幸的是，人类天生不喜欢学习和思考，因为这类事极其耗"
+        },
+        "provider": "rule",
+        "title": "不幸的"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-165ed3394ebe2caa2a6306f809bbf2bd97ebad506a3a99e854100591b1b5c773"
+          ],
+          "origin": "source",
+          "text": "自我设计的第一原则是节能，凡耗能高的事情都会被视为是对生"
+        },
+        "provider": "rule",
+        "title": "自我设计的第一原则"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-c981627ce0071578204713e191178d0489381e5460fbb18363835d8adf15003d"
+          ],
+          "origin": "source",
+          "text": "·《思考力》一书的作者上田正仁提示：思考力的本质就"
+        },
+        "provider": "rule",
+        "title": "·《思考力》一书的作者上田正仁提示"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-a4bdd32dd634768df8c5cf2bd5fc7e234c7b446ff48cb9869ffa396c1a8359b7"
+          ],
+          "origin": "source",
+          "text": "·《刻意练习》中的核心方法论是：不要重复练习已经会"
+        },
+        "provider": "rule",
+        "title": "·《刻意练习》中的核心方法论是"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-b318e2270cfcd90f4ea06210b59dc7bb92d101d12243bd168f3f38490e1a0c3c"
+          ],
+          "origin": "source",
+          "text": "喜欢穿破洞裤……而她自己的解释是那个研究生喜欢吃汉堡加洋"
+        },
+        "provider": "rule",
+        "title": "喜欢穿破洞裤……而她自己的解释"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-f6532d3a962be8820e829a85efe8c836585e0621505a00b1af57c14a7c98e3e5"
+          ],
+          "origin": "source",
+          "text": "在另一篇文章中，他又提出：无论在生活中还是在学习上，"
+        },
+        "provider": "rule",
+        "title": "在另一篇文章中，他又提出"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-9811c470cfd4ecb773f70cbaba9683e5a4cbe8faa61d59d19ee1d34b954e5dc0"
+          ],
+          "origin": "source",
+          "text": "·为什么这个产品让我这么喜欢？是什么让它与众不同？"
+        },
+        "provider": "rule",
+        "title": "·为什么这个产品让我这么喜欢？"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-671e2b1f0ab6e009be25915238fadce023f92fb8a97724433899b41758549ceb"
+          ],
+          "origin": "source",
+          "text": "这就是高手学习的方法：先用感性能力帮助自己选择，再用"
+        },
+        "provider": "rule",
+        "title": "这就是高手学习的方法"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-a93ea34c5995d8870bd8fccefc7a61db5707a66c49f4b1b6bc45ff2eff799984"
+          ],
+          "origin": "source",
+          "text": "秘诀时，他只说了3个字：凭感觉。"
+        },
+        "provider": "rule",
+        "title": "秘诀时，他只说了3个字"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-d40e9ae394635befc35784041250122045b290627955eb6e444f608d87b27d8e"
+          ],
+          "origin": "source",
+          "text": "现在是什么水平，这一招都管用——就是凭感觉！那些一眼就能"
+        },
+        "provider": "rule",
+        "title": "现在"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-3e9cb2c06439cc1349a32041c925ac624a427d7f5ee7c38a4540dcd7ef8cf87f"
+          ],
+          "origin": "source",
+          "text": "读书也是这样，如果单纯运用理性，我们通常会在看完整本"
+        },
+        "provider": "rule",
+        "title": "读书也"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-55172f827d4c16c11f07642273ceaf78e59d4a77f801914d21aad3becb2354c3",
+            "ev-2202d863315cadf1455b03bf68d0a8e2b6e26d2120158dcc269c60cfea32283e"
+          ],
+          "origin": "source",
+          "text": "再问自己：现在你印象最深的触动点是什么？牢牢抓住这个触动"
+        },
+        "provider": "rule",
+        "title": "再问自己"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-26fb16e771bbd1c959f5d06c4b9422929bcafd8975d8460333cf043c7d59e52b",
+            "ev-9811c470cfd4ecb773f70cbaba9683e5a4cbe8faa61d59d19ee1d34b954e5dc0"
+          ],
+          "origin": "source",
+          "text": "潜意识的感性总能帮我们发现什么是真正适合自己的，从而"
+        },
+        "provider": "rule",
+        "title": "潜意识的感性总能帮我们发现什么"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-1d8f45488c3b7fd3eb57510cb3515c008c605cf5e211c5fcad26e6e6dbbf110e",
+            "ev-8a6b935a21adad852618fe7064628808a4fcc173b41e738800f226aa8e8a23cb"
+          ],
+          "origin": "source",
+          "text": "学习只是冰山一角，感性的力量适用于生活的方方面面，尤"
+        },
+        "provider": "rule",
+        "title": "学习只"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-8968683a067d70a97cda1b79d9aee043f1ed54516fa6140fe73bccbcc2a092af",
+            "ev-57ed618baccd7885918a7c5d46c339a0f98303239a407e570f54f5c0f29483d6"
+          ],
+          "origin": "source",
+          "text": "一个人若是没有人生目标，纵然每天有吃、有喝、有书读、"
+        },
+        "provider": "rule",
+        "title": "一个人若"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-dcdf95a8d629c554f9c8f6c5b546045f40e454e38e93f7e53b760876d804a287"
+          ],
+          "origin": "source",
+          "text": "如《美好人生运营指南》一书的作者一稼就提出了6条寻找人生"
+        },
+        "provider": "rule",
+        "title": "如《美好人生运营"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-687147104728cb7cc306562c4a3be32424c64a93dbc82efca91191c6568f067d"
+          ],
+          "origin": "source",
+          "text": "案往往都是利他的，因为真正长久的人生意义和幸福只能从他人"
+        },
+        "provider": "rule",
+        "title": "案往往都"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-a1c11061b9405ea97823993e9bae84b02d6ad39e4b7ad1c7d7dc4191dd4e0d2e"
+          ],
+          "origin": "source",
+          "text": "·你年轻的时候是怎么度过闲暇时光的？"
+        },
+        "provider": "rule",
+        "title": "·你年轻的时候"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-753ceb794dfb8f434caff40437867c4ca4c18d913e16cb525268e5aac18b876d"
+          ],
+          "origin": "source",
+          "text": "回答这3个问题同样需要我们动用感知力而不是思考力，因"
+        },
+        "provider": "rule",
+        "title": "回答这3个问题同样需要我们动用感知力而不"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-a1d1d56c38940aa3bb820e273e3bc9f5043b7aae96e9fdca3b5afc44a3ac650a"
+          ],
+          "origin": "source",
+          "text": "建议：小事听从你的脑，大事听从你的心。这话不无道理。"
+        },
+        "provider": "rule",
+        "title": "建议"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-23abd63b28fa6b4199287d886a290ca4fc293329c990e8f3de9f6ab99e3e25c3"
+          ],
+          "origin": "source",
+          "text": "告诉她：“这是你的身体在罢工，告诉你它不喜欢你的运动方"
+        },
+        "provider": "rule",
+        "title": "告诉她"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-284e986b256baddab07f932671a147f5d138f009c6caa6b35837e71e2c49c673"
+          ],
+          "origin": "source",
+          "text": "出了深深的感叹：原来这就是飞一般的感觉，就像自己有了翅膀"
+        },
+        "provider": "rule",
+        "title": "出了深深的感叹"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-84f49d768ac4eba80d39fb154851db164eed76e5e5263ec14e6b9f6563270eb4"
+          ],
+          "origin": "source",
+          "text": "级，它们最终又可归为两类：被动元认知和主动元认知。"
+        },
+        "provider": "rule",
+        "title": "级，它们最终又可归为两类"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-1361f56082dbd0abc0aecaeae7ab4bcbef8b7d95a2a6fe34981e1976ef18962d"
+          ],
+          "origin": "source",
+          "text": "的事情发生了：你能意识到自己在想什么，进而意识到这些想法"
+        },
+        "provider": "rule",
+        "title": "的事情发生了"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-0f3b8f3a9ef3e67e700f88712f2fb5f5cf7348f0edab3fb12c1c9cca33e6e4ae"
+          ],
+          "origin": "source",
+          "text": "无论在生理上还是在精神上，都会不自觉地追求眼前的舒适和简"
+        },
+        "provider": "rule",
+        "title": "无论在生理上还"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-4190d09e6b87189b959a5dfc7b40fd2caa24cd623ad0bb769bd3c3cef44ad200"
+          ],
+          "origin": "source",
+          "text": "人生是由无数个选择组成的，不同选择的累加造就了不同的人"
+        },
+        "provider": "rule",
+        "title": "人生"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-8dcb552d11e8097b6ea0c500831fdf54dc64b3bb17b1cae0771d004676568fe0"
+          ],
+          "origin": "source",
+          "text": "尤其值得关注的是脑科学和认知科学，这类知识是对我们自"
+        },
+        "provider": "rule",
+        "title": "尤其值得关注的"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-6583d337ddd1998e8fe0370862cfb3a197afebe526c6be43257646915ab382db"
+          ],
+          "origin": "source",
+          "text": "景音乐是自己找了很久的曲子，于是打开音乐软件去搜索这首歌"
+        },
+        "provider": "rule",
+        "title": "景音乐"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-2bd4ad356407fedc9958e512822454e3128ea675f2f1a00350ebd15c8d430c44"
+          ],
+          "origin": "source",
+          "text": "我们总是这样，一开始只想找一根绳子，最后却牵出一头大"
+        },
+        "provider": "rule",
+        "title": "我们总"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-e1475515f221e13b94e58aa82afbfbcf507f5d369246f581a67fc5960777f643",
+            "ev-8dcb552d11e8097b6ea0c500831fdf54dc64b3bb17b1cae0771d004676568fe0"
+          ],
+          "origin": "source",
+          "text": "己……这些都是元认知能力不足的表现——顺着自己的本性做喜"
+        },
+        "provider": "rule",
+        "title": "己……这些都"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-d7ca84ef1377d205ab94a9186cee29f3347287cf693dd4e2f4be01a06804c011"
+          ],
+          "origin": "source",
+          "text": "为，从过程中跳出来，告诉自己：“这个事情可做可不做，还是"
+        },
+        "provider": "rule",
+        "title": "为，从过程中跳出来，告诉自己"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-46bdf2750bdfc2587f8669130fc321c2918863531da9c3e525f65896afa3a81d"
+          ],
+          "origin": "source",
+          "text": "是当前行动的指南针，它可以在茫茫的生命中为你导航，让你主"
+        },
+        "provider": "rule",
+        "title": "是当前行动的"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-9021e5b8518a6c5ba7748838174a0e55190e885f8f104065682b23fcb9ca0483"
+          ],
+          "origin": "source",
+          "text": "动选择去做那些更重要而不是更有趣的事情。"
+        },
+        "provider": "rule",
+        "title": "动选择去做那些更重要而不"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-e87303efd312c785d539945e991d3e8bc880b4526b145ddc3e7f1a470373d269"
+          ],
+          "origin": "source",
+          "text": "反馈是这个世界的进化机制。有反馈，并形成回路，就可能"
+        },
+        "provider": "rule",
+        "title": "反馈"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-eae627b7e8c8d73ace013a2c9fb5e26eec69306528d639ddaa36c64f9c721a53"
+          ],
+          "origin": "source",
+          "text": "这种变化也是反馈，收集这些反馈，然后继续激励自己，终"
+        },
+        "provider": "rule",
+        "title": "这种变化也"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-7d625f3e2dd9fc9d994808637bb0c8513544e667e124b1eef897db3dda8aacbc"
+          ],
+          "origin": "source",
+          "text": "第二节 自控力：我们生而为人就是为了成为思维"
+        },
+        "provider": "rule",
+        "title": "第二节 自控力"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-d7baee0b5b47f7e492d607bd7045417f778c4df357a65ac4fdb1f1b8fae02e69"
+          ],
+          "origin": "source",
+          "text": "所说的自我觉察吗？不是。自我觉察只是元认知能力的基本盘，"
+        },
+        "provider": "rule",
+        "title": "所说的自我觉察吗？不"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-9a35334955b0eb83821784f02705e639346907f41037a240404a9b10a1036629"
+          ],
+          "origin": "source",
+          "text": "用角度讲，元认知能力可以被重新定义为：自我审视、主动控"
+        },
+        "provider": "rule",
+        "title": "用角度讲，元认知能力可以被重新定义为"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-a27a27dca47118a1ef355b6a24055e3bf237976e44f8fda961408e97a4a9fb21",
+            "ev-4c448b427dc86041703f5c9dea3b266334abca2dbf3d656f33199c0b61ed642b"
+          ],
+          "origin": "source",
+          "text": "在一天临近结束的时候发出灵魂拷问：我这一天都干了什么？最"
+        },
+        "provider": "rule",
+        "title": "在一天临近结束的时候发出灵魂拷问"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-a3f0a17d1172bc9e56d1c5bd97bc61f9b854ca08ee825d5e80ef6e4ccd50fd69"
+          ],
+          "origin": "source",
+          "text": "成长就是为了主动控制"
+        },
+        "provider": "rule",
+        "title": "成长就"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-b6611c8cf9d5cd228d09e7f33f462765ab793263e02b4d29a02373d4dc7e3c06"
+          ],
+          "origin": "source",
+          "text": "图3-3 普通认知与元认知是理智脑战斗力的两个表现"
+        },
+        "provider": "rule",
+        "title": "图3-3 普通认知与元认知"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-13dd97a003bf0a60005f0d18a4b28cf4f5bec81df5c1a3a2f1b50d83f82e1ef4"
+          ],
+          "origin": "source",
+          "text": "遗憾的是，我们大多数人虽然在学校集中锻炼了认知能力，"
+        },
+        "provider": "rule",
+        "title": "遗憾的"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-dd42277a2a984b26e5af25a55ccc0ad3bcec0eca8ad6a0ad5b56ba21499d1863"
+          ],
+          "origin": "source",
+          "text": "尼说过这样一个观点：“教育的意义就是教你在遇到一件事的时"
+        },
+        "provider": "rule",
+        "title": "尼说过这样一个观点"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-3fc9f77576dad3ff4c07a1ec7b41f689cdccfd669dc7567c4ad2ef0960c24c26"
+          ],
+          "origin": "source",
+          "text": "元认知能力强的人就是这样：无论是当下的注意力、当天的"
+        },
+        "provider": "rule",
+        "title": "元认知能力强的人就是这样"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-c894bb287ae5bdaa41b535b9eb41607c6121562877322a10c051bed91a6d6ba2",
+            "ev-da7d37e2c36e43f5c0d02ac7e9bfab5e1005780dba1be343c3490c06535d5c40"
+          ],
+          "origin": "source",
+          "text": "如果人生是大海，那我们每个人都是一条小船，元认知能力"
+        },
+        "provider": "rule",
+        "title": "如果人生"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-c894bb287ae5bdaa41b535b9eb41607c6121562877322a10c051bed91a6d6ba2",
+            "ev-da7d37e2c36e43f5c0d02ac7e9bfab5e1005780dba1be343c3490c06535d5c40"
+          ],
+          "origin": "source",
+          "text": "能力弱的人总是喜欢待在甲板上当个忙碌的水手，至于船嘛，漂"
+        },
+        "provider": "rule",
+        "title": "能力弱的人总"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-2a4615b6ec3066ed08a99daadc57ef06fd0cdf1772c40dd4d28b64d0c20226fc",
+            "ev-5fd5e3a7971d83eaf8c78a6171344385aaf1b165c2e2706f636e45ab715e697b"
+          ],
+          "origin": "source",
+          "text": "高尔基曾经说：每一次克制自己，就意味着比以前更强大。"
+        },
+        "provider": "rule",
+        "title": "高尔基曾经说"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-2a4615b6ec3066ed08a99daadc57ef06fd0cdf1772c40dd4d28b64d0c20226fc",
+            "ev-5fd5e3a7971d83eaf8c78a6171344385aaf1b165c2e2706f636e45ab715e697b"
+          ],
+          "origin": "source",
+          "text": "我以前不是很理解这句话的意思，但是现在懂了。因为每克制自"
+        },
+        "provider": "rule",
+        "title": "我以前不"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-754080ac81fff3961bb8df74730a748275f82bae74d49b33936183d31c623786"
+          ],
+          "origin": "source",
+          "text": "[1] 《尚书·泰誓上》中写道：“惟天地万物父母，惟人万"
+        },
+        "provider": "rule",
+        "title": "[1] 《尚书·泰誓上》中写道"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-2da416160840eff7be9c27ebc237771fc876c8eb43533990bbc1c9b081f73a21"
+          ],
+          "origin": "source",
+          "text": "用元认知来观察自己的注意力是一件很有意思的事情，相信"
+        },
+        "provider": "rule",
+        "title": "用元认知来观察自己的注意力"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-33eacc8c177c221b36c7603447cd9735e136e015f277f5d7c61f2b7f2239000e"
+          ],
+          "origin": "source",
+          "text": "你可以轻易观察到这种现象：身体做着A，脑子却想着B。"
+        },
+        "provider": "rule",
+        "title": "你可以轻易观察到这种现象"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-60bef09a3357798db308a0eaf25f22ed696817df047b85fdb232d4e1f2ac4997"
+          ],
+          "origin": "source",
+          "text": "觉得这是个问题，甚至还对自己能一心二用而沾沾自喜。然而这"
+        },
+        "provider": "rule",
+        "title": "觉得这"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-04570bdbab484548917c45e440c9385c759b6ca15183630f20c9b27e94137861"
+          ],
+          "origin": "source",
+          "text": "内装了一个混乱的灵魂，这个灵魂总是“做A想B”：刷牙的时候"
+        },
+        "provider": "rule",
+        "title": "内装了一个混乱的灵魂，这个灵魂总是“做A想B”"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-0dd5ce7c7e9f927c17d2a92c1f7d3ab818e5697046c846e8790354f391a550a9"
+          ],
+          "origin": "source",
+          "text": "不信的话，你现在就可以感受一下：走神时是不是身体有一部分"
+        },
+        "provider": "rule",
+        "title": "不信的话，你现在就可以感受一下"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-0dd5ce7c7e9f927c17d2a92c1f7d3ab818e5697046c846e8790354f391a550a9"
+          ],
+          "origin": "source",
+          "text": "始终是僵硬的，神情有一部分始终是紧绷的？"
+        },
+        "provider": "rule",
+        "title": "始终"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-6a5fb6f57616013cc777b8f3debc44566b1d128f4f4faec6e0e44ced15d1a432"
+          ],
+          "origin": "source",
+          "text": "重的是它会对我们的情绪状态和能力提升产生持续的负面影响。"
+        },
+        "provider": "rule",
+        "title": "重的"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-71d57f33d814aa4afb795590816db9173ffb97c8a6d6a077ddf9559408ba2225"
+          ],
+          "origin": "source",
+          "text": "分心走神的原因无非两个：一是觉得当下太无聊，所以追求"
+        },
+        "provider": "rule",
+        "title": "分心走神的原因无非两个"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-2da416160840eff7be9c27ebc237771fc876c8eb43533990bbc1c9b081f73a21"
+          ],
+          "origin": "source",
+          "text": "更有意思的事情；二是觉得当下太痛苦，于是追求更舒适的事"
+        },
+        "provider": "rule",
+        "title": "更有意思的事情；二"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-f83515976116f38062122dfcd9d22db9c25840d510110ada04c44f5fadac1eab"
+          ],
+          "origin": "source",
+          "text": "而生命是由当下的一个个片段组成的，身心合一的片段组成"
+        },
+        "provider": "rule",
+        "title": "而生命"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-bdc3dd484318dd4a3d92c145bd64e417bab2ca45ceaf228b575e1ea0b57ae5f5"
+          ],
+          "origin": "source",
+          "text": "的就是幸福专注的高质量人生，身心分离的片段组成的就是分心"
+        },
+        "provider": "rule",
+        "title": "的就"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-f185d10424871e55bdd8dc5caaeb48e5b5d7b132a0b2ff261a9b60978fc2ad2c"
+          ],
+          "origin": "source",
+          "text": "然而进化是把双刃剑，背景关联记忆的一个副作用就是：我"
+        },
+        "provider": "rule",
+        "title": "然而进化"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-091cdffcc0f91fcdaa9e7bb78c980c3f537205607a426f9f8647eee1e753048d"
+          ],
+          "origin": "source",
+          "text": "身体感受永远是进入当下状态的最好媒介，而感受事物消失"
+        },
+        "provider": "rule",
+        "title": "身体感受永远"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-091cdffcc0f91fcdaa9e7bb78c980c3f537205607a426f9f8647eee1e753048d"
+          ],
+          "origin": "source",
+          "text": "的过程更是一种很好的专注力训练。它提示我们，身心合一的要"
+        },
+        "provider": "rule",
+        "title": "的过程更"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-7f303c846da27590d5262a9137badd20b3b11a95d543cd1e2eb30c76785ef095"
+          ],
+          "origin": "source",
+          "text": "领不仅是专注于当下，更是享受当下，而这种享受必将使我们更"
+        },
+        "provider": "rule",
+        "title": "领不仅"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-01a883187b081744d31a91d9ea0e9b347eee0d1d238265bc09bf5e9c5146346c"
+          ],
+          "origin": "source",
+          "text": "一位行者问老和尚：“您得道前在做什么？”"
+        },
+        "provider": "rule",
+        "title": "一位行者问老和尚"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-068f42bcff0b337b02589cf03e08b6c25078054a07bda2f7399d738f7ccdbd21",
+            "ev-bd04d06b699697341ad3e411d3334546a8ee93b39c4ea1aa0accfbcc1a7e77d6"
+          ],
+          "origin": "source",
+          "text": "老和尚说：“砍柴、担水、做饭。”"
+        },
+        "provider": "rule",
+        "title": "老和尚说"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-dc6f62aa566a3ff60ade0bac7d5663b50a1f04c062d509d84b96491c8440a85e"
+          ],
+          "origin": "source",
+          "text": "行者问：“那得道后呢？”"
+        },
+        "provider": "rule",
+        "title": "行者问"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-29f07b3759927054bed03cd4ab65a42b0bb2347c7a036ac460801ca4538a6a9f"
+          ],
+          "origin": "source",
+          "text": "行者又问：“那何谓得道？”"
+        },
+        "provider": "rule",
+        "title": "行者又问"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-12d9a7e212bb1e3d644d156a0c87a7d0dab18672e2269d6308ec768b52b6b49a"
+          ],
+          "origin": "source",
+          "text": "第二节 学习专注：深度沉浸是进化双刃剑的安全"
+        },
+        "provider": "rule",
+        "title": "第二节 学习专注"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-f6557a75e90a5ded9ac5ebef1600188d46fd6ce4da1fb25100d41828003a3245"
+          ],
+          "origin": "source",
+          "text": "神不宁；他们总是忍不住想做点更有趣的事情，一条热点新闻、"
+        },
+        "provider": "rule",
+        "title": "神不宁；他们总"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-bd04d06b699697341ad3e411d3334546a8ee93b39c4ea1aa0accfbcc1a7e77d6",
+            "ev-29f07b3759927054bed03cd4ab65a42b0bb2347c7a036ac460801ca4538a6a9f"
+          ],
+          "origin": "source",
+          "text": "他们就是无法让自己变得卓越。这感觉就像是明明找到了双刃剑"
+        },
+        "provider": "rule",
+        "title": "他们就"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-d5c9cdb3e4463a00cf3e95e521d18aad1d1171cb116b27f92689e5e1a6d58825",
+            "ev-fb2c81f7c416aa727b0de8c79c7ba7d78798ff36f04dcc72da2f8bb44a37ec37"
+          ],
+          "origin": "source",
+          "text": "的研究后指出：所谓天才，其实并不神秘，其本质是“正确的方"
+        },
+        "provider": "rule",
+        "title": "的研究后指出"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-2ede113faba914b94411e7945bcbb17625e40622756ca1ad2d5bb064094a5bfe"
+          ],
+          "origin": "source",
+          "text": "关键是要做到“极度”专注，也就是说，在短时间内投入100%的"
+        },
+        "provider": "rule",
+        "title": "关键"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-6da10f0f81a1f864603c32c0d903a3d8c9b49b1e326363ab6b306cf770a7c3be"
+          ],
+          "origin": "source",
+          "text": "极度专注不仅是学习的关键，也是灵感的来源。如图4-2所"
+        },
+        "provider": "rule",
+        "title": "极度专注不仅"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-3e61a1c23c8fa379af749ee933c4b858053f71bebf91c6dbdbc51336e12ea091",
+            "ev-468d580dc41bf27dc65b97e05ab02d2fc37142d4cbdfb7818565dca5094a9c18"
+          ],
+          "origin": "source",
+          "text": "一种是“潜意识”的发散模式。"
+        },
+        "provider": "rule",
+        "title": "一种"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-b3b1c40320d2b8bd73648bc53a9a28e3f7c3c0a0487d4559b66be9658aebd086"
+          ],
+          "origin": "source",
+          "text": "打出来的光：专注模式下光束紧密，穿透力强，径直打在一小块"
+        },
+        "provider": "rule",
+        "title": "打出来的光"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-8fbc5b99799f92aeac558e0e1ee395c0190f5515a1a46699b1199acae9ed132d"
+          ],
+          "origin": "source",
+          "text": "所以变聪明的秘诀就是：先保持极度专注，想不出答案时再"
+        },
+        "provider": "rule",
+        "title": "所以变聪明的秘诀就是"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-0ac341df280ec7b1c08770cfd79e9768fdaf9912f6bb45670c4bbf54dad12e08"
+          ],
+          "origin": "source",
+          "text": "阿基米德就是因为绞尽脑汁也没有想出鉴定皇冠真假的办"
+        },
+        "provider": "rule",
+        "title": "阿基米德就"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-c7808b9145f478df10adbee1e1b35e3bc5445523c3e669cf92e384d744d0a4cc",
+            "ev-50b021bba30ed8fdad25c488d096d13b2d74c7503e937618fbb89a800b086407"
+          ],
+          "origin": "source",
+          "text": "学发现或其他智力上的突破都是在当事人毫无期待、正在想别的"
+        },
+        "provider": "rule",
+        "title": "学发现或其他智力上的突破都"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-b2ded919cd9b0b63b3cc7a40721f5f442db42f6a52757bbb0678c8db6cbf3b1c"
+          ],
+          "origin": "source",
+          "text": "评也是好的，闭门造车式的练习不仅容易让人分心走神，也会让"
+        },
+        "provider": "rule",
+        "title": "评也"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-2a3dbb7bd72c71754dbbdba90674de78394506d25e8b1bdcba3e96d6226a1e21"
+          ],
+          "origin": "source",
+          "text": "指导和反馈是不断精进的重要条件。如果条件有限，反馈也可以"
+        },
+        "provider": "rule",
+        "title": "指导和反馈"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-23fa441415a7cb6e72fcf09d67beb0af0942adc7c7b2a345d542c981699c3b62"
+          ],
+          "origin": "source",
+          "text": "这样一个模型（见图4-3）：当人们对当前的活动感到厌倦时，"
+        },
+        "provider": "rule",
+        "title": "这样一个模型（见图4-3）"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-d87ee6bd116ec1a08a111f53c57a39a15a3170f7c66f9b87353a3c4e12edddbf"
+          ],
+          "origin": "source",
+          "text": "果输出的东西都是在舒适区随便写写的，那写再多也没用。”这"
+        },
+        "provider": "rule",
+        "title": "果输出的东西都"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-258913b8a9adc389b7ce5f0f20094ea194b3d1a6ecae6aae8c38bab415da9569"
+          ],
+          "origin": "source",
+          "text": "从这个底层概念中我们可以得到这样一个结论：不管做什"
+        },
+        "provider": "rule",
+        "title": "从这个底层概念中我们可以得到这样一个结论"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-f6c420c9222815695c86687c7ed70082011552d3059ddd531605b4baf403b7a1"
+          ],
+          "origin": "source",
+          "text": "同时，我们也可以肯定：速成是不可能的。因为能力圈只能"
+        },
+        "provider": "rule",
+        "title": "同时，我们也可以肯定"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-aba1fb8e2dd52d42bc6a2de4bb00fe21a5044caf1e5a190ce4dc03753cb62395"
+          ],
+          "origin": "source",
+          "text": "在拉伸区练习的一大特点就是要有关注点。关注点越多、越"
+        },
+        "provider": "rule",
+        "title": "在拉伸区练习的一大特点就"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-1f9276ad371e9c2ad8ec31a2b47e4c3a2a8289b9a4a315a918b2eaca2c9b3600",
+            "ev-ae35e650fe3b5bf40052d042634584f23e5fc60ad24ab9046c6f076440d289a8"
+          ],
+          "origin": "source",
+          "text": "出舒适区的最好办法就是去发现和收集那些要点，也就是每次行"
+        },
+        "provider": "rule",
+        "title": "出舒适区的最好办法就"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-883d4cb7baea7c803b962a735115bad4d06a516613b2ddf9fb9fc34d130afafd",
+            "ev-d6aa081ef550da3bbdd0decdb13bf72b932b8fd12cf2d57d686a3885acdf8514"
+          ],
+          "origin": "source",
+          "text": "学习不只是一味地努力，成长也不只需要“打鸡血”、拼意"
+        },
+        "provider": "rule",
+        "title": "学习不只"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-5a5dce10aff936ea1062946fe993035e43ff4f3eff431be4f331a5220a41a09c"
+          ],
+          "origin": "source",
+          "text": "胡适的英语老师、出版家王云五先生是这样自学英语写作"
+        },
+        "provider": "rule",
+        "title": "胡适的英语老师、出版家王云五先生"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-c5fb6c6f65b44e38e2b7b7302b4b8348ac666fee392c623d7a0c90c4476dc4ad"
+          ],
+          "origin": "source",
+          "text": "可惜这只是一种错觉。科技和信息虽然在我们这一代发生了"
+        },
+        "provider": "rule",
+        "title": "可惜这只"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-422287d80ab209df64b0cbd6fb865cc76aa26a30761b196a799d8f578b384d28"
+          ],
+          "origin": "source",
+          "text": "我隐约看到：一小部分知识精英依旧直面核心困难，努力地"
+        },
+        "provider": "rule",
+        "title": "我隐约看到"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-1ae5a3bdba014b865c6dfee84c897137bdfd223578de779d0e880dd68bdb92b9"
+          ],
+          "origin": "source",
+          "text": "金字塔”报告，报告称：人的学习分为被动学习和主动学习两个"
+        },
+        "provider": "rule",
+        "title": "金字塔”报告，报告称"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-168263bf5f9e9ed3d7e08a01c7c69e30a43f61baf44728d2394e58bbdebbca20"
+          ],
+          "origin": "source",
+          "text": "被动学习：如听讲、阅读、视听、演示，这些活动对学习内"
+        },
+        "provider": "rule",
+        "title": "被动学习"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-ecf209f5ea71cd27e570a64bef97ba8b8381158ddadedcac93f013411353bfdd"
+          ],
+          "origin": "source",
+          "text": "主动学习：如通过讨论、实践、教授给他人，将被动学习的"
+        },
+        "provider": "rule",
+        "title": "主动学习"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-5b5a79a27b87f70f2f34a780a95ccad3c3f975592aacc16c85bf056bca3e109f"
+          ],
+          "origin": "source",
+          "text": "好一点的情况是读原书，但若是读完从不回顾、思考，只满"
+        },
+        "provider": "rule",
+        "title": "好一点的情况"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-5a5dce10aff936ea1062946fe993035e43ff4f3eff431be4f331a5220a41a09c"
+          ],
+          "origin": "source",
+          "text": "仅仅是简单的知识陈述，与高级别的知识转换有很大的不同。"
+        },
+        "provider": "rule",
+        "title": "仅仅"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-2b21f4b3ca6b5ebb0d91272c3a0b1531496b22452605f39370cd2d7073ea1240"
+          ],
+          "origin": "source",
+          "text": "更深一层的是，读完书能去实践书中的道理，哪怕有那么一"
+        },
+        "provider": "rule",
+        "title": "更深一层的"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-c37446fd1308ef78cd5d441ec83751eef2374a8f185cdc022a91b0b6a3a06559"
+          ],
+          "origin": "source",
+          "text": "从知道到做到是一种巨大的进步，然而自己知道或做到是一"
+        },
+        "provider": "rule",
+        "title": "从知道到做到"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-b8f6813a172108a7498fd7401079dd625544ea7773c6805414780e196e5872e4"
+          ],
+          "origin": "source",
+          "text": "罗振宇曾提到他是这样学习的：“我每天要求自己写够五篇"
+        },
+        "provider": "rule",
+        "title": "罗振宇曾提到他是这样学习的"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-f63d03c0e27347ad5e206e97e946d4868abe129eac6d828c80cbdbbb5fee9eb4"
+          ],
+          "origin": "source",
+          "text": "读心得就是逼迫自己原来的知识结构对新知识做出反应，然后把"
+        },
+        "provider": "rule",
+        "title": "读心得就"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-eb34f19b5d2638963314a3201fa326d8083038f8bc999f1426b29acb48457cfc"
+          ],
+          "origin": "source",
+          "text": "可见“缝接”是深度学习的关键，而大多数人只完成了“获"
+        },
+        "provider": "rule",
+        "title": "可见“缝接”"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-82f689f11fb8c6eba0964618f94a6ef9b6a9e15d13103e0752807e2c9549749e"
+          ],
+          "origin": "source",
+          "text": "相信：正确的行动往往是反天性的，让你觉得舒服和容易的事往"
+        },
+        "provider": "rule",
+        "title": "相信"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-26cc8d9a329e1554a983b812acc55a18f86ade8f0ff34ef16b8d936620d656fa",
+            "ev-c37446fd1308ef78cd5d441ec83751eef2374a8f185cdc022a91b0b6a3a06559"
+          ],
+          "origin": "source",
+          "text": "人之间的差距不是来自年龄，甚至不是来自经验，而是来自经验"
+        },
+        "provider": "rule",
+        "title": "人之间的差距不"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-fa322d31e97ae23fd0390fb8a16cead25c3fc1fc220944d0ad73a97a49bb3fec",
+            "ev-f00a0fb34e378029731e0bdb83b646713a096d6ec68a4e9f56b2e8f29f0c1096"
+          ],
+          "origin": "source",
+          "text": "剧中女儿国国王与唐僧经历生死之后对他说：“我做了一个梦，"
+        },
+        "provider": "rule",
+        "title": "剧中女儿国国王与唐僧经历生死之后对他说"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-7d41a0d700be8f76a5590f4a8db7469586ecc9ee547ca1cf3ca74344dbc5b4f2",
+            "ev-68c1e848d6ec51e7ec477775d337c44761a69a8df1b20b0368bcf6d369769a40"
+          ],
+          "origin": "source",
+          "text": "女儿看到的只是国王好漂亮，孙悟空好搞笑……"
+        },
+        "provider": "rule",
+        "title": "女儿看到的只"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-89465b2494f831b9c83444a0f9f1701419e3e4219e2c955e1b844b183c164d9b"
+          ],
+          "origin": "source",
+          "text": "是你需要具备一定的认知深度——深度之下的广度才是有效的。"
+        },
+        "provider": "rule",
+        "title": "是你需要具备一定的认知深度——深度之下的广度才"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-b60b22dc82a605ec5bf3621472f852f91ba417aec7fb56daeed2718054634ba7"
+          ],
+          "origin": "source",
+          "text": "态度是：专注于深度学习，同时对浅学习保持开放。"
+        },
+        "provider": "rule",
+        "title": "态度是"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-740710488a4f7af64fcb24022ca73f795cd4a59b060f8d3a0724e379c542be85"
+          ],
+          "origin": "source",
+          "text": "如果有人问：“在不付出特别努力的情况下，可以快速变聪"
+        },
+        "provider": "rule",
+        "title": "如果有人问"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-740710488a4f7af64fcb24022ca73f795cd4a59b060f8d3a0724e379c542be85"
+          ],
+          "origin": "source",
+          "text": "明吗？”他们通常会得到这样的警告：“莫做白日梦！”然而，"
+        },
+        "provider": "rule",
+        "title": "明吗？”他们通常会得到这样的警告"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-f5f53ec6dbcaccf3484d37a3b8a9d1c9f4590f6796a8741e03da4716ffb3f1af"
+          ],
+          "origin": "source",
+          "text": "这个创意是导演张继钢1996年在山西云冈石窟、五台山、崇"
+        },
+        "provider": "rule",
+        "title": "这个创意"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-a567da3d709006f72afd470a0cdb18e8d2c516bcf4ae1acaeb66b5122f77f741",
+            "ev-a5401a99b2d1d7e895a54a2a42feca272753d94064fc944d57d6fb2104391c4b"
+          ],
+          "origin": "source",
+          "text": "知的是，张继钢还是2008年北京奥运会开幕式的副导演，开幕式"
+        },
+        "provider": "rule",
+        "title": "知的"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-a567da3d709006f72afd470a0cdb18e8d2c516bcf4ae1acaeb66b5122f77f741",
+            "ev-a5401a99b2d1d7e895a54a2a42feca272753d94064fc944d57d6fb2104391c4b"
+          ],
+          "origin": "source",
+          "text": "表演中的“梦幻五环”就是他的创意。"
+        },
+        "provider": "rule",
+        "title": "表演中的“梦幻五环”就"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-24ccebdc2c7aa3dccde6659369fb22c140ca06c21b2bff2c7ee0cf59ad2d4d86"
+          ],
+          "origin": "source",
+          "text": "一反应是，这块白板是个次品，于是他赶紧叫人联系奥组委的行"
+        },
+        "provider": "rule",
+        "title": "一反应"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-d40c8db8a9d8c20350334f53bb73084ef09d5e19dcf3448f4d7be521e96c350d"
+          ],
+          "origin": "source",
+          "text": "这正是大师创作的普遍手法——把远处不起眼的A，关联到"
+        },
+        "provider": "rule",
+        "title": "这正"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-6a7680291557257ac5a6ea46d66e5f06271013cf062a613523f072b392179180"
+          ],
+          "origin": "source",
+          "text": "关联是种底层能力，它不仅体现在高层，也体现在低处，与"
+        },
+        "provider": "rule",
+        "title": "关联"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-6c8f7650b64e331bab502080dfab4f0e7887ac3f01012e60f1ea2c2edd76ad5e"
+          ],
+          "origin": "source",
+          "text": "这既是有效阅读的三个步骤，也是深度学习的三个层次："
+        },
+        "provider": "rule",
+        "title": "这既"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-dc7efdfa9e7784276b870e72cbbcb119d0a0d8c406dc74ac5ef0f02d45d91edb",
+            "ev-bb45138ed279c6dadaee0ef39d5bedbbc6fc4284db7b570f6ac6cc576cfbfa00"
+          ],
+          "origin": "source",
+          "text": "意识不到新学习的知识点是孤立的。不管这个新知识让人多警"
+        },
+        "provider": "rule",
+        "title": "意识不到新学习的知识点"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-eb888ab2f9b37b363d49ca5ffb5f63c041669fc7b92334d62a3b8ad528d87ce9"
+          ],
+          "origin": "source",
+          "text": "图5-3 关联是学习的重要环节"
+        },
+        "provider": "rule",
+        "title": "图5-3 关联"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-f18534e0f4853810f0df6c6985c4e3f31c8f1600ffb3d437516e331077d041fa"
+          ],
+          "origin": "source",
+          "text": "科学术语解释就是：通过大量的重复动作，大脑中两个或者多个"
+        },
+        "provider": "rule",
+        "title": "科学术语解释就是"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-fca53b62652d70cf1be5a1f3e6a0a29cbc24ec3ea48f4765d0dfbf0fd37efbc4"
+          ],
+          "origin": "source",
+          "text": "两个群体：绝大多数人习惯以孤立的思维看待事物，喜欢花大量"
+        },
+        "provider": "rule",
+        "title": "两个群体"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-668a13437134ede21624ce7cad79cf17ac974602de4d5e585ada7dd5f5bbf9c6"
+          ],
+          "origin": "source",
+          "text": "问自己：“这本书最触动自己的是哪个点？”这个点可以是一个"
+        },
+        "provider": "rule",
+        "title": "问自己"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-df480f8d17957b65a73b45ce9e20074e280307f8fa64058b36494396680c1ee5",
+            "ev-ec0ec9fc33d42c19e41c9b46c3f29499e38c4a1fedef70b2a97d4f55e1a59bc4"
+          ],
+          "origin": "source",
+          "text": "谱、很浪费：明明有完整的体系可以参考，偏偏只拾取一块或几"
+        },
+        "provider": "rule",
+        "title": "谱、很浪费"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-b356065f2f2b4b76ae9fefde61fedb0b379c0f5b270ec7325c81e29e78db107f",
+            "ev-fb219dbe4a425d70d5d4616cf8ec76ba82cb007c28ae49471db68f23fc4d10f7"
+          ],
+          "origin": "source",
+          "text": "认知也是一种能力，同样遵循这个原理：处于认知圈边缘的"
+        },
+        "provider": "rule",
+        "title": "认知也是一种能力，同样遵循这个原理"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-305e06077d13f3de1a6b4ffcf96f2b8c73d1b0d7b85ac4293be65d618c890149"
+          ],
+          "origin": "source",
+          "text": "多少你还记得？大部分都模糊了吧？如果再问自己：这些知识中"
+        },
+        "provider": "rule",
+        "title": "多少你还记得？大部分都模糊了吧？如果再问自己"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-305e06077d13f3de1a6b4ffcf96f2b8c73d1b0d7b85ac4293be65d618c890149"
+          ],
+          "origin": "source",
+          "text": "哪些是平时能真正运用的呢？答案或许更少。"
+        },
+        "provider": "rule",
+        "title": "哪些"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-229478228429864b74dc0012cf1b78687c45f31846c2cc4e1d060ad1da66036c",
+            "ev-7d0a6f7f9c79d2de3ed0068af9023bc55b4d8019032910b76954041736993080",
+            "ev-f1b613b633463f3dd55a634a041e0280cf6d0b83ba938fe8040fc983b6d82782"
+          ],
+          "origin": "source",
+          "text": "体系的本质就是用独特的视角将一些零散的、独立的知识、"
+        },
+        "provider": "rule",
+        "title": "体系的本质就"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-14f94dba33762e4d235ec7349ccf3ad8fac44b96b0c5d627e423081d1d0ebba2"
+          ],
+          "origin": "source",
+          "text": "这就是搭建个人认知体系的真相：打碎各家的认知体系，只"
+        },
+        "provider": "rule",
+        "title": "这就是搭建个人认知体系的真相"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-125abaa4c56ff6510e9a41672d026b1ec5d1c2b4ffdf6547d78f795deedc029a"
+          ],
+          "origin": "source",
+          "text": "触动是最好的筛选器"
+        },
+        "provider": "rule",
+        "title": "触动"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-04144f9df1603190227848e0181b9506616dc3bd49c1b71b586358e106c832e6"
+          ],
+          "origin": "source",
+          "text": "不是所有的触动都是有效的。就像你曾经看过很多好文章，"
+        },
+        "provider": "rule",
+        "title": "不是所有的触动都"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-5934c112338d40f9e25e83f51c0b2a7bed79645c9d7eb3170f4df23cdab1543d",
+            "ev-05b7160d25102d8d681fdca5e10bb770fffbb4b907b91fe25539f4b45768e34f"
+          ],
+          "origin": "source",
+          "text": "真到划破手指的时候却又想不起来用，这和没触动又有什么区别"
+        },
+        "provider": "rule",
+        "title": "真到划破手"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-c4653d4c0e90fb8d5e3602e6121770a790ba5dd5b0b9a70a3f3702cf96409c91"
+          ],
+          "origin": "source",
+          "text": "图5-7 产生“触动”不意味着“连接”紧密"
+        },
+        "provider": "rule",
+        "title": "图5-7 产生“触动”不"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-9eaa05d56d38fbf571efae4b76d65b5ee190c2625e54ace28a52f4d59669fdf9"
+          ],
+          "origin": "source",
+          "text": "触动产生并不意味着连接紧密。如果不及时强化，新的触动点很"
+        },
+        "provider": "rule",
+        "title": "触动产生并不"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-20fe41a2647fcde507a68ea6bbf8048785217d8631088af775d4ed0ebf83e287"
+          ],
+          "origin": "source",
+          "text": "很多人读书的时候往往只关注自己是否理解了书中的内容，"
+        },
+        "provider": "rule",
+        "title": "很多人读书的时候往往只关注自己"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-2377219c7d401119e3096fb2bd869606595f2d2bdaa08f6c206abaf079928184"
+          ],
+          "origin": "source",
+          "text": "回事：在舒适区边缘，一点一点向外扩展。"
+        },
+        "provider": "rule",
+        "title": "回事"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-4cd6c5ed4dd43e9757849c13ad9d5d719cfad0ee6f18960e82c2e3f23ca34454"
+          ],
+          "origin": "source",
+          "text": "不管是在家的、在校的、上班的，都在抓紧一切时间提升自"
+        },
+        "provider": "rule",
+        "title": "不管"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-98397065d32aac22bfcf241c64446a783935c402d546984fd51f507fc4a1bb1f"
+          ],
+          "origin": "source",
+          "text": "身打卡、跑步打卡、阅读打卡、外语打卡……只要是想得到的领"
+        },
+        "provider": "rule",
+        "title": "身打卡、跑步打卡、阅读打卡、外语打卡……只要"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-d9f049a9c0eff7f4d5d898cc8aeb9d84c136353e46dd5964ecc4af9ac03c38bc"
+          ],
+          "origin": "source",
+          "text": "这似乎是一个不错的办法：把大目标分解成小目标，日拱一"
+        },
+        "provider": "rule",
+        "title": "这似乎是一个不错的办法"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-d9f049a9c0eff7f4d5d898cc8aeb9d84c136353e46dd5964ecc4af9ac03c38bc"
+          ],
+          "origin": "source",
+          "text": "困惑，他在咨询时表示：“我为了学习，建立了5个打卡计划，"
+        },
+        "provider": "rule",
+        "title": "困惑，他在咨询时表示"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-d32521536c67b5e9818100204549ef3eab53622b1444527db489da2aad5853bf",
+            "ev-13851b64860f5471527ce837feb904a4304dc8445d6f93a69a5d380217e872a2"
+          ],
+          "origin": "source",
+          "text": "是他太贪心了？还是他有完美情结？都不是。事实上这种现"
+        },
+        "provider": "rule",
+        "title": "是他太贪心了？还"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-cbf484b3a8e3c2753c19760b7544655c62f8165cb5e2acdfbad346b9346ad12f"
+          ],
+          "origin": "source",
+          "text": "这乍一看是好事，每天的排名激发了人们的运动热情，既能健身"
+        },
+        "provider": "rule",
+        "title": "这乍一看"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-cd4e173e49cac1efa162211f71b9d16ccd3f5b9ae796e5cabf2e087e048468d2"
+          ],
+          "origin": "source",
+          "text": "生了转移：原先纯粹是为了身体健康，享受运动带来的美好，现"
+        },
+        "provider": "rule",
+        "title": "生了转移"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-cd4e173e49cac1efa162211f71b9d16ccd3f5b9ae796e5cabf2e087e048468d2"
+          ],
+          "origin": "source",
+          "text": "在却是不自觉地为了自己的成绩在排行榜上更好看，甚至有人还"
+        },
+        "provider": "rule",
+        "title": "在却"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-5149fe7827b535908ecb3b2fef00bdde1eaf12afcc426017ecc140680bd4dc7a",
+            "ev-5f8465305aaa7a8bd00f0fd394b32a4e104a9806d9c76f3595ee3adc7a755ee7"
+          ],
+          "origin": "source",
+          "text": "打卡活动也是如此。一开始，人们的行动动机全都出于学习"
+        },
+        "provider": "rule",
+        "title": "打卡活动也"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-aecd0e25f1e01e436327e77ab67fe728619be4207387e326d76d65d23fe8e414"
+          ],
+          "origin": "source",
+          "text": "维艰的时候主动调整认知，给自己找借口：“学习很难，但打卡"
+        },
+        "provider": "rule",
+        "title": "维艰的时候主动调整认知，给自己找借口"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-04dc90f89daa6add7a151e5c680b74f186fbbe3f25a8da55e540d0e4083faa51"
+          ],
+          "origin": "source",
+          "text": "这就是大脑“解释系统”的逻辑，虽然很荒谬，但强大的天"
+        },
+        "provider": "rule",
+        "title": "这就"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-07c86dffe8e53142eaa7de34b87ea999978c137e873fd6d0978a612619446a0b"
+          ],
+          "origin": "source",
+          "text": "阿健同学正是因为没有意识到自己的学习动机已经转移，所"
+        },
+        "provider": "rule",
+        "title": "阿健同学正"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-56d523d5ffe4ad4636f4a331db3ac03d600c29a8d49676b17c3c6784066bffc0"
+          ],
+          "origin": "source",
+          "text": "学英语是为了与外国人流利地交谈，但时间一长，目标就被简化"
+        },
+        "provider": "rule",
+        "title": "学英语"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-e071fd9daf48b90a8a979df85976d436b1b8e5656aeb1dde629ae8c690bee97e",
+            "ev-3f6f0d8a8e4c305dbf33ff7d1601c4d36b4b6a7458ec00729de9d168d91678ad"
+          ],
+          "origin": "source",
+          "text": "也是一样的：一件事若迟迟没有完成，心里就总是记挂，期盼着"
+        },
+        "provider": "rule",
+        "title": "也是一样的"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-96466ed7bcd56fc99cbd7db440697ef74a9432af1b31da95e39b11f05b096b33"
+          ],
+          "origin": "source",
+          "text": "我们之所以有这种心理是因为人类的大脑喜欢确定性，不喜"
+        },
+        "provider": "rule",
+        "title": "我们之所以有这种心理"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-097a4b5ec2f349bf57e4e98899a070d905ea42eb4fb8539747e84401c9c59aaa",
+            "ev-dabad6876f920267523407d607aae8ce72bfe19bbe19297de5d137e03d3615ae"
+          ],
+          "origin": "source",
+          "text": "这就是打卡心态的特性：学不到，假装一下；学到了，立即"
+        },
+        "provider": "rule",
+        "title": "这就是打卡心态的特性"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-7b40c3368147617205061f7758e81e74767b7411d0dbb2f6edf4146af4564d9c"
+          ],
+          "origin": "source",
+          "text": "任务心态在某些领域是很有用的，比如军事领域。军人必须"
+        },
+        "provider": "rule",
+        "title": "任务心态在某些领域"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-faa70f2e4f1f75c1b25b4dc75ff8f78addaac2fcfad8996220e2e96a5bee8135",
+            "ev-6487028126673bc5b4ade775d8e15835aaa93bfd48bcb625300b4545a70cb1dc"
+          ],
+          "origin": "source",
+          "text": "在不停地催促：快点、快点、再快点，赶快完成它！"
+        },
+        "provider": "rule",
+        "title": "在不停地催促"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-91464cd62dfb4cf41337d942a31cc9f4dc1ad267fcfedb4d81ff0885d50b50ef"
+          ],
+          "origin": "source",
+          "text": "的感悟：我和这个世界之间隔着的是身体的感觉。"
+        },
+        "provider": "rule",
+        "title": "的感悟"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-1a7c1078a0e639f3d2928f44359ea174eefc264e450fdb9b5a0cb3423b4ba44e",
+            "ev-4d1bb478c0f452f42cfde5ab468e1b65904acbeafaa5be7765c2ab40f3c07f74",
+            "ev-2a05ea63ed1d14bf09b5183c0b792fe6f23e34dc7954ad54755ec8480326a98c",
+            "ev-90bd9749d6ce1c07d8b36c0e0e5205a2ee866d5d80f42344885f545b1e00183d"
+          ],
+          "origin": "source",
+          "text": "态的方法正是如此——集中心力做眼前的事就好。"
+        },
+        "provider": "rule",
+        "title": "态的方法正"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-be99d1b57ca32ef2bd6bf36ad9e72cd8531ad83a5b80fedd628d6368f0b897f7"
+          ],
+          "origin": "source",
+          "text": "那他们是如何做到的呢？"
+        },
+        "provider": "rule",
+        "title": "那他们"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-e378d454182b2030a4612d6e0ec680ee0d2a0f5b5edaaf1477177a00b3698982"
+          ],
+          "origin": "source",
+          "text": "虽然看上去和打卡是一样的，但这样做没有打卡的任务压"
+        },
+        "provider": "rule",
+        "title": "虽然看上去和打卡"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-edf6ccefdd30576b75efd83b821ada15759c527456c1a9f4fa1a33882182f6d1"
+          ],
+          "origin": "source",
+          "text": "同时，我们在任务设置时要使用新策略：设下限，不设上"
+        },
+        "provider": "rule",
+        "title": "同时，我们在任务设置时要使用新策略"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-078fefb19e3d1edfc7d3c808c6cc161400be2c844c9c2b2e02238a3a33b1e26b"
+          ],
+          "origin": "source",
+          "text": "的下限，这样做的好处是：你完成目标毫无负担，且此时刚好进"
+        },
+        "provider": "rule",
+        "title": "的下限，这样做的好处是"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-078fefb19e3d1edfc7d3c808c6cc161400be2c844c9c2b2e02238a3a33b1e26b"
+          ],
+          "origin": "source",
+          "text": "多学一个单词都是额外的收获，心态完全不同，身心容易沉浸，"
+        },
+        "provider": "rule",
+        "title": "多学一个单词都"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-52f826bd9ba0f4f00be9d9ab4ad85a138bbb01a4614d9c6c50b90e7a7c2a3dd3",
+            "ev-3614669f77eac584412c59acccc40e60c369c651576a6c1162a72155857e10c1"
+          ],
+          "origin": "source",
+          "text": "这印证了古典的跃迁理论：打磨作品—到达一个小山的头部"
+        },
+        "provider": "rule",
+        "title": "这印证了古典的跃迁理论"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-520bbcbcaa8f773830df5b264baa137b4d1772cd1fe9a9aea575990f108fcfaf"
+          ],
+          "origin": "source",
+          "text": "了句：“我怎么觉着，咱们这个地方变重要了！”"
+        },
+        "provider": "rule",
+        "title": "了句"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-fe3687f77720036594692d07b55c465b526396a83dec2560f8705411965bd997"
+          ],
+          "origin": "source",
+          "text": "正如刘传坦言：“到了进阶水平，这种经验型的学习方法就"
+        },
+        "provider": "rule",
+        "title": "正如刘传坦言"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-5067bec724a86f2f2fa8cf03a62c928a5b1db730d2507ad75f7d8e7677c03d67",
+            "ev-d481d26387eef5063fe4e2e348283580e8eab6593903b6afee927b1ecbb5815b"
+          ],
+          "origin": "source",
+          "text": "她说：“自从开始准备考研，我就拿出了前所未有的执着和"
+        },
+        "provider": "rule",
+        "title": "她说"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-5e170f2038894fa1581d9966b6364f110bb3c3a7352587f11188a832996ac46c"
+          ],
+          "origin": "source",
+          "text": "这个场景很熟悉吧？无论是在校学习，还是在职场打拼，我"
+        },
+        "provider": "rule",
+        "title": "这个场景很熟悉吧？无论"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-8ff1666beaacd8b3dad227cf6e8962d1ed73f029827e35a3f7fd2d2667539f60"
+          ],
+          "origin": "source",
+          "text": "种现象：一些人很刻苦，很勤奋，每天都很忙碌，但就是表现平"
+        },
+        "provider": "rule",
+        "title": "种现象"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-8ff1666beaacd8b3dad227cf6e8962d1ed73f029827e35a3f7fd2d2667539f60"
+          ],
+          "origin": "source",
+          "text": "你肯定记得“刻意练习四要素”：定义明确的目标、极度的"
+        },
+        "provider": "rule",
+        "title": "你肯定记得“刻意练习四要素”"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-867576f8c5816274b4528f0a1490c79fd9d042b5aa767519c6032288d41dc25f"
+          ],
+          "origin": "source",
+          "text": "有效学习的关键是保持极度专注，而非一味比拼毅力和耐"
+        },
+        "provider": "rule",
+        "title": "有效学习的关键"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-153e5fef93825b75b9b242d63ccd43acae141f50dd8b8b8c5abfbf99a2a83b7c"
+          ],
+          "origin": "source",
+          "text": "也就是说，他们起初状态很好、效率也很高，但精力一旦消"
+        },
+        "provider": "rule",
+        "title": "也就"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-0d5cc287b6d38e7a84cf833dc5b7059c7f2d9bda726f58fe452506a4e753d760",
+            "ev-960e124edd7b818c418e71c87545ba837c0d0e8ac0f1af8f11cd0032b5034b42",
+            "ev-17fc5d59e8350645ec3de61a5814df13474abbd68d9c4a58938de46bf175a30e"
+          ],
+          "origin": "source",
+          "text": "出场了，毕竟身边人告诫过自己：学习和成长是要吃苦的，所以"
+        },
+        "provider": "rule",
+        "title": "出场了，毕竟身边人告诫过自己"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-0d5cc287b6d38e7a84cf833dc5b7059c7f2d9bda726f58fe452506a4e753d760",
+            "ev-960e124edd7b818c418e71c87545ba837c0d0e8ac0f1af8f11cd0032b5034b42",
+            "ev-17fc5d59e8350645ec3de61a5814df13474abbd68d9c4a58938de46bf175a30e"
+          ],
+          "origin": "source",
+          "text": "这不就是所谓的努力、刻苦吗？于是他们舍不得浪费一点时间，"
+        },
+        "provider": "rule",
+        "title": "这不就"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-0d5cc287b6d38e7a84cf833dc5b7059c7f2d9bda726f58fe452506a4e753d760",
+            "ev-960e124edd7b818c418e71c87545ba837c0d0e8ac0f1af8f11cd0032b5034b42",
+            "ev-17fc5d59e8350645ec3de61a5814df13474abbd68d9c4a58938de46bf175a30e"
+          ],
+          "origin": "source",
+          "text": "认为在痛苦中前行才是努力的表现，越痛苦、越坚持，越刻苦、"
+        },
+        "provider": "rule",
+        "title": "认为在痛苦中前行才"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-273f714e8af147f5049e3b5996bfcaf2dbeda4db488bba083b7ecd5cd1193147"
+          ],
+          "origin": "source",
+          "text": "多是痛苦而不是乐趣，精力消耗严重，以致一旦放松就完全不想"
+        },
+        "provider": "rule",
+        "title": "多是痛苦而不"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-123196306a755f6f33980afc3a6c6daa010b2ae3ac81871d7d154aa7196d6085",
+            "ev-2c3d87cf514afc578b976de13172491d23dbe3b7b79f52c06e6a87cbebe9c23a"
+          ],
+          "origin": "source",
+          "text": "比如得票最高的两个困惑是“经常沉浸在担忧、幻想、焦虑"
+        },
+        "provider": "rule",
+        "title": "比如得票最高的两个困惑"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-123196306a755f6f33980afc3a6c6daa010b2ae3ac81871d7d154aa7196d6085",
+            "ev-2c3d87cf514afc578b976de13172491d23dbe3b7b79f52c06e6a87cbebe9c23a"
+          ],
+          "origin": "source",
+          "text": "的情绪里”（168票）和“总是分心走神，无法保持专注”（167"
+        },
+        "provider": "rule",
+        "title": "的情绪里”（168票）和“总"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-2c3d87cf514afc578b976de13172491d23dbe3b7b79f52c06e6a87cbebe9c23a",
+            "ev-638d6cbace20e657ff0e5b5a5f121dfe6cbc15d5ea9fe3ea0c25b811130efc3f",
+            "ev-88148179e79761f0f72eaef5c7f612319120043a87c70d7f587fe4ea3b5c2b14"
+          ],
+          "origin": "source",
+          "text": "虽然李大钊先生早就教导过我们：要学就学个踏实，要玩就"
+        },
+        "provider": "rule",
+        "title": "虽然李大钊先生早就教导过我们"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-2c3d87cf514afc578b976de13172491d23dbe3b7b79f52c06e6a87cbebe9c23a",
+            "ev-638d6cbace20e657ff0e5b5a5f121dfe6cbc15d5ea9fe3ea0c25b811130efc3f",
+            "ev-88148179e79761f0f72eaef5c7f612319120043a87c70d7f587fe4ea3b5c2b14"
+          ],
+          "origin": "source",
+          "text": "更科学的模式应该是：极度专注+主动休息，如此反复。"
+        },
+        "provider": "rule",
+        "title": "更科学的模式应该是"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-88148179e79761f0f72eaef5c7f612319120043a87c70d7f587fe4ea3b5c2b14",
+            "ev-f79e1898e9066358e0cfe87e8ba87f461323d737ac864edbc30726478265b333",
+            "ev-db1c54462824a02e305ff71a961bcfafd9bf571ed3cca5d580c077ac9b73764e"
+          ],
+          "origin": "source",
+          "text": "的就是那种明明已经分心走神了，却还要强撑内耗，倒不如遵"
+        },
+        "provider": "rule",
+        "title": "的就"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-ae83d3f5ae4b61fdc7ea569fa1fe66e8e03e3bf50d9bbf1b339386ed35733b7a"
+          ],
+          "origin": "source",
+          "text": "他们体验到的多是痛苦而非愉悦（见图5-14）。"
+        },
+        "provider": "rule",
+        "title": "他们体验到的多"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-9d9f1dea3bfb71aa70bc7caec382660207b3582c6ad9e1bd4f8f37073be0aee8",
+            "ev-1116e7c7c9015025507074ee5b5a866e78768eedeb4a4178494e2c76cc082ecc"
+          ],
+          "origin": "source",
+          "text": "难度也是保证专注的重要方式，因为太容易的内容会让人因无聊"
+        },
+        "provider": "rule",
+        "title": "难度也"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-0b9dc27475e0afb38aacce2b6cb1536fe515414e3debb1d45f26bc57b6b9609e",
+            "ev-d7e931cfc38c0a8731d02c885069f6d340635347220a2bbb7e137757bc18d0df"
+          ],
+          "origin": "source",
+          "text": "当然，有人会反问：现实生活中哪有这么多“刚好的事"
+        },
+        "provider": "rule",
+        "title": "当然，有人会反问"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-0b9dc27475e0afb38aacce2b6cb1536fe515414e3debb1d45f26bc57b6b9609e",
+            "ev-d7e931cfc38c0a8731d02c885069f6d340635347220a2bbb7e137757bc18d0df"
+          ],
+          "origin": "source",
+          "text": "不难办：要么重新设定学习内容，调整为合适的难度，要么将目"
+        },
+        "provider": "rule",
+        "title": "不难办"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-54fe62ec949d93c959c71f1b302e00592c8e57be4dd69a889d63152f27756db2"
+          ],
+          "origin": "source",
+          "text": "事情往往是往沙发上一倒，此时除了看看微信、刷刷抖音，用轻"
+        },
+        "provider": "rule",
+        "title": "事情往往"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-3613956b91f8a817d8e3b1fc87c6d3197b5e02c262a250bf4aab723aca181570",
+            "ev-af91fe625ef6ef96d92b6093f0a09dc2d2bd346ac8d46ab896ad9c69184f9ba0",
+            "ev-96f181c03f9b28df4ee1e18e90282cb69b40cabe5931603b0ec2e536fa265c53"
+          ],
+          "origin": "source",
+          "text": "并不是想有就能有的，要不然怎么说它是稀缺能力呢？造就专注"
+        },
+        "provider": "rule",
+        "title": "并不"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-867576f8c5816274b4528f0a1490c79fd9d042b5aa767519c6032288d41dc25f",
+            "ev-c949e9b5f0503f19244e23414a7ad2010f396cfc9695cd3b70c092aff0c2b345"
+          ],
+          "origin": "source",
+          "text": "一个简单又通用的方法正是前文说的主动培养“极度专注"
+        },
+        "provider": "rule",
+        "title": "一个简单又通用的方法正"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-9c5cd3542a4019dddbb5824b119b6f4ebd27f04cef40b51101c18daeb7792260"
+          ],
+          "origin": "source",
+          "text": "当然辅助工具也是有的。在时间管理领域，有一个著名的番"
+        },
+        "provider": "rule",
+        "title": "当然辅助工具也"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-48821dee73dc256d708015139a7919f09c7764fb8cc43365f74bd3e2a5a117e1"
+          ],
+          "origin": "source",
+          "text": "核心就是：先极其专注地工作25分钟，然后休息5分钟，如此循"
+        },
+        "provider": "rule",
+        "title": "核心就是"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-48821dee73dc256d708015139a7919f09c7764fb8cc43365f74bd3e2a5a117e1"
+          ],
+          "origin": "source",
+          "text": "见：一是认为这种严卡时间的做法太死板，我们总不能在做得正"
+        },
+        "provider": "rule",
+        "title": "见：一"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-48821dee73dc256d708015139a7919f09c7764fb8cc43365f74bd3e2a5a117e1"
+          ],
+          "origin": "source",
+          "text": "起劲的时候主动停下来吧？二是实际应用中肯定会有各种干扰，"
+        },
+        "provider": "rule",
+        "title": "起劲的时候主动停下来吧？二"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-cbc5d872eb68bf74188c9879e87eead1df963bbed60a0d10af3ea77bfe611eaa"
+          ],
+          "origin": "source",
+          "text": "一个闪过的念头竟是番茄工作法，因为它符合学霸模式的所有特"
+        },
+        "provider": "rule",
+        "title": "一个闪过的念头竟"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-cbc5d872eb68bf74188c9879e87eead1df963bbed60a0d10af3ea77bfe611eaa",
+            "ev-480303b428f5abe1f0476c08498a167689f84a20d68e75c7d15303d2fdc1e455",
+            "ev-5ff31c38f6f983a8928fc6ecd3f73a1c25f13c0376c43c08dc34abb29c08ad0d"
+          ],
+          "origin": "source",
+          "text": "的事情，比如：看看窗外、收收衣服、拆拆包裹，等等，但刷手"
+        },
+        "provider": "rule",
+        "title": "的事情，比如"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-f694760f429d62691768f96cef387ce07b73c32afd23d7b89c1231c34dc72ecb"
+          ],
+          "origin": "source",
+          "text": "[2] 此处指《认知升级：认知的深度决定你人生的高度》，"
+        },
+        "provider": "rule",
+        "title": "[2] 此处指《认知升级"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-28080130c4850f080201731b1653c94561284d78427bb1cb09168e212b4b420b"
+          ],
+          "origin": "source",
+          "text": "作，甚是难得，并得出结论：周岭是个自制力很强的人。"
+        },
+        "provider": "rule",
+        "title": "作，甚是难得，并得出结论"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-52e00c89de9e81a9713249b2de0c9dde1aa9072f3bbfd762d3545b757bf23c84"
+          ],
+          "origin": "source",
+          "text": "的最好的办法是培养强大的自制力，我认为只要有了自制力，就"
+        },
+        "provider": "rule",
+        "title": "的最好的办法"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-52e00c89de9e81a9713249b2de0c9dde1aa9072f3bbfd762d3545b757bf23c84"
+          ],
+          "origin": "source",
+          "text": "实在是太强大了！"
+        },
+        "provider": "rule",
+        "title": "实在"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-17cc48813047a2eafd67b7ba1ff9f49f7093bddeb6f9b439d5f04909857b2ab9"
+          ],
+          "origin": "source",
+          "text": "索中，这个猜想逐渐得到证实：真正的行动力并不完全来源于自"
+        },
+        "provider": "rule",
+        "title": "索中，这个猜想逐渐得到证实"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-2c0afbb5be98e4b4c929803f565ccf0ec5cdfa7c8414a6ccdaf43e7f8c39f6b3"
+          ],
+          "origin": "source",
+          "text": "为什么这么说？因为生命是个复杂的系统，好坏自有其运行"
+        },
+        "provider": "rule",
+        "title": "为什么这么说？因为生命"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-51628daf64f2714d03eca52921187df299348af3efe2460fcd8200c263db8946"
+          ],
+          "origin": "source",
+          "text": "去关注那些可看可不看的消息呢？注意力的增强回路是正向的还"
+        },
+        "provider": "rule",
+        "title": "去关注那些可看可不看的消息呢？注意力的增强回路"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-72dc0358b6fe3ca9af99fd0e5515c9778f70c3abde0321e641f2a88bd3c87fcf"
+          ],
+          "origin": "source",
+          "text": "很多人总是希望先找到自己的人生目标再行动，事实上，如"
+        },
+        "provider": "rule",
+        "title": "很多人总"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-fb7b4bff4a11cbe15974a2eecd3807df2d04323befcc7471b4e32705580fd6f5"
+          ],
+          "origin": "source",
+          "text": "事实上，你只要做上一次就会发现：做成一件事真得很不容"
+        },
+        "provider": "rule",
+        "title": "事实上，你只要做上一次就会发现"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-4f19a1135c34bcb83adf477d23ed332db049fb0744c66c362b4a42e96bb6c1d3",
+            "ev-06d7324ef0bc3a08eaa39f649deab12b0269acbb950606f963cef9c189e692fd"
+          ],
+          "origin": "source",
+          "text": "这揭示了又一个悖论：当自己从来没有主动做成过一件事情"
+        },
+        "provider": "rule",
+        "title": "这揭示了又一个悖论"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-31d89370d0c1b0a14f0068f7b5f9571784ce2c5147959b5111a42915c67a3f23"
+          ],
+          "origin": "source",
+          "text": "打破这些悖论的方法就是不计得失地先行动起来。有些人并"
+        },
+        "provider": "rule",
+        "title": "打破这些悖论的方法就"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-cf2f85c7075e7ec38ab5fdbfdaf14152de24c619bdda76e3b4fe7489977c7255"
+          ],
+          "origin": "source",
+          "text": "如果是这样，我想你有必要先审视一下自己的行动量，看它"
+        },
+        "provider": "rule",
+        "title": "如果"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-9348510858563b68b3d0bb1a69eb8a40c2d5224382e95cc6573c534f4295a127",
+            "ev-bd245d2a92b8f60102af6c3a10409ea416be32a0a4d94f42cf1e29746d44b22a"
+          ],
+          "origin": "source",
+          "text": "比如广告行业就存在阈值效应：广告投放不足时不会产生多"
+        },
+        "provider": "rule",
+        "title": "比如广告行业就存在阈值效应"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-57b13befa37e562eb6d68279f18f85049a7f7c9f3c03a80ffbb8d8af20ef7c7f"
+          ],
+          "origin": "source",
+          "text": "而不是别人说做这个好，自己不深入了解就跟风去做，那才是真"
+        },
+        "provider": "rule",
+        "title": "而不"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-5d6cdc7dcb8833f7edc4e81160aa9704b5c7a3d9ce7e0cf67f0238dc051ef6c1"
+          ],
+          "origin": "source",
+          "text": "图6-9 有理有据的假设是一切进步的开始"
+        },
+        "provider": "rule",
+        "title": "图6-9 有理有据的假设"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-0256417af526d52245c166e83f262cf01b104bf7852f1c734f017aad3c48db77"
+          ],
+          "origin": "source",
+          "text": "有的人却觉得那是干货，好用得不得了。如果你能够持续行动，"
+        },
+        "provider": "rule",
+        "title": "有的人却觉得那"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-7a2fa6cc300f2f41f8f0f1f4ff772790c2067e7c2034674fa9885cf71c5b380e",
+            "ev-6f20be52e3d7abfb7543cf4ab52d78e19b32969bf684c5dea661a7487fe8c3e5"
+          ],
+          "origin": "source",
+          "text": "念：自己现在不做是因为还没有找到最好的方法，等找到那个方"
+        },
+        "provider": "rule",
+        "title": "念：自己现在不做"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-085e7c11fc6036c4c0882fd081acd959d390c8a2e638f32bc5676105875847ef",
+            "ev-836d3e7113011fdc9bcd7946733ebc05fceeaf1cb75e39792db5b3714fd05f97",
+            "ev-9021a6ec95f4858b13342526b840d8ff21b06bec15e16d27582230cab0a4bdf6"
+          ],
+          "origin": "source",
+          "text": "“知多行少”就像是一个死结，越拉越紧，以至于眼看着自"
+        },
+        "provider": "rule",
+        "title": "“知多行少”就像"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-085e7c11fc6036c4c0882fd081acd959d390c8a2e638f32bc5676105875847ef",
+            "ev-836d3e7113011fdc9bcd7946733ebc05fceeaf1cb75e39792db5b3714fd05f97",
+            "ev-9021a6ec95f4858b13342526b840d8ff21b06bec15e16d27582230cab0a4bdf6"
+          ],
+          "origin": "source",
+          "text": "己成为“认知上的巨人、行动上的矮子”却不知如何是好。当他"
+        },
+        "provider": "rule",
+        "title": "己成为“认知上的巨人、行动上的矮子”却不知如何"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-ff2c2b30303c0e95ab27e0a4e797a09a1112feda39fb67d4c6416deffc0c6f08"
+          ],
+          "origin": "source",
+          "text": "捷径，最后发现：这才是走了弯路，真正的捷径正是那条看起来"
+        },
+        "provider": "rule",
+        "title": "捷径，最后发现"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-05b3298fc1c57065c0804dd670f2e90846eb9b25d62b7d3d52a3d986ca48d8c5"
+          ],
+          "origin": "source",
+          "text": "不久前，读者“A丽”在后台留下一个经典之问：“道理都"
+        },
+        "provider": "rule",
+        "title": "不久前，读者“A丽”在后台留下一个经典之问"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-05b3298fc1c57065c0804dd670f2e90846eb9b25d62b7d3d52a3d986ca48d8c5"
+          ],
+          "origin": "source",
+          "text": "懂，就是不做，怎么应对？”我当时回答：“真想破解，方法也"
+        },
+        "provider": "rule",
+        "title": "懂，就是不做，怎么应对？”我当时回答"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-05b3298fc1c57065c0804dd670f2e90846eb9b25d62b7d3d52a3d986ca48d8c5"
+          ],
+          "origin": "source",
+          "text": "有，就一条：直接去做！”"
+        },
+        "provider": "rule",
+        "title": "有，就一条"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-0c9642b8425974b5f7490ff0cd9e2b448adc95f8c204c9b9160ba1e1e7f6f146"
+          ],
+          "origin": "source",
+          "text": "轻松理解骑自行车是怎么回事，但这项技能自己实际并未掌握。"
+        },
+        "provider": "rule",
+        "title": "轻松理解骑自行车"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-9166ee134af21897f0ba70bab9de6468c1fe5ca455e71d2a59b60f4b92c71d72"
+          ],
+          "origin": "source",
+          "text": "这个正向反馈在当时是真实的，但仅凭一次强烈的神经元刺"
+        },
+        "provider": "rule",
+        "title": "这个正向反馈在当时"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-46d44c3a3f9a39b4c31d4192a725a82a1296c48db633f0c81747d2c1527aa3bd"
+          ],
+          "origin": "source",
+          "text": "图6-12 认知其实是一种技能"
+        },
+        "provider": "rule",
+        "title": "图6-12 认知其实"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-5cf9a646bb6a0dd7ae6fbd57a61d48c9608bfef6146c2e09d876c40082dd5406"
+          ],
+          "origin": "source",
+          "text": "很多人不愿意行动的另一个原因是：在开始尝试的时候，总"
+        },
+        "provider": "rule",
+        "title": "很多人不愿意行动的另一个原因是"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-6194d7e504bfc2aaedfec81fc7dfa78707f9915500ce1fecc0225fedbd06dbff",
+            "ev-a6a24affa9c13129ea9f2ae7e8da2a77dc944b35b8773fd68b6c2b1a1303e847"
+          ],
+          "origin": "source",
+          "text": "这从侧面证明：只要不断练习，神经元之间的关联必然会越"
+        },
+        "provider": "rule",
+        "title": "这从侧面证明"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-d98c053014f5c9cabf92594fb21f2353935431d3c6352dffe585e95d6294fb11"
+          ],
+          "origin": "source",
+          "text": "这样一个残酷现实：道理不可能很快实践，道理也不会轻松实"
+        },
+        "provider": "rule",
+        "title": "这样一个残酷现实"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-d98c053014f5c9cabf92594fb21f2353935431d3c6352dffe585e95d6294fb11"
+          ],
+          "origin": "source",
+          "text": "也引出了人们不愿意行动的另一个原因：欲望太多。"
+        },
+        "provider": "rule",
+        "title": "也引出了人们不愿意行动的另一个原因"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-9819dfd298ee5d96979cd2c7efed5b67b90d8eac493c78c3594bfadd78632c15"
+          ],
+          "origin": "source",
+          "text": "在两年多的实践中，我也深深感到：不发生真正改变的学习"
+        },
+        "provider": "rule",
+        "title": "在两年多的实践中，我也深深感到"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-1f354dba7bd4806bb729b70f3cfae832cb7bad591f5db2ec0a94062be0a69b5e"
+          ],
+          "origin": "source",
+          "text": "现实和理论都告诉我们：懂得百点不如改变一点。真正的成"
+        },
+        "provider": "rule",
+        "title": "现实和理论都告诉我们"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-1ae136dce0d660bff8508389edfe05b15eea65ab4939ca153157e8ec174d2979"
+          ],
+          "origin": "source",
+          "text": "他们总是显得缺乏耐心、目光短浅，无论行动力、自控力、反"
+        },
+        "provider": "rule",
+        "title": "他们总"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-bb6eaa88eafd49f6b76d46ca5d57e714963956b028987d4a283eb99b32fbb261"
+          ],
+          "origin": "source",
+          "text": "研究结果显示：在一定的前提下，贫穷确实会使人变笨，"
+        },
+        "provider": "rule",
+        "title": "研究结果显示"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-3c96e0b1d6045a1466659d807aff1b2071dfaf28927af2b37d8a82d68ca195a3"
+          ],
+          "origin": "source",
+          "text": "这不是因为贫穷让人能力不足，而是因为贫穷造成的稀缺俘获"
+        },
+        "provider": "rule",
+        "title": "这不"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-9589032a45e255cbd8a9c6a72d5d6854a0b35005f3ad5a6f01235d0f325f75db"
+          ],
+          "origin": "source",
+          "text": "出现都是因为当事人心智带宽不足，自己无力考虑长远问题，"
+        },
+        "provider": "rule",
+        "title": "出现都"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-774868b296b616cec72cca12155d3610cd4739712fe3634e595ebe60a5f541d0"
+          ],
+          "origin": "source",
+          "text": "可见稀缺只是“变笨”的一种诱因，事实上，任何能制造"
+        },
+        "provider": "rule",
+        "title": "可见稀缺只"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-4c7ec9a2ff70148ec1d9e31da2c2c6d3e5e60e13a68a6a372eb4b29b23b4169d"
+          ],
+          "origin": "source",
+          "text": "谓“情人眼里出西施”是对这种现象的另一种表述，但本质上"
+        },
+        "provider": "rule",
+        "title": "谓“情人眼里出西施”"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-90e0b2d68dff24b68cd7e6596a0022dbf0d9d21c08559338aaac4f6499c4e9a4"
+          ],
+          "origin": "source",
+          "text": "不再是吃不饱，而是吃得太多了。"
+        },
+        "provider": "rule",
+        "title": "不再"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-c216997321803d0f32950d8117078d88629e96e29a1326d1a16b4fe06ebf6e78"
+          ],
+          "origin": "source",
+          "text": "以前奢求的事情，现在随时可以实现：要信息，有搜索；"
+        },
+        "provider": "rule",
+        "title": "以前奢求的事情，现在随时可以实现"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-30afa21fb42c529563668ea075bb4805f1f3faa758d1b141589ccf8d46bb53fe"
+          ],
+          "origin": "source",
+          "text": "果我就此断定：稀缺的问题一旦解决，人们就会过上幸福快乐"
+        },
+        "provider": "rule",
+        "title": "果我就此断定"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-218a1c1c58dc89cc5a8c301be0117732c452fb3bbd8c75a37270412228448da4"
+          ],
+          "origin": "source",
+          "text": "其实她自己也知道这是个不可能完成的任务，但内心的欲"
+        },
+        "provider": "rule",
+        "title": "其实她自己也知道这"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-78fdb5e8ad99c3f3cf06a541fed0f38b2bb8f0ba5410b82051184a438c425cc7"
+          ],
+          "origin": "source",
+          "text": "望就是这样强烈，因为竞争压力迫使她想要更多，不像古时"
+        },
+        "provider": "rule",
+        "title": "望就"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-5c573970b0781af766d4c794df9fee852ce124ab7dd7251e2e394039180f3cd9"
+          ],
+          "origin": "source",
+          "text": "当然这只是一例个案，但另一种现象就比较普遍了。很多"
+        },
+        "provider": "rule",
+        "title": "当然这只"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-49968f4d937976517c220c04705cc732155a865ddd0d57bd5874ac00588064c9"
+          ],
+          "origin": "source",
+          "text": "每个人都是生活的摄影师，不同的是有的人拍出来的照片"
+        },
+        "provider": "rule",
+        "title": "每个人都"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-42116110f68b4909f383f67ee0470e63f1409b0899e3de73bf3eb4aa864800b1"
+          ],
+          "origin": "source",
+          "text": "罗斯福就是一个很好的“摄影师”，他在损失了巨额财物"
+        },
+        "provider": "rule",
+        "title": "罗斯福就"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-1821230e497a9b2fbd930cef86522e893625e8239bf7c921891fe6522f12a7f0"
+          ],
+          "origin": "source",
+          "text": "·同样是半杯水，有的人哀叹“只有半杯了”，而有的人"
+        },
+        "provider": "rule",
+        "title": "·同样"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-54bed36b896d6965ce9d7c8a0b505d9348f9a1cb898892aecfd7f4a4f04cc6f1"
+          ],
+          "origin": "source",
+          "text": "认为挫折是上天给自己成长的提示；"
+        },
+        "provider": "rule",
+        "title": "认为挫折"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-4b5861e51cb643d4df9fedf15a275282eb105cd787737148d2e7b629f2a23e61"
+          ],
+          "origin": "source",
+          "text": "们的第一反应往往是批评责备，而不是心平气和地让他说出真"
+        },
+        "provider": "rule",
+        "title": "们的第一反应往往"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-007cf8d02ae2fe3aa52a6fd5a0f769ee03ce88c496dfe99b93e418fd3819eb01"
+          ],
+          "origin": "source",
+          "text": "这就是为什么当我们遇到烦心事的时候，会习惯性地启动"
+        },
+        "provider": "rule",
+        "title": "这就"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-5d038319c59fdf039f162e82fbfbb9d3d6723334148a1bd6a9e7c066b39a0c6e"
+          ],
+          "origin": "source",
+          "text": "因为别人并不是那么在乎你。如果陷入悲伤，无法自拔，那就"
+        },
+        "provider": "rule",
+        "title": "因为别人并不"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-197316c359951baee17adaa9e35f4e592a5647bd6cacb2e312e722fd969206fd"
+          ],
+          "origin": "source",
+          "text": "不是“家里满地都是臭袜子，你不觉得难受吗”。"
+        },
+        "provider": "rule",
+        "title": "不是“家里满地都"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-be82e9703a9f6407ed636a6acaa46575fc54d3d8ee5789fec1a97ac78d324324"
+          ],
+          "origin": "source",
+          "text": "好的交流都是客观的、不带主观猜测的交流，这样才会让"
+        },
+        "provider": "rule",
+        "title": "好的交流都"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-333b928089f9780d49ce6f0189e08c4f26d097cfd0bb07428592f3242b7163f0"
+          ],
+          "origin": "source",
+          "text": "吴军的想法更明智，他说：“我对任何人，一般都先假设"
+        },
+        "provider": "rule",
+        "title": "吴军的想法更明智，他说"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-7cd859fbb1c8273b629f4911cf63f50abcf1ac282acb1dc95dee48af54b68cbb"
+          ],
+          "origin": "source",
+          "text": "回到家已是10点多，但是余怒未消，此时还没有写当天承诺要"
+        },
+        "provider": "rule",
+        "title": "回到家已"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-5127bd728dc19343f01b991f63fbaa249455b6560507fd8a3861f4e2b1464e12"
+          ],
+          "origin": "source",
+          "text": "待的效果：通过写作抚平自己的内心，给自己带来一次心灵的"
+        },
+        "provider": "rule",
+        "title": "待的效果"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-07522958006e57e1ec6b1a6806aed127fa44b6872a0376b8215548dcee993b5f"
+          ],
+          "origin": "source",
+          "text": "第三节 游戏心态：幸福的人，总是在做另外一件"
+        },
+        "provider": "rule",
+        "title": "第三节 游戏心态"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-78fcdf76206404385f8cadc39291aa3e10db225de5d3ca2a8f022bd95ad94619"
+          ],
+          "origin": "source",
+          "text": "激励大家训练，当众立了一个规矩：每次体能课开始前先测试"
+        },
+        "provider": "rule",
+        "title": "激励大家训练，当众立了一个规矩"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-eefa0dab844769b0255f0515091c71c5eedd08f6244c407ac848a7c38f89f6e8"
+          ],
+          "origin": "source",
+          "text": "跑步并不是我的强项。刚入学的时候，我跑1 500米大概要"
+        },
+        "provider": "rule",
+        "title": "跑步并不"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-e5e107590e461738aa96d41946680ac0670a54adec79f26b3f3acb56f6815a92"
+          ],
+          "origin": "source",
+          "text": "而且没人知道我是怎么突然变强的。即使后来偶尔有几个人也"
+        },
+        "provider": "rule",
+        "title": "而且没人知道我"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-56b3c52a26e0fd260e48148422ff1eec6191b2342646b4e6add75cf39516ca9a"
+          ],
+          "origin": "source",
+          "text": "还在记事本里写过一句感悟：不要让事情本身束缚了你的情绪"
+        },
+        "provider": "rule",
+        "title": "还在记事本里写过一句感悟"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-6ade01785c5e0efdd52f9b21bdb9e507ef04453fd396fef2223c821b04d28e7b"
+          ],
+          "origin": "source",
+          "text": "的内在需求：关系需求、能力需求和自主需求（见图7-3）。"
+        },
+        "provider": "rule",
+        "title": "的内在需求"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-c4f6ce0a7f46338e718e834bc5507aede0f3b6e6b558ea657a2341ffdbd0c017"
+          ],
+          "origin": "source",
+          "text": "特别是“自主需求”，它是自我决定理论的关键与核心。"
+        },
+        "provider": "rule",
+        "title": "特别"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-c4f6ce0a7f46338e718e834bc5507aede0f3b6e6b558ea657a2341ffdbd0c017"
+          ],
+          "origin": "source",
+          "text": "也就是说，我们如果能主动选择和掌控所做的事情，就会产生"
+        },
+        "provider": "rule",
+        "title": "也就"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-25d83525bd566a3b2c52887e866266d2aebb3b9edf3403047dcb91f3ee900879"
+          ],
+          "origin": "source",
+          "text": "好消息是，这个世界比我们想象的要积极，我们以为自己"
+        },
+        "provider": "rule",
+        "title": "好消息"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-6f976171bdc5e27fb06dc28e51017a4e1e5f69aa9fe5378b050772dc452b593e"
+          ],
+          "origin": "source",
+          "text": "把这句话套用到其他场景中是这样的："
+        },
+        "provider": "rule",
+        "title": "把这句话套用到其他场景中"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-ce3a7264d840906c899a3b3fb0cfcc31acbb27cade742c438f10b5e5a57d724e"
+          ],
+          "origin": "source",
+          "text": "·我并不是在做跑步测试，我只是在玩追逐游戏；"
+        },
+        "provider": "rule",
+        "title": "·我并不"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-09d7201391067cd6615dcb3e77a0280d843de2a6646e59b79ad2ae7e9e8d78f5"
+          ],
+          "origin": "source",
+          "text": "量，一旦你有了新的选择，就会意识到：事情本身并不重要，"
+        },
+        "provider": "rule",
+        "title": "量，一旦你有了新的选择，就会意识到"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-09d7201391067cd6615dcb3e77a0280d843de2a6646e59b79ad2ae7e9e8d78f5"
+          ],
+          "origin": "source",
+          "text": "我们只是在通过它获取另外一种乐趣，顺便把这件事给做了。"
+        },
+        "provider": "rule",
+        "title": "我们只"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-132df760d7f7535c733e6e625ad5e0ea6476eb0d247d470a84d05444e48ed551"
+          ],
+          "origin": "source",
+          "text": "觉知的人会适时觉察自己的行事动机是否停留在与目标任务无"
+        },
+        "provider": "rule",
+        "title": "觉知的人会适时觉察自己的行事动机"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-a5b6d896bdb6914081dff516e0c17ef9a90b051d97c6523be238199c582e014d"
+          ],
+          "origin": "source",
+          "text": "可以分为两类：为自己而做和为玩而做。"
+        },
+        "provider": "rule",
+        "title": "可以分为两类"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-2ad2526a0e68568c318705b88ac9295a7e0953547418551d1164847c6e4bd86e"
+          ],
+          "origin": "source",
+          "text": "正希望通过写作建立影响力的人是不会完全被“稿酬”“流"
+        },
+        "provider": "rule",
+        "title": "正希望通过写作建立影响力的人"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-78ffcf5cd49662653ec331c953fbdeea6591a305e1f0372f8958a38c5a8dd5c2"
+          ],
+          "origin": "source",
+          "text": "获的反馈和奖励都只是意外和惊喜，不是必然和期待。这样的"
+        },
+        "provider": "rule",
+        "title": "获的反馈和奖励都只"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-77031ad31aae47334ec969fe39e6ada48d3b110997c34b35c67418455c72c603"
+          ],
+          "origin": "source",
+          "text": "得更好玩呢？这绝对是个好主意！"
+        },
+        "provider": "rule",
+        "title": "得更好玩呢？这绝对"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-308c8b3e3e16ffa421dbf0f035c4fcb1189820d74f078ba12a923df303d6ebad"
+          ],
+          "origin": "source",
+          "text": "纸上动吗？”她听后眼前一亮：“对呀，爸爸，我把它当成画"
+        },
+        "provider": "rule",
+        "title": "纸上动吗？”她听后眼前一亮"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-87c03a20f7a0e6b464ac98f6dd4bb58e9702a212abfae5b452a18346effd88a0"
+          ],
+          "origin": "source",
+          "text": "读者“承谦”是一个跑步爱好者，他曾为跑步写过一首名"
+        },
+        "provider": "rule",
+        "title": "读者“承谦”"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-5764d9f29ec1244e118b1b4d8fc62ea9563178362f51ed432f6d6b3fb5d52f1e"
+          ],
+          "origin": "source",
+          "text": "我聊天的人是谁，这种感觉实在是棒极了。如果世上的事在我"
+        },
+        "provider": "rule",
+        "title": "我聊天的人"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-da8af098cc8e66c8a950648d72de497968ce7663f521447cd4382bdb2fc28f4d"
+          ],
+          "origin": "source",
+          "text": "们眼里都是“玩”，谁还会苦闷啊！"
+        },
+        "provider": "rule",
+        "title": "们眼里都"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-2d4d8a7630510e02be05c079955e5ee947a3b8d9c67f1c11445f3a3a6535ba33"
+          ],
+          "origin": "source",
+          "text": "另外，仔细观察你还会发现：为自己而做，通常是为了应"
+        },
+        "provider": "rule",
+        "title": "另外，仔细观察你还会发现"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-f32b3497033652919a17fb7aaaa86dafeeb41e8993e7ad2c57e175bdb7dc46c0"
+          ],
+          "origin": "source",
+          "text": "的意义是人类赋予的。"
+        },
+        "provider": "rule",
+        "title": "的意义"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-39bae90f622d6b98114949373d4f2aa0aeafdf6760c72aae3cde161368138cf0"
+          ],
+          "origin": "source",
+          "text": "既然做事情就是赋予意义的过程，那我们为什么不赋予它"
+        },
+        "provider": "rule",
+        "title": "既然做事情就"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-d7ba3721c637fbfc01a2e95f4edbdbfa18b70d59e954fd2cc545e066d2bb1570"
+          ],
+          "origin": "source",
+          "text": "第一节 早起：无闹钟、不参团、不打卡，我是如"
+        },
+        "provider": "rule",
+        "title": "第一节 早起"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-539df70803cfa6776797c7bdaaac25d2a1da278e4117229dbb86d832cf14c1f8"
+          ],
+          "origin": "source",
+          "text": "虽然每天叫醒我的还不是梦想，但也不是闹钟。回头看去，"
+        },
+        "provider": "rule",
+        "title": "虽然每天叫醒我的还不"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-b68980cfcb96bc047da2a6b368cc5b1e440369cc22db395ef1e6ddcfe458083e"
+          ],
+          "origin": "source",
+          "text": "这些人在我眼里都不是一般人，我怎么可能和他们一样呢？"
+        },
+        "provider": "rule",
+        "title": "这些人在我眼里都不"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-f3ce487e7c3975f025da1cf345e4e60f7b7d39e2cae252668ad66c4bb2111282"
+          ],
+          "origin": "source",
+          "text": "以上是我通过4年的早起实践获得的一些体悟，希望能给大"
+        },
+        "provider": "rule",
+        "title": "以上"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-53a43bcda7d222c827b4e547a2ce95a3ff5809bd521e29b0a89bdf7adc9d5fc4"
+          ],
+          "origin": "source",
+          "text": "点起床：最养生和高效的时间管理》中的一句话：成功人士一旦"
+        },
+        "provider": "rule",
+        "title": "点起床"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-de4f272dccde54f06a07f00d5def236bb68aa0e0639e9e597055f9a44ded02c8"
+          ],
+          "origin": "source",
+          "text": "禅修等似乎都是那些与世无争的人做的事。但我建议你认真对待"
+        },
+        "provider": "rule",
+        "title": "禅修等似乎都"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-4be2c7d73cf4459518fce1939d0ed02c6c13ae0f38f66d8a0358e37b49162be4"
+          ],
+          "origin": "source",
+          "text": "普通人和聪明人最大的能力差异是什么？是长时间保持极度"
+        },
+        "provider": "rule",
+        "title": "普通人和聪明人最大的能力差异"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-6924ee23c3fc69df689e3a68ccf9cb22255aa1a18ffbb3d7f52853a0c40b7aff"
+          ],
+          "origin": "source",
+          "text": "异就是使用“工作记忆”的能力。人类的大脑看起来很厉害，但"
+        },
+        "provider": "rule",
+        "title": "异就"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-6d44a5f1c06618f42025345bdd66222eda95334c876d5fadfe38e85fdfe48c31"
+          ],
+          "origin": "source",
+          "text": "如果你是第一次听说这个知识，可能会怀疑我是在胡说八"
+        },
+        "provider": "rule",
+        "title": "如果你"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-d4dad9fd1964a26ce28ea479529ec977999e8bc80ad3341aa692a5c0ba13d584",
+            "ev-ee89c6b1629649c46920e02758a2c0fa7413b6604fd76b762840f8092ff7970a"
+          ],
+          "origin": "source",
+          "text": "《心流》一书的序言中有这样一个比方：一个人从外表看是"
+        },
+        "provider": "rule",
+        "title": "《心流》一书的序言中有这样一个比方"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-8931371cd82564c63e3ea7e10d895678a800b6da344b47428ae8fef0bae76d92",
+            "ev-3d11dc9e25dfb8aed079577a026d4741b31f6f80eb924e2862ba7c228cf8afb6"
+          ],
+          "origin": "source",
+          "text": "这正是人们分心走神、幻想丛生时的真实写照。我甚至能想"
+        },
+        "provider": "rule",
+        "title": "这正"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-85d45d762e2f4d6edb67c68b890db581de9ddff8899ac6e7047c788bdc6b5bb6"
+          ],
+          "origin": "source",
+          "text": "第一个是“情绪决定”，比如看到人家健身、摄影、画画"
+        },
+        "provider": "rule",
+        "title": "第一个"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-9c1418c44fc60c9c80deb1771a23a04569071ec54ae7ad357abb57c1749a3215"
+          ],
+          "origin": "source",
+          "text": "第二个是“理智决定”，理智决定同样表示想要一样东西，"
+        },
+        "provider": "rule",
+        "title": "第二个"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-db0d6370882cdb99b1491226ff67000b4b8efa6d17723a730c23a09716562713"
+          ],
+          "origin": "source",
+          "text": "读书这件事也是如此。当人们开始厌恶现状，期望变得更好"
+        },
+        "provider": "rule",
+        "title": "读书这件事也"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-00eba9579d379cf23f3a899b74a55829a8f8bb4e805b8bd83243df9c28cbf730"
+          ],
+          "origin": "source",
+          "text": "仅凭借强烈的愿望做出的决定就是情绪决定。"
+        },
+        "provider": "rule",
+        "title": "仅凭借强烈的愿望做出的决定就"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-fab020360a65aa8149ae400936cdb2e249f3f0b8b961f79af8e2a624b8aefdaa"
+          ],
+          "origin": "source",
+          "text": "满意的是读了那么多书却没有任何改变，甚至脑子更乱了。"
+        },
+        "provider": "rule",
+        "title": "满意的"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-674035cd70137da3ad276b5b03a542d6fc506063cefdc66b4e6477e7c3a75276"
+          ],
+          "origin": "source",
+          "text": "始的观点多是综合别人的观点得出的，后来就逐渐形成了自己的"
+        },
+        "provider": "rule",
+        "title": "始的观点多"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-93272f4ec274cfe6b548f192410b0c4ac104a8b0760ee5e2b5260b18cec963ec"
+          ],
+          "origin": "source",
+          "text": "归结起来就是一句话：想要快速成为一个行业的高手，最好"
+        },
+        "provider": "rule",
+        "title": "归结起来就是一句话"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-93272f4ec274cfe6b548f192410b0c4ac104a8b0760ee5e2b5260b18cec963ec"
+          ],
+          "origin": "source",
+          "text": "的方法就是和行业专家交流，直接向他们请教——这大概是最高"
+        },
+        "provider": "rule",
+        "title": "的方法就"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-839c7f7298a6dcc67f4757351770f6ae2937f7bbd6c8ca133608633b694df1a6"
+          ],
+          "origin": "source",
+          "text": "书籍是传承思想的最好介质，顶级的思想都能从书籍中找"
+        },
+        "provider": "rule",
+        "title": "书籍"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-4be2c7d73cf4459518fce1939d0ed02c6c13ae0f38f66d8a0358e37b49162be4",
+            "ev-a1641f66f4225393e93d423a3c6e7ebf3be15e029c813b7b08fcd69a9f72f0c0"
+          ],
+          "origin": "source",
+          "text": "每读一本书实际上就是在进行一次名人访谈，就是在和顶级的专"
+        },
+        "provider": "rule",
+        "title": "每读一本书实际上就"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-47b8cf61f0ca8472abcafa8f7c7271315cce26cb04b9789fe0fcb927b91ca979",
+            "ev-bc1d7980b1ed140a7219549e8248fb10176514efcdd62cc5f96044011fb3bb79"
+          ],
+          "origin": "source",
+          "text": "的大脑就是这样运行的：思考一次，记住，下次遇到同样的情况"
+        },
+        "provider": "rule",
+        "title": "的大脑就是这样运行的"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-47b8cf61f0ca8472abcafa8f7c7271315cce26cb04b9789fe0fcb927b91ca979",
+            "ev-bc1d7980b1ed140a7219549e8248fb10176514efcdd62cc5f96044011fb3bb79"
+          ],
+          "origin": "source",
+          "text": "事对大脑来讲是非常缓慢和耗能的。大脑很聪明，能巧妙地化繁"
+        },
+        "provider": "rule",
+        "title": "事对大脑来讲"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-50bb7cabbef2cb72c5f3817c216814adbd77714c49ad0e25d5ff01e07ebfe216",
+            "ev-5ea8a1e18b8cb0ea77b8eab5e2ecf6f71ee2ae681669170028f50f64f11ef549"
+          ],
+          "origin": "source",
+          "text": "根本差异是认知能力上的差异，而认知能力极度依赖思考能力，"
+        },
+        "provider": "rule",
+        "title": "根本差异"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-88c2f2289e96a02704b58353973f862b1848fadad1b5945c70a5af89659e3fe5"
+          ],
+          "origin": "source",
+          "text": "比如查理·芒格就说过：“我这辈子遇到的聪明人没有不每"
+        },
+        "provider": "rule",
+        "title": "比如查理·芒格就说过"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-0d1602b1f7b976690821426169c1e4fe48f7a83ac75f874849903dc1f36a7eb7",
+            "ev-fb4d532664e4e4f6644bd2c0ea3ddfc7c6fcec9477303f731d53861bb3e113af"
+          ],
+          "origin": "source",
+          "text": "多数时候只是调用原有的记忆模块，顺着习惯做出反应而已，真"
+        },
+        "provider": "rule",
+        "title": "多数时候只"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-b2fbf7506ca1b440bf8b15843d3c05a94bf302c7408542639ed8f172e2d53b39"
+          ],
+          "origin": "source",
+          "text": "态在平淡生活中是很少有的，但是只要拿起书本就可以马上拥"
+        },
+        "provider": "rule",
+        "title": "态在平淡生活中"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-b544ccada39ab082bf9960ae7b9ec1dcf2a9f1a3ca8d7c67386668ef19a3967b"
+          ],
+          "origin": "source",
+          "text": "阅读是一个技术活"
+        },
+        "provider": "rule",
+        "title": "阅读"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-27915a4e028919181e69028dd75d61f0f7454c124a3bdf5f6cacb503dc24e689",
+            "ev-cfaeb8c0dbf4b2f32c91a392b93a416a8b2824e37e82c68d0d509abb0cb27066"
+          ],
+          "origin": "source",
+          "text": "自己提问：“什么是自己当前最迫切、最需要解决的问题？”毕"
+        },
+        "provider": "rule",
+        "title": "自己提问"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-9c4d174c172351c0a5a1e60e64dd257edee17e4091d9d10c1c4048b0e536baa3"
+          ],
+          "origin": "source",
+          "text": "二、阅读是为了改变。很多人以为一本书只要读完，读书的"
+        },
+        "provider": "rule",
+        "title": "二、阅读"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-d68801672389221332874546c2ef1af7361e813376ebfa72f2f4beb3d1f7da97"
+          ],
+          "origin": "source",
+          "text": "可能是养成一个习惯——这个过程比阅读本身要费力得多。"
+        },
+        "provider": "rule",
+        "title": "可能"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-72ae1a587c26da358411f2f1382fc659e04030b5bdc89639a51d2f413764baf2"
+          ],
+          "origin": "source",
+          "text": "·这不是费曼技巧吗？"
+        },
+        "provider": "rule",
+        "title": "·这不"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-414e61d27de5a2ee3caf7f72b916e93d4f736e3fd6f92c8b1f46b55103ab723c"
+          ],
+          "origin": "source",
+          "text": "·好像是费曼学习法吧？"
+        },
+        "provider": "rule",
+        "title": "·好像"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-915f0082478ef169263591e3aa37eea2a5b8168e9fcc5db99b6dd4510efac3db"
+          ],
+          "origin": "source",
+          "text": "害？他获得过诺贝尔物理学奖！这可是科学界目前最高的学术荣"
+        },
+        "provider": "rule",
+        "title": "害？他获得过诺贝尔物理学奖！这可"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-cdcc93ccfc549490f698eac93b6ad5b18ce9e90003ec251288fb51eb92572a5f",
+            "ev-7cb0a9eb1024c7cb1a4464ea156465fd9b26e77757ae6c3212f2ac9f8e7855f1"
+          ],
+          "origin": "source",
+          "text": "关于恐龙的知识：“恐龙的身高有25英尺[1]，头有6英尺"
+        },
+        "provider": "rule",
+        "title": "关于恐龙的知识"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-cdcc93ccfc549490f698eac93b6ad5b18ce9e90003ec251288fb51eb92572a5f",
+            "ev-7cb0a9eb1024c7cb1a4464ea156465fd9b26e77757ae6c3212f2ac9f8e7855f1"
+          ],
+          "origin": "source",
+          "text": "说：“我们来看看这句话是什么意思。也就是说，假如那东西站"
+        },
+        "provider": "rule",
+        "title": "说：“我们来看看这句话"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-2df6e19c66093346368d5b956ce49cae7a5f4e786d815ae024aceac0e6f7200a"
+          ],
+          "origin": "source",
+          "text": "麦尔维尔总是通过自己的语言把知识变成有实际意义的东"
+        },
+        "provider": "rule",
+        "title": "麦尔维尔总"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-bf8c8a8c32333653a447e0279d6eca2005e20ae2a25d83091e7faabab08a79b1"
+          ],
+          "origin": "source",
+          "text": "们的实际意义是什么，然后用自己的话将其重新讲出来。"
+        },
+        "provider": "rule",
+        "title": "们的实际意义"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-f723c2c9ad6630f8ad7a1afeeb37ada58d705584169be9b2812aafc50f0ede19"
+          ],
+          "origin": "source",
+          "text": "另外，麦尔维尔还会时常问他类似这样的问题：“假设火星"
+        },
+        "provider": "rule",
+        "title": "另外，麦尔维尔还会时常问他类似这样的问题"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-68af0dc4af7e39c01442c0ae41059c3ac91b0ac2726da241fcf386d22e3f8148"
+          ],
+          "origin": "source",
+          "text": "清楚一件事是很难的。"
+        },
+        "provider": "rule",
+        "title": "清楚一件事"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-eaaabf0cfda2af0505e722be77152f96e78cf629393e7cb159f92e82fff20365"
+          ],
+          "origin": "source",
+          "text": "肯定会有人提出这样的疑问：很多观点早就被前人写过了，"
+        },
+        "provider": "rule",
+        "title": "肯定会有人提出这样的疑问"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-ac93bfb05d6eb0bd097a3b67651bc3df384b56bd3f83a65d903fc614cc1f4269"
+          ],
+          "origin": "source",
+          "text": "不写”的学习是不完整的，是低效的。而写作时如果不学会用自"
+        },
+        "provider": "rule",
+        "title": "不写”的学习"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-8f57cf0f4fdb25efcc70d99d5c6628f507e4aadccd35942c78f5ccbbd4ecfee3",
+            "ev-01c8d2b72d2064551c35c3509e85f8a994f0c70e347ac7ecb6f9e519a5099360"
+          ],
+          "origin": "source",
+          "text": "生》一书，你会了解一个别样的费曼：智慧、率真、热烈、不"
+        },
+        "provider": "rule",
+        "title": "生》一书，你会了解一个别样的费曼"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-de402829d36f26630807bb8f7c432dea6610adf847832b34fae1af787f2bbe53"
+          ],
+          "origin": "source",
+          "text": "所以借此机会，我想说一声：谢谢你，费曼先生！"
+        },
+        "provider": "rule",
+        "title": "所以借此机会，我想说一声"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-bdcf853b8d831e06621abc38d64ea09a000c0432192e381a0d80cf9da4ea3987",
+            "ev-33cc32cda77e57dda7ef43720bef6e5781b045cc617d083138e173506051a2ba"
+          ],
+          "origin": "source",
+          "text": "或许是人们观察到了这种客观现象，自然而然就有了“四肢"
+        },
+        "provider": "rule",
+        "title": "或许"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-44927868e5ddc166cda50e1167e1c95a1f3c7e6edbac0e0c4e16ca55f47f8df4",
+            "ev-866c5b4adea16d8dd4a93323c2a9c8b318969d813efcb2e138ccc0bddd2c7f3c"
+          ],
+          "origin": "source",
+          "text": "想：也许自己天生不是读书的料；而学习好的人会想：不锻炼也"
+        },
+        "provider": "rule",
+        "title": "想：也许自己天生不"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-70bc4d414d242b6860343b2595c210d713b3f848ab8991ba4b71297fa4916f44"
+          ],
+          "origin": "source",
+          "text": "好的事物往往是“正相关”的"
+        },
+        "provider": "rule",
+        "title": "好的事物往往"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-75f6331d959f87bf83555607f9d769bf4931de483111fb0e8d803f49f544c8f1",
+            "ev-25054a5b3f8b5665bf3b35836251b9cf56b3808e82d83b038640fa8de8763463"
+          ],
+          "origin": "source",
+          "text": "出：身体好和头脑好也是正相关的呢？我认为答案是肯定的。"
+        },
+        "provider": "rule",
+        "title": "出：身体好和头脑好也"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-e9b3c4051afc7016bb68b8d318cc55d0700ac32e74678f6184d82c622e42a74f"
+          ],
+          "origin": "source",
+          "text": "而另一个让人觉得不可思议的好消息是：运动能够使大脑长"
+        },
+        "provider": "rule",
+        "title": "而另一个让人觉得不可思议的好消息是"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-376f2dc9391aba00307a5eaf6bae6bd957cec8cc9d120044b8d127f89fecb638"
+          ],
+          "origin": "source",
+          "text": "由此可以做出如下推演：运动不仅能使人身材更好、精神更"
+        },
+        "provider": "rule",
+        "title": "由此可以做出如下推演"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-f4cf95566b26632636edcbdad97b860df2484385257277a052e1d29453739ba3"
+          ],
+          "origin": "source",
+          "text": "好的模式是“运动+学习”"
+        },
+        "provider": "rule",
+        "title": "好的模式"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-6e68de9b13186c9936dd68968d1bc4dbf35a9b52fe3d58fbe0615e7bbc4ff813",
+            "ev-79533c22ae5fade5a87ff62a1f5d6e82531b56aa169a137ac84902a0af9ef605"
+          ],
+          "origin": "source",
+          "text": "一个不可忽略的信息是：科学研究虽然证实运动能使大脑生"
+        },
+        "provider": "rule",
+        "title": "一个不可忽略的信息是"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-12b5daeee2b4d5e3eece419b4bc06870e802305038c8c800b80b8de4123ab86b"
+          ],
+          "origin": "source",
+          "text": "图8-1 新生的神经元是空白的干细胞"
+        },
+        "provider": "rule",
+        "title": "图8-1 新生的神经元"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-079767fed30ab10394510687e5665f404b3a4c141e88e0f9e29e49db554b8531",
+            "ev-e7416410eafea7caf8d255f999e3dd977a52cea106b92f77c11868df164d90e0",
+            "ev-a334102879ccf2725799b00cf7e5abc2a1e3793b3cc8d09a52540b083601e346"
+          ],
+          "origin": "source",
+          "text": "所以运动不是关键，运动之后的活动安排及环境刺激才是关"
+        },
+        "provider": "rule",
+        "title": "所以运动不"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-bd019743e4ca936a3c5561aae534519d1d589fc794f6307a68c3179b09038e98"
+          ],
+          "origin": "source",
+          "text": "在校学生更是如此。因为脑力活动原本就是他们的“主"
+        },
+        "provider": "rule",
+        "title": "在校学生更"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-7b54dcbd2ea867c9548c00f7942b8c4dd2c441c91b8f90ef17a7583c4ba25da2"
+          ],
+          "origin": "source",
+          "text": "所以绝大多数运动者的硬伤就在这里：运动之后缺乏主动学"
+        },
+        "provider": "rule",
+        "title": "所以绝大多数运动者的硬伤就在这里"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-3b7b5e2811bc2d7b676e61dfbaf6390f622ab3ac9c7ac17b148c450f25d82e14"
+          ],
+          "origin": "source",
+          "text": "有效的运动不是高强度地“折磨”自己，也不是在室外闲庭信"
+        },
+        "provider": "rule",
+        "title": "有效的运动不"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-3b7b5e2811bc2d7b676e61dfbaf6390f622ab3ac9c7ac17b148c450f25d82e14"
+          ],
+          "origin": "source",
+          "text": "建议是心率保持在60%80%之间，刚好处于身体的舒适区边缘，"
+        },
+        "provider": "rule",
+        "title": "建议"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-3b7b5e2811bc2d7b676e61dfbaf6390f622ab3ac9c7ac17b148c450f25d82e14"
+          ],
+          "origin": "source",
+          "text": "如果觉得麻烦，有一个简单的方法：让自己保持做有氧运动"
+        },
+        "provider": "rule",
+        "title": "如果觉得麻烦，有一个简单的方法"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-16fb576897aa3f342754b43c7575c615d82f4931d19d710b1d7ebfe003d6f54a"
+          ],
+          "origin": "source",
+          "text": "动，甚至还流行起了这样的文艺箴言：身体和灵魂，总有一个要"
+        },
+        "provider": "rule",
+        "title": "动，甚至还流行起了这样的文艺箴言"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-5774b20f868a119fb3ffd091d17bf3882d16103991d0a48a9b9e1a92f949beeb"
+          ],
+          "origin": "source",
+          "text": "语言是会影响思维的，“四肢发达，头脑简单”这句话应该"
+        },
+        "provider": "rule",
+        "title": "语言"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-ded9d2e3327f7255f70329fd25989f0189e00f0ab468b42f1e7150bc2b2fcb2c"
+          ],
+          "origin": "source",
+          "text": "生在几月、有哪些人参与、他们是什么关系、做了哪些事……"
+        },
+        "provider": "rule",
+        "title": "生在几月、有哪些人参与、他们"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-0f7e011cdb056978ff13d4069998d119f14491f915dc872710fd762f9450578c"
+          ],
+          "origin": "source",
+          "text": "我只是模模糊糊记得发生过这件事，但很多细节都像是第一次"
+        },
+        "provider": "rule",
+        "title": "我只"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-082cbe43f5268ded1c53a8e9f4b5e0c5410873182301a4c2454eca85cc8d7de8"
+          ],
+          "origin": "source",
+          "text": "不住问了自己一个问题：这些年我都做了什么？"
+        },
+        "provider": "rule",
+        "title": "不住问了自己一个问题"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-96fb95220a314bdf8abb77b792bbc70c21b13936f37f4e0ac888fb86f1f29c00"
+          ],
+          "origin": "source",
+          "text": "心，因为几秒之后我就能非常准确地说出细节：某年某月某日"
+        },
+        "provider": "rule",
+        "title": "心，因为几秒之后我就能非常准确地说出细节"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-a27b87d1953eabe143891570611c59636d970ed6e3dffa7a7cce3166f06db942"
+          ],
+          "origin": "source",
+          "text": "的日志，也不禁会想：“自己到底在忙什么？”因为这些忙碌"
+        },
+        "provider": "rule",
+        "title": "的日志，也不禁会想"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-a27b87d1953eabe143891570611c59636d970ed6e3dffa7a7cce3166f06db942"
+          ],
+          "origin": "source",
+          "text": "往往都是在被动应付外界的压力，而非自己主动在追求什么。"
+        },
+        "provider": "rule",
+        "title": "往往都"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-0fe513d4b36eb48570900c7ee8cc571f7f5626704457b153c3292a5ec721cc41"
+          ],
+          "origin": "source",
+          "text": "于是我问自己：如果一直被外界的安排牵着走，即便每天过得"
+        },
+        "provider": "rule",
+        "title": "于是我问自己"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-d196d19d06594d248c08e4ce33d5f25bc490d3507cd4b8f63756dbbff20f393e"
+          ],
+          "origin": "source",
+          "text": "人大概就是这样，都希望自己的一生能过得更丰富精彩"
+        },
+        "provider": "rule",
+        "title": "人大概就"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-f5afc9a1c434d64310a296cd1f42ddebeba0e0cccc63b8233c9e8015ad9cb3cd"
+          ],
+          "origin": "source",
+          "text": "这样：简单到你不愿意相信它是大道。为了让大家了解，我先"
+        },
+        "provider": "rule",
+        "title": "这样"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-f22c38b65068af3c351b96d76ce17e8289252ad85c5f1ab4b03c1b36a5716d8d"
+          ],
+          "origin": "source",
+          "text": "不管这个点是令人欣喜的感悟，还是令人难受的困惑，只要它"
+        },
+        "provider": "rule",
+        "title": "不管这个点"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-30e5e7681b0b1256f66a6a19d7980d8b474a1300171adfd2d999d4e2e45898f5"
+          ],
+          "origin": "source",
+          "text": "问题还是很到位的，虽然他情绪不好，但出发点是好的，而且"
+        },
+        "provider": "rule",
+        "title": "问题还"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-026a9a5a294f456ef9a5916d15cf9aa1683c888aa3704957b835122ed28d9c7a"
+          ],
+          "origin": "source",
+          "text": "他对大多数人都是这样的脾气，并非单独针对我。想到这里，"
+        },
+        "provider": "rule",
+        "title": "他对大多数人都"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-bcf2d4bc09bc8892d75aa5742799b0d9c85903f0676f51f65dddd8fe3f1987a6"
+          ],
+          "origin": "source",
+          "text": "我当即就释然了，并且学会了一招：无论何时，都要把对方的"
+        },
+        "provider": "rule",
+        "title": "我当即就释然了，并且学会了一招"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-01b2b224631a3d979c22af25cb225642725c0f457f2fe6d8026f68bf3aa0d0c5"
+          ],
+          "origin": "source",
+          "text": "的目的是休息，而不是三个人在一起休息，当时竟被这个思维"
+        },
+        "provider": "rule",
+        "title": "的目的"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-8c45091eb5d08ed616470d821b0bf45cfb863d965b9762157540070cbbc75cee"
+          ],
+          "origin": "source",
+          "text": "所以我总是忍不住向自己的读者推荐“每日反思”这个方"
+        },
+        "provider": "rule",
+        "title": "所以我总"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-6d79871d32692c8712d40384af7195bdcc8d3e06b3d3c613855b4aa67781d980"
+          ],
+          "origin": "source",
+          "text": "的、欣喜的、念念不忘的……这些点正是处在自己成长的舒适"
+        },
+        "provider": "rule",
+        "title": "的、欣喜的、念念不忘的……这些点正"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-b339a1ed6900b13f94ccf2ce66f31ef87109075bab9719aa1568d5a23949aa4f"
+          ],
+          "origin": "source",
+          "text": "拔或是无力做出更好的决策。长期练习会大大提升我们的认知"
+        },
+        "provider": "rule",
+        "title": "拔或"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-8a36b490e1f2a5b37158ae6ae501415de4fb74b2f4f690135e79aeba84879d09"
+          ],
+          "origin": "source",
+          "text": "困惑的时候，知道有老爸始终在身后陪伴：“我知道你最终会"
+        },
+        "provider": "rule",
+        "title": "困惑的时候，知道有老爸始终在身后陪伴"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-efd89b6da3ae06c3fb4396daef7e46cdbf7023ebf3b37442580c588b7fcee658"
+          ],
+          "origin": "source",
+          "text": "封面中的蓝色和红色是本书的两种主题颜色，它们分别代"
+        },
+        "provider": "rule",
+        "title": "封面中的蓝色和红色"
+      },
+      {
+        "confidence": 0.8,
+        "definition": {
+          "evidence_ids": [
+            "ev-cfe39952cee6ead168c05f2c66a3f567e4101aced3f46abfbbf1b6868c9a11e7"
+          ],
+          "origin": "source",
+          "text": "北京：中华工商联合出版社，2017."
+        },
+        "provider": "rule",
+        "title": "北京"
+      }
+    ],
+    "provenance": {
+      "chunk_count": 12,
+      "conversion_id": "d13f10b760c3d0a8d9215f3de22fb755cdd767d56b6a362dff59b16f39c34ec7",
+      "extraction_hashes": [
+        "3224f58e09497a78f6ec2c725aa77ba0f372c371ae130ee82ff376514aac97bf",
+        "2820119654ca8e5ce103b0f68698e6824b186a21e1a872b020b78a5af6c71204",
+        "811b1d91f3d0003c7fe9c6f2c1afe1596b7411b161e040eb9d31369685b7c7c0",
+        "1545608e92f7477838ea9e13611f2d4cf016f86056c6ff74f9a2a78cc446ba10",
+        "23bf3e8cb6c4f2a129d5257061b0c50d61ad7aa532a36faa30aad3d1a7f0d830",
+        "99273640037f690d0f3ab966732762c91c8141e6f70cef62d035e031f3f815ba",
+        "921e4d62be55ab635a24d316af2da8ff88e6dbb60b1407431c5604c0bd334c66",
+        "4d5d8bb3e2a555da5c3f1aeb6b580cad38fc8b73bfbbc6660d1621f114b63294",
+        "b43aba5bc4975ae6d0e3aac16bd0ca8cb54e94c79e058ccbbb88c6d9af33a6b8",
+        "b75f6f3a5e010175e900d3bebfb5e6f4312a8f66f98b1fc5e53073baca093ed5",
+        "0ca9da0bc864728f168b4063246edbf2cabf3607d6be29d717b50ee27cfbf670",
+        "b42acd5241c62de18a3eaa7d6917c4d54b3483b8762b2fee732cba6d5d46a4f3"
+      ],
+      "map_reduce": true,
+      "provider": "map-reduce:rule",
+      "reducer_version": "provider-map-reducer-v1"
+    },
+    "provider": "map-reduce:rule",
+    "relations": [],
+    "skills": [],
+    "warnings": []
+  },
+  "schema_version": "binding-cache-v1"
+}

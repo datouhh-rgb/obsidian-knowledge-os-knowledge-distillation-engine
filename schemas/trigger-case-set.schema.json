@@ -1,0 +1,104 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "artifact_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "case_set_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "cases": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "case_uuid": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "category": {
+            "enum": [
+              "positive",
+              "negative",
+              "boundary"
+            ]
+          },
+          "expected": {
+            "type": "boolean"
+          },
+          "prompt": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "prompt_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "case_uuid",
+          "prompt",
+          "prompt_sha256",
+          "category",
+          "expected"
+        ],
+        "type": "object"
+      },
+      "maxItems": 25,
+      "minItems": 25,
+      "type": "array"
+    },
+    "counts": {
+      "additionalProperties": false,
+      "properties": {
+        "boundary": {
+          "const": 5
+        },
+        "negative": {
+          "const": 10
+        },
+        "positive": {
+          "const": 10
+        }
+      },
+      "required": [
+        "positive",
+        "negative",
+        "boundary"
+      ],
+      "type": "object"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "kind": {
+      "const": "trigger-case-set"
+    },
+    "schema_version": {
+      "const": 1
+    },
+    "skill": {
+      "type": "string"
+    },
+    "skill_id": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "skill_id",
+    "skill",
+    "version",
+    "artifact_sha256",
+    "case_set_sha256",
+    "created_at",
+    "counts",
+    "cases"
+  ],
+  "type": "object"
+}

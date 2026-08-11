@@ -1,0 +1,119 @@
+{
+  "blockers": [
+    "failed:cross_platform"
+  ],
+  "checks": [
+    {
+      "command": "generate and verify FINAL_LTS_AUDIT/MANIFEST.sha256",
+      "exit_code": 0,
+      "name": "manifest_hash",
+      "passed": true,
+      "reason": "73 files verified",
+      "stderr_path": null,
+      "stderr_sha256": null,
+      "stdout_path": "FINAL_LTS_AUDIT/MANIFEST.sha256",
+      "stdout_sha256": "96ebb68e3316f178814d558eae2c83340f2fa48386fbc523a6c51c668aa3a8ec",
+      "suggestion": "Restore the affected release file and regenerate the manifest."
+    },
+    {
+      "command": "C:\\Users\\ThinkPad\\AppData\\Local\\Programs\\Python\\Python311\\python.exe -m compileall -q src scripts",
+      "exit_code": 0,
+      "name": "compile_check",
+      "passed": true,
+      "reason": "command completed successfully",
+      "stderr_path": "FINAL_LTS_AUDIT/compile_check.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "FINAL_LTS_AUDIT/compile_check.stdout.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "suggestion": "Fix the reported Python syntax/import error."
+    },
+    {
+      "command": "C:\\Users\\ThinkPad\\AppData\\Local\\Programs\\Python\\Python311\\python.exe -m pytest -q",
+      "exit_code": 0,
+      "name": "pytest",
+      "passed": true,
+      "reason": "92 passed, 1 skipped in 120.52s (0:02:00)",
+      "stderr_path": "FINAL_LTS_AUDIT/pytest.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "FINAL_LTS_AUDIT/pytest.stdout.txt",
+      "stdout_sha256": "ddbf3c878a761db104f0d2c0affabcf2ffa9314113fa83e1ad0745afec5e2a6b",
+      "suggestion": "Fix every failed or skipped-required release test before retrying."
+    },
+    {
+      "command": "verify --cross-platform-evidence",
+      "exit_code": 1,
+      "name": "cross_platform",
+      "passed": false,
+      "reason": "verified six-job CI evidence was not supplied",
+      "stderr_path": null,
+      "stderr_sha256": null,
+      "stdout_path": null,
+      "stdout_sha256": null,
+      "suggestion": "Run the official GitHub Actions six-job matrix on Windows, Ubuntu, and macOS with Python 3.11/3.12, then pass its consolidated JSON evidence."
+    },
+    {
+      "command": "C:\\Users\\ThinkPad\\AppData\\Local\\Programs\\Python\\Python311\\python.exe -m pytest -q tests/test_identity_evidence.py tests/test_v31_acceptance_controls.py::test_asset_ledger_and_strict_schema_detect_metadata_tamper",
+      "exit_code": 0,
+      "name": "evidence_validation",
+      "passed": true,
+      "reason": "11 passed in 14.49s",
+      "stderr_path": "FINAL_LTS_AUDIT/evidence_validation.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "FINAL_LTS_AUDIT/evidence_validation.stdout.txt",
+      "stdout_sha256": "4c785c0bad70716288477ce703ab6ed9ac0e4f290b1b7b846a5ce1f440c04305",
+      "suggestion": "Restore Evidence/ledger identity and hash consistency; do not weaken validation."
+    },
+    {
+      "command": "C:\\Users\\ThinkPad\\AppData\\Local\\Programs\\Python\\Python311\\python.exe -m pytest -q tests/test_exposure.py::test_generated_skill_passes_official_skill_creator_validator tests/test_synthesis_versioning.py::test_synthesis_requires_two_sources_and_human_approval",
+      "exit_code": 0,
+      "name": "skill_validation",
+      "passed": true,
+      "reason": "2 passed in 6.00s",
+      "stderr_path": "FINAL_LTS_AUDIT/skill_validation.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "FINAL_LTS_AUDIT/skill_validation.stdout.txt",
+      "stdout_sha256": "4e567c50c243743c0fbeed11ecf2d8e83261afe94c8bda86066f21706d6d7269",
+      "suggestion": "Repair Skill structure or gate ordering without bypassing Evidence or approval."
+    },
+    {
+      "command": "C:\\Users\\ThinkPad\\AppData\\Local\\Programs\\Python\\Python311\\python.exe -m pytest -q tests/test_chunking_migration.py::test_v2_migration_dry_run_apply_rollback_and_idempotency",
+      "exit_code": 0,
+      "name": "migration_dry_run_apply_rollback",
+      "passed": true,
+      "reason": "1 passed in 5.63s",
+      "stderr_path": "FINAL_LTS_AUDIT/migration_dry_run_apply_rollback.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "FINAL_LTS_AUDIT/migration_dry_run_apply_rollback.stdout.txt",
+      "stdout_sha256": "9d7903fa04c9c3e2aec7a2e7534a83bd07a8915e6f03e02b6dd764e17ea6405a",
+      "suggestion": "Fix migration planning/rollback while preserving all V2/V3 bytes."
+    },
+    {
+      "command": "C:\\Users\\ThinkPad\\AppData\\Local\\Programs\\Python\\Python311\\python.exe -m pytest -q tests/test_exposure_cross_platform.py tests/test_symlink_cleanup.py",
+      "exit_code": 0,
+      "name": "exposure_create_discover_remove_recreate",
+      "passed": true,
+      "reason": "4 passed in 5.55s",
+      "stderr_path": "FINAL_LTS_AUDIT/exposure_create_discover_remove_recreate.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "FINAL_LTS_AUDIT/exposure_create_discover_remove_recreate.stdout.txt",
+      "stdout_sha256": "4dcb8913a43442f8c0583ef483d9d4d032e96a2709e0cf85193278adb79939e8",
+      "suggestion": "Fix platform-specific link cleanup; never delete the canonical Vault Skill."
+    },
+    {
+      "command": "C:\\Users\\ThinkPad\\AppData\\Local\\Programs\\Python\\Python311\\python.exe -m pytest -q tests/test_lifecycle_transaction.py::test_fault_injection_rolls_back_all_core_writes tests/test_lifecycle_transaction.py::test_crash_wal_recovery_restores_consistent_state",
+      "exit_code": 0,
+      "name": "rollback_test",
+      "passed": true,
+      "reason": "8 passed in 13.82s",
+      "stderr_path": "FINAL_LTS_AUDIT/rollback_test.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "FINAL_LTS_AUDIT/rollback_test.stdout.txt",
+      "stdout_sha256": "90b2dddf5a0246d572cceb2e3e5e01ed735be0fd3d0f234cf4cb2dd9d52dcc1e",
+      "suggestion": "Restore WAL before/after hash reconciliation and fail closed on ambiguous state."
+    }
+  ],
+  "engine_version": "3.1.1",
+  "generated_at": "2026-08-11T06:14:28.669423Z",
+  "schema_version": 1,
+  "status": "V3.1_LTS_BLOCKED"
+}

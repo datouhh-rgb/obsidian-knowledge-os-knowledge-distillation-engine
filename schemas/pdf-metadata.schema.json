@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "converter": {
+      "const": "Microsoft MarkItDown"
+    },
+    "markitdown_version": {
+      "maxLength": 100,
+      "minLength": 1,
+      "type": "string"
+    },
+    "source_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "ok",
+        "warning"
+      ]
+    },
+    "warnings": {
+      "items": {
+        "maxLength": 10000,
+        "type": "string"
+      },
+      "maxItems": 100,
+      "type": "array"
+    }
+  },
+  "required": [
+    "status",
+    "source_sha256",
+    "converter",
+    "markitdown_version",
+    "warnings"
+  ],
+  "type": "object"
+}

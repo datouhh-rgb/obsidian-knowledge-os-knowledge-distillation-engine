@@ -1,0 +1,104 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "conversion_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "items": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "conversion_id": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "conversion_locator": {
+            "pattern": "^lines:[0-9]+-[0-9]+$",
+            "type": "string"
+          },
+          "end_line": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "evidence_id": {
+            "pattern": "^ev-[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "excerpt": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "excerpt_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "locator": {
+            "pattern": "^lines:[0-9]+-[0-9]+$",
+            "type": "string"
+          },
+          "normalized_locator": {
+            "pattern": "^lines:[0-9]+-[0-9]+$",
+            "type": "string"
+          },
+          "original_path": {
+            "type": "string"
+          },
+          "section": {
+            "type": "string"
+          },
+          "source_id": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "start_line": {
+            "minimum": 1,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "evidence_id",
+          "source_id",
+          "conversion_id",
+          "section",
+          "locator",
+          "start_line",
+          "end_line",
+          "excerpt",
+          "excerpt_sha256",
+          "original_path"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "original_path": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": 3
+    },
+    "source_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "source_text_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "source_title": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "source_title",
+    "source_id",
+    "conversion_id",
+    "source_text_sha256",
+    "original_path",
+    "items"
+  ],
+  "type": "object"
+}

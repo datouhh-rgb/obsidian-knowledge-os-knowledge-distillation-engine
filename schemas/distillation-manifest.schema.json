@@ -1,0 +1,91 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "artifact_hashes": {
+      "additionalProperties": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "type": "object"
+    },
+    "artifacts": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "conversion_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "engine_version": {
+      "enum": [
+        "3.1.0",
+        "3.2.0",
+        "3.3.0"
+      ]
+    },
+    "original_path": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "original_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "provider": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "provider_provenance": {
+      "type": "object"
+    },
+    "schema_version": {
+      "enum": [
+        4,
+        5
+      ]
+    },
+    "skills": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "source_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "source_text_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "title": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "warnings": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "engine_version",
+    "title",
+    "source_id",
+    "conversion_id",
+    "original_path",
+    "original_sha256",
+    "source_text_sha256",
+    "provider",
+    "provider_provenance",
+    "warnings",
+    "artifacts",
+    "artifact_hashes",
+    "skills"
+  ],
+  "type": "object"
+}

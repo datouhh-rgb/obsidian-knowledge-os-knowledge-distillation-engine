@@ -1,0 +1,224 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "artifact_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "case_set_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "cases": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "case_uuid": {
+            "type": "string"
+          },
+          "category": {
+            "enum": [
+              "positive",
+              "negative",
+              "boundary"
+            ]
+          },
+          "command_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "detection": {
+            "type": "string"
+          },
+          "evaluator": {
+            "additionalProperties": false,
+            "properties": {
+              "cli_version": {
+                "type": "string"
+              },
+              "command_sha256": {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "kind": {
+                "type": "string"
+              },
+              "model": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind",
+              "cli_version",
+              "model",
+              "command_sha256"
+            ],
+            "type": "object"
+          },
+          "exit_code": {
+            "type": "integer"
+          },
+          "expected": {
+            "type": "boolean"
+          },
+          "last_message_path": {
+            "type": "string"
+          },
+          "last_message_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "observed": {
+            "type": "boolean"
+          },
+          "passed": {
+            "type": "boolean"
+          },
+          "prompt": {
+            "type": "string"
+          },
+          "prompt_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "stderr_path": {
+            "type": "string"
+          },
+          "stderr_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "transcript_path": {
+            "type": "string"
+          },
+          "transcript_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "case_uuid",
+          "prompt",
+          "prompt_sha256",
+          "category",
+          "expected",
+          "observed",
+          "passed",
+          "exit_code",
+          "command_sha256",
+          "evaluator",
+          "transcript_path",
+          "transcript_sha256",
+          "stderr_path",
+          "stderr_sha256",
+          "last_message_path",
+          "last_message_sha256",
+          "detection"
+        ],
+        "type": "object"
+      },
+      "maxItems": 25,
+      "minItems": 25,
+      "type": "array"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "evaluator": {
+      "additionalProperties": false,
+      "properties": {
+        "cli_version": {
+          "type": "string"
+        },
+        "command_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "cli_version",
+        "model",
+        "command_sha256"
+      ],
+      "type": "object"
+    },
+    "false_negatives": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "false_positives": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "kind": {
+      "const": "real-trigger-eval"
+    },
+    "metrics": {
+      "additionalProperties": false,
+      "properties": {
+        "boundary_score": {
+          "type": "number"
+        },
+        "trigger_precision": {
+          "type": "number"
+        },
+        "trigger_recall": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "trigger_recall",
+        "trigger_precision",
+        "boundary_score"
+      ],
+      "type": "object"
+    },
+    "passed": {
+      "type": "boolean"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": 1
+    },
+    "skill": {
+      "type": "string"
+    },
+    "skill_id": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "run_id",
+    "skill_id",
+    "skill",
+    "version",
+    "artifact_sha256",
+    "case_set_sha256",
+    "created_at",
+    "evaluator",
+    "cases",
+    "metrics",
+    "false_positives",
+    "false_negatives",
+    "passed"
+  ],
+  "type": "object"
+}

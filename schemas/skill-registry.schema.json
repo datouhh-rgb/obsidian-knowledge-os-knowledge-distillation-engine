@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "engine_version": {
+      "type": "string"
+    },
+    "name_index": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "type": "object"
+    },
+    "revision": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": 3
+    },
+    "skills": {
+      "additionalProperties": {
+        "required": [
+          "skill_id",
+          "canonical_name",
+          "current_version",
+          "versions",
+          "lifecycle"
+        ],
+        "type": "object"
+      },
+      "type": "object"
+    },
+    "updated_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "usage_events": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "engine_version",
+    "revision",
+    "skills",
+    "name_index",
+    "usage_events"
+  ],
+  "type": "object"
+}
