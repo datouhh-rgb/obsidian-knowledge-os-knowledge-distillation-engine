@@ -1,0 +1,84 @@
+{
+  "blockers": [
+    {
+      "item": "pytest",
+      "reason": "     E         - passed\nE         E         + blocked\nE         \nE         tests\\test_real_codex_integration\\conftest.py:31: AssertionError\nE         =========================== short test summary info ===========================\nE         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_skill_exposure\nE         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_skill_metadata\nE         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_explicit_skill_call\nE         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_trigger_precision\nE         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_bad_description_block\nE         128 passed, 1 skipped, 5 errors in 101.07s (0:01:41)\nE         \nE         stderr:\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['C:\\\\Users\\\\ThinkPad\\\\AppData\\\\Local\\\\Temp\\\\pytest-of-ThinkPad\\\\pytest-1005\\\\test_editable_inst...x_integration.py::test_codex_bad_description_block\\n128 passed, 1 skipped, 5 errors in 101.07s (0:01:41)\\n', stderr='').returncode\n\ntests\\test_clean_install_environment.py:33: AssertionError\n=========================== short test summary info ===========================\nFAILED tests/test_clean_install_environment.py::test_editable_install_runs_suite_and_local_production_check\nERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_skill_exposure\nERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_skill_metadata\nERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_explicit_skill_call\nERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_trigger_precision\nERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_bad_description_block\n1 failed, 128 passed, 1 skipped, 5 errors in 244.18s (0:04:04)\n"
+    },
+    {
+      "item": "github_six_environment_ci",
+      "reason": "No consolidated GitHub Actions evidence was supplied."
+    },
+    {
+      "item": "stock_operator_real_regression",
+      "reason": "Verified V3.3 stock-operator regression evidence was not supplied."
+    }
+  ],
+  "checks": [
+    {
+      "name": "version",
+      "passed": true,
+      "reason": "VERSION must be 3.3.0"
+    },
+    {
+      "name": "immutable_real_failure_fixtures",
+      "observed": {
+        "tests/fixtures/real_failures/case_a/RUN.original.json": "c805af6ba8724be73ce1855e14c9771a83716cbbff95f7d4655a06a0cd497191",
+        "tests/fixtures/real_failures/case_a/binding-cache.original.json": "5c6ffb2b26e19400eb2f5849639ea2fa86e7ef985eb888f7b6c811765a4ced40",
+        "tests/fixtures/real_failures/case_b/RUN.ev629.original.json.b64": "598b2d958aa43e382df54e5cae861b3060de6e9de1c32342c3ca790bb9c1a771",
+        "tests/fixtures/real_failures/case_b/RUN.original.json": "0d08f4b659ae5b35dc813963fd5c1b27b5a5d087d7873067f3d9c755fcd7ba3d"
+      },
+      "passed": true,
+      "reason": ""
+    },
+    {
+      "command": [
+        "C:\\Users\\ThinkPad\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-m",
+        "compileall",
+        "-q",
+        "src",
+        "tests"
+      ],
+      "exit_code": 0,
+      "log": "release/evidence/engine_gate/compile.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "compile",
+      "passed": true,
+      "reason": ""
+    },
+    {
+      "command": [
+        "C:\\Users\\ThinkPad\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "exit_code": 1,
+      "log": "release/evidence/engine_gate/pytest.log",
+      "log_sha256": "417b68b344544163d492e98a43350a51d69a5102601a8d15d0ab15798a2f11a2",
+      "name": "pytest",
+      "passed": false,
+      "reason": "     E         - passed\nE         E         + blocked\nE         \nE         tests\\test_real_codex_integration\\conftest.py:31: AssertionError\nE         =========================== short test summary info ===========================\nE         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_skill_exposure\nE         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_skill_metadata\nE         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_explicit_skill_call\nE         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_trigger_precision\nE         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_bad_description_block\nE         128 passed, 1 skipped, 5 errors in 101.07s (0:01:41)\nE         \nE         stderr:\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['C:\\\\Users\\\\ThinkPad\\\\AppData\\\\Local\\\\Temp\\\\pytest-of-ThinkPad\\\\pytest-1005\\\\test_editable_inst...x_integration.py::test_codex_bad_description_block\\n128 passed, 1 skipped, 5 errors in 101.07s (0:01:41)\\n', stderr='').returncode\n\ntests\\test_clean_install_environment.py:33: AssertionError\n=========================== short test summary info ===========================\nFAILED tests/test_clean_install_environment.py::test_editable_install_runs_suite_and_local_production_check\nERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_skill_exposure\nERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_skill_metadata\nERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_explicit_skill_call\nERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_trigger_precision\nERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_bad_description_block\n1 failed, 128 passed, 1 skipped, 5 errors in 244.18s (0:04:04)\n"
+    },
+    {
+      "name": "github_six_environment_ci",
+      "passed": false,
+      "reason": "No consolidated GitHub Actions evidence was supplied."
+    },
+    {
+      "name": "stock_operator_real_regression",
+      "passed": false,
+      "reason": "Verified V3.3 stock-operator regression evidence was not supplied."
+    }
+  ],
+  "commit_sha": "unknown",
+  "engine_version": "3.3.0",
+  "generated_at": "2026-08-12T12:30:04+08:00",
+  "matrix_os": "local",
+  "matrix_python": "3.11",
+  "os": "Windows",
+  "pytest_exit_code": 1,
+  "python": "3.11",
+  "schema_version": 1,
+  "status": "blocked"
+}

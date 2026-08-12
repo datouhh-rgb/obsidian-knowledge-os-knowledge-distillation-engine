@@ -1,0 +1,1808 @@
+{
+  "analyzer": "HybridAnalyzerProvider(LLMAnalyzerProvider)",
+  "asset_ledger": {
+    "committed": true,
+    "status": "committed"
+  },
+  "block_reason": "",
+  "book": "股票大作手回忆录",
+  "cache_hits": 0,
+  "chunk_count": 42,
+  "completed_chunks": 42,
+  "concept_fragment_rejections": 12,
+  "conversion_id": "d563d127872852958eb4b6e311258407b5865229e0eb52342963c113ad0a25e3",
+  "conversion_snapshot_path": "C:\\Users\\ThinkPad\\Documents\\Codex\\2026-08-11\\obsidian-knowledge-os-knowledge-distillation-engine\\work\\converted\\股票大作手回忆录--75dba888.md",
+  "conversion_snapshot_sha256": "fe0cacd9cff6e5e3a8d0a712027bfb12339c32730a57c1ebf1002021e24360e8",
+  "data_contract_version": "3.2.0",
+  "engine_package_version": "3.3.0",
+  "ev_629_error": false,
+  "failed_chunk": null,
+  "failed_chunks": 0,
+  "finished_at": "2026-08-12T11:59:56+08:00",
+  "formal_assets_in_disposable_vault": [
+    "05_Knowledge/Audit/ASSET_LEDGER.json",
+    "05_Knowledge/Cards/股票大作手回忆录--75dba888/01-前言.md",
+    "05_Knowledge/Cards/股票大作手回忆录--75dba888/02-股票大作手回忆录.md",
+    "05_Knowledge/Cards/股票大作手回忆录--75dba888/03-Contents.md",
+    "05_Knowledge/Cards/股票大作手回忆录--75dba888/04-一.md",
+    "05_Knowledge/Cards/股票大作手回忆录--75dba888/05-二.md",
+    "05_Knowledge/Cards/股票大作手回忆录--75dba888/06-三.md",
+    "05_Knowledge/Cards/股票大作手回忆录--75dba888/07-四.md",
+    "05_Knowledge/Cards/股票大作手回忆录--75dba888/08-五.md",
+    "05_Knowledge/Cards/股票大作手回忆录--75dba888/09-六.md",
+    "05_Knowledge/Cards/股票大作手回忆录--75dba888/10-七.md",
+    "05_Knowledge/Cards/股票大作手回忆录--75dba888/11-八.md",
+    "05_Knowledge/Cards/股票大作手回忆录--75dba888/12-九.md",
+    "05_Knowledge/Cards/股票大作手回忆录--75dba888/13-修订版补记.md",
+    "05_Knowledge/Cards/股票大作手回忆录--75dba888/14-一 小后生抄价格悟出行情模式.md",
+    "05_Knowledge/Cards/股票大作手回忆录--75dba888/15-二 首战纽约遭挫败，对赌行里找本钱.md",
+    "05_Knowledge/Cards/股票大作手回忆录--75dba888/16-三 再遭执行价偏差重挫，5万美元得而复失.md",
+    "05_Knowledge/Cards/股票大作手回忆录--75dba888/17-四 回老家“疗伤”反省，再战对赌行.md",
+    "05_Knowledge/Cards/股票大作手回忆录--75dba888/18-五 大势！大势！大势！.md",
+    "05_Knowledge/Cards/股票大作手回忆录--75dba888/19-六 神奇直觉来自交易灵感.md",
+    "05_Knowledge/Cards/股票大作手回忆录--75dba888/20-七 顺势步步为营的建仓方式.md",
+    "05_Knowledge/Cases/股票大作手回忆录--75dba888--一 小后生抄价格悟出行情模式示例1.md",
+    "05_Knowledge/Cases/股票大作手回忆录--75dba888--一 小后生抄价格悟出行情模式示例2.md",
+    "05_Knowledge/Cases/股票大作手回忆录--75dba888--一 小后生抄价格悟出行情模式示例3.md",
+    "05_Knowledge/Cases/股票大作手回忆录--75dba888--三 再遭执行价偏差重挫，5万美元得而复失示例6.md",
+    "05_Knowledge/Cases/股票大作手回忆录--75dba888--二 首战纽约遭挫败，对赌行里找本钱示例4.md",
+    "05_Knowledge/Cases/股票大作手回忆录--75dba888--二 首战纽约遭挫败，对赌行里找本钱示例5.md",
+    "05_Knowledge/Cases/股票大作手回忆录--75dba888--五 大势！大势！大势！示例10.md",
+    "05_Knowledge/Cases/股票大作手回忆录--75dba888--五 大势！大势！大势！示例11.md",
+    "05_Knowledge/Cases/股票大作手回忆录--75dba888--五 大势！大势！大势！示例9.md",
+    "05_Knowledge/Cases/股票大作手回忆录--75dba888--八 时机！时机！时机！示例13.md",
+    "05_Knowledge/Cases/股票大作手回忆录--75dba888--六 神奇直觉来自交易灵感示例12.md",
+    "05_Knowledge/Cases/股票大作手回忆录--75dba888--十 市场最小阻力路线初显的关键时刻示例14.md",
+    "05_Knowledge/Cases/股票大作手回忆录--75dba888--十 市场最小阻力路线初显的关键时刻示例15.md",
+    "05_Knowledge/Cases/股票大作手回忆录--75dba888--十一 声东击西，唯变所适示例16.md",
+    "05_Knowledge/Cases/股票大作手回忆录--75dba888--十七 敬慎不败、当机立断，养成职业本能示例24.md",
+    "05_Knowledge/Cases/股票大作手回忆录--75dba888--十三 无良资本家巧计羁绊，痛失翻本良机示例19.md",
+    "05_Knowledge/Cases/股票大作手回忆录--75dba888--十三 无良资本家巧计羁绊，痛失翻本良机示例20.md",
+    "05_Knowledge/Cases/股票大作手回忆录--75dba888--十九 卖空与逼空——史上有名的市场操纵案例.md",
+    "05_Knowledge/Cases/股票大作手回忆录--75dba888--十二 说客巧舌如簧蒙蔽主见，巨资数百万尽付东流示例17.md",
+    "05_Knowledge/Cases/股票大作手回忆录--75dba888--十二 说客巧舌如簧蒙蔽主见，巨资数百万尽付东流示例18.md",
+    "05_Knowledge/Cases/股票大作手回忆录--75dba888--十四 行情惨淡债务缠身，苦熬五年东山再起示例21.md",
+    "05_Knowledge/Cases/股票大作手回忆录--75dba888--十四 行情惨淡债务缠身，苦熬五年东山再起示例22.md",
+    "05_Knowledge/Cases/股票大作手回忆录--75dba888--十四 行情惨淡债务缠身，苦熬五年东山再起示例23.md",
+    "05_Knowledge/Cases/股票大作手回忆录--75dba888--四 回老家“疗伤”反省，再战对赌行示例7.md",
+    "05_Knowledge/Cases/股票大作手回忆录--75dba888--四 回老家“疗伤”反省，再战对赌行示例8.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--(1) 华盛顿生辰纪念日.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--(3) 当时股票的最小报价单位.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--A stock pool can coordinate sale timing.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Anonymous insider tips are unreliable for trading.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Attribution can increase accountability for market statements.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Avoid adding to a losing initial trade.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Base market views on independent analysis of facts.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Brokerage relationship used as market camouflage.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Concentrated shareholdings can impede an orderly sale.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Contrarian positioning amid crowded short selling.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Conversion method.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--conversionscope.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--converter.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Counterparty-imposed trading constraints.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Cut losses and retain winners.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Debt and gratitude can constrain trading.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Edwin Lef��vre.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Execution latency and market impact.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Family financial protection.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Incremental position building in a rising market.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Independent investigation.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Independent judgment in speculation.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Independent trading judgment.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Indirect pressure through related securities.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Intuition-guided trading decision.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--ISBN.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--kindleunpackcommit.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--kindleunpackversion.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Large-position exit requires available market liquidity.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Lesson from abandoning personal judgment.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Management frugality as an operating signal.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Market evidence over assumptions.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Market facts should guide trading decisions.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Market history and trading recurrence.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Market liquidity can disappear during panic.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Market psychology shapes news reactions.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Market rumors can attract follow-on buying.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Market timing.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Market trend.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Market-response testing.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Market-timing discipline.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Market-trend trading candidate.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Price controls can disrupt market outcomes.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Rejecting stock tips.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Reserve funds used to support the stock market.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Risk of deviating from trading rules.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Separate directional judgment from entry timing.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--sourcepath.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--sourcesha256.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Stock splits can be used as a sales tactic.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Stopping sales and buying shares during systemic stress.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Susceptibility to persuasive influence.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--title.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Trade with the prevailing market trend.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Trend-aligned trading conviction.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Unforeseeable intervention risk.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Using cross-market trades to facilitate a short-covering exit.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--˳�ƽ���.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Ͱ��Ľṹ�Խ�������.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--Ͷ�����������ظ���.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--ϣ����־��Ӿ����.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--ͼ�������ľ���.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--ӯ��ȷ�Ϻ��𲽼Ӳ�.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--֤ȯ�������г�Ŀ��.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“500美元的三分之一.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“什么.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“什么？你.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“他不.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“但你.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“你的弱点.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“你的意思.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“你的意思不.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“你真.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“你说玩一把.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“到底.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“动用准备！这正.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“它也不总.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“就.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“当然.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“当然不.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“您工作的目的就只.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“您这么说.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“意思.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“我.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“我不.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“我不知道亏钱.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“我也.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“我到现在还不明白你.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“我知道你是这么说的，我的朋友，”执事心平气和，回身吩咐经纪人.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“我确实？那还有假！你以为我.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“我还.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“我那位朋友.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“教训这伙恶棍的唯一办法.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“是不.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“根本不.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“没干！绝对.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“的确.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“真.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“要的就.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“这不.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“这些都.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“这就.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“这正.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“那.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“那你工作.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“那只股票行情.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--“难道不.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--一天早晨开市之前，当我到达城里的时候，丹·威廉森把我叫到他的私人办公室，对我说.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--下一天.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--为什么公众不问一问到底为什么该股票需要通过拆细来促销呢？这又.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--他们还.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--他双目圆睁瞪着我足有5秒钟，然后暴发了.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--他告诉我.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--他的财富得失.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--他说他很遗憾我.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--但是他反驳道.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--你观察市场——即，观察行情纸带记录的价格轨迹——的目的只有一个.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--公众应当牢记.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--关键.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--内部人在市场下跌过程中卖出.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--利弗莫尔曾经.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--利文斯顿太太凝视着报价板上不断下跌的股票价格，哀叫起来.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--勒菲弗曾经.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--十六 对贴士执迷不悟.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--南京市中央路165号，邮编.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--另一种常见的推销伎俩.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--告诉别人我.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--唯一的解释只能.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--图附录一 利弗莫尔的时代道琼斯工业.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--图附录二 道琼斯工业.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--坎迈克当时.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--埃尔默·哈伍德两手思得高高的，摇着脑袋，走到我这边，寻求我的同情.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--基恩的铁杆亲信之一——他.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--大约.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--大都会算.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--好好想想看！如果你对经纪商营业厅里的普通客户有所了解，你就会同意我的下列看法.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--如果.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--如果不.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--实际上所有的大债权人都.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--对于市场到底属于牛市还.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--市场不.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--想想看！发行人本来.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--我不.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--我之所以保持沉默并不.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--我之所以这么说的原因.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--我从来都.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--我做的第一件事.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--我开始为交易.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--我想知道最后两笔1000股的卖单他们给我做的成交价.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--我持有的合约卖方.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--我断定只.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--我明白到底.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--我朋友只来了这么一句.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--我来佛罗里达.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--我清楚地记得自己当初.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--我的任务其实很简单，我本该从我在富勒顿公司最初的挫折和反复之中早就领悟出来.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--我的意思并不.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--我知道他应该.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--我给巴恩斯的答复.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--我还记得有一天.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--打高尔夫当然.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--报告显示这.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--新公司的董事们都.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--无论.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--普伦蒂斯和我曾经.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--然而，他一个劲反复叨唠.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--现在我再问你.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--看起来似乎这.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--第三位.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--等那位客户讲完故事、诉说了自己的困惑，接着问他.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--类似这样的经历恰恰正.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--经纪人冲出去执行.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--老韦斯特莱克.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--股票大作手回忆录／（美）勒菲弗著；丁圣元译．--修订本．--南京.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--莱因哈特先生不仅强硬地否认了所有的质疑，而且进一步强调.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--观察、经验、记忆和数学——这些方面.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--讽刺的.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--请看仔细.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--这些半瓶子醋的肥羊.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--这伙发行人的第一个错误.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--这只.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--这可能.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--这样的场面屡见不鲜，内部人跑去找到经纪公司的头头，对他说.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--这话说的.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--这里还想.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--那一阵华尔街上人们想的、谈的全.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--那天下午2.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--金钱的损失对我来说不.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--金钱的损失对我的影响从来都.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--问题不在于我.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--阅读行情纸带不过.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--阿纳康达公司只.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--集团社址 南京市湖南路1号A楼，邮编.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--集团网址 http.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--（本书凡印装错误可向承印厂调换，电话.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--�½ڱ�����ⶨԭ��.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--�Ƹ�ִ��Ӱ�콻������.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--�ʽ�������������ж�.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--�˷����������ǽ�������.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--�г��ṩ������Ϊ����.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--�г���Ϊ��Ϊ�����ź�.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--�г����ƶԹ�Ʊ�����ɰܵ�Ӱ��.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--�г����ֲ���ʱ�˳�.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--�г�����սʤ.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--�г�����ת����Ԥ���ź�.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--�г������뾺���Աƿյ�����.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--�г�������Σ��.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--�г��������ʽ������ϵ.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--�м��˳�ԭ��.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--�Ӵ�����ѧϰ.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--�ӿ�����ѧϰ���׹���.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--�۸���Ϊ������ԭ�����.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--�޶�������ݵ���.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--��Ļ�����빫�����µĲ��Գ�.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--��ʵ�����ĸ�����.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--��Ϊ��Ҫͨ������У��.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--��С����·������ԭ��.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--���ĵȴ�ȷ�ϵĽ���ʱ��.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--���ļ�ֽ�������.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--���յĻز�����.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--���׹������г�����.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--���ھ���Ľ����ж�.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--���߶��޶��ķ���.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--����Ʊ�����ֻ���¼��.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--����Ʊ�����ֻ���¼���ĳ���.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--����ƽ�������������ҵ.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--����ʶ���뼰ʱ�ж�.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--����̯ƽ����ͷ��.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--����Ͷ�������ǣ��.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--����ϵͳ���г�����ƥ��.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--����ͻ�ƺ���볡�ȴ�.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--�����г�����Ӱ���������.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--�����г������ж���ֲ�.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--�����еĳֹɷֲ�.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--�����еĻ���ԭ��.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--�����е�������֪�����.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--��������ʵı���.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--������ʷ�۸�ģʽ��Ԥ�ڼ���.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--������Ϊ�ȲƸ�������ֵ�ý��.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--������ֹ��.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--�������µ������ڿ�ͷ��ѹ������.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--�������г����������ĺ��ĸ���.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--��������Ǿ����ź�.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--��������Դ�ڽ��׾�����ܽ�.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--��������֧�ųֲ�.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--����������Ī���Ľ�������.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--����������Ϣ���󵼷���.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--�����������볡ʱ��.md",
+    "05_Knowledge/Concepts/股票大作手回忆录--75dba888--�������������˳����ֲ�.md",
+    "05_Knowledge/Graph/Concept-Graph-V3.md",
+    "05_Knowledge/Graph/concept-graph.v3.json",
+    "05_Knowledge/Methods/股票大作手回忆录--75dba888--卖出与买入的执行行动方法--991b3e11.md",
+    "05_Knowledge/Methods/股票大作手回忆录--75dba888--卖出与买进的风险执行方法--32b07fb8.md",
+    "05_Knowledge/Methods/股票大作手回忆录--75dba888--研究与买进的风险执行方法--6c7a7c1a.md",
+    "05_Knowledge/Methods/股票大作手回忆录--75dba888--研究与卖出的风险控制方法--c5deaa43.md",
+    "05_Knowledge/Methods/股票大作手回忆录--75dba888--预期与观察的决策分析方法--c3670d24.md",
+    "05_Knowledge/Skills/REGISTRY_V3.json",
+    "05_Knowledge/Skills/Skill-Registry-V3.md",
+    "05_Knowledge/Skills/SYNTHESIS_PROPOSALS.json",
+    "05_Knowledge/Skills/apply-source-method-0ad14ea3-75dba888/SKILL.md",
+    "05_Knowledge/Skills/apply-source-method-0ad14ea3-75dba888/agents/openai.yaml",
+    "05_Knowledge/Skills/apply-source-method-0ad14ea3-75dba888/references/evidence.json",
+    "05_Knowledge/Skills/apply-source-method-0ad14ea3-75dba888/versions/1.0.0/SKILL.md",
+    "05_Knowledge/Skills/apply-source-method-0ad14ea3-75dba888/versions/1.0.0/VERSION.json",
+    "05_Knowledge/Skills/apply-source-method-0ad14ea3-75dba888/versions/1.0.0/agents/openai.yaml",
+    "05_Knowledge/Skills/apply-source-method-0ad14ea3-75dba888/versions/1.0.0/references/evidence.json",
+    "05_Knowledge/Skills/apply-source-method-1da49748-75dba888/SKILL.md",
+    "05_Knowledge/Skills/apply-source-method-1da49748-75dba888/agents/openai.yaml",
+    "05_Knowledge/Skills/apply-source-method-1da49748-75dba888/references/evidence.json",
+    "05_Knowledge/Skills/apply-source-method-1da49748-75dba888/versions/1.0.0/SKILL.md",
+    "05_Knowledge/Skills/apply-source-method-1da49748-75dba888/versions/1.0.0/VERSION.json",
+    "05_Knowledge/Skills/apply-source-method-1da49748-75dba888/versions/1.0.0/agents/openai.yaml",
+    "05_Knowledge/Skills/apply-source-method-1da49748-75dba888/versions/1.0.0/references/evidence.json",
+    "05_Knowledge/Skills/apply-source-method-1e2793e3-75dba888/SKILL.md",
+    "05_Knowledge/Skills/apply-source-method-1e2793e3-75dba888/agents/openai.yaml",
+    "05_Knowledge/Skills/apply-source-method-1e2793e3-75dba888/references/evidence.json",
+    "05_Knowledge/Skills/apply-source-method-1e2793e3-75dba888/versions/1.0.0/SKILL.md",
+    "05_Knowledge/Skills/apply-source-method-1e2793e3-75dba888/versions/1.0.0/VERSION.json",
+    "05_Knowledge/Skills/apply-source-method-1e2793e3-75dba888/versions/1.0.0/agents/openai.yaml",
+    "05_Knowledge/Skills/apply-source-method-1e2793e3-75dba888/versions/1.0.0/references/evidence.json",
+    "06_Sources/Books/SOURCE_INDEX.json",
+    "06_Sources/Books/股票大作手回忆录--75dba888e796/conversions/d563d127872852958eb4b6e311258407b5865229e0eb52342963c113ad0a25e3/BOOK_OVERVIEW.md",
+    "06_Sources/Books/股票大作手回忆录--75dba888e796/conversions/d563d127872852958eb4b6e311258407b5865229e0eb52342963c113ad0a25e3/CONCEPT_CANONICALIZATION.json",
+    "06_Sources/Books/股票大作手回忆录--75dba888e796/conversions/d563d127872852958eb4b6e311258407b5865229e0eb52342963c113ad0a25e3/CONVERSION.json",
+    "06_Sources/Books/股票大作手回忆录--75dba888e796/conversions/d563d127872852958eb4b6e311258407b5865229e0eb52342963c113ad0a25e3/DIGEST.md",
+    "06_Sources/Books/股票大作手回忆录--75dba888e796/conversions/d563d127872852958eb4b6e311258407b5865229e0eb52342963c113ad0a25e3/DISTILLATION_MANIFEST.json",
+    "06_Sources/Books/股票大作手回忆录--75dba888e796/conversions/d563d127872852958eb4b6e311258407b5865229e0eb52342963c113ad0a25e3/EVIDENCE_CATALOG.json",
+    "06_Sources/Books/股票大作手回忆录--75dba888e796/conversions/d563d127872852958eb4b6e311258407b5865229e0eb52342963c113ad0a25e3/KNOWLEDGE_SYNTHESIS.json",
+    "06_Sources/Books/股票大作手回忆录--75dba888e796/conversions/d563d127872852958eb4b6e311258407b5865229e0eb52342963c113ad0a25e3/SOURCE_IDENTITY.json",
+    "06_Sources/Books/股票大作手回忆录--75dba888e796/conversions/d563d127872852958eb4b6e311258407b5865229e0eb52342963c113ad0a25e3/SOURCE_TEXT.md",
+    "06_Sources/Books/股票大作手回忆录--75dba888e796/conversions/d563d127872852958eb4b6e311258407b5865229e0eb52342963c113ad0a25e3/STRUCTURE_NORMALIZATION.json",
+    "06_Sources/Books/股票大作手回忆录--75dba888e796/originals/75dba888e796--股票大作手回忆录.azw3"
+  ],
+  "graph": {
+    "committed": true,
+    "edge_types": [
+      "contains_concept",
+      "contains_method",
+      "generates",
+      "produces_skill",
+      "supports"
+    ],
+    "identity_collision": false,
+    "status": "committed"
+  },
+  "knowledge_synthesis": {
+    "blocked": [
+      {
+        "concept_ids": [
+          "concept:9223a08ee9012ec520f2ee81",
+          "concept:9efe1a6f5e3b848d2dca7649"
+        ],
+        "group": 0,
+        "purpose": "assessment",
+        "reasons": [
+          "fewer than three unique Evidence records"
+        ]
+      },
+      {
+        "concept_ids": [
+          "concept:487db23716eccacb9f756b2a",
+          "concept:98628e01fb846f18eb316ab5",
+          "concept:e78bab4a381e8353db71d250"
+        ],
+        "group": 0,
+        "purpose": "planning",
+        "reasons": [
+          "insufficient multi-signal cohesion"
+        ]
+      },
+      {
+        "concept_ids": [
+          "concept:4227d24571efa639bd9351aa",
+          "concept:34774d136b877fbe2d5854fd"
+        ],
+        "group": 0,
+        "purpose": "review",
+        "reasons": [
+          "fewer than three unique Evidence records"
+        ]
+      },
+      {
+        "concept_ids": [
+          "concept:4227d24571efa639bd9351aa",
+          "concept:487db23716eccacb9f756b2a",
+          "concept:34774d136b877fbe2d5854fd",
+          "concept:98628e01fb846f18eb316ab5",
+          "concept:e78bab4a381e8353db71d250"
+        ],
+        "group": 0,
+        "purpose": "learning-cycle",
+        "reasons": [
+          "insufficient multi-signal cohesion"
+        ]
+      },
+      {
+        "method_cluster_id": "method-cluster:b9f02f44a907795d6c7a7c1a",
+        "reasons": [
+          "skill-quality-blocked: Skill quality evaluator marked this candidate blocked."
+        ],
+        "skill_fingerprint": "6c42e493665d4f5a6911372928d276537a1d106eef27ad5d706627d665cc7bcc"
+      },
+      {
+        "method_cluster_id": "method-cluster:aefd8eafd6519addc5deaa43",
+        "reasons": [
+          "skill-quality-blocked: Skill quality evaluator marked this candidate blocked."
+        ],
+        "skill_fingerprint": "026090e652200971be15346b3632817775eeaa467bc9aded6896f6ee833ca78e"
+      }
+    ],
+    "method_clusters": [
+      {
+        "concept_ids": [
+          "concept:4c6e36af3e0a30f906c2e64e",
+          "concept:5d8ad0ed5649e3f7a26e1477",
+          "concept:a42fa463fbb51c0288ad0b75"
+        ],
+        "confidence": 0.6313,
+        "creation_reason": "semantic_similarity=0.027; shared_evidence_source=股票大作手回忆录; shared_chapter_pairs=3/3; decision_purpose=risk-action; action_flow_overlap=0.000; concepts=3; evidence=3",
+        "description": "将 3 个稳定 Concept 聚合为面向风险执行的可审查方法候选。",
+        "evidence_ids": [
+          "ev-8a20086a75983b78eaf6669c5b432123c9fa69b035e42ff266543289630e916f",
+          "ev-d8ad9427404009378fe9e35dbf2b9371a3da870dcaa8d95675e515054bf7a9fc",
+          "ev-f58ea36793878a505ad41bab17f94c2c157f83d7dac74f607e3616fed93a7640"
+        ],
+        "id": "method-cluster:b9f02f44a907795d6c7a7c1a",
+        "source_books": [
+          "股票大作手回忆录"
+        ],
+        "title": "研究与买进的风险执行方法"
+      },
+      {
+        "concept_ids": [
+          "concept:4755dc148d793fb87fc613e3",
+          "concept:9c62f9630321dfd1b904a61d",
+          "concept:c7594d03e642cfc1e66d5e78"
+        ],
+        "confidence": 0.6145,
+        "creation_reason": "semantic_similarity=0.006; shared_evidence_source=股票大作手回忆录; shared_chapter_pairs=3/3; decision_purpose=risk-action; action_flow_overlap=0.000; concepts=3; evidence=3",
+        "description": "将 3 个稳定 Concept 聚合为面向风险执行的可审查方法候选。",
+        "evidence_ids": [
+          "ev-30d84734bcd3ffedb6e1aa16e8067842bd923f0686412c32df0851cde7ba4942",
+          "ev-72d15188387b0ffd98b56c30df38cc02db4af851bb602bcace999ff8eb57e235",
+          "ev-ce476184cbce28d70d23c029e6ef09bc52aee99df4cb5af4d7a5a258ecdefc54"
+        ],
+        "id": "method-cluster:5d8b41b09a9577c332b07fb8",
+        "source_books": [
+          "股票大作手回忆录"
+        ],
+        "title": "卖出与买进的风险执行方法"
+      },
+      {
+        "concept_ids": [
+          "concept:0b9414bc8e04035a3dd11b5b",
+          "concept:3c99cba3840b75107b45b291",
+          "concept:4755dc148d793fb87fc613e3",
+          "concept:4c6e36af3e0a30f906c2e64e",
+          "concept:a42fa463fbb51c0288ad0b75",
+          "concept:c7594d03e642cfc1e66d5e78"
+        ],
+        "confidence": 0.4915,
+        "creation_reason": "semantic_similarity=0.019; shared_evidence_source=股票大作手回忆录; shared_chapter_pairs=2/15; decision_purpose=risk; action_flow_overlap=0.000; concepts=6; evidence=6",
+        "description": "将 6 个稳定 Concept 聚合为面向风险控制的可审查方法候选。",
+        "evidence_ids": [
+          "ev-2c87d11a015b5ece4c66daff5967c76a4556ad1ee071616a120d6584bcb6f3da",
+          "ev-30d84734bcd3ffedb6e1aa16e8067842bd923f0686412c32df0851cde7ba4942",
+          "ev-72d15188387b0ffd98b56c30df38cc02db4af851bb602bcace999ff8eb57e235",
+          "ev-8a20086a75983b78eaf6669c5b432123c9fa69b035e42ff266543289630e916f",
+          "ev-f58ea36793878a505ad41bab17f94c2c157f83d7dac74f607e3616fed93a7640",
+          "ev-f6aaf98efe31b6f1e52d95a05b09c46586bd92c3fad1e2b93166b988ab69cd41"
+        ],
+        "id": "method-cluster:aefd8eafd6519addc5deaa43",
+        "source_books": [
+          "股票大作手回忆录"
+        ],
+        "title": "研究与卖出的风险控制方法"
+      },
+      {
+        "concept_ids": [
+          "concept:487db23716eccacb9f756b2a",
+          "concept:9223a08ee9012ec520f2ee81",
+          "concept:98628e01fb846f18eb316ab5",
+          "concept:9efe1a6f5e3b848d2dca7649",
+          "concept:e78bab4a381e8353db71d250"
+        ],
+        "confidence": 0.4766,
+        "creation_reason": "semantic_similarity=0.011; shared_evidence_source=股票大作手回忆录; shared_chapter_pairs=0/10; decision_purpose=decision-cycle; action_flow_overlap=0.040; concepts=5; evidence=5",
+        "description": "将 5 个稳定 Concept 聚合为面向决策分析的可审查方法候选。",
+        "evidence_ids": [
+          "ev-3f7de02ce480c7d7905c22834f41ec32ecd36720811b4a64904fc94278a804c5",
+          "ev-65cc109580b5b9255841388393891d419f08f7d5e2bf80ec8b8dfb8be86aeefb",
+          "ev-999a360ab21f78cf752d0078aabf0e7efee19f6cd5df23a733f2435bb193b286",
+          "ev-e0fc23f38e366580ecaa54c33da5d3cfdda738639f34dc7d6ab9ebdf29442db6",
+          "ev-e7ffb8575e10b4bed1f74ca1e2ad318800effdafcbe227c4b0f03cd51e2e21f4"
+        ],
+        "id": "method-cluster:1ae8a7de4bccb2f8c3670d24",
+        "source_books": [
+          "股票大作手回忆录"
+        ],
+        "title": "预期与观察的决策分析方法"
+      },
+      {
+        "concept_ids": [
+          "concept:1b57b97642ffdc0f573665d2",
+          "concept:388bca9d31417332d169cb1a",
+          "concept:4698ab565e6cbd2242a80c2c",
+          "concept:599461e2059612969d9327da",
+          "concept:5d8ad0ed5649e3f7a26e1477",
+          "concept:ffb3cf6ee0ca0a8fd08a7b96"
+        ],
+        "confidence": 0.4759,
+        "creation_reason": "semantic_similarity=0.007; shared_evidence_source=股票大作手回忆录; shared_chapter_pairs=0/15; decision_purpose=execution; action_flow_overlap=0.044; concepts=6; evidence=6",
+        "description": "将 6 个稳定 Concept 聚合为面向执行行动的可审查方法候选。",
+        "evidence_ids": [
+          "ev-0fcf2ddc4e538c340419bc176f1331c01ff764a94914aefcfd25faa38078521b",
+          "ev-4bcaac745d20e4770ea3ff1c96a4185e0fb9e8d5ad5a299335fa9a66c8ee3eb2",
+          "ev-585165602e26b65ee75ed698c27eedd5d3605ed787c583e0ee39df54766358a5",
+          "ev-7756e297154b3574f0759747ae261cf8923fa2189da7a910a0c77a01d54312b2",
+          "ev-d5943042d6d600f1643259d3897081ea7f852e7b1fb9dff8aced2392db2cfa3a",
+          "ev-d8ad9427404009378fe9e35dbf2b9371a3da870dcaa8d95675e515054bf7a9fc"
+        ],
+        "id": "method-cluster:b7ccc757b64027fd991b3e11",
+        "source_books": [
+          "股票大作手回忆录"
+        ],
+        "title": "卖出与买入的执行行动方法"
+      }
+    ],
+    "schema_version": 1,
+    "skills": [
+      {
+        "candidate": {
+          "actions": [
+            {
+              "evidence_ids": [
+                "ev-30d84734bcd3ffedb6e1aa16e8067842bd923f0686412c32df0851cde7ba4942"
+              ],
+              "origin": "source",
+              "text": "“我那位朋友是位经纪商，前一天晚上我曾经去他的营业厅。第二天他站在交易所里，脑子里焦虑地斗争着，拿不定主意到底做市场哪一边。他把所有有利的和不利的因素都过了一遍，然而实在没法分辨哪些是谣言，哪些是事实。没有可靠的新闻做根据。他一会儿觉得战争不可避免，一会儿差不多百分之百地说服自己战争完全不可能发生。他的困惑肯定让他觉得脑袋热得慌，所以他摘下礼帽擦擦前额的汗水。他弄不清楚到底该买还是该卖。"
+            },
+            {
+              "evidence_ids": [
+                "ev-72d15188387b0ffd98b56c30df38cc02db4af851bb602bcace999ff8eb57e235"
+              ],
+              "origin": "source",
+              "text": "利文斯顿太太凝视着报价板上不断下跌的股票价格，哀叫起来：“哦，黑利先生！我不要亏掉我的500美元！我该怎么办呢？”"
+            },
+            {
+              "evidence_ids": [
+                "ev-ce476184cbce28d70d23c029e6ef09bc52aee99df4cb5af4d7a5a258ecdefc54"
+              ],
+              "origin": "source",
+              "text": "“根本不是。我已经发现了一条容易的道路，于是一直坚持这条道路。实际上，我没办法不挣钱。要是你想听，我打算告诉你我的秘密。是这样的：我从不在底部买进，而且我总是过早卖出。”"
+            }
+          ],
+          "boundaries": [
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Do not generalize beyond the bound source books, conversion, and Evidence."
+            },
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Keep the output in candidate status until explicit human review is complete."
+            }
+          ],
+          "confidence": 0.6145,
+          "decision_flow": [
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Confirm that the request matches the Method Cluster purpose and boundaries."
+            },
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Compare the Evidence-bound concept signals and identify agreement, conflict, and missing inputs."
+            },
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Stop for human review when Evidence conflicts or critical inputs remain missing."
+            }
+          ],
+          "input_requirements": [
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Provide the decision target, current constraints, and the relevant observable facts."
+            },
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Provide or confirm access to the bound source Evidence before execution."
+            }
+          ],
+          "output_format": {
+            "evidence_ids": [],
+            "origin": "engine_policy",
+            "text": "Return the decision context, Evidence observations, actions, boundaries, and unresolved review items."
+          },
+          "positioning": {
+            "evidence_ids": [],
+            "origin": "engine_policy",
+            "text": "Apply 卖出与买进的风险执行方法 as an Evidence-bound decision procedure."
+          },
+          "prohibited_scenarios": [
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Do not use when fewer than three valid Evidence records support the Method Cluster."
+            },
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Do not auto-approve, auto-expose, or connect the candidate to a project."
+            }
+          ],
+          "provider": "synthesis:skill-synthesizer-v1",
+          "scenarios": [
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Use when the task matches the Method Cluster purpose and the required source facts are available."
+            }
+          ],
+          "title": "卖出与买进的风险执行方法"
+        },
+        "fingerprint": "5361a013a31c383a7f019e00d9a15711c693b9d895db5b95235d2e17e7010c2a",
+        "method_cluster_id": "method-cluster:5d8b41b09a9577c332b07fb8"
+      },
+      {
+        "candidate": {
+          "actions": [
+            {
+              "evidence_ids": [
+                "ev-3f7de02ce480c7d7905c22834f41ec32ecd36720811b4a64904fc94278a804c5"
+              ],
+              "origin": "source",
+              "text": "图附录二 道琼斯工业指数20世纪百年演变轨迹。在利弗莫尔的时代，市场以大起大落为基本特点，并且在1929年之前的超级牛市与之后的大崩溃中达到了高潮。在1940年代之后的半个世纪里，虽然市场仍然时常起起落落，但是总体上表现为明确的超长期上升趋势。这对我们有启发吗？"
+            },
+            {
+              "evidence_ids": [
+                "ev-65cc109580b5b9255841388393891d419f08f7d5e2bf80ec8b8dfb8be86aeefb"
+              ],
+              "origin": "source",
+              "text": "观察、经验、记忆和数学——这些方面是成功的交易者必须仰仗的。他不仅必须精细地观察，还要在所有场合始终牢记观察到的内容。他不可以在非理性的或者不可预期的因素上赌博，无论他对人们非理性的程度持有多么强烈的个人信念，或者对不可预期的事情发生的频繁程度怀有多么肯定的感觉。他必须始终按照可能性来下注——也就是说，尽力预期事态发生的可能性。从事本行的多年经验、持续不懈的研究学习、始终牢记历史案例，使得交易者既能够在事先预料的事情如期经过时当即行动，也能够在一旦发生未曾预料的事情时当即行动。"
+            },
+            {
+              "evidence_ids": [
+                "ev-999a360ab21f78cf752d0078aabf0e7efee19f6cd5df23a733f2435bb193b286"
+              ],
+              "origin": "source",
+              "text": "类似这样的经历恰恰正是如此之多交易者重复了如此之多次数的经历，因此我可以给出如下规则：在窄幅波动的市场行情中，当价格谈不上任何明确方向而是只在狭窄范围内横向延伸时，企图预期市场下一步大动作到底是向上还是向下，是没有任何道理的。你该做的是观察市场、研读纸带以确定价格横向波动的上下极限位置，拿定主意除非市场在哪一个方向上突破了上述极限位置否则绝不沾手。投机客必须让自己一心一意顺从市场才能谋取利润，决不能执迷不悟强求纸带顺从自己。绝不和纸带争辩，绝不要求纸带说明缘由或给你解释。给股票行情当事后诸葛亮是得不着红利的。"
+            },
+            {
+              "evidence_ids": [
+                "ev-e0fc23f38e366580ecaa54c33da5d3cfdda738639f34dc7d6ab9ebdf29442db6"
+              ],
+              "origin": "source",
+              "text": "“动用准备！这正是准备金派用场的时候！”各家银行服从了，动用了大约2000万美元规模的准备金。这挽救了股票市场。银行间的恐慌直到下一个星期才出现。他是真丈夫，J·P·摩根。他们的恐慌并不比股市的大多少。"
+            }
+          ],
+          "boundaries": [
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Do not generalize beyond the bound source books, conversion, and Evidence."
+            },
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Keep the output in candidate status until explicit human review is complete."
+            }
+          ],
+          "confidence": 0.4766,
+          "decision_flow": [
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Confirm that the request matches the Method Cluster purpose and boundaries."
+            },
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Compare the Evidence-bound concept signals and identify agreement, conflict, and missing inputs."
+            },
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Stop for human review when Evidence conflicts or critical inputs remain missing."
+            }
+          ],
+          "input_requirements": [
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Provide the decision target, current constraints, and the relevant observable facts."
+            },
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Provide or confirm access to the bound source Evidence before execution."
+            }
+          ],
+          "output_format": {
+            "evidence_ids": [],
+            "origin": "engine_policy",
+            "text": "Return the decision context, Evidence observations, actions, boundaries, and unresolved review items."
+          },
+          "positioning": {
+            "evidence_ids": [],
+            "origin": "engine_policy",
+            "text": "Apply 预期与观察的决策分析方法 as an Evidence-bound decision procedure."
+          },
+          "prohibited_scenarios": [
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Do not use when fewer than three valid Evidence records support the Method Cluster."
+            },
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Do not auto-approve, auto-expose, or connect the candidate to a project."
+            }
+          ],
+          "provider": "synthesis:skill-synthesizer-v1",
+          "scenarios": [
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Use when the task matches the Method Cluster purpose and the required source facts are available."
+            }
+          ],
+          "title": "预期与观察的决策分析方法"
+        },
+        "fingerprint": "2e37c66e149d73bacde89c4fa36fb7dc778522f8d1a154437a9e791f2613eccb",
+        "method_cluster_id": "method-cluster:1ae8a7de4bccb2f8c3670d24"
+      },
+      {
+        "candidate": {
+          "actions": [
+            {
+              "evidence_ids": [
+                "ev-0fcf2ddc4e538c340419bc176f1331c01ff764a94914aefcfd25faa38078521b"
+              ],
+              "origin": "source",
+              "text": "“这些都是听说而已，”我说，“能不能麻烦你亲眼确认一下它还在营业，还要查明他们最大让客户交易多少？”"
+            },
+            {
+              "evidence_ids": [
+                "ev-4bcaac745d20e4770ea3ff1c96a4185e0fb9e8d5ad5a299335fa9a66c8ee3eb2"
+              ],
+              "origin": "source",
+              "text": "实际上所有的大债权人都是这个意思。这也代表了华尔街务实的一面。并不只是随随便便地出于好心肠或者为了讲求公平交易的精神。这也是极为明智的决定，因为很显然这是笔好买卖。我既感激他们的良好用心，也感谢他们的商业气度。"
+            },
+            {
+              "evidence_ids": [
+                "ev-585165602e26b65ee75ed698c27eedd5d3605ed787c583e0ee39df54766358a5"
+              ],
+              "origin": "source",
+              "text": "“这正是我买入的原因。现在听我说 ： 你要和你那位可靠的朋友保持联系，一旦他们按比例卖出的行动停手了，要立刻让我知道。立刻！你明白吗？”"
+            },
+            {
+              "evidence_ids": [
+                "ev-7756e297154b3574f0759747ae261cf8923fa2189da7a910a0c77a01d54312b2"
+              ],
+              "origin": "source",
+              "text": "内部人在市场下跌过程中卖出是明智的、恰当的。然而，对于那些付出35或40的代价买入股票的圈外人来说，就完全是另一回事了。圈外人读到了新闻收报器上印出的消息，于是持股不动，等待拉里·利文斯顿落入义愤填膺的内部人组成的集合资产池之手、遭到应得的报应。"
+            }
+          ],
+          "boundaries": [
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Do not generalize beyond the bound source books, conversion, and Evidence."
+            },
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Keep the output in candidate status until explicit human review is complete."
+            }
+          ],
+          "confidence": 0.4759,
+          "decision_flow": [
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Confirm that the request matches the Method Cluster purpose and boundaries."
+            },
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Compare the Evidence-bound concept signals and identify agreement, conflict, and missing inputs."
+            },
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Stop for human review when Evidence conflicts or critical inputs remain missing."
+            }
+          ],
+          "input_requirements": [
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Provide the decision target, current constraints, and the relevant observable facts."
+            },
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Provide or confirm access to the bound source Evidence before execution."
+            }
+          ],
+          "output_format": {
+            "evidence_ids": [],
+            "origin": "engine_policy",
+            "text": "Return the decision context, Evidence observations, actions, boundaries, and unresolved review items."
+          },
+          "positioning": {
+            "evidence_ids": [],
+            "origin": "engine_policy",
+            "text": "Apply 卖出与买入的执行行动方法 as an Evidence-bound decision procedure."
+          },
+          "prohibited_scenarios": [
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Do not use when fewer than three valid Evidence records support the Method Cluster."
+            },
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Do not auto-approve, auto-expose, or connect the candidate to a project."
+            }
+          ],
+          "provider": "synthesis:skill-synthesizer-v1",
+          "scenarios": [
+            {
+              "evidence_ids": [],
+              "origin": "engine_policy",
+              "text": "Use when the task matches the Method Cluster purpose and the required source facts are available."
+            }
+          ],
+          "title": "卖出与买入的执行行动方法"
+        },
+        "fingerprint": "57f66c1b37a0e5fe99cd9652a43cf2964b9467d3aee31706a828b052fa61528b",
+        "method_cluster_id": "method-cluster:b7ccc757b64027fd991b3e11"
+      }
+    ]
+  },
+  "live_vault_opened": false,
+  "method_cluster_count": 5,
+  "method_clusters": [
+    {
+      "concept_ids": [
+        "concept:4c6e36af3e0a30f906c2e64e",
+        "concept:5d8ad0ed5649e3f7a26e1477",
+        "concept:a42fa463fbb51c0288ad0b75"
+      ],
+      "confidence": 0.6313,
+      "creation_reason": "semantic_similarity=0.027; shared_evidence_source=股票大作手回忆录; shared_chapter_pairs=3/3; decision_purpose=risk-action; action_flow_overlap=0.000; concepts=3; evidence=3",
+      "description": "将 3 个稳定 Concept 聚合为面向风险执行的可审查方法候选。",
+      "evidence_ids": [
+        "ev-8a20086a75983b78eaf6669c5b432123c9fa69b035e42ff266543289630e916f",
+        "ev-d8ad9427404009378fe9e35dbf2b9371a3da870dcaa8d95675e515054bf7a9fc",
+        "ev-f58ea36793878a505ad41bab17f94c2c157f83d7dac74f607e3616fed93a7640"
+      ],
+      "id": "method-cluster:b9f02f44a907795d6c7a7c1a",
+      "source_books": [
+        "股票大作手回忆录"
+      ],
+      "title": "研究与买进的风险执行方法"
+    },
+    {
+      "concept_ids": [
+        "concept:4755dc148d793fb87fc613e3",
+        "concept:9c62f9630321dfd1b904a61d",
+        "concept:c7594d03e642cfc1e66d5e78"
+      ],
+      "confidence": 0.6145,
+      "creation_reason": "semantic_similarity=0.006; shared_evidence_source=股票大作手回忆录; shared_chapter_pairs=3/3; decision_purpose=risk-action; action_flow_overlap=0.000; concepts=3; evidence=3",
+      "description": "将 3 个稳定 Concept 聚合为面向风险执行的可审查方法候选。",
+      "evidence_ids": [
+        "ev-30d84734bcd3ffedb6e1aa16e8067842bd923f0686412c32df0851cde7ba4942",
+        "ev-72d15188387b0ffd98b56c30df38cc02db4af851bb602bcace999ff8eb57e235",
+        "ev-ce476184cbce28d70d23c029e6ef09bc52aee99df4cb5af4d7a5a258ecdefc54"
+      ],
+      "id": "method-cluster:5d8b41b09a9577c332b07fb8",
+      "source_books": [
+        "股票大作手回忆录"
+      ],
+      "title": "卖出与买进的风险执行方法"
+    },
+    {
+      "concept_ids": [
+        "concept:0b9414bc8e04035a3dd11b5b",
+        "concept:3c99cba3840b75107b45b291",
+        "concept:4755dc148d793fb87fc613e3",
+        "concept:4c6e36af3e0a30f906c2e64e",
+        "concept:a42fa463fbb51c0288ad0b75",
+        "concept:c7594d03e642cfc1e66d5e78"
+      ],
+      "confidence": 0.4915,
+      "creation_reason": "semantic_similarity=0.019; shared_evidence_source=股票大作手回忆录; shared_chapter_pairs=2/15; decision_purpose=risk; action_flow_overlap=0.000; concepts=6; evidence=6",
+      "description": "将 6 个稳定 Concept 聚合为面向风险控制的可审查方法候选。",
+      "evidence_ids": [
+        "ev-2c87d11a015b5ece4c66daff5967c76a4556ad1ee071616a120d6584bcb6f3da",
+        "ev-30d84734bcd3ffedb6e1aa16e8067842bd923f0686412c32df0851cde7ba4942",
+        "ev-72d15188387b0ffd98b56c30df38cc02db4af851bb602bcace999ff8eb57e235",
+        "ev-8a20086a75983b78eaf6669c5b432123c9fa69b035e42ff266543289630e916f",
+        "ev-f58ea36793878a505ad41bab17f94c2c157f83d7dac74f607e3616fed93a7640",
+        "ev-f6aaf98efe31b6f1e52d95a05b09c46586bd92c3fad1e2b93166b988ab69cd41"
+      ],
+      "id": "method-cluster:aefd8eafd6519addc5deaa43",
+      "source_books": [
+        "股票大作手回忆录"
+      ],
+      "title": "研究与卖出的风险控制方法"
+    },
+    {
+      "concept_ids": [
+        "concept:487db23716eccacb9f756b2a",
+        "concept:9223a08ee9012ec520f2ee81",
+        "concept:98628e01fb846f18eb316ab5",
+        "concept:9efe1a6f5e3b848d2dca7649",
+        "concept:e78bab4a381e8353db71d250"
+      ],
+      "confidence": 0.4766,
+      "creation_reason": "semantic_similarity=0.011; shared_evidence_source=股票大作手回忆录; shared_chapter_pairs=0/10; decision_purpose=decision-cycle; action_flow_overlap=0.040; concepts=5; evidence=5",
+      "description": "将 5 个稳定 Concept 聚合为面向决策分析的可审查方法候选。",
+      "evidence_ids": [
+        "ev-3f7de02ce480c7d7905c22834f41ec32ecd36720811b4a64904fc94278a804c5",
+        "ev-65cc109580b5b9255841388393891d419f08f7d5e2bf80ec8b8dfb8be86aeefb",
+        "ev-999a360ab21f78cf752d0078aabf0e7efee19f6cd5df23a733f2435bb193b286",
+        "ev-e0fc23f38e366580ecaa54c33da5d3cfdda738639f34dc7d6ab9ebdf29442db6",
+        "ev-e7ffb8575e10b4bed1f74ca1e2ad318800effdafcbe227c4b0f03cd51e2e21f4"
+      ],
+      "id": "method-cluster:1ae8a7de4bccb2f8c3670d24",
+      "source_books": [
+        "股票大作手回忆录"
+      ],
+      "title": "预期与观察的决策分析方法"
+    },
+    {
+      "concept_ids": [
+        "concept:1b57b97642ffdc0f573665d2",
+        "concept:388bca9d31417332d169cb1a",
+        "concept:4698ab565e6cbd2242a80c2c",
+        "concept:599461e2059612969d9327da",
+        "concept:5d8ad0ed5649e3f7a26e1477",
+        "concept:ffb3cf6ee0ca0a8fd08a7b96"
+      ],
+      "confidence": 0.4759,
+      "creation_reason": "semantic_similarity=0.007; shared_evidence_source=股票大作手回忆录; shared_chapter_pairs=0/15; decision_purpose=execution; action_flow_overlap=0.044; concepts=6; evidence=6",
+      "description": "将 6 个稳定 Concept 聚合为面向执行行动的可审查方法候选。",
+      "evidence_ids": [
+        "ev-0fcf2ddc4e538c340419bc176f1331c01ff764a94914aefcfd25faa38078521b",
+        "ev-4bcaac745d20e4770ea3ff1c96a4185e0fb9e8d5ad5a299335fa9a66c8ee3eb2",
+        "ev-585165602e26b65ee75ed698c27eedd5d3605ed787c583e0ee39df54766358a5",
+        "ev-7756e297154b3574f0759747ae261cf8923fa2189da7a910a0c77a01d54312b2",
+        "ev-d5943042d6d600f1643259d3897081ea7f852e7b1fb9dff8aced2392db2cfa3a",
+        "ev-d8ad9427404009378fe9e35dbf2b9371a3da870dcaa8d95675e515054bf7a9fc"
+      ],
+      "id": "method-cluster:b7ccc757b64027fd991b3e11",
+      "source_books": [
+        "股票大作手回忆录"
+      ],
+      "title": "卖出与买入的执行行动方法"
+    }
+  ],
+  "mode": "real-azw3-preserved-conversion-codex-llm-disposable-resumable-vault",
+  "model": "gpt-5.6-terra",
+  "pipeline_status": "completed",
+  "pipeline_warnings": [
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "The supplied excerpts appear to have character-encoding corruption, so no conservative concept candidate can be stated reliably.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "No candidates supplied.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "No candidates supplied.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates.",
+    "Rule Analyzer is diagnostic-only in V3.2 and produced no Skill candidates."
+  ],
+  "portable_schema_version": "portable-provider-map-v3",
+  "portable_validation": {
+    "concept_candidates": 289,
+    "evidence_binding_occurrences": 368,
+    "evidence_selection_candidates": 1668,
+    "expected_unique_extraction_hashes": 41,
+    "failures": [],
+    "observed_unique_extraction_hashes": 41,
+    "passed": true,
+    "portable_payloads_checked": 42,
+    "relation_candidates": 0,
+    "skill_candidates": 0
+  },
+  "processed": 42,
+  "prompt_version": "distillation-map-prompt-v3.2.1-index-selection",
+  "reasoning": "low",
+  "registry": {
+    "committed": true,
+    "status": "committed"
+  },
+  "release_checks": {
+    "candidate_status_only": true,
+    "evidence_error_disappeared": true,
+    "graph_four_layer_links": true,
+    "live_vault_untouched": true,
+    "method_clusters_generated": true,
+    "no_graph_identity_collision": true,
+    "no_obvious_fragment_skill": true,
+    "not_auto_approved": true,
+    "not_auto_exposed": true,
+    "not_connected_to_project": true,
+    "pipeline_completed": true,
+    "skill_candidates_generated": true,
+    "skill_evidence_bound": true,
+    "successful_chunk_bindings_legal": true,
+    "vault_transaction_complete": true
+  },
+  "run_id": "run-0612616f2d21999e726a3ba1",
+  "run_status": "completed",
+  "run_warnings": [],
+  "schema_version": 1,
+  "skill_candidate_count": 3,
+  "skill_candidate_statuses": [
+    "candidate",
+    "candidate",
+    "candidate"
+  ],
+  "skill_evidence_file_count": 3,
+  "skill_evidence_valid": true,
+  "skills_generated": 3,
+  "source_id": "75dba888e796b4aae0ef85f99798b6c8eab002e2c2b213e98b9b3e5d5c32b828",
+  "source_path": "C:\\Users\\ThinkPad\\Documents\\知识库\\Andy-PKB\\90_Attachments\\Other\\股票大作手回忆录.azw3",
+  "source_sha256_after": "75dba888e796b4aae0ef85f99798b6c8eab002e2c2b213e98b9b3e5d5c32b828",
+  "source_sha256_before": "75dba888e796b4aae0ef85f99798b6c8eab002e2c2b213e98b9b3e5d5c32b828",
+  "started_at": "2026-08-12T11:47:47+08:00",
+  "status": "passed",
+  "temporary_vault_deleted_after_run": false,
+  "unknown_evidence_error": false,
+  "validation_issues": [
+    {
+      "code": "concept-fragment-rejected",
+      "message": "“但我告诉你的: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "“做不来就: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "“因为你们干的这一行就: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "上面介绍的: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "他们统统说宁愿要数额较小但: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "你真该在场亲眼看看那只被做庄的股票、那只被说成谁卖空谁就: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "刚才告诉你的: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "我从报价板上第一眼看到的: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "我打电报发出了一些卖空斯梅尔特的: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "这就: known discourse/chapter fragment, linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "这就: known discourse/chapter fragment, linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "这就: known discourse/chapter fragment, linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved-concept-conflict-isolated",
+      "message": "same-title semantic conflict; automatic merge refused; all variants were excluded from Method/Skill synthesis.",
+      "path": "concept-conflict-1cc9f55829d420ce207988d7",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved-concept-conflict-isolated",
+      "message": "same-title semantic conflict; automatic merge refused; all variants were excluded from Method/Skill synthesis.",
+      "path": "concept-conflict-391d075a8b67162edfe92bba",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved-concept-conflict-isolated",
+      "message": "same-title semantic conflict; automatic merge refused; all variants were excluded from Method/Skill synthesis.",
+      "path": "concept-conflict-3e10371b2724af6317047389",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved-concept-conflict-isolated",
+      "message": "same-title semantic conflict; automatic merge refused; all variants were excluded from Method/Skill synthesis.",
+      "path": "concept-conflict-602d07455b22f898d4733ea7",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved-concept-conflict-isolated",
+      "message": "same-title semantic conflict; automatic merge refused; all variants were excluded from Method/Skill synthesis.",
+      "path": "concept-conflict-6cae4dedc3a7189240c090d5",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved-concept-conflict-isolated",
+      "message": "same-title semantic conflict; automatic merge refused; all variants were excluded from Method/Skill synthesis.",
+      "path": "concept-conflict-78302522b5503a8d49cbb2cf",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved-concept-conflict-isolated",
+      "message": "same-title semantic conflict; automatic merge refused; all variants were excluded from Method/Skill synthesis.",
+      "path": "concept-conflict-a62ac44a72856cb411aeeeed",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved-concept-conflict-isolated",
+      "message": "same-title semantic conflict; automatic merge refused; all variants were excluded from Method/Skill synthesis.",
+      "path": "concept-conflict-a70d0f00e0fafbb9f5844765",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved-concept-conflict-isolated",
+      "message": "same-title semantic conflict; automatic merge refused; all variants were excluded from Method/Skill synthesis.",
+      "path": "concept-conflict-a8dd6c2c9a266eee9107c8a1",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved-concept-conflict-isolated",
+      "message": "same-title semantic conflict; automatic merge refused; all variants were excluded from Method/Skill synthesis.",
+      "path": "concept-conflict-b5b63801f8dc9a4909f632ee",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved-concept-conflict-isolated",
+      "message": "same-title semantic conflict; automatic merge refused; all variants were excluded from Method/Skill synthesis.",
+      "path": "concept-conflict-edc44f1807b20cd1aa80dc98",
+      "severity": "warning"
+    },
+    {
+      "code": "synthesized-candidate-blocked",
+      "message": "skill-quality-blocked: Skill quality evaluator marked this candidate blocked.",
+      "path": "研究与买进的风险执行方法",
+      "severity": "warning"
+    },
+    {
+      "code": "synthesized-candidate-blocked",
+      "message": "skill-quality-blocked: Skill quality evaluator marked this candidate blocked.",
+      "path": "研究与卖出的风险控制方法",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-0ad14ea3-75dba888\\SKILL.md:56",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-0ad14ea3-75dba888\\SKILL.md:57",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-0ad14ea3-75dba888\\SKILL.md:58",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-0ad14ea3-75dba888\\SKILL.md:59",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-0ad14ea3-75dba888\\versions\\1.0.0\\SKILL.md:56",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-0ad14ea3-75dba888\\versions\\1.0.0\\SKILL.md:57",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-0ad14ea3-75dba888\\versions\\1.0.0\\SKILL.md:58",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-0ad14ea3-75dba888\\versions\\1.0.0\\SKILL.md:59",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-1da49748-75dba888\\SKILL.md:58",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-1da49748-75dba888\\SKILL.md:59",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-1da49748-75dba888\\SKILL.md:60",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-1da49748-75dba888\\SKILL.md:61",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-1da49748-75dba888\\SKILL.md:62",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-1da49748-75dba888\\SKILL.md:63",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-1da49748-75dba888\\versions\\1.0.0\\SKILL.md:58",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-1da49748-75dba888\\versions\\1.0.0\\SKILL.md:59",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-1da49748-75dba888\\versions\\1.0.0\\SKILL.md:60",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-1da49748-75dba888\\versions\\1.0.0\\SKILL.md:61",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-1da49748-75dba888\\versions\\1.0.0\\SKILL.md:62",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-1da49748-75dba888\\versions\\1.0.0\\SKILL.md:63",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-1e2793e3-75dba888\\SKILL.md:58",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-1e2793e3-75dba888\\SKILL.md:59",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-1e2793e3-75dba888\\SKILL.md:60",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-1e2793e3-75dba888\\SKILL.md:61",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-1e2793e3-75dba888\\SKILL.md:62",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-1e2793e3-75dba888\\SKILL.md:63",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-1e2793e3-75dba888\\SKILL.md:64",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-1e2793e3-75dba888\\versions\\1.0.0\\SKILL.md:58",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-1e2793e3-75dba888\\versions\\1.0.0\\SKILL.md:59",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-1e2793e3-75dba888\\versions\\1.0.0\\SKILL.md:60",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-1e2793e3-75dba888\\versions\\1.0.0\\SKILL.md:61",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-1e2793e3-75dba888\\versions\\1.0.0\\SKILL.md:62",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-1e2793e3-75dba888\\versions\\1.0.0\\SKILL.md:63",
+      "severity": "warning"
+    },
+    {
+      "code": "unmarked-statement",
+      "message": "可执行陈述未标注 Evidence 或 engine_policy。",
+      "path": "05_Knowledge\\Skills\\apply-source-method-1e2793e3-75dba888\\versions\\1.0.0\\SKILL.md:64",
+      "severity": "warning"
+    }
+  ],
+  "vault_write_status": "atomic_formal_asset_write",
+  "work_dir": "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable",
+  "written_paths": [
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\06_Sources\\Books\\股票大作手回忆录--75dba888e796\\originals\\75dba888e796--股票大作手回忆录.azw3",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\06_Sources\\Books\\股票大作手回忆录--75dba888e796\\conversions\\d563d127872852958eb4b6e311258407b5865229e0eb52342963c113ad0a25e3\\SOURCE_TEXT.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\06_Sources\\Books\\股票大作手回忆录--75dba888e796\\conversions\\d563d127872852958eb4b6e311258407b5865229e0eb52342963c113ad0a25e3\\EVIDENCE_CATALOG.json",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\06_Sources\\Books\\股票大作手回忆录--75dba888e796\\conversions\\d563d127872852958eb4b6e311258407b5865229e0eb52342963c113ad0a25e3\\CONVERSION.json",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\06_Sources\\Books\\股票大作手回忆录--75dba888e796\\conversions\\d563d127872852958eb4b6e311258407b5865229e0eb52342963c113ad0a25e3\\BOOK_OVERVIEW.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\06_Sources\\Books\\股票大作手回忆录--75dba888e796\\conversions\\d563d127872852958eb4b6e311258407b5865229e0eb52342963c113ad0a25e3\\DIGEST.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cards\\股票大作手回忆录--75dba888\\01-前言.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cards\\股票大作手回忆录--75dba888\\02-股票大作手回忆录.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cards\\股票大作手回忆录--75dba888\\03-Contents.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cards\\股票大作手回忆录--75dba888\\04-一.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cards\\股票大作手回忆录--75dba888\\05-二.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cards\\股票大作手回忆录--75dba888\\06-三.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cards\\股票大作手回忆录--75dba888\\07-四.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cards\\股票大作手回忆录--75dba888\\08-五.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cards\\股票大作手回忆录--75dba888\\09-六.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cards\\股票大作手回忆录--75dba888\\10-七.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cards\\股票大作手回忆录--75dba888\\11-八.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cards\\股票大作手回忆录--75dba888\\12-九.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cards\\股票大作手回忆录--75dba888\\13-修订版补记.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cards\\股票大作手回忆录--75dba888\\14-一 小后生抄价格悟出行情模式.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cards\\股票大作手回忆录--75dba888\\15-二 首战纽约遭挫败，对赌行里找本钱.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cards\\股票大作手回忆录--75dba888\\16-三 再遭执行价偏差重挫，5万美元得而复失.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cards\\股票大作手回忆录--75dba888\\17-四 回老家“疗伤”反省，再战对赌行.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cards\\股票大作手回忆录--75dba888\\18-五 大势！大势！大势！.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cards\\股票大作手回忆录--75dba888\\19-六 神奇直觉来自交易灵感.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cards\\股票大作手回忆录--75dba888\\20-七 顺势步步为营的建仓方式.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“您这么说.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Anonymous insider tips are unreliable for trading.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--无论.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--报告显示这.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“你的弱点.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Counterparty-imposed trading constraints.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“的确.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--��������ʵı���.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--我想知道最后两笔1000股的卖单他们给我做的成交价.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--����Ʊ�����ֻ���¼���ĳ���.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--我持有的合约卖方.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Unforeseeable intervention risk.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--看起来似乎这.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--集团社址 南京市湖南路1号A楼，邮编.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--另一种常见的推销伎俩.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“你说玩一把.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--����������Ī���Ľ�������.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--我从来都.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--我开始为交易.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--�½ڱ�����ⶨԭ��.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Conversion method.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“我.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“我也.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--我给巴恩斯的答复.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Market history and trading recurrence.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--他们还.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“这正.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--他告诉我.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--普伦蒂斯和我曾经.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Incremental position building in a rising market.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--我来佛罗里达.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“没干！绝对.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Contrarian positioning amid crowded short selling.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Stock splits can be used as a sales tactic.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--A stock pool can coordinate sale timing.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Stopping sales and buying shares during systemic stress.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--(1) 华盛顿生辰纪念日.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--埃尔默·哈伍德两手思得高高的，摇着脑袋，走到我这边，寻求我的同情.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--如果不.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Market-timing discipline.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--然而，他一个劲反复叨唠.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--�м��˳�ԭ��.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--勒菲弗曾经.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--这样的场面屡见不鲜，内部人跑去找到经纪公司的头头，对他说.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--等那位客户讲完故事、诉说了自己的困惑，接着问他.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--我断定只.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--�г����ֲ���ʱ�˳�.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Market timing.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“这不.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--(3) 当时股票的最小报价单位.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--����ͻ�ƺ���볡�ȴ�.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--�г��������ʽ������ϵ.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Concentrated shareholdings can impede an orderly sale.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“但你.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--�г�����ת����Ԥ���ź�.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--我之所以保持沉默并不.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Market evidence over assumptions.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--��������Ǿ����ź�.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--利弗莫尔曾经.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--集团网址 http.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--���յĻز�����.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--实际上所有的大债权人都.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--阅读行情纸带不过.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--公众应当牢记.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Indirect pressure through related securities.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--����̯ƽ����ͷ��.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Trade with the prevailing market trend.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--���ھ���Ľ����ж�.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“真.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“教训这伙恶棍的唯一办法.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--那天下午2.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“我还.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--我知道他应该.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--经纪人冲出去执行.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“我那位朋友.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Lesson from abandoning personal judgment.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“动用准备！这正.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Large-position exit requires available market liquidity.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--����ƽ�������������ҵ.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Execution latency and market impact.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--好好想想看！如果你对经纪商营业厅里的普通客户有所了解，你就会同意我的下列看法.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Susceptibility to persuasive influence.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--金钱的损失对我的影响从来都.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Reserve funds used to support the stock market.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--�г��ṩ������Ϊ����.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--�Ӵ�����ѧϰ.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Intuition-guided trading decision.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--我不.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“我确实？那还有假！你以为我.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--˳�ƽ���.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“这就.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--�г�������Σ��.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--�г������뾺���Աƿյ�����.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--���߶��޶��ķ���.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--�������������˳����ֲ�.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--��С����·������ԭ��.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“这些都.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--�ʽ�������������ж�.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--ϣ����־��Ӿ����.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--conversionscope.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--ͼ�������ľ���.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--一天早晨开市之前，当我到达城里的时候，丹·威廉森把我叫到他的私人办公室，对我说.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“什么？你.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--讽刺的.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--我的任务其实很简单，我本该从我在富勒顿公司最初的挫折和反复之中早就领悟出来.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--���׹������г�����.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--第三位.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Ͱ��Ľṹ�Խ�������.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--�г����ƶԹ�Ʊ�����ɰܵ�Ӱ��.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--������ֹ��.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--�������г����������ĺ��ĸ���.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“你真.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--关键.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--sourcesha256.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--这伙发行人的第一个错误.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--ISBN.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--�г���Ϊ��Ϊ�����ź�.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--�˷����������ǽ�������.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--打高尔夫当然.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“你的意思.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“那只股票行情.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--图附录一 利弗莫尔的时代道琼斯工业.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“500美元的三分之一.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--市场不.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--�����г�����Ӱ���������.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--�޶�������ݵ���.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“当然.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--他说他很遗憾我.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--这话说的.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--����ʶ���뼰ʱ�ж�.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--sourcepath.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--基恩的铁杆亲信之一——他.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--kindleunpackversion.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--那一阵华尔街上人们想的、谈的全.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“我不知道亏钱.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“你的意思不.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“那你工作.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“我不.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Market-response testing.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--我还记得有一天.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--����������Ϣ���󵼷���.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Price controls can disrupt market outcomes.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--����ϵͳ���г�����ƥ��.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Cut losses and retain winners.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--这里还想.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Rejecting stock tips.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--我的意思并不.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--���ĵȴ�ȷ�ϵĽ���ʱ��.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--唯一的解释只能.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--观察、经验、记忆和数学——这些方面.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Market liquidity can disappear during panic.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--这些半瓶子醋的肥羊.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“难道不.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--类似这样的经历恰恰正.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--我做的第一件事.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--南京市中央路165号，邮编.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Trend-aligned trading conviction.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“根本不.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--图附录二 道琼斯工业.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--大都会算.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“当然不.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--金钱的损失对我来说不.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Management frugality as an operating signal.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--������ʷ�۸�ģʽ��Ԥ�ڼ���.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--现在我再问你.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--但是他反驳道.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--坎迈克当时.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--十六 对贴士执迷不悟.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Debt and gratitude can constrain trading.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“就.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--��������֧�ųֲ�.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--�������µ������ڿ�ͷ��ѹ������.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Market rumors can attract follow-on buying.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--想想看！发行人本来.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--���ļ�ֽ�������.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Independent investigation.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--��Ļ�����빫�����µĲ��Գ�.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--我朋友只来了这么一句.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--大约.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“什么.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--����Ʊ�����ֻ���¼��.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Family financial protection.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--������Ϊ�ȲƸ�������ֵ�ý��.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“要的就.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Separate directional judgment from entry timing.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--�Ƹ�ִ��Ӱ�콻������.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Market trend.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--如果.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--老韦斯特莱克.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--告诉别人我.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--title.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--����Ͷ�������ǣ��.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“是不.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--利文斯顿太太凝视着报价板上不断下跌的股票价格，哀叫起来.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“到底.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--�����е�������֪�����.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“意思.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“我到现在还不明白你.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--下一天.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--这只.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--我明白到底.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“那.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--�����еĳֹɷֲ�.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Using cross-market trades to facilitate a short-covering exit.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Independent trading judgment.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--֤ȯ�������г�Ŀ��.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“我知道你是这么说的，我的朋友，”执事心平气和，回身吩咐经纪人.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--�۸���Ϊ������ԭ�����.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--你观察市场——即，观察行情纸带记录的价格轨迹——的目的只有一个.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Market facts should guide trading decisions.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--��Ϊ��Ҫͨ������У��.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--（本书凡印装错误可向承印厂调换，电话.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--他的财富得失.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--莱因哈特先生不仅强硬地否认了所有的质疑，而且进一步强调.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Edwin Lef��vre.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--阿纳康达公司只.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--��������Դ�ڽ��׾�����ܽ�.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Base market views on independent analysis of facts.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--问题不在于我.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Brokerage relationship used as market camouflage.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--我之所以这么说的原因.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--converter.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Market psychology shapes news reactions.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--�����г������ж���ֲ�.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Avoid adding to a losing initial trade.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--�����еĻ���ԭ��.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--新公司的董事们都.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--为什么公众不问一问到底为什么该股票需要通过拆细来促销呢？这又.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Risk of deviating from trading rules.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Ͷ�����������ظ���.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“他不.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“它也不总.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--他双目圆睁瞪着我足有5秒钟，然后暴发了.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--�г�����սʤ.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--“您工作的目的就只.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--这可能.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Attribution can increase accountability for market statements.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--对于市场到底属于牛市还.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--股票大作手回忆录／（美）勒菲弗著；丁圣元译．--修订本．--南京.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--kindleunpackcommit.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Independent judgment in speculation.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--�ӿ�����ѧϰ���׹���.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--我清楚地记得自己当初.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--��ʵ�����ĸ�����.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--ӯ��ȷ�Ϻ��𲽼Ӳ�.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--�����������볡ʱ��.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--请看仔细.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--Market-trend trading candidate.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Concepts\\股票大作手回忆录--75dba888--内部人在市场下跌过程中卖出.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Methods\\股票大作手回忆录--75dba888--研究与买进的风险执行方法--6c7a7c1a.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Methods\\股票大作手回忆录--75dba888--卖出与买进的风险执行方法--32b07fb8.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Methods\\股票大作手回忆录--75dba888--研究与卖出的风险控制方法--c5deaa43.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Methods\\股票大作手回忆录--75dba888--预期与观察的决策分析方法--c3670d24.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Methods\\股票大作手回忆录--75dba888--卖出与买入的执行行动方法--991b3e11.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cases\\股票大作手回忆录--75dba888--一 小后生抄价格悟出行情模式示例1.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cases\\股票大作手回忆录--75dba888--一 小后生抄价格悟出行情模式示例2.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cases\\股票大作手回忆录--75dba888--一 小后生抄价格悟出行情模式示例3.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cases\\股票大作手回忆录--75dba888--二 首战纽约遭挫败，对赌行里找本钱示例4.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cases\\股票大作手回忆录--75dba888--二 首战纽约遭挫败，对赌行里找本钱示例5.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cases\\股票大作手回忆录--75dba888--三 再遭执行价偏差重挫，5万美元得而复失示例6.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cases\\股票大作手回忆录--75dba888--四 回老家“疗伤”反省，再战对赌行示例7.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cases\\股票大作手回忆录--75dba888--四 回老家“疗伤”反省，再战对赌行示例8.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cases\\股票大作手回忆录--75dba888--五 大势！大势！大势！示例9.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cases\\股票大作手回忆录--75dba888--五 大势！大势！大势！示例10.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cases\\股票大作手回忆录--75dba888--五 大势！大势！大势！示例11.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cases\\股票大作手回忆录--75dba888--六 神奇直觉来自交易灵感示例12.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cases\\股票大作手回忆录--75dba888--八 时机！时机！时机！示例13.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cases\\股票大作手回忆录--75dba888--十 市场最小阻力路线初显的关键时刻示例14.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cases\\股票大作手回忆录--75dba888--十 市场最小阻力路线初显的关键时刻示例15.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cases\\股票大作手回忆录--75dba888--十一 声东击西，唯变所适示例16.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cases\\股票大作手回忆录--75dba888--十二 说客巧舌如簧蒙蔽主见，巨资数百万尽付东流示例17.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cases\\股票大作手回忆录--75dba888--十二 说客巧舌如簧蒙蔽主见，巨资数百万尽付东流示例18.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cases\\股票大作手回忆录--75dba888--十三 无良资本家巧计羁绊，痛失翻本良机示例19.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cases\\股票大作手回忆录--75dba888--十三 无良资本家巧计羁绊，痛失翻本良机示例20.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cases\\股票大作手回忆录--75dba888--十四 行情惨淡债务缠身，苦熬五年东山再起示例21.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cases\\股票大作手回忆录--75dba888--十四 行情惨淡债务缠身，苦熬五年东山再起示例22.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cases\\股票大作手回忆录--75dba888--十四 行情惨淡债务缠身，苦熬五年东山再起示例23.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cases\\股票大作手回忆录--75dba888--十七 敬慎不败、当机立断，养成职业本能示例24.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Cases\\股票大作手回忆录--75dba888--十九 卖空与逼空——史上有名的市场操纵案例.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Skills\\apply-source-method-0ad14ea3-75dba888\\SKILL.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Skills\\apply-source-method-0ad14ea3-75dba888\\agents\\openai.yaml",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Skills\\apply-source-method-0ad14ea3-75dba888\\references\\evidence.json",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Skills\\apply-source-method-0ad14ea3-75dba888\\versions\\1.0.0\\SKILL.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Skills\\apply-source-method-0ad14ea3-75dba888\\versions\\1.0.0\\agents\\openai.yaml",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Skills\\apply-source-method-0ad14ea3-75dba888\\versions\\1.0.0\\references\\evidence.json",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Skills\\apply-source-method-0ad14ea3-75dba888\\versions\\1.0.0\\VERSION.json",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Skills\\apply-source-method-1da49748-75dba888\\SKILL.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Skills\\apply-source-method-1da49748-75dba888\\agents\\openai.yaml",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Skills\\apply-source-method-1da49748-75dba888\\references\\evidence.json",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Skills\\apply-source-method-1da49748-75dba888\\versions\\1.0.0\\SKILL.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Skills\\apply-source-method-1da49748-75dba888\\versions\\1.0.0\\agents\\openai.yaml",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Skills\\apply-source-method-1da49748-75dba888\\versions\\1.0.0\\references\\evidence.json",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Skills\\apply-source-method-1da49748-75dba888\\versions\\1.0.0\\VERSION.json",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Skills\\apply-source-method-1e2793e3-75dba888\\SKILL.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Skills\\apply-source-method-1e2793e3-75dba888\\agents\\openai.yaml",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Skills\\apply-source-method-1e2793e3-75dba888\\references\\evidence.json",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Skills\\apply-source-method-1e2793e3-75dba888\\versions\\1.0.0\\SKILL.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Skills\\apply-source-method-1e2793e3-75dba888\\versions\\1.0.0\\agents\\openai.yaml",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Skills\\apply-source-method-1e2793e3-75dba888\\versions\\1.0.0\\references\\evidence.json",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Skills\\apply-source-method-1e2793e3-75dba888\\versions\\1.0.0\\VERSION.json",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\06_Sources\\Books\\股票大作手回忆录--75dba888e796\\conversions\\d563d127872852958eb4b6e311258407b5865229e0eb52342963c113ad0a25e3\\SOURCE_IDENTITY.json",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\06_Sources\\Books\\股票大作手回忆录--75dba888e796\\conversions\\d563d127872852958eb4b6e311258407b5865229e0eb52342963c113ad0a25e3\\STRUCTURE_NORMALIZATION.json",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\06_Sources\\Books\\股票大作手回忆录--75dba888e796\\conversions\\d563d127872852958eb4b6e311258407b5865229e0eb52342963c113ad0a25e3\\CONCEPT_CANONICALIZATION.json",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\06_Sources\\Books\\股票大作手回忆录--75dba888e796\\conversions\\d563d127872852958eb4b6e311258407b5865229e0eb52342963c113ad0a25e3\\KNOWLEDGE_SYNTHESIS.json",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\06_Sources\\Books\\股票大作手回忆录--75dba888e796\\conversions\\d563d127872852958eb4b6e311258407b5865229e0eb52342963c113ad0a25e3\\DISTILLATION_MANIFEST.json",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Skills\\REGISTRY_V3.json",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Skills\\Skill-Registry-V3.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Graph\\concept-graph.v3.json",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Graph\\Concept-Graph-V3.md",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Skills\\SYNTHESIS_PROPOSALS.json",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\06_Sources\\Books\\SOURCE_INDEX.json",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\05_Knowledge\\Audit\\ASSET_LEDGER.json",
+    "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-stock-operator-resumable\\vault\\.knowledge-engine\\STATE.json"
+  ]
+}

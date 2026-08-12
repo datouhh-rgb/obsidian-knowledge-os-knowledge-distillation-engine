@@ -37,7 +37,7 @@ jobs:
         env:
           MATRIX_OS: ${{ matrix.os }}
           MATRIX_PYTHON: ${{ matrix.python }}
-        run: python scripts/final_production_check.py --local-only --skip-tests --json-out .ci-evidence/engine-job.json
+        run: python scripts/final_production_check.py --local-only --json-out .ci-evidence/engine-job.json
       - name: Build immutable job evidence
         if: always()
         shell: bash

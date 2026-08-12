@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+from contextlib import nullcontext
 import json
 import tempfile
 from datetime import datetime, timezone
@@ -31,6 +32,10 @@ def main() -> int:
     parser.add_argument("--model", default="gpt-5.6-terra")
     parser.add_argument("--reasoning", default="low")
     parser.add_argument("--chunk-chars", type=int, default=30_000)
+    parser.add_argument(
+        "--work-dir", type=Path,
+        help="Retain a disposable Vault and its content-addressed extraction cache for safe resume.",
+    )
     args = parser.parse_args()
     source = args.source_pdf.resolve()
     wrapper = args.pdf_wrapper.resolve()
@@ -45,10 +50,16 @@ def main() -> int:
         timeout=330, model=args.model,
         config={"reasoning": args.reasoning, "evidence_protocol": "selected-indexes-only"},
     )
-    with tempfile.TemporaryDirectory(prefix="v33-cognitive-awakening-") as temporary:
+    if args.work_dir:
+        work_root = args.work_dir.resolve()
+        work_root.mkdir(parents=True, exist_ok=True)
+        workspace = nullcontext(str(work_root))
+    else:
+        workspace = tempfile.TemporaryDirectory(prefix="v33-cognitive-awakening-")
+    with workspace as temporary:
         vault = Path(temporary) / "vault"
-        (vault / "05_Knowledge").mkdir(parents=True)
-        (vault / "06_Sources").mkdir()
+        (vault / "05_Knowledge").mkdir(parents=True, exist_ok=True)
+        (vault / "06_Sources").mkdir(exist_ok=True)
         pipeline = DistillationPipeline(
             vault,
             provider=HybridAnalyzerProvider(LLMAnalyzerProvider(transport)),
@@ -99,7 +110,7 @@ def main() -> int:
         audit = {
             "schema_version": 1, "engine_version": "3.3.0",
             "book": "认知觉醒", "started_at": started, "finished_at": now(),
-            "mode": "real-pdf-markitdown-codex-llm-temporary-vault",
+            "mode": "real-pdf-markitdown-codex-llm-disposable-resumable-vault",
             "source_path": str(source), "source_sha256": source_hash_before,
             "pdf_converter": "Microsoft MarkItDown", "pdf_wrapper": str(wrapper),
             "conversion_status": "ok" if conversion else "missing",
@@ -121,7 +132,9 @@ def main() -> int:
             "skill_statuses": statuses, "graph_edge_types": sorted(edge_types),
             "portable_validation": portable,
             "model": args.model, "reasoning": args.reasoning,
-            "live_vault_opened": False, "temporary_vault_deleted_after_run": True,
+            "live_vault_opened": False,
+            "work_dir": str(Path(temporary).resolve()),
+            "temporary_vault_deleted_after_run": not bool(args.work_dir),
             "checks": checks,
             "status": "passed" if all(checks.values()) else "blocked",
             "blockers": [name for name, passed in checks.items() if not passed],

@@ -1,0 +1,274 @@
+..F..................................................EEEEE.............. [ 53%]
+..........................s....................................          [100%]
+=================================== ERRORS ====================================
+_________________ ERROR at setup of test_codex_skill_exposure _________________
+
+    @pytest.fixture(scope="session")
+    def real_codex_audit() -> dict[str, Any]:
+        assert EVIDENCE.is_file(), (
+            "Real Codex evidence is missing. Run scripts/run_v33_real_codex_integration.py; "
+            "unit fixtures and mock discovery are not accepted."
+        )
+        payload = json.loads(EVIDENCE.read_text(encoding="utf-8"))
+        assert payload["mode"] == "real-codex-cli-disposable-vault-strict-transcript-revalidation-no-mocks"
+>       assert payload["status"] == "passed", payload.get("blockers")
+E       AssertionError: ['approved_after_review', 'codex_discovery', 'codex_explicit_call', 'trigger_positive']
+E       assert 'blocked' == 'passed'
+E         
+E         - passed
+E         + blocked
+
+tests\test_real_codex_integration\conftest.py:31: AssertionError
+_________________ ERROR at setup of test_codex_skill_metadata _________________
+
+    @pytest.fixture(scope="session")
+    def real_codex_audit() -> dict[str, Any]:
+        assert EVIDENCE.is_file(), (
+            "Real Codex evidence is missing. Run scripts/run_v33_real_codex_integration.py; "
+            "unit fixtures and mock discovery are not accepted."
+        )
+        payload = json.loads(EVIDENCE.read_text(encoding="utf-8"))
+        assert payload["mode"] == "real-codex-cli-disposable-vault-strict-transcript-revalidation-no-mocks"
+>       assert payload["status"] == "passed", payload.get("blockers")
+E       AssertionError: ['approved_after_review', 'codex_discovery', 'codex_explicit_call', 'trigger_positive']
+E       assert 'blocked' == 'passed'
+E         
+E         - passed
+E         + blocked
+
+tests\test_real_codex_integration\conftest.py:31: AssertionError
+______________ ERROR at setup of test_codex_explicit_skill_call _______________
+
+    @pytest.fixture(scope="session")
+    def real_codex_audit() -> dict[str, Any]:
+        assert EVIDENCE.is_file(), (
+            "Real Codex evidence is missing. Run scripts/run_v33_real_codex_integration.py; "
+            "unit fixtures and mock discovery are not accepted."
+        )
+        payload = json.loads(EVIDENCE.read_text(encoding="utf-8"))
+        assert payload["mode"] == "real-codex-cli-disposable-vault-strict-transcript-revalidation-no-mocks"
+>       assert payload["status"] == "passed", payload.get("blockers")
+E       AssertionError: ['approved_after_review', 'codex_discovery', 'codex_explicit_call', 'trigger_positive']
+E       assert 'blocked' == 'passed'
+E         
+E         - passed
+E         + blocked
+
+tests\test_real_codex_integration\conftest.py:31: AssertionError
+_______________ ERROR at setup of test_codex_trigger_precision ________________
+
+    @pytest.fixture(scope="session")
+    def real_codex_audit() -> dict[str, Any]:
+        assert EVIDENCE.is_file(), (
+            "Real Codex evidence is missing. Run scripts/run_v33_real_codex_integration.py; "
+            "unit fixtures and mock discovery are not accepted."
+        )
+        payload = json.loads(EVIDENCE.read_text(encoding="utf-8"))
+        assert payload["mode"] == "real-codex-cli-disposable-vault-strict-transcript-revalidation-no-mocks"
+>       assert payload["status"] == "passed", payload.get("blockers")
+E       AssertionError: ['approved_after_review', 'codex_discovery', 'codex_explicit_call', 'trigger_positive']
+E       assert 'blocked' == 'passed'
+E         
+E         - passed
+E         + blocked
+
+tests\test_real_codex_integration\conftest.py:31: AssertionError
+_____________ ERROR at setup of test_codex_bad_description_block ______________
+
+    @pytest.fixture(scope="session")
+    def real_codex_audit() -> dict[str, Any]:
+        assert EVIDENCE.is_file(), (
+            "Real Codex evidence is missing. Run scripts/run_v33_real_codex_integration.py; "
+            "unit fixtures and mock discovery are not accepted."
+        )
+        payload = json.loads(EVIDENCE.read_text(encoding="utf-8"))
+        assert payload["mode"] == "real-codex-cli-disposable-vault-strict-transcript-revalidation-no-mocks"
+>       assert payload["status"] == "passed", payload.get("blockers")
+E       AssertionError: ['approved_after_review', 'codex_discovery', 'codex_explicit_call', 'trigger_positive']
+E       assert 'blocked' == 'passed'
+E         
+E         - passed
+E         + blocked
+
+tests\test_real_codex_integration\conftest.py:31: AssertionError
+================================== FAILURES ===================================
+_________ test_editable_install_runs_suite_and_local_production_check _________
+
+tmp_path = WindowsPath('C:/Users/ThinkPad/AppData/Local/Temp/pytest-of-ThinkPad/pytest-1005/test_editable_install_runs_sui0')
+
+    def test_editable_install_runs_suite_and_local_production_check(tmp_path: Path) -> None:
+        """Prove the release works from a clean venv without source-path injection."""
+    
+        venv_root = tmp_path / "clean-venv"
+        outside = tmp_path / "outside-source-tree"
+        outside.mkdir()
+        venv.EnvBuilder(with_pip=True).create(venv_root)
+        python = _python(venv_root)
+    
+        _run(
+            [str(python), "-m", "pip", "install", "-e", str(PROJECT_ROOT)],
+            cwd=outside,
+            timeout=600,
+        )
+        _run(
+            [
+                str(python),
+                "-c",
+                "import knowledge_engine, scripts; "
+                "assert knowledge_engine.__file__; assert scripts.__file__",
+            ],
+            cwd=outside,
+            timeout=60,
+        )
+>       _run(
+            [
+                str(python), "-m", "pytest", "-q",
+                "--ignore=tests/test_clean_install_environment.py",
+            ],
+            cwd=PROJECT_ROOT,
+            timeout=1200,
+        )
+
+tests\test_clean_install_environment.py:64: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+command = ['C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\pytest-of-ThinkPad\\pytest-1005\\test_editable_install_runs_sui0\\clean-venv\\Scripts\\python.exe', '-m', 'pytest', '-q', '--ignore=tests/test_clean_install_environment.py']
+cwd = WindowsPath('C:/Users/ThinkPad/Documents/Codex/2026-08-10/yaml-obsidian-knowledge-os-book-distiller/work/knowledge-distillation-engine-v3.2.0-build')
+timeout = 1200
+
+    def _run(command: list[str], *, cwd: Path, timeout: int) -> subprocess.CompletedProcess[str]:
+        environment = os.environ.copy()
+        environment.pop("PYTHONPATH", None)
+        environment["PIP_DISABLE_PIP_VERSION_CHECK"] = "1"
+        completed = subprocess.run(
+            command,
+            cwd=cwd,
+            env=environment,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            timeout=timeout,
+            check=False,
+        )
+>       assert completed.returncode == 0, (
+            f"command failed ({completed.returncode}): {subprocess.list2cmdline(command)}\n"
+            f"stdout:\n{completed.stdout}\nstderr:\n{completed.stderr}"
+        )
+E       AssertionError: command failed (1): C:\Users\ThinkPad\AppData\Local\Temp\pytest-of-ThinkPad\pytest-1005\test_editable_install_runs_sui0\clean-venv\Scripts\python.exe -m pytest -q --ignore=tests/test_clean_install_environment.py
+E         stdout:
+E         ....................................................EEEEE............... [ 53%]
+E         .........................s....................................           [100%]
+E         =================================== ERRORS ====================================
+E         _________________ ERROR at setup of test_codex_skill_exposure _________________
+E         
+E             @pytest.fixture(scope="session")
+E             def real_codex_audit() -> dict[str, Any]:
+E                 assert EVIDENCE.is_file(), (
+E                     "Real Codex evidence is missing. Run scripts/run_v33_real_codex_integration.py; "
+E                     "unit fixtures and mock discovery are not accepted."
+E                 )
+E                 payload = json.loads(EVIDENCE.read_text(encoding="utf-8"))
+E                 assert payload["mode"] == "real-codex-cli-disposable-vault-strict-transcript-revalidation-no-mocks"
+E         >       assert payload["status"] == "passed", payload.get("blockers")
+E         E       AssertionError: ['approved_after_review', 'codex_discovery', 'codex_explicit_call', 'trigger_positive']
+E         E       assert 'blocked' == 'passed'
+E         E         
+E         E         - passed
+E         E         + blocked
+E         
+E         tests\test_real_codex_integration\conftest.py:31: AssertionError
+E         _________________ ERROR at setup of test_codex_skill_metadata _________________
+E         
+E             @pytest.fixture(scope="session")
+E             def real_codex_audit() -> dict[str, Any]:
+E                 assert EVIDENCE.is_file(), (
+E                     "Real Codex evidence is missing. Run scripts/run_v33_real_codex_integration.py; "
+E                     "unit fixtures and mock discovery are not accepted."
+E                 )
+E                 payload = json.loads(EVIDENCE.read_text(encoding="utf-8"))
+E                 assert payload["mode"] == "real-codex-cli-disposable-vault-strict-transcript-revalidation-no-mocks"
+E         >       assert payload["status"] == "passed", payload.get("blockers")
+E         E       AssertionError: ['approved_after_review', 'codex_discovery', 'codex_explicit_call', 'trigger_positive']
+E         E       assert 'blocked' == 'passed'
+E         E         
+E         E         - passed
+E         E         + blocked
+E         
+E         tests\test_real_codex_integration\conftest.py:31: AssertionError
+E         ______________ ERROR at setup of test_codex_explicit_skill_call _______________
+E         
+E             @pytest.fixture(scope="session")
+E             def real_codex_audit() -> dict[str, Any]:
+E                 assert EVIDENCE.is_file(), (
+E                     "Real Codex evidence is missing. Run scripts/run_v33_real_codex_integration.py; "
+E                     "unit fixtures and mock discovery are not accepted."
+E                 )
+E                 payload = json.loads(EVIDENCE.read_text(encoding="utf-8"))
+E                 assert payload["mode"] == "real-codex-cli-disposable-vault-strict-transcript-revalidation-no-mocks"
+E         >       assert payload["status"] == "passed", payload.get("blockers")
+E         E       AssertionError: ['approved_after_review', 'codex_discovery', 'codex_explicit_call', 'trigger_positive']
+E         E       assert 'blocked' == 'passed'
+E         E         
+E         E         - passed
+E         E         + blocked
+E         
+E         tests\test_real_codex_integration\conftest.py:31: AssertionError
+E         _______________ ERROR at setup of test_codex_trigger_precision ________________
+E         
+E             @pytest.fixture(scope="session")
+E             def real_codex_audit() -> dict[str, Any]:
+E                 assert EVIDENCE.is_file(), (
+E                     "Real Codex evidence is missing. Run scripts/run_v33_real_codex_integration.py; "
+E                     "unit fixtures and mock discovery are not accepted."
+E                 )
+E                 payload = json.loads(EVIDENCE.read_text(encoding="utf-8"))
+E                 assert payload["mode"] == "real-codex-cli-disposable-vault-strict-transcript-revalidation-no-mocks"
+E         >       assert payload["status"] == "passed", payload.get("blockers")
+E         E       AssertionError: ['approved_after_review', 'codex_discovery', 'codex_explicit_call', 'trigger_positive']
+E         E       assert 'blocked' == 'passed'
+E         E         
+E         E         - passed
+E         E         + blocked
+E         
+E         tests\test_real_codex_integration\conftest.py:31: AssertionError
+E         _____________ ERROR at setup of test_codex_bad_description_block ______________
+E         
+E             @pytest.fixture(scope="session")
+E             def real_codex_audit() -> dict[str, Any]:
+E                 assert EVIDENCE.is_file(), (
+E                     "Real Codex evidence is missing. Run scripts/run_v33_real_codex_integration.py; "
+E                     "unit fixtures and mock discovery are not accepted."
+E                 )
+E                 payload = json.loads(EVIDENCE.read_text(encoding="utf-8"))
+E                 assert payload["mode"] == "real-codex-cli-disposable-vault-strict-transcript-revalidation-no-mocks"
+E         >       assert payload["status"] == "passed", payload.get("blockers")
+E         E       AssertionError: ['approved_after_review', 'codex_discovery', 'codex_explicit_call', 'trigger_positive']
+E         E       assert 'blocked' == 'passed'
+E         E         
+E         E         - passed
+E         E         + blocked
+E         
+E         tests\test_real_codex_integration\conftest.py:31: AssertionError
+E         =========================== short test summary info ===========================
+E         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_skill_exposure
+E         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_skill_metadata
+E         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_explicit_skill_call
+E         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_trigger_precision
+E         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_bad_description_block
+E         128 passed, 1 skipped, 5 errors in 101.07s (0:01:41)
+E         
+E         stderr:
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\pytest-of-ThinkPad\\pytest-1005\\test_editable_inst...x_integration.py::test_codex_bad_description_block\n128 passed, 1 skipped, 5 errors in 101.07s (0:01:41)\n', stderr='').returncode
+
+tests\test_clean_install_environment.py:33: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_clean_install_environment.py::test_editable_install_runs_suite_and_local_production_check
+ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_skill_exposure
+ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_skill_metadata
+ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_explicit_skill_call
+ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_trigger_precision
+ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_bad_description_block
+1 failed, 128 passed, 1 skipped, 5 errors in 244.18s (0:04:04)

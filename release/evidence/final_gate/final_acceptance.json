@@ -10,7 +10,7 @@
     },
     {
       "item": "cognitive_awakening_regression",
-      "reason": "failed checks: atomic_vault_commit, evidence_catalog_written, pipeline_completed, portable_evidence_selection"
+      "reason": "failed checks: atomic_vault_commit, evidence_catalog_written, pipeline_completed"
     }
   ],
   "checks": [
@@ -170,7 +170,7 @@
       "name": "cognitive_awakening_regression",
       "passed": false,
       "pipeline_status": "blocked",
-      "reason": "failed checks: atomic_vault_commit, evidence_catalog_written, pipeline_completed, portable_evidence_selection",
+      "reason": "failed checks: atomic_vault_commit, evidence_catalog_written, pipeline_completed",
       "run_id": "run-0762d8c86ba886ba8bcba322",
       "source_id": "db48eecb044ede32061660722051a87540cf8f8cb907b2fde860719141ff2734"
     },
@@ -181,7 +181,7 @@
     }
   ],
   "engine_version": "3.3.0",
-  "generated_at": "2026-08-12T10:34:04+08:00",
+  "generated_at": "2026-08-12T12:30:31+08:00",
   "schema_version": 1,
   "status": "blocked"
 }

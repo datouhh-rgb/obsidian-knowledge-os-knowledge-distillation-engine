@@ -156,18 +156,25 @@ def regression_check(name: str, path: Path) -> dict[str, Any]:
 def release_layout_check() -> dict[str, Any]:
     required = [
         "release/FINAL_ACCEPTANCE_REPORT.md", "release/CI_REPORT.md",
-        "release/CODEX_REAL_TEST_REPORT.md", "release/MANIFEST.sha256",
-        "history/V3.1_Audit", "history/V3.2_Audit", "history/Failed_Regression_Cases",
+        "release/CODEX_DISCOVERY_REPORT.md", "release/CODEX_EXPLICIT_CALL_REPORT.md",
+        "release/CODEX_TRIGGER_EVAL_REPORT.md", "release/BOOK_REGRESSION_REPORT.md",
+        "release/MANIFEST.sha256", "history/V3.1_Audit", "history/V3.2_Audit",
+        "history/V3.3_BLOCKED_Audit", "history/Failed_Regression_Cases",
         "FINAL_PRODUCTION_ACCEPTANCE_REPORT.md",
     ]
     missing = [item for item in required if not (ROOT / item).exists()]
     old_roots = [item for item in ("FINAL_AUDIT_PACK", "FINAL_LTS_AUDIT", "FINAL_PRODUCTION_AUDIT") if (ROOT / item).exists()]
-    passed = not missing and not old_roots
+    legacy_release_items = [
+        item for item in ("release/CODEX_REAL_TEST_REPORT.md", "release/evidence/v33_prior")
+        if (ROOT / item).exists()
+    ]
+    passed = not missing and not old_roots and not legacy_release_items
     return {
         "name": "release_history_isolation", "passed": passed,
         "reason": "; ".join([
             *( ["missing: " + ", ".join(missing)] if missing else [] ),
             *( ["old audit roots remain: " + ", ".join(old_roots)] if old_roots else [] ),
+            *( ["legacy current-release items remain: " + ", ".join(legacy_release_items)] if legacy_release_items else [] ),
         ]),
     }
 
@@ -177,8 +184,8 @@ def main() -> int:
     parser.add_argument("--skip-tests", action="store_true")
     parser.add_argument("--ci-evidence", type=Path)
     parser.add_argument("--codex-evidence", type=Path, default=ROOT / "release/evidence/codex_real_test/codex_real_integration.json")
-    parser.add_argument("--stock-regression", type=Path, default=ROOT / "release/evidence/regressions/stock_operator_v33_regression.json")
-    parser.add_argument("--cognitive-regression", type=Path, default=ROOT / "release/evidence/regressions/cognitive_awakening_v33_regression.json")
+    parser.add_argument("--stock-regression", type=Path, default=ROOT / "release/evidence/regressions/stock_operator_v33_final_patch.json")
+    parser.add_argument("--cognitive-regression", type=Path, default=ROOT / "release/evidence/regressions/cognitive_awakening_v33_final_patch.json")
     parser.add_argument("--json-out", type=Path, default=AUDIT_ROOT / "final_acceptance.json")
     args = parser.parse_args()
     checks: list[dict[str, Any]] = [

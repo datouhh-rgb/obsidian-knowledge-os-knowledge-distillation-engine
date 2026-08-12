@@ -1,0 +1,378 @@
+{
+  "block_reason": "candidate-title: concept 候选标题为空、过短或过长。",
+  "blockers": [
+    "pipeline_completed",
+    "evidence_catalog_written",
+    "atomic_vault_commit"
+  ],
+  "book": "认知觉醒",
+  "checks": {
+    "all_chunks_completed": true,
+    "atomic_vault_commit": false,
+    "evidence_catalog_written": false,
+    "live_vault_untouched": true,
+    "no_auto_approve": true,
+    "no_auto_expose": true,
+    "no_graph_identity_collision": true,
+    "no_project_connection": true,
+    "no_unknown_evidence": true,
+    "pipeline_completed": false,
+    "portable_evidence_selection": true,
+    "source_unchanged": true
+  },
+  "chunk_count": 86,
+  "completed_chunks": 86,
+  "concept_count": 0,
+  "conversion_id": "044729267958dc4755a3bf33a67bb16f5a667079422a62d092d1ba7f2963cf73",
+  "conversion_status": "missing",
+  "conversion_warnings": [],
+  "engine_version": "3.3.0",
+  "evidence_count": 0,
+  "failed_chunk": null,
+  "finished_at": "2026-08-12T12:12:28+08:00",
+  "graph_edge_types": [],
+  "live_vault_opened": false,
+  "method_cluster_count": 0,
+  "mode": "real-pdf-markitdown-codex-llm-disposable-resumable-vault",
+  "model": "gpt-5.6-terra",
+  "pdf_converter": "Microsoft MarkItDown",
+  "pdf_wrapper": "C:\\Users\\ThinkPad\\.agents\\skills\\pdf-markdown\\scripts\\convert_pdf.ps1",
+  "pipeline_status": "blocked",
+  "pipeline_warnings": [
+    "candidate-title: concept 候选标题为空、过短或过长。"
+  ],
+  "portable_validation": {
+    "concept_candidates": 568,
+    "evidence_binding_occurrences": 744,
+    "evidence_selection_candidates": 3254,
+    "expected_unique_extraction_hashes": 49,
+    "failures": [],
+    "observed_unique_extraction_hashes": 49,
+    "passed": true,
+    "portable_payloads_checked": 79,
+    "relation_candidates": 0,
+    "skill_candidates": 0
+  },
+  "reasoning": "low",
+  "run_id": "run-0762d8c86ba886ba8bcba322",
+  "run_status": "completed",
+  "run_warnings": [],
+  "schema_version": 1,
+  "skill_candidate_count": 0,
+  "skill_statuses": [],
+  "source_id": "db48eecb044ede32061660722051a87540cf8f8cb907b2fde860719141ff2734",
+  "source_path": "C:\\Users\\ThinkPad\\Documents\\知识库\\Andy-PKB\\90_Attachments\\PDF\\认知觉醒：开启自我改变的原动力+(周岭)+(Z-Library).pdf",
+  "source_sha256": "db48eecb044ede32061660722051a87540cf8f8cb907b2fde860719141ff2734",
+  "started_at": "2026-08-12T12:00:29+08:00",
+  "status": "blocked",
+  "temporary_vault_deleted_after_run": false,
+  "validation_issues": [
+    {
+      "code": "candidate-title",
+      "message": "concept 候选标题为空、过短或过长。",
+      "path": "则",
+      "severity": "error"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "“写下来”就: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "也就: known discourse/chapter fragment, linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "也就: known discourse/chapter fragment, linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "也就: known discourse/chapter fragment, linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "令人欣慰的: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "体系的本质就: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "作手册，发现所有处置方法的第一步几乎都是一样的: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "其他运动也: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "出舒适区的最好办法就: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "动看书、运动；打发时间的方式就: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "在拉伸区练习的一大特点就: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "尤其值得关注的: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "就拿手机体现的: linguistically incomplete title, definition is a trailing sentence fragment",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "当然辅助工具也: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "影响最大的就: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "待家庭作业”就: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "很多文章就: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "情半途而废就: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "我们没有足够清晰的: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "我会及时纠正她的: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "打卡活动也: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "打破这些悖论的方法就: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "既然做事情就: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "更深一层的: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "的大脑就是这样运行的: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "的就: known discourse/chapter fragment, linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "罗振宇曾提到他是这样学习的: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "读书这件事也: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "费曼技巧的另一个核心就: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "这就: known discourse/chapter fragment, linguistically incomplete title, definition is a trailing sentence fragment",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "这就: known discourse/chapter fragment, linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "这就: known discourse/chapter fragment, linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "这就: known discourse/chapter fragment, linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "这种变化也: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "这道理其实是一样的: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "选择模糊就: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "阿基米德就: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "concept-fragment-rejected",
+      "message": "需要提醒的: linguistically incomplete title",
+      "path": "",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved-concept-conflict-isolated",
+      "message": "same-title semantic conflict; automatic merge refused; all variants were excluded from Method/Skill synthesis.",
+      "path": "concept-conflict-0bf5230d8a45780a8b50aedf",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved-concept-conflict-isolated",
+      "message": "same-title semantic conflict; automatic merge refused; all variants were excluded from Method/Skill synthesis.",
+      "path": "concept-conflict-0ef05ecc89765130fc794045",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved-concept-conflict-isolated",
+      "message": "same-title semantic conflict; automatic merge refused; all variants were excluded from Method/Skill synthesis.",
+      "path": "concept-conflict-188b58e4536df3d94c6efc49",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved-concept-conflict-isolated",
+      "message": "same-title semantic conflict; automatic merge refused; all variants were excluded from Method/Skill synthesis.",
+      "path": "concept-conflict-2856dfa84a2c4bcf67d3f45c",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved-concept-conflict-isolated",
+      "message": "same-title semantic conflict; automatic merge refused; all variants were excluded from Method/Skill synthesis.",
+      "path": "concept-conflict-3f262e15a67ac47246ce3535",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved-concept-conflict-isolated",
+      "message": "same-title semantic conflict; automatic merge refused; all variants were excluded from Method/Skill synthesis.",
+      "path": "concept-conflict-4cf90d939b92c051dfd4242b",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved-concept-conflict-isolated",
+      "message": "same-title semantic conflict; automatic merge refused; all variants were excluded from Method/Skill synthesis.",
+      "path": "concept-conflict-68e2ed4313fe4116b55ca842",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved-concept-conflict-isolated",
+      "message": "same-title semantic conflict; automatic merge refused; all variants were excluded from Method/Skill synthesis.",
+      "path": "concept-conflict-71d70a9846cca9ca5e43810f",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved-concept-conflict-isolated",
+      "message": "same-title semantic conflict; automatic merge refused; all variants were excluded from Method/Skill synthesis.",
+      "path": "concept-conflict-76a06ea0d52181935f179062",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved-concept-conflict-isolated",
+      "message": "same-title semantic conflict; automatic merge refused; all variants were excluded from Method/Skill synthesis.",
+      "path": "concept-conflict-8ae09af937194c647a915273",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved-concept-conflict-isolated",
+      "message": "same-title semantic conflict; automatic merge refused; all variants were excluded from Method/Skill synthesis.",
+      "path": "concept-conflict-8ebe21f3e2cc8a14631ef7d8",
+      "severity": "warning"
+    },
+    {
+      "code": "unresolved-concept-conflict-isolated",
+      "message": "same-title semantic conflict; automatic merge refused; all variants were excluded from Method/Skill synthesis.",
+      "path": "concept-conflict-cc2e8020502f520096de6291",
+      "severity": "warning"
+    }
+  ],
+  "work_dir": "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-final-cognitive-awakening-resumable"
+}
