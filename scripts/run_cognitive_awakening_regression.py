@@ -6,6 +6,8 @@ from __future__ import annotations
 import argparse
 from contextlib import nullcontext
 import json
+import os
+import subprocess
 import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
@@ -22,6 +24,15 @@ DEFAULT_OUTPUT = ROOT / "release/evidence/regressions/cognitive_awakening_v33_re
 
 def now() -> str:
     return datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds")
+
+
+def release_commit() -> str:
+    if os.environ.get("GITHUB_SHA"):
+        return str(os.environ["GITHUB_SHA"])
+    completed = subprocess.run(
+        ["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True, check=False,
+    )
+    return completed.stdout.strip() if completed.returncode == 0 else "unknown"
 
 
 def main() -> int:
@@ -81,6 +92,35 @@ def main() -> int:
         ]
         methods = [path for path in (vault / "05_Knowledge/Methods").glob("*.md")] if (vault / "05_Knowledge/Methods").is_dir() else []
         concept_nodes = [item for item in graph.get("nodes", {}).values() if item.get("type") == "concept"]
+        concept_titles = [str(item.get("title", "")) for item in concept_nodes]
+        reserved_metadata = (
+            "sourcepath", "sourcesha256", "kindleunpack", "converter",
+            "isbn", "publication metadata", "publisher contact", "copyright-page",
+        )
+        metadata_concepts = [
+            title for title in concept_titles
+            if any(term in title.casefold() for term in reserved_metadata)
+        ]
+        quarantined_fragments = [
+            item.message for item in result.validation.issues
+            if item.code == "concept-candidate-quarantined"
+            and item.message.split(":", 1)[0].strip() in {"则", "这就", "也就", "的就"}
+        ]
+        fragment_inputs: list[str] = []
+        for cache_path in (vault / ".knowledge-engine/runs/extraction-cache").glob("*.json"):
+            cache = json.loads(cache_path.read_text(encoding="utf-8"))
+            for candidate in cache.get("result", {}).get("concepts", []):
+                title = str(candidate.get("title", "")).strip()
+                if title in {"则", "这就", "也就", "的就"}:
+                    fragment_inputs.append(title)
+        fragment_survivors = [title for title in concept_titles if title.strip() in {"则", "这就", "也就", "的就"}]
+        synthesis_paths = list(vault.rglob("KNOWLEDGE_SYNTHESIS.json"))
+        synthesis = json.loads(synthesis_paths[0].read_text(encoding="utf-8")) if len(synthesis_paths) == 1 else {}
+        synthesis_methods = synthesis.get("method_clusters", [])
+        methods_cohesive = all(
+            item.get("cohesion_assessment", {}).get("decision") == "passed"
+            for item in synthesis_methods
+        )
         evidence_catalogs = list(vault.rglob("EVIDENCE_CATALOG.json"))
         evidence_count = 0
         for path in evidence_catalogs:
@@ -100,7 +140,13 @@ def main() -> int:
             "portable_evidence_selection": portable["passed"],
             "no_unknown_evidence": "unknown Evidence" not in diagnostic and "ev-629" not in diagnostic,
             "evidence_catalog_written": evidence_count > 0,
+            "fragment_candidates_quarantined": not fragment_survivors and (
+                not fragment_inputs or bool(quarantined_fragments)
+            ),
+            "metadata_to_concept_leakage_zero": not metadata_concepts,
+            "method_clusters_cohesive_if_present": methods_cohesive,
             "no_graph_identity_collision": "graph-identity-conflict" not in diagnostic,
+            "candidate_status_only_if_present": all(item == "candidate" for item in statuses),
             "no_auto_approve": all(item != "approved" for item in statuses),
             "no_auto_expose": not exposed,
             "no_project_connection": "used_in_project" not in edge_types,
@@ -108,7 +154,7 @@ def main() -> int:
             "live_vault_untouched": True,
         }
         audit = {
-            "schema_version": 1, "engine_version": "3.3.0",
+            "schema_version": 1, "engine_version": "3.3.0", "commit_sha": release_commit(),
             "book": "认知觉醒", "started_at": started, "finished_at": now(),
             "mode": "real-pdf-markitdown-codex-llm-disposable-resumable-vault",
             "source_path": str(source), "source_sha256": source_hash_before,
@@ -130,6 +176,12 @@ def main() -> int:
             "evidence_count": evidence_count, "concept_count": len(concept_nodes),
             "method_cluster_count": len(methods), "skill_candidate_count": len(statuses),
             "skill_statuses": statuses, "graph_edge_types": sorted(edge_types),
+            "concept_gate": result.concept_gate,
+            "quarantined_fragments": quarantined_fragments,
+            "fragment_candidate_inputs": fragment_inputs,
+            "fragment_candidate_survivors": fragment_survivors,
+            "metadata_concepts": metadata_concepts,
+            "knowledge_synthesis": synthesis,
             "portable_validation": portable,
             "model": args.model, "reasoning": args.reasoning,
             "live_vault_opened": False,

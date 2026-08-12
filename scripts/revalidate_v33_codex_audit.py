@@ -48,10 +48,12 @@ def strict_skill_read(text: str, skill_name: str) -> bool:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--input", type=Path, required=True)
-    parser.add_argument("--output", type=Path, required=True)
+    default = ROOT / "release/evidence/codex_real_test/codex_real_integration.json"
+    parser.add_argument("--input", type=Path, default=default)
+    parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     source = args.input.resolve()
+    output = (args.output or args.input).resolve()
     payload: dict[str, Any] = json.loads(source.read_text(encoding="utf-8"))
     skill_name = str(payload["skill"]["name"])
     fingerprint = str(payload["skill"]["invocation_fingerprint"])
@@ -83,8 +85,16 @@ def main() -> int:
         evaluation = json.loads(evaluations[0].read_text(encoding="utf-8"))
         cases: list[dict[str, Any]] = []
         for item in evaluation["cases"]:
-            stdout = evaluations[0].parent / "cases" / item["case_uuid"] / "stdout.jsonl"
-            current_observed = stdout.is_file() and strict_skill_read(stdout.read_text(encoding="utf-8"), skill_name)
+            case_root = evaluations[0].parent / "cases" / item["case_uuid"]
+            matching = [
+                path for path in case_root.rglob("stdout.jsonl")
+                if sha256(path) == item["transcript_sha256"]
+            ]
+            stdout = matching[0] if len(matching) == 1 else None
+            current_observed = bool(
+                stdout is not None
+                and strict_skill_read(stdout.read_text(encoding="utf-8"), skill_name)
+            )
             cases.append({**item, "observed": current_observed, "passed": current_observed == item["expected"] and item["exit_code"] == 0})
         positive = [item for item in cases if item["category"] == "positive"]
         negative = [item for item in cases if item["category"] == "negative"]
@@ -102,23 +112,25 @@ def main() -> int:
             "detector": "successful-command-output-containing-generated-skill-content",
         }
 
+    bad_stdout = ROOT / sessions["bad_description"]["raw_directory"] / "stdout.jsonl"
+    decoy_observed = (
+        bad_stdout.is_file()
+        and strict_skill_read(bad_stdout.read_text(encoding="utf-8"), "bad-description-control")
+    )
+    sessions["bad_description"]["decoy_observed"] = decoy_observed
+
     checks = dict(payload.get("checks", {}))
     checks.update({
         "approval_real_codex_eval": bool(strict_eval.get("passed")),
-        "approved_after_review": False,
-        "human_review_recorded": True,
-        "exposure_is_link_not_copy": payload["exposure"]["mechanism"] == "managed-directory-link" and payload["exposure"]["copied_skill_file"] is False,
         "codex_discovery": discovery_pass,
         "codex_explicit_call": explicit_pass,
         "trigger_positive": observed["trigger_positive"],
-        "trigger_negative": not observed["trigger_negative"],
-        "bad_description_block": not sessions["bad_description"].get("decoy_observed", False),
+        "trigger_negative": not observed["negative"],
+        "bad_description_block": not decoy_observed,
         "raw_evidence_integrity": not artifact_failures,
     })
+    passed = all(value is True for value in checks.values())
     payload.update({
-        "mode": "real-codex-cli-disposable-vault-strict-transcript-revalidation-no-mocks",
-        "source_audit_path": source.relative_to(ROOT).as_posix(),
-        "source_audit_sha256": sha256(source),
         "strict_revalidation": {
             "detector": "successful command output must contain generated Skill content",
             "approval_evaluation": strict_eval,
@@ -127,18 +139,16 @@ def main() -> int:
             "explicit_response_sha256": sha256_text(explicit["last_message"]),
         },
         "checks": checks,
-        "status": "blocked",
+        "status": "passed" if passed else "blocked",
         "blockers": sorted(name for name, passed in checks.items() if passed is not True),
     })
-    payload["review"]["accepted_for_release"] = False
-    payload["review"]["after_status"] = "invalidated-disposable-attempt"
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps({
         "status": payload["status"], "blockers": payload["blockers"],
         "strict_metrics": strict_eval.get("metrics"),
     }, ensure_ascii=False))
-    return 0
+    return 0 if passed else 1
 
 
 if __name__ == "__main__":

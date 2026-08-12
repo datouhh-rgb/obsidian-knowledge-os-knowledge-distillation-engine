@@ -2,7 +2,21 @@
 
 ## 3.3.0 — Knowledge Synthesis Layer
 
-### Final Production Verification
+### Final Production Acceptance Remediation
+
+- Replaced raw-quotation Skill actions with ordered, observable, Evidence-bound procedural abstractions and added separate `ProceduralActionGate` and `SemanticSkillGate` checks.
+- Required Method Clusters to pass machine-readable, multi-signal cohesion with semantic support; same-book provenance and action-word frequency no longer count as sufficient cohesion.
+- Isolated converter/front-matter metadata from body Evidence and Concept creation while preserving Source and Conversion provenance.
+- Split candidate quarantine from the book-level fail-closed decision and added explicit candidate-rate and coverage diagnostics.
+- Made schema export deterministic, separated Git-source and exact-byte archive manifests, and added three-OS final ZIP extraction verification.
+- Added true-symlink capability detection plus a read-only, hash-bound, drift-detecting managed deployment cache for Windows hosts without symlink privilege.
+- Split portable six-environment CI, Windows real-book regression, Windows Real Codex explicit-only E2E, immutable release assembly, and three-OS archive verification into separate fail-closed jobs.
+- Canonicalized current regression evidence to one file for each of 《股票大作手回忆录》 and 《认知觉醒》; older and blocked evidence remains immutable under `history/`.
+- Kept implicit invocation disabled, project connections empty, and all synthesized Skills in `candidate` state until the explicitly authorized test review step.
+
+This remediation adds no Knowledge Synthesis feature, version, or data-model change. Final status is derived only from canonical machine evidence and the release workflow.
+
+### Final Production Verification — preserved blocked baseline
 
 - Added a real-Codex acceptance harness and persisted raw JSONL provenance for Discovery, explicit invocation, positive/negative precision, and bad-description controls.
 - Added the formal `tests/test_real_codex_integration/` suite. It rejects mock evidence and verifies every retained raw artifact hash.
@@ -13,7 +27,7 @@
 - Added the fail-closed `scripts/final_v33_acceptance.py` gate and current six-environment evidence format.
 - Real Codex Discovery remains blocked on this Windows host because Codex CLI 0.144.6 does not discover the junction exposure and the host cannot create a true directory symlink without elevated OS capability.
 
-No new Knowledge Synthesis capability or data model was added. The current release decision remains fail-closed.
+No new Knowledge Synthesis capability or data model was added. That verification baseline remained fail-closed and is preserved under `history/V3.3_BLOCKED_Audit/`.
 
 - Added `KnowledgeSynthesizer` to aggregate stable canonical Concepts into auditable Method Clusters using semantic, Evidence-source, chapter, decision-purpose, and action-flow signals.
 - Added the Evidence-bound `MethodCluster` contract and Vault rendering under `05_Knowledge/Methods`.

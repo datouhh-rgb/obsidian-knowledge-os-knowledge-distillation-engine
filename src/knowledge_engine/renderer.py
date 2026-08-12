@@ -277,7 +277,16 @@ class ArtifactRenderer:
             frontmatter, f"# {cluster.title}", "", cluster.description, "",
             f"- Method Cluster ID: `{cluster.id}`",
             f"- Confidence: `{cluster.confidence:.4f}`",
-            f"- Creation reason: `{cluster.creation_reason}`", "", "## Concepts", "",
+            f"- Goal: {cluster.cohesion_assessment.get('goal', cluster.description)}",
+            f"- Cohesion decision: `{cluster.cohesion_assessment.get('decision', 'unknown')}`",
+            f"- Strong signals: `{', '.join(cluster.cohesion_assessment.get('strong_signals', []))}`",
+            f"- Creation reason: `{cluster.creation_reason}`",
+            f"- Conflicts: `{json.dumps(cluster.cohesion_assessment.get('conflicts', []), ensure_ascii=False)}`",
+            "", "## Cohesion Assessment", "",
+            "```json",
+            json.dumps(cluster.cohesion_assessment, ensure_ascii=False, indent=2, sort_keys=True),
+            "```",
+            "", "## Concepts", "",
         ]
         lines.extend(f"- {wikilink(path)}" for path in concept_paths) or lines.append("- 无可用 Concept 链接；保持 Candidate Blocked。")
         lines.extend(["", "## Candidate Skill", ""])

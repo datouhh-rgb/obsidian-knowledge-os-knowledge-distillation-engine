@@ -39,7 +39,13 @@ def test_exposure_create_discover_remove_recreate(distilled, tmp_path: Path) -> 
     recreated = Path(second.link_path or "")
     assert os.path.lexists(str(recreated))
     assert (recreated / "SKILL.md").is_file()
-    assert recreated.resolve() == canonical.parent.resolve()
+    if second.deployment_mode == "symlink":
+        assert recreated.is_symlink()
+        assert recreated.resolve() == canonical.parent.resolve()
+    else:
+        assert second.deployment_mode == "managed-cache"
+        assert (recreated / "DEPLOYMENT_MANIFEST.json").is_file()
+        assert sha256_file(recreated / "SKILL.md") == canonical_hash
     assert sha256_file(canonical) == canonical_hash
 
     manager.unexpose(skill)

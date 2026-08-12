@@ -147,6 +147,9 @@ class LLMAnalyzerProvider:
                 "Never output an Evidence ID, Evidence hash, locator, or new Evidence object.",
                 "Return candidates, not verified facts.",
                 "A skill needs at least two decision_flow items and two actions.",
+                "Never copy an Evidence excerpt into actions. Convert supported meaning into imperative procedural steps.",
+                "Every action must name an action verb, a concrete object, an execution condition, and a verifiable output or stop condition.",
+                "Every Skill field must be specific to the proposed method; a generic engine-policy shell is invalid.",
             ],
             "examples": {
                 "invalid": {"evidence": "ev-629"},

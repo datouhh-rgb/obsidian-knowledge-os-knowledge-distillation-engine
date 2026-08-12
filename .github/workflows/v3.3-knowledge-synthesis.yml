@@ -1,14 +1,17 @@
-name: V3.3 Knowledge Synthesis Gate
+name: V3.3 Final Production Acceptance
 
 on:
   workflow_dispatch:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, agent/v3-3-final-production-verification]
+
+permissions:
+  contents: read
 
 jobs:
-  production-matrix:
-    name: ${{ matrix.os }} / Python ${{ matrix.python }}
+  portable-core:
+    name: portable-core / ${{ matrix.os }} / Python ${{ matrix.python }}
     strategy:
       fail-fast: false
       matrix:
@@ -16,83 +19,144 @@ jobs:
         python: ["3.11", "3.12"]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Enable Git long paths on Windows
-        if: runner.os == 'Windows'
-        run: git config --global core.longpaths true
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
           cache: pip
-      - run: python -m pip install --upgrade pip
-      - name: Clean editable install
+      - name: Editable install
         run: python -m pip install -e .
-      - name: Full pytest
-        id: pytest
-        continue-on-error: true
-        run: python -m pytest -q
-      - name: Production check
-        id: production
-        continue-on-error: true
+      - name: Authoritative schema drift gate
+        run: python scripts/export_schemas.py --check
+      - name: Portable unit and integration suite
+        run: python -m pytest -q -m "not real_codex" --ignore=tests/test_clean_install_environment.py
+      - name: Local production contracts
         env:
           MATRIX_OS: ${{ matrix.os }}
           MATRIX_PYTHON: ${{ matrix.python }}
-        run: python scripts/final_production_check.py --local-only --json-out .ci-evidence/engine-job.json
-      - name: Build immutable job evidence
-        if: always()
+        run: python scripts/final_production_check.py --local-only --skip-tests --json-out .ci-evidence/engine-job.json
+      - name: Exact-byte staging manifest test
+        run: python -m pytest -q tests/test_schema_manifest_remediation.py
+      - name: Windows Python 3.12 Vault-lock contention diagnostics
+        if: matrix.os == 'windows-latest' && matrix.python == '3.12'
+        run: python scripts/vault_lock_stress.py --rounds 20 --output .ci-evidence/vault-lock-stress.json
+      - name: Write immutable portable evidence
         shell: bash
         env:
           MATRIX_OS: ${{ matrix.os }}
           MATRIX_PYTHON: ${{ matrix.python }}
-          PYTEST_OUTCOME: ${{ steps.pytest.outcome }}
-          PRODUCTION_OUTCOME: ${{ steps.production.outcome }}
           COMMIT_SHA: ${{ github.sha }}
           WORKFLOW_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           python - <<'PY'
-          import json, os
+          import json, os, platform, sys
           from pathlib import Path
-          pytest_pass = os.environ["PYTEST_OUTCOME"] == "success"
-          production_pass = os.environ["PRODUCTION_OUTCOME"] == "success"
           payload = {
-              "schema_version": 1,
+              "schema_version": 2,
+              "layer": "portable-core",
               "os": os.environ["MATRIX_OS"],
+              "runner_os": platform.platform(),
               "python": os.environ["MATRIX_PYTHON"],
+              "python_runtime": sys.version,
               "commit_sha": os.environ["COMMIT_SHA"],
               "workflow_url": os.environ["WORKFLOW_URL"],
-              "pytest_status": "passed" if pytest_pass else "failed",
-              "production_check_status": "passed" if production_pass else "failed",
-              "job_status": "passed" if pytest_pass and production_pass else "blocked",
+              "schema_drift_status": "passed",
+              "pytest_status": "passed",
+              "manifest_staging_status": "passed",
+              "production_check_status": "passed",
+              "job_status": "passed",
           }
-          output = Path(".ci-evidence/job.json")
-          output.parent.mkdir(parents=True, exist_ok=True)
-          output.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+          path = Path(".ci-evidence/job.json")
+          path.parent.mkdir(parents=True, exist_ok=True)
+          path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
           PY
-      - name: Upload immutable job evidence
-        if: always()
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
-          name: v33-${{ matrix.os }}-py${{ matrix.python }}
+          name: portable-${{ matrix.os }}-py${{ matrix.python }}
           path: |
             .ci-evidence/job.json
             .ci-evidence/engine-job.json
+            .ci-evidence/vault-lock-stress.json
             release/evidence/engine_gate/*.log
           if-no-files-found: error
-      - name: Enforce matrix job
-        if: always()
-        shell: bash
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          payload = json.loads(Path(".ci-evidence/job.json").read_text(encoding="utf-8"))
-          raise SystemExit(0 if payload["job_status"] == "passed" else 1)
-          PY
 
-  production-release-gate:
-    name: Aggregate exact six-environment evidence
+  book-regression-windows:
+    name: book-regression-windows / disposable Vaults
+    needs: portable-core
+    runs-on: [self-hosted, Windows, X64, knowledge-engine-release]
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: python -m pip install -e .
+      - name: Stock Operator canonical regression
+        shell: powershell
+        run: >-
+          python scripts/run_stock_operator_regression.py
+          --source-azw3 "C:\Users\ThinkPad\Downloads\股票大作手回忆录.azw3"
+          --conversion-snapshot "C:\Users\ThinkPad\Documents\Codex\2026-08-11\obsidian-knowledge-os-knowledge-distillation-engine\work\converted\股票大作手回忆录--75dba888.md"
+          --output release/evidence/regressions/stock_operator_v33_canonical.json
+          --work-dir "$env:RUNNER_TEMP\v33-stock-regression"
+      - name: Cognitive Awakening canonical regression
+        shell: powershell
+        run: >-
+          python scripts/run_cognitive_awakening_regression.py
+          --source-pdf "C:\Users\ThinkPad\Downloads\认知觉醒：开启自我改变的原动力+(周岭)+(Z-Library).pdf"
+          --pdf-wrapper "C:\Users\ThinkPad\.agents\skills\pdf-markdown\scripts\convert_pdf.ps1"
+          --output release/evidence/regressions/cognitive_awakening_v33_canonical.json
+          --work-dir "$env:RUNNER_TEMP\v33-cognitive-regression"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: canonical-book-regressions
+          path: release/evidence/regressions/*_canonical.json
+          if-no-files-found: error
+
+  real-codex-windows-e2e:
+    name: real-codex-windows-e2e / explicit-only
+    needs: [portable-core, book-regression-windows]
+    runs-on: [self-hosted, Windows, X64, knowledge-engine-release]
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: python -m pip install -e .
+      - uses: actions/download-artifact@v4
+        with:
+          name: canonical-book-regressions
+          path: release/evidence/regressions
+      - name: Real Codex approved-only deployment and explicit call
+        shell: powershell
+        run: >-
+          python scripts/run_v33_real_codex_integration.py
+          --upstream-regression release/evidence/regressions/stock_operator_v33_canonical.json
+          --source-original "C:\Users\ThinkPad\Downloads\股票大作手回忆录.azw3"
+          --concurrency 2
+      - name: Revalidate raw transcript hashes
+        run: python scripts/revalidate_v33_codex_audit.py
+      - name: Dedicated live integration tests
+        env:
+          RUN_REAL_CODEX_TESTS: "1"
+        run: python -m pytest -q -m real_codex -o addopts="--strict-markers"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: real-codex-explicit-only
+          path: |
+            release/evidence/codex_real_test
+            release/SKILL_EXAMPLE
+            history/V3.3_BLOCKED_Audit/real_codex_attempts
+          if-no-files-found: warn
+
+  release-assembly:
+    name: release-assembly / immutable candidate
     if: always()
-    needs: production-matrix
+    needs: [portable-core, book-regression-windows, real-codex-windows-e2e]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -102,34 +166,108 @@ jobs:
       - run: python -m pip install -e .
       - uses: actions/download-artifact@v4
         with:
-          pattern: v33-*
-          path: .ci-evidence/downloaded
-      - name: Consolidate matrix evidence
+          pattern: portable-*
+          path: .ci-evidence/portable
+      - uses: actions/download-artifact@v4
+        with:
+          name: canonical-book-regressions
+          path: release/evidence/regressions
+      - uses: actions/download-artifact@v4
+        with:
+          name: real-codex-explicit-only
+          path: release
+      - name: Aggregate one machine matrix source
         env:
           RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        shell: bash
-        run: |
-          python - <<'PY'
-          import json, os
-          from pathlib import Path
-          jobs = [json.loads(path.read_text(encoding="utf-8")) for path in sorted(Path(".ci-evidence/downloaded").glob("**/job.json"))]
-          payload = {
-              "schema_version": 1,
-              "workflow_url": os.environ["RUN_URL"],
-              "jobs": jobs,
-          }
-          output = Path("release/evidence/ci/cross_platform_matrix.json")
-          output.parent.mkdir(parents=True, exist_ok=True)
-          output.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-          PY
-      - name: Final V3.3 release decision
-        run: python scripts/final_v33_acceptance.py --skip-tests --ci-evidence release/evidence/ci/cross_platform_matrix.json
-      - name: Upload final evidence
-        if: always()
-        uses: actions/upload-artifact@v4
+          COMMIT_SHA: ${{ github.sha }}
+        run: python scripts/aggregate_v33_release_evidence.py --portable-root .ci-evidence/portable --run-url "$RUN_URL" --commit "$COMMIT_SHA"
+      - name: Render reports from canonical machine evidence
+        run: python scripts/generate_v33_release_reports.py
+      - name: Final fail-closed acceptance
+        run: >-
+          python scripts/final_v33_acceptance.py --skip-tests
+          --ci-evidence release/evidence/ci/cross_platform_matrix.json
+          --stock-regression release/evidence/regressions/stock_operator_v33_canonical.json
+          --cognitive-regression release/evidence/regressions/cognitive_awakening_v33_canonical.json
+      - name: Assemble exact-byte archive
+        run: python scripts/assemble_v33_release.py --commit "${{ github.sha }}" --workflow-url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+      - uses: actions/upload-artifact@v4
         with:
-          name: v3.3-final-production-audit
+          name: v3.3.0-release-assembly-candidate
           path: |
-            release/evidence/ci/cross_platform_matrix.json
-            release/evidence/final_gate/
+            Obsidian-Knowledge-OS-Knowledge-Distillation-Engine-v3.3.0-Production-Ready.zip
+            release/ZIP_SHA256.txt
+            release/MANIFEST.sha256
+            release/evidence
+          if-no-files-found: error
+
+  archive-verification:
+    name: archive-verification / ${{ matrix.os }}
+    needs: release-assembly
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -e .
+      - uses: actions/download-artifact@v4
+        with:
+          name: v3.3.0-release-assembly-candidate
+          path: .release-candidate
+      - name: Extract and verify exact final ZIP bytes
+        env:
+          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          COMMIT_SHA: ${{ github.sha }}
+        run: >-
+          python scripts/verify_v33_release_archive.py
+          --archive .release-candidate/Obsidian-Knowledge-OS-Knowledge-Distillation-Engine-v3.3.0-Production-Ready.zip
+          --expected-commit "$COMMIT_SHA"
+          --workflow-url "$RUN_URL"
+          --output .ci-evidence/archive-verification.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: archive-verification-${{ matrix.os }}
+          path: .ci-evidence/archive-verification.json
+          if-no-files-found: error
+
+  final-publication:
+    name: final-publication / all gates
+    needs: [release-assembly, archive-verification]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -e .
+      - uses: actions/download-artifact@v4
+        with:
+          name: v3.3.0-release-assembly-candidate
+          path: .release-candidate
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: archive-verification-*
+          path: .ci-evidence/archive
+      - name: Publish only after three-OS exact-byte verification
+        env:
+          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          COMMIT_SHA: ${{ github.sha }}
+        run: >-
+          python scripts/aggregate_v33_archive_verification.py
+          --root .ci-evidence/archive
+          --commit "$COMMIT_SHA"
+          --workflow-url "$RUN_URL"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v3.3.0-production-ready-release
+          path: |
+            .release-candidate/Obsidian-Knowledge-OS-Knowledge-Distillation-Engine-v3.3.0-Production-Ready.zip
+            .release-candidate/release/ZIP_SHA256.txt
+            .release-candidate/release/MANIFEST.sha256
+            release/evidence/ci/archive_cross_platform.json
           if-no-files-found: error

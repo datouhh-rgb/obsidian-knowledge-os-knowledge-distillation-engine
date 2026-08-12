@@ -17,6 +17,12 @@ def evidence_id_for(conversion_id: str, locator: str, excerpt: str) -> str:
 
 @dataclass
 class EvidenceCatalog:
+    PROVENANCE_METADATA = re.compile(
+        r"^(?:[\s{\"']*(?:title|source[_-]?format|source[_-]?path|source[_-]?sha256|converter|"
+        r"kindleunpack[_-]?(?:commit|version)|conversion[_-]?scope|isbn)[\s\"']*[:=]|"
+        r"ISBN\s*[0-9:-]|标准书号\s*ISBN|书\s*名\s+)",
+        re.IGNORECASE,
+    )
     source_title: str
     source_id: str
     conversion_id: str
@@ -69,6 +75,8 @@ class EvidenceCatalog:
                 index += 1
             end = start + len(block) - 1
             excerpt = " ".join(block)
+            if start <= 200 and cls._is_provenance_metadata(excerpt):
+                continue
             locator = f"lines:{start}-{end}"
             evidence_id = evidence_id_for(conversion, locator, excerpt)
             evidence = Evidence(
@@ -89,6 +97,18 @@ class EvidenceCatalog:
                 raise ValueError(f"Evidence ID collision: {evidence_id}")
             items[evidence_id] = evidence
         return cls(title, source_id, conversion, normalized_text, original_path, items)
+
+    @classmethod
+    def _is_provenance_metadata(cls, excerpt: str) -> bool:
+        normalized = normalize_excerpt(excerpt).strip("- \t")
+        if cls.PROVENANCE_METADATA.search(normalized):
+            return True
+        lowered = normalized.casefold()
+        keys = (
+            '"converter"', '"kindleunpackcommit"', '"kindleunpackversion"',
+            '"sourcepath"', '"sourcesha256"', '"source_path"', '"source_sha256"',
+        )
+        return normalized.startswith("{") and any(key in lowered for key in keys)
 
     @classmethod
     def from_dict(cls, value: dict[str, object], source_text: str) -> "EvidenceCatalog":

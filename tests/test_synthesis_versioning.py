@@ -18,15 +18,15 @@ def _policy(text: str) -> dict:
     return {"text": text, "evidence_ids": [], "origin": "engine_policy"}
 
 
-def test_same_method_is_blocked_before_synthesis_registry(vault: Path, source_factory) -> None:
+def test_shallow_opposing_steps_are_quarantined_before_synthesis_registry(vault: Path, source_factory) -> None:
     first = source_factory(book="Book A", steps=["必须保存原件。", "记录行号。", "核对哈希。"])
     second = source_factory(book="Book B", steps=["不得保存原件。", "记录行号。", "核对哈希。"])
     make_production_pipeline(vault).distill(str(first), title="Book A")
     blocked = make_production_pipeline(vault).distill(str(second), title="Book B")
     registry = SkillRegistry.load(vault)
-    assert len(registry.records) == 1
-    assert blocked.status == "blocked"
-    assert not blocked.written_paths
+    assert len(registry.records) == 0
+    assert blocked.status == "completed"
+    assert any(item.code == "skill-candidate-quarantined" for item in blocked.validation.warnings)
     assert not SynthesisRegistry.load(vault).proposals
 
 

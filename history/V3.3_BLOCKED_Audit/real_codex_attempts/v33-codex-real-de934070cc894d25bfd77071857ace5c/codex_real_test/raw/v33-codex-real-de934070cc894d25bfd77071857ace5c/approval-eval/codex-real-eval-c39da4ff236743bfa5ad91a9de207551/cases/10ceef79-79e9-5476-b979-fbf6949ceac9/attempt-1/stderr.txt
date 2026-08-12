@@ -1,0 +1,6 @@
+2026-08-12T10:52:19.818102Z ERROR codex_models_manager::cache: failed to load models cache: missing field `base_instructions` at line 94 column 5
+2026-08-12T10:52:23.105943Z  WARN codex_core::shell_snapshot: Failed to create shell snapshot for powershell: Shell snapshot not supported yet for PowerShell
+2026-08-12T10:52:48.754507Z ERROR codex_core::tools::router: error=Exit code: 1
+Wall time: 3.3 seconds
+Output:
+

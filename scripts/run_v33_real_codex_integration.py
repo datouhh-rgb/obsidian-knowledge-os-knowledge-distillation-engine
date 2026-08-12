@@ -25,6 +25,7 @@ from typing import Any
 
 from knowledge_engine.evidence import EvidenceCatalog
 from knowledge_engine.exposure import SkillExposureManager
+from knowledge_engine.gates import ProceduralActionGate, SemanticSkillGate
 from knowledge_engine.lifecycle import SkillLifecycleService
 from knowledge_engine.models import ConversionIdentity, IngestedSource, MethodCluster, SkillCandidate
 from knowledge_engine.quality import SkillQualityEvaluator
@@ -32,7 +33,6 @@ from knowledge_engine.registry import REGISTRY_JSON, REGISTRY_MD, SkillRegistry
 from knowledge_engine.renderer import ArtifactRenderer
 from knowledge_engine.semantic import SemanticSupportGate
 from knowledge_engine.structure import RealStructureNormalizer
-from knowledge_engine.transaction import VaultTransaction
 from knowledge_engine.trigger_eval import TriggerEvalValidator
 from knowledge_engine.utils import (
     atomic_write,
@@ -48,9 +48,9 @@ from knowledge_engine.validator import SkillValidator
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_UPSTREAM = ROOT / "FINAL_PRODUCTION_AUDIT" / "stock_operator_v33_regression.json"
+DEFAULT_UPSTREAM = ROOT / "release" / "evidence" / "regressions" / "stock_operator_v33_canonical.json"
 DEFAULT_OUTPUT = ROOT / "release" / "evidence" / "codex_real_test" / "codex_real_integration.json"
-OFFICIAL_SKILL_CONTRACT = "https://learn.chatgpt.com/docs/build-skills"
+OFFICIAL_SKILL_CONTRACT = "https://developers.openai.com/codex/skills/"
 
 
 def timestamp() -> str:
@@ -83,6 +83,17 @@ def codex_version(command: str) -> str:
     if completed.returncode != 0 or not completed.stdout.strip():
         raise RuntimeError("Codex CLI provenance cannot be obtained.")
     return completed.stdout.strip()
+
+
+def prepare_isolated_codex_home(target: Path) -> Path:
+    """Create a disposable authenticated Codex home without unrelated user Skills."""
+    source = Path(os.environ.get("CODEX_HOME") or (Path.home() / ".codex")).resolve()
+    auth = source / "auth.json"
+    if not auth.is_file():
+        raise RuntimeError("Existing local Codex authentication is required for the real integration test.")
+    target.mkdir(parents=True, exist_ok=False)
+    shutil.copy2(auth, target / "auth.json")
+    return target
 
 
 def last_agent_message(jsonl: str) -> str:
@@ -138,6 +149,7 @@ def _method_from_dict(value: dict[str, Any]) -> MethodCluster:
         source_books=tuple(str(item) for item in value["source_books"]),
         confidence=float(value["confidence"]),
         creation_reason=str(value["creation_reason"]),
+        cohesion_assessment=dict(value.get("cohesion_assessment", {})),
     )
 
 
@@ -176,6 +188,12 @@ def materialize_preserved_candidate(
     if not catalog.verify_integrity().passed:
         raise RuntimeError("Regenerated Evidence catalog failed integrity verification.")
 
+    method_payload = next(
+        item for item in upstream["knowledge_synthesis"]["method_clusters"]
+        if item["id"] == selected["method_cluster_id"]
+    )
+    method = _method_from_dict(method_payload)
+
     source_hash = sha256_file(source_original)
     if source_hash != source_id:
         raise RuntimeError("Original source hash does not match the preserved Source Identity.")
@@ -194,7 +212,9 @@ def materialize_preserved_candidate(
     )
     semantic = SemanticSupportGate().assess_skill(candidate, catalog)
     score = SkillQualityEvaluator().score(candidate, catalog, {}, semantic.assessments)
-    if not semantic.report.passed or score.status != "pass":
+    procedural = ProceduralActionGate().validate(candidate, catalog)
+    semantic_skill = SemanticSkillGate().validate(method, candidate, catalog)
+    if not semantic.report.passed or procedural.errors or semantic_skill.errors or score.status != "pass":
         raise RuntimeError("Preserved candidate no longer passes semantic and quality gates.")
 
     registry = SkillRegistry.empty()
@@ -210,11 +230,6 @@ def materialize_preserved_candidate(
     if materialized.status != "candidate":
         raise RuntimeError(f"Expected candidate lifecycle, got {materialized.status}")
 
-    method_payload = next(
-        item for item in upstream["knowledge_synthesis"]["method_clusters"]
-        if item["id"] == selected["method_cluster_id"]
-    )
-    method = _method_from_dict(method_payload)
     renderer = ArtifactRenderer()
     skill_root = Path("05_Knowledge/Skills") / materialized.name
     version_root = skill_root / "versions" / materialized.version
@@ -307,13 +322,21 @@ def run_codex_session(
     prompt: str,
     session_root: Path,
     timeout: int,
+    codex_home: Path,
     decoy_name: str | None = None,
+    repo_override: Path | None = None,
 ) -> dict[str, Any]:
-    repo = session_root / "repo"
+    session_root.mkdir(parents=True, exist_ok=True)
+    repo = repo_override or (session_root / "repo")
     repo.mkdir(parents=True, exist_ok=True)
-    subprocess.run(["git", "init", "-q"], cwd=repo, capture_output=True, timeout=30, check=False)
+    if not (repo / ".git").exists():
+        subprocess.run(["git", "init", "-q"], cwd=repo, capture_output=True, timeout=30, check=False)
+    staged = repo_override is None
     link = repo / ".agents" / "skills" / skill_name
-    VaultTransaction._create_directory_link(link, vault / "05_Knowledge/Skills" / skill_name)
+    if staged:
+        # Isolated pre-approval evaluator material, removed after each case.
+        # Formal production discovery later uses approved-only ExposureManager.
+        shutil.copytree(vault / "05_Knowledge/Skills" / skill_name, link)
     decoy_link: Path | None = None
     if decoy_name:
         decoy_root = session_root / "decoy" / decoy_name
@@ -326,7 +349,7 @@ def run_codex_session(
         )
         write_text(decoy_root / "agents/openai.yaml", "policy:\n  allow_implicit_invocation: false\n")
         decoy_link = repo / ".agents" / "skills" / decoy_name
-        VaultTransaction._create_directory_link(decoy_link, decoy_root)
+        shutil.copytree(decoy_root, decoy_link)
     last_path = session_root / "last-message.txt"
     command = command_template(codex, repo, vault, last_path)
     command_hash = sha256_text(canonical_json([*command, "<PROMPT_STDIN>", sha256_text(prompt)]))
@@ -334,6 +357,12 @@ def run_codex_session(
         completed = subprocess.run(
             command, input=prompt, capture_output=True, text=True,
             encoding="utf-8", errors="replace", timeout=timeout, shell=False,
+            env={
+                **os.environ,
+                "CODEX_HOME": str(codex_home),
+                "HOME": str(codex_home),
+                "USERPROFILE": str(codex_home),
+            },
         )
         stdout, stderr, exit_code = completed.stdout, completed.stderr, completed.returncode
     except subprocess.TimeoutExpired as exc:
@@ -342,10 +371,10 @@ def run_codex_session(
         stderr += f"\nTIMEOUT after {timeout}s\n"
         exit_code = 124
     finally:
-        if os.path.lexists(str(link)) and VaultTransaction._is_link_like(link):
-            VaultTransaction._remove_directory_link(link)
-        if decoy_link and os.path.lexists(str(decoy_link)) and VaultTransaction._is_link_like(decoy_link):
-            VaultTransaction._remove_directory_link(decoy_link)
+        if staged and link.is_dir():
+            shutil.rmtree(link)
+        if decoy_link and decoy_link.is_dir():
+            shutil.rmtree(decoy_link)
     last = last_path.read_text(encoding="utf-8", errors="replace") if last_path.is_file() else ""
     observed, event = skill_read_event(stdout, skill_name)
     decoy_observed, decoy_event = skill_read_event(stdout, decoy_name or "__no_decoy__")
@@ -373,6 +402,7 @@ def run_approval_evaluation(
     skill_id: str,
     timeout: int,
     concurrency: int,
+    codex_home: Path,
 ) -> tuple[dict[str, Any], Path]:
     registry = SkillRegistry.load(vault)
     _record, version_record, _lifecycle = registry.version(skill_name, version)
@@ -414,12 +444,32 @@ def run_approval_evaluation(
 
     def execute_case(item: dict[str, Any]) -> dict[str, Any]:
         case_root = root / "cases" / item["case_uuid"]
-        result = run_codex_session(codex, vault, skill_name, item["prompt"], case_root, timeout)
+        attempts: list[dict[str, Any]] = []
+        result: dict[str, Any] | None = None
+        # Retry only process-level failures. A successful Codex process that
+        # does not read the Skill remains a real semantic miss and is never
+        # retried away.
+        for attempt in range(1, 4):
+            result = run_codex_session(
+                codex, vault, skill_name, item["prompt"], case_root / f"attempt-{attempt}", timeout,
+                codex_home,
+            )
+            attempts.append({
+                "attempt": attempt,
+                "exit_code": result["exit_code"],
+                "observed_skill_read": result["observed"],
+                "stdout_sha256": sha256_file(result["stdout_path"]),
+                "stderr_sha256": sha256_file(result["stderr_path"]),
+            })
+            if result["exit_code"] == 0:
+                break
+        assert result is not None
+        write_text(case_root / "attempts.json", json.dumps(attempts, indent=2, sort_keys=True) + "\n")
         evaluator = {
-            "kind": "approved-external-router", "cli_version": cli_version,
+            "kind": "codex-cli-explicit", "cli_version": cli_version,
             "model": "default", "command_sha256": result["command_sha256"],
         }
-        relative = case_root.relative_to(vault)
+        relative = result["stdout_path"].parent.relative_to(vault)
         observed = bool(result["observed"])
         return {
             **item, "observed": observed,
@@ -450,7 +500,7 @@ def run_approval_evaluation(
         for item in cases
     ]))
     evaluator = {
-        "kind": "approved-external-router", "cli_version": cli_version,
+        "kind": "codex-cli-explicit", "cli_version": cli_version,
         "model": "default", "command_sha256": sha256_text("approved-explicit-only-router-v3.3"),
     }
     payload = {
@@ -470,6 +520,27 @@ def run_approval_evaluation(
     write_text(evaluation_path, json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n")
     TriggerEvalValidator.validate_run(vault, payload, skill_name, version)
     if not payload["passed"]:
+        failure_root = ROOT / "history/V3.3_BLOCKED_Audit/real_codex_attempts" / run_id
+        failure_root.parent.mkdir(parents=True, exist_ok=True)
+        if failure_root.exists():
+            raise RuntimeError(f"Refusing to overwrite failed Real Codex evidence: {failure_root}")
+        shutil.copytree(root, failure_root)
+        write_text(failure_root / "FAILURE_SUMMARY.json", json.dumps({
+            "schema_version": 1,
+            "engine_version": "3.3.0",
+            "run_id": run_id,
+            "commit_sha": git_commit(),
+            "metrics": metrics,
+            "status": "blocked",
+            "failed_cases": [
+                {
+                    "case_uuid": item["case_uuid"], "category": item["category"],
+                    "expected": item["expected"], "observed": item["observed"],
+                    "exit_code": item["exit_code"], "detection": item["detection"],
+                }
+                for item in results if not item["passed"]
+            ],
+        }, ensure_ascii=False, indent=2, sort_keys=True) + "\n")
         print(json.dumps({
             "metrics": metrics,
             "failed_cases": [
@@ -501,6 +572,35 @@ def evidence_manifest(source_root: Path, output_root: Path) -> list[dict[str, An
     return manifest
 
 
+def export_release_skill_example(
+    vault: Path,
+    skill_name: str,
+    version: str,
+    artifact_sha256: str,
+    chain: dict[str, Any],
+) -> Path:
+    release_root = ROOT / "release/SKILL_EXAMPLE"
+    if release_root.exists():
+        raise RuntimeError("A stale release Skill example remains; isolate it under history before export.")
+    source = vault / "05_Knowledge/Skills" / skill_name
+    target = release_root / skill_name
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copytree(source, target)
+    write_text(release_root / "PROVENANCE.json", json.dumps({
+        "schema_version": 1,
+        "engine_version": "3.3.0",
+        "authoritative_source": "disposable-vault-approved-immutable-version",
+        "skill": skill_name,
+        "version": version,
+        "artifact_sha256": artifact_sha256,
+        "source_id": chain["source_id"],
+        "conversion_id": chain["conversion_id"],
+        "upstream_run_id": chain["upstream_run_id"],
+        "candidate_fingerprint": chain["skill_candidate_fingerprint"],
+    }, ensure_ascii=False, indent=2, sort_keys=True) + "\n")
+    return target
+
+
 def compact_session(result: dict[str, Any], raw_path: str) -> dict[str, Any]:
     return {
         "exit_code": result["exit_code"], "observed_skill_read": result["observed"],
@@ -518,9 +618,19 @@ def main() -> int:
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--codex-command", default="codex")
     parser.add_argument("--timeout", type=int, default=300)
-    parser.add_argument("--concurrency", type=int, default=4)
-    parser.add_argument("--reviewer", default="Andy / V3.3 production acceptance")
-    parser.add_argument("--reason", default="Exact preserved candidate passed real Codex explicit-only evaluation and all Evidence/quality gates.")
+    parser.add_argument("--concurrency", type=int, default=2)
+    parser.add_argument(
+        "--reviewer",
+        default="User-authorized V3.3 acceptance review (Codex-operated test flow)",
+    )
+    parser.add_argument(
+        "--reason",
+        default=(
+            "The user explicitly authorized a test approval flow for V3.3 acceptance; "
+            "the exact preserved candidate passed all Evidence, cohesion, semantic, procedural, "
+            "quality, and real Codex evaluation gates."
+        ),
+    )
     args = parser.parse_args()
     if not 1 <= args.concurrency <= 8:
         raise SystemExit("--concurrency must be between 1 and 8")
@@ -536,6 +646,7 @@ def main() -> int:
     result_payload: dict[str, Any]
     with tempfile.TemporaryDirectory(prefix="v33-real-codex-") as temporary:
         root = Path(temporary)
+        isolated_codex_home = prepare_isolated_codex_home(root / "codex-home")
         vault, repo = root / "vault", root / "repo"
         for path in (vault / "05_Knowledge", vault / "06_Sources", repo):
             path.mkdir(parents=True, exist_ok=True)
@@ -549,19 +660,26 @@ def main() -> int:
 
         evaluation, evaluation_path = run_approval_evaluation(
             codex, cli_version, vault, skill_name, version, skill_id,
-            args.timeout, args.concurrency,
+            args.timeout, args.concurrency, isolated_codex_home,
         )
         lifecycle = SkillLifecycleService(vault)
         lifecycle.record_eval(skill_name, version, evaluation, evaluation_path)
+        _evaluated_record, _evaluated_version, evaluated_lifecycle = SkillRegistry.load(vault).version(
+            skill_name, version,
+        )
+        if evaluated_lifecycle["status"] != "candidate":
+            raise RuntimeError("Evaluation changed lifecycle without the separate authorized approval step.")
         approval = lifecycle.approve(skill_name, version, args.reviewer, args.reason)
         approved_record, version_record, approved_lifecycle = SkillRegistry.load(vault).version(skill_name, version)
         if approved_lifecycle["status"] != "approved":
             raise RuntimeError("Human approval did not produce the approved lifecycle state.")
+        release_example = export_release_skill_example(
+            vault, skill_name, version, str(version_record["artifact_sha256"]), chain,
+        )
 
         manager = SkillExposureManager(vault)
         exposure = manager.expose(skill_name, "repo", repo)
         exposed_link = Path(exposure.link_path or "")
-        exposure_was_link = VaultTransaction._is_link_like(exposed_link)
         if "allow_implicit_invocation: false" not in policy_path.read_text(encoding="utf-8"):
             raise RuntimeError("Exposure unexpectedly enabled implicit invocation.")
         health = manager.status(skill_name)
@@ -569,30 +687,39 @@ def main() -> int:
         session_root = root / "final-sessions"
         discovery = run_codex_session(
             codex, vault, skill_name,
-            "Without reading files or calling tools, return only the exact repo-local Skill name available for the 股票大作手回忆录 evidence-bound method.",
-            session_root / "discovery", args.timeout,
+            (
+                "Inspect only the available Skills metadata already provided to this Codex session; "
+                "do not read files or call tools. Find the Skill whose description says it applies "
+                f"the method named ‘{chain['candidate_title']}’ to evidence-grounded tasks. "
+                "Return only that Skill's exact frontmatter name value, preserving every character."
+            ),
+            session_root / "discovery", args.timeout, isolated_codex_home, repo_override=repo,
         )
         fingerprint = sha256_text(f"{skill_id}\0{version}\0{chain['skill_candidate_fingerprint']}")[:20]
         explicit = run_codex_session(
             codex, vault, skill_name,
             f"${skill_name} Explicitly load the named Skill and return only its invocation fingerprint.",
-            session_root / "explicit", args.timeout,
+            session_root / "explicit", args.timeout, isolated_codex_home, repo_override=repo,
         )
         positive = run_codex_session(
             codex, vault, skill_name,
-            f"${skill_name} Load the Skill and state only whether critical inputs are required before execution.",
-            session_root / "precision-positive", args.timeout,
+            (
+                f"${skill_name} Explicitly load the named Skill. Return only its invocation fingerprint "
+                "followed by a space and INPUTS_REQUIRED if section 3 requires inputs."
+            ),
+            session_root / "precision-positive", args.timeout, isolated_codex_home, repo_override=repo,
         )
         negative = run_codex_session(
             codex, vault, skill_name,
             "A trader asks for a short motivational sentence. Do not invoke any Skill; return only: KEEP_DISCIPLINE.",
-            session_root / "precision-negative", args.timeout,
+            session_root / "precision-negative", args.timeout, isolated_codex_home, repo_override=repo,
         )
         decoy_name = "bad-description-control"
         bad_description = run_codex_session(
             codex, vault, skill_name,
             "Calculate 2 + 2 and return only the number.",
-            session_root / "bad-description", args.timeout, decoy_name=decoy_name,
+            session_root / "bad-description", args.timeout, isolated_codex_home,
+            decoy_name=decoy_name, repo_override=repo,
         )
         discovery_pass = (
             discovery["exit_code"] == 0 and skill_name in discovery["last_message"]
@@ -600,7 +727,12 @@ def main() -> int:
         explicit_pass = (
             explicit["exit_code"] == 0 and explicit["observed"] and fingerprint in explicit["last_message"]
         )
-        positive_pass = positive["exit_code"] == 0 and positive["observed"]
+        positive_pass = (
+            positive["exit_code"] == 0
+            and positive["observed"]
+            and fingerprint in positive["last_message"]
+            and "INPUTS_REQUIRED" in positive["last_message"]
+        )
         negative_pass = negative["exit_code"] == 0 and not negative["observed"]
         bad_pass = bad_description["exit_code"] == 0 and not bad_description["decoy_observed"]
         unexposure = manager.unexpose(skill_name)
@@ -613,7 +745,7 @@ def main() -> int:
             "discovery": compact_session(discovery, (raw_output_root / "final-sessions/discovery").relative_to(ROOT).as_posix()),
             "explicit": compact_session(explicit, (raw_output_root / "final-sessions/explicit").relative_to(ROOT).as_posix()),
             "trigger_positive": compact_session(positive, (raw_output_root / "final-sessions/precision-positive").relative_to(ROOT).as_posix()),
-            "trigger_negative": compact_session(negative, (raw_output_root / "final-sessions/precision-negative").relative_to(ROOT).as_posix()),
+            "negative": compact_session(negative, (raw_output_root / "final-sessions/precision-negative").relative_to(ROOT).as_posix()),
             "bad_description": compact_session(bad_description, (raw_output_root / "final-sessions/bad-description").relative_to(ROOT).as_posix()),
         }
         checks = {
@@ -621,10 +753,13 @@ def main() -> int:
             "candidate_before_human_review": before_status == "candidate",
             "human_review_recorded": bool(approved_lifecycle.get("approvals")),
             "approved_after_review": approved_lifecycle["status"] == "approved",
-            "no_auto_approve": before_status == "candidate" and approved_lifecycle["status"] == "approved",
+            "no_auto_approve": before_status == "candidate" and evaluated_lifecycle["status"] == "candidate",
             "evidence_bound": chain["evidence_count"] >= 3,
             "approval_real_codex_eval": evaluation["passed"] and len(evaluation["cases"]) == 25,
-            "exposure_is_link_not_copy": exposure_was_link,
+            "approved_only_deployment": (
+                exposure.status == "exposed"
+                and exposure.deployment_mode in {"symlink", "managed-cache"}
+            ),
             "exposure_health": health.status == "healthy",
             "implicit_invocation_off_during_exposure": "allow_implicit_invocation: false" in policy_after,
             "codex_discovery": discovery_pass,
@@ -638,10 +773,19 @@ def main() -> int:
         }
         metadata = chain["skill_metadata"]
         result_payload = {
-            "schema_version": 1, "engine_version": "3.3.0",
+            "schema_version": 2, "engine_version": "3.3.0",
             "run_id": run_id, "generated_at": timestamp(), "commit_sha": git_commit(),
-            "mode": "real-codex-cli-disposable-vault-no-mocks",
+            "mode": "real-codex-cli-explicit-only-disposable-vault-transcript-revalidation-no-mocks",
+            "profile": "explicit_only", "implicit_metrics_claimed": False,
             "codex_cli_version": cli_version, "official_skill_contract": OFFICIAL_SKILL_CONTRACT,
+            "codex_environment": {
+                "home": "disposable-authenticated-no-user-skills",
+                "user_home": "disposable",
+                "user_config_loaded": False,
+                "user_rules_loaded": False,
+                "session_persistence": False,
+                "repo_skill_location": ".agents/skills",
+            },
             "source_chain": chain,
             "skill": {
                 "name": skill_name, "version": version, "skill_id": skill_id,
@@ -655,7 +799,13 @@ def main() -> int:
                 "reviewer": args.reviewer, "timestamp": approved_lifecycle["approvals"][-1]["approved_at"],
                 "reason": args.reason, "before_status": before_status,
                 "after_status": approved_lifecycle["status"], "automatic": False,
+                "approval_mode": "separate-explicit-user-authorized-test-review",
                 "approval_event_id": approval.event_id,
+                "reviewed_version_sha256": version_record["artifact_sha256"],
+                "evidence_reviewed": chain["evidence_ids"],
+                "method_cohesion_reviewed": chain["method_cluster_id"],
+                "action_executability_reviewed": True,
+                "limitations": ["implicit invocation remains disabled", "no project connection"],
             },
             "trigger_evaluation": {
                 "kind": evaluation["evaluator"]["kind"], "case_count": len(evaluation["cases"]),
@@ -667,8 +817,8 @@ def main() -> int:
                 "run_id": evaluation["run_id"],
             },
             "exposure": {
-                "scope": "repo", "mechanism": "managed-directory-link",
-                "copied_skill_file": False, "create_status": exposure.status,
+                "scope": "repo", "deployment_mode": exposure.deployment_mode,
+                "authoritative_source": "vault-approved-immutable-version", "create_status": exposure.status,
                 "health_status": health.status, "implicit_invocation": False,
                 "unexpose_status": unexposure.status, "removed_after_test": unexposed,
             },
@@ -677,6 +827,7 @@ def main() -> int:
                 "temporary": True, "production_vault_opened": False,
                 "project_connections": [], "deleted_after_run": True,
             },
+            "release_skill_example": release_example.relative_to(ROOT).as_posix(),
             "raw_evidence": raw_manifest,
             "checks": checks,
             "status": "passed" if all(checks.values()) else "blocked",

@@ -4,7 +4,6 @@ import base64
 import json
 import os
 import shutil
-import subprocess
 import uuid
 from dataclasses import dataclass
 from pathlib import Path
@@ -71,7 +70,11 @@ def remove_exposure_link(path: Path) -> None:
             _fsync_directory(path.parent)
             return
     if path.is_dir():
-        shutil.rmtree(path)
+        def make_writable_and_retry(function, target, _exc_info):  # type: ignore[no-untyped-def]
+            os.chmod(target, 0o700)
+            function(target)
+
+        shutil.rmtree(path, onerror=make_writable_and_retry)
         _fsync_directory(path.parent)
         return
     raise TransactionError(f"Exposure path is neither a directory link nor a directory: {path}")
@@ -572,14 +575,11 @@ class VaultTransaction:
             _fsync_directory(link.parent)
             return
         except OSError as exc:
-            if os.name != "nt":
-                raise TransactionError(f"Cannot create POSIX directory symlink: {exc}") from exc
-        completed = subprocess.run(
-            ["cmd.exe", "/d", "/c", "mklink", "/J", str(link), str(target)],
-            capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=20, shell=False,
-        )
-        if completed.returncode != 0 or not cls_path_lexists(link):
-            raise TransactionError(f"Cannot create Windows directory junction: {completed.stderr.strip()}")
+            platform = "Windows" if os.name == "nt" else "POSIX"
+            raise TransactionError(
+                f"Cannot create a true {platform} directory symlink: {exc}. "
+                "Exposure must select managed-cache mode when true symlinks are unavailable."
+            ) from exc
 
     @staticmethod
     def _remove_directory_link(link: Path) -> None:
@@ -588,8 +588,3 @@ class VaultTransaction:
         if not link.is_symlink() and os.name != "nt":
             raise TransactionError(f"Non-symlink reparse-like path is unsupported on POSIX: {link}")
         remove_exposure_link(link)
-
-
-def cls_path_lexists(path: Path) -> bool:
-    """Small top-level helper used after Windows mklink returns."""
-    return os.path.lexists(str(path))

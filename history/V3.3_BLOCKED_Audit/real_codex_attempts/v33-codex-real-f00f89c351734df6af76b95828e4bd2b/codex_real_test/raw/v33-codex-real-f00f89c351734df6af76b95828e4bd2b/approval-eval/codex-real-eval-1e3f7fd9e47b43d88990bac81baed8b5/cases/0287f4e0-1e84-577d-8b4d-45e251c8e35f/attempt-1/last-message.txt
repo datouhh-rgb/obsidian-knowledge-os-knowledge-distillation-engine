@@ -1,0 +1,9 @@
+Boundary B3 stop triggered. Missing critical inputs:
+
+- The specific decision object to evaluate.
+- Current observable facts for the pre-recorded prediction.
+- Historical-price constraints and comparison period.
+- Expected signals recorded before the outcome.
+- Actual observed results for post-event verification.
+
+No analysis or approval was performed; status remains `candidate`, pending human-supplied inputs.

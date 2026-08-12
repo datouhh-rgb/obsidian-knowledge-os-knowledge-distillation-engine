@@ -1,0 +1,4 @@
+2026-08-12T10:58:03.409073Z  WARN codex_core::shell_snapshot: Failed to create shell snapshot for powershell: Shell snapshot not supported yet for PowerShell
+2026-08-12T10:58:09.644371Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `base_instructions` at line 94 column 5
+2026-08-12T10:58:18.879702Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `base_instructions` at line 94 column 5
+Failed to write last message file "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-real-codex-qzoiksp5\\final-sessions\\explicit\\last-message.txt": 系统找不到指定的路径。 (os error 3)

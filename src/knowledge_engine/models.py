@@ -234,6 +234,7 @@ class MethodCluster:
     source_books: tuple[str, ...]
     confidence: float
     creation_reason: str
+    cohesion_assessment: dict[str, Any] = field(default_factory=dict)
 
     def as_dict(self) -> dict[str, Any]:
         return {
@@ -245,6 +246,7 @@ class MethodCluster:
             "source_books": list(self.source_books),
             "confidence": self.confidence,
             "creation_reason": self.creation_reason,
+            "cohesion_assessment": self.cohesion_assessment,
         }
 
 

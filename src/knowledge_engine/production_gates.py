@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import Any, Iterable
 
 from .evidence import EvidenceCatalog, EvidenceGate
-from .gates import SkillExecutabilityGate, SkillStructureGate
+from .gates import ProceduralActionGate, SkillExecutabilityGate, SkillStructureGate
 from .models import ConceptConflictCandidate, ProviderResult, QualityScore, SkillCandidate, ValidationReport
 
 
@@ -15,6 +15,7 @@ class SkillProductionGate:
         self.structure = SkillStructureGate()
         self.evidence = EvidenceGate()
         self.executability = SkillExecutabilityGate()
+        self.procedural = ProceduralActionGate()
 
     def validate(
         self,
@@ -30,6 +31,7 @@ class SkillProductionGate:
         report.issues.extend(self.structure.validate(candidate).issues)
         report.issues.extend(self.evidence.validate(ProviderResult(provider=candidate.provider, skills=[candidate]), catalog).issues)
         report.issues.extend(self.executability.validate(candidate).issues)
+        report.issues.extend(self.procedural.validate(candidate, catalog).issues)
         if candidate.provider.casefold() == "rule" or candidate.provider.casefold().startswith("rule:"):
             report.add("error", "rule-analyzer-diagnostic-only", "Rule Analyzer cannot produce a production Skill.", candidate.title)
         if not concepts_stable:

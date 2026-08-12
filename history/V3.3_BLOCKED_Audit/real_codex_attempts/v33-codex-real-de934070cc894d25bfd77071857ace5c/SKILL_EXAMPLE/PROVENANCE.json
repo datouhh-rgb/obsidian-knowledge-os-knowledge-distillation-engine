@@ -1,0 +1,12 @@
+{
+  "artifact_sha256": "4de5254cdde5f45e69fbbba231b52f91db1ce616ab9fd857a9081ffb72786c31",
+  "authoritative_source": "disposable-vault-approved-immutable-version",
+  "candidate_fingerprint": "8ee8cc109e3a30a559c4847b0b7dc0d2b4329db98667cca92822f2a982e67a05",
+  "conversion_id": "9b0b854ffb8980d7ac06ad77a2eee0fba07001a80ff8daca8375b842e51f5683",
+  "engine_version": "3.3.0",
+  "schema_version": 1,
+  "skill": "apply-source-method-07575997-75dba888",
+  "source_id": "75dba888e796b4aae0ef85f99798b6c8eab002e2c2b213e98b9b3e5d5c32b828",
+  "upstream_run_id": "run-bc9cd005778507c78b818f68",
+  "version": "1.0.0"
+}

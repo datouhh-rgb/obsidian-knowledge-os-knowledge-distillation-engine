@@ -1,0 +1,9 @@
+[
+  {
+    "attempt": 1,
+    "exit_code": 0,
+    "observed_skill_read": false,
+    "stderr_sha256": "b39582ba3ba374abfd3e25c9a9dabc4a22e9b74288f5c6ec9665b59bfc56587e",
+    "stdout_sha256": "96d361b742334ad780c3795e8d0561582213c801742a2b3f97667ff15c0e15b3"
+  }
+]

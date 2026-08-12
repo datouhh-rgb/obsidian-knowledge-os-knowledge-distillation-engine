@@ -1,0 +1,4 @@
+{"type":"thread.started","thread_id":"019ff5af-198e-71c3-9151-7f39db06ef0f"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"KEEP_DISCIPLINE."}}
+{"type":"turn.completed","usage":{"input_tokens":12981,"cached_input_tokens":9984,"output_tokens":9,"reasoning_output_tokens":0}}

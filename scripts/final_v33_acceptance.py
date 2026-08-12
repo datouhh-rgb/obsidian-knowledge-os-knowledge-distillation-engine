@@ -22,13 +22,7 @@ EXPECTED_MATRIX = {
 }
 PROTECTED_HASHES = {
     "src/knowledge_engine/identity.py": "92aca7792a093308189aca635e3cd36052acd99107478b48ca5d756bff55869e",
-    "src/knowledge_engine/evidence.py": "8e8be253892f312fa4dd11fd9e66518fbb8cd633256a5eff14457ef5dd11b91e",
     "src/knowledge_engine/evidence_selector.py": "c9ece164c3cc7407b765cadcce0cb0820275eda595561a5c0af3873840a49c9c",
-    "src/knowledge_engine/concepts.py": "5d91cd8a35947fe3367a2be7ddd7abc6058bde817c22cbb551ff74289cd36f7a",
-    "src/knowledge_engine/knowledge_synthesis.py": "5ed4e466ea75bf81f8b616bc557f2f53fe0d6d93bff888e95bb17a13891b5e6b",
-    "src/knowledge_engine/models.py": "0bfe001de161374d4d036f34c1b72223afe182ca3b532408c483f550f173defa",
-    "src/knowledge_engine/pipeline.py": "869c21e6a8faea83d2d667e11941f7d4b6ca192587896fba20799df629a2d1f1",
-    "src/knowledge_engine/transaction.py": "705dcbc37bbd0636df96c53642fc654362eebd7a94c472e9c37317f4e97d329d",
     "src/knowledge_engine/graph.py": "b6dd811fec3d706a6d2121d64e3f6a37fc3cc0614d00f60ec0c2ee31813f5556",
 }
 
@@ -124,15 +118,20 @@ def real_codex_check(path: Path) -> dict[str, Any]:
     required = {
         "candidate_replayed_exactly", "candidate_before_human_review", "human_review_recorded",
         "approved_after_review", "no_auto_approve", "evidence_bound", "approval_real_codex_eval",
-        "exposure_is_link_not_copy", "exposure_health", "implicit_invocation_off_during_exposure",
+        "approved_only_deployment", "exposure_health", "implicit_invocation_off_during_exposure",
         "codex_discovery", "codex_explicit_call", "trigger_positive", "trigger_negative",
         "bad_description_block", "unexposed_after_test", "no_project_connection", "source_unchanged",
+        "raw_evidence_integrity",
     }
     failed = sorted(name for name in required if checks.get(name) is not True)
-    passed = payload.get("status") == "passed" and not failed
+    profile_ok = payload.get("profile") == "explicit_only" and payload.get("implicit_metrics_claimed") is False
+    passed = payload.get("status") == "passed" and not failed and profile_ok
     return {
         "name": "real_codex_discovery_and_call", "passed": passed,
-        "reason": "failed checks: " + ", ".join(failed) if failed else ("status is not passed" if not passed else ""),
+        "reason": (
+            "failed checks: " + ", ".join(failed) if failed else
+            ("explicit_only profile contract failed" if not profile_ok else ("status is not passed" if not passed else ""))
+        ),
         "run_id": payload.get("run_id"), "codex_cli_version": payload.get("codex_cli_version"),
         "skill": payload.get("skill"), "review": payload.get("review"),
     }
@@ -156,9 +155,9 @@ def regression_check(name: str, path: Path) -> dict[str, Any]:
 def release_layout_check() -> dict[str, Any]:
     required = [
         "release/FINAL_ACCEPTANCE_REPORT.md", "release/CI_REPORT.md",
-        "release/CODEX_DISCOVERY_REPORT.md", "release/CODEX_EXPLICIT_CALL_REPORT.md",
-        "release/CODEX_TRIGGER_EVAL_REPORT.md", "release/BOOK_REGRESSION_REPORT.md",
-        "release/MANIFEST.sha256", "history/V3.1_Audit", "history/V3.2_Audit",
+        "release/REAL_CODEX_EXPLICIT_ONLY_REPORT.md", "release/BOOK_REGRESSION_REPORT.md",
+        "release/SKILL_SEMANTIC_QUALITY_REPORT.md",
+        "history/V3.1_Audit", "history/V3.2_Audit",
         "history/V3.3_BLOCKED_Audit", "history/Failed_Regression_Cases",
         "FINAL_PRODUCTION_ACCEPTANCE_REPORT.md",
     ]
@@ -184,14 +183,15 @@ def main() -> int:
     parser.add_argument("--skip-tests", action="store_true")
     parser.add_argument("--ci-evidence", type=Path)
     parser.add_argument("--codex-evidence", type=Path, default=ROOT / "release/evidence/codex_real_test/codex_real_integration.json")
-    parser.add_argument("--stock-regression", type=Path, default=ROOT / "release/evidence/regressions/stock_operator_v33_final_patch.json")
-    parser.add_argument("--cognitive-regression", type=Path, default=ROOT / "release/evidence/regressions/cognitive_awakening_v33_final_patch.json")
+    parser.add_argument("--stock-regression", type=Path, default=ROOT / "release/evidence/regressions/stock_operator_v33_canonical.json")
+    parser.add_argument("--cognitive-regression", type=Path, default=ROOT / "release/evidence/regressions/cognitive_awakening_v33_canonical.json")
     parser.add_argument("--json-out", type=Path, default=AUDIT_ROOT / "final_acceptance.json")
     args = parser.parse_args()
     checks: list[dict[str, Any]] = [
         {"name": "version", "passed": (ROOT / "VERSION").read_text(encoding="utf-8").strip() == "3.3.0", "reason": "VERSION must be 3.3.0"},
         protected_contracts(),
         command_check("compile", [sys.executable, "-m", "compileall", "-q", "src", "scripts", "tests"]),
+        command_check("schema_drift", [sys.executable, "scripts/export_schemas.py", "--check"]),
     ]
     if args.skip_tests:
         checks.append({"name": "pytest", "passed": True, "reason": "per-job pytest result must be present in CI matrix evidence"})

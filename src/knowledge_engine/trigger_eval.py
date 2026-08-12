@@ -20,7 +20,7 @@ from .utils import atomic_write, canonical_json, now_iso, sha256_bytes, sha256_f
 
 
 TRIGGER_EVAL_ROOT = Path("10_Reviews/Skill-Evals")
-REAL_EVALUATOR_KINDS = {"codex-cli-implicit", "approved-external-router"}
+REAL_EVALUATOR_KINDS = {"codex-cli-implicit", "codex-cli-explicit", "approved-external-router"}
 
 
 class TriggerEvalError(ValueError):

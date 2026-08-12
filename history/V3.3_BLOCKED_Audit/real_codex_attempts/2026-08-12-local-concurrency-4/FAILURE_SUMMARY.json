@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "engine_version": "3.3.0",
+  "observed_at": "2026-08-12T18:02:01+08:00",
+  "commit_sha": "d36d83608f27144c80a1bdf57bba797cf9fba57b",
+  "codex_cli_version": "0.144.6",
+  "mode": "real-codex-cli-explicit-only-disposable-vault-concurrency-4",
+  "status": "blocked",
+  "metrics": {
+    "trigger_recall": 20.0,
+    "trigger_precision": 100.0,
+    "boundary_score": 100.0
+  },
+  "failed_positive_case_uuids": [
+    "ba8e075d-43da-5c92-ba77-be97c9a20f87",
+    "9682b7bb-bfc6-5ccb-b710-919667c5c0aa",
+    "585fadd1-1006-5f32-892a-b9955b9e5d50",
+    "4b470b37-7ad9-50cc-a9fd-511e37359013",
+    "06d8c87d-6077-56e5-84d6-65ddf9e81e7a",
+    "3a37f02a-14ee-5b25-a4f9-afd399ff3117",
+    "897b4e69-6ad9-5cf9-b2c6-11dc8f71638d",
+    "c2fd6c1d-bfa5-569c-894a-bb9bb3962b9b"
+  ],
+  "failure_pattern": "Eight of ten positive Codex processes exited with code 1 and produced no target Skill read event; negative and boundary controls passed.",
+  "raw_transcripts_retained": false,
+  "raw_transcript_note": "This pre-remediation harness used a temporary Vault and raised before copying raw files. The console-derived failure summary is retained; the harness now preserves all future blocked attempts under history.",
+  "remediation": "Retry only non-zero process exits, retain every attempt, reduce concurrency to two, and never retry a successful semantic miss."
+}

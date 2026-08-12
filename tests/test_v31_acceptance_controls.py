@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import subprocess
 import sys
 from concurrent.futures import ThreadPoolExecutor
@@ -181,17 +182,19 @@ def test_asset_ledger_and_strict_schema_detect_metadata_tamper(distilled, mutati
     assert any(not item["passed"] and item["code"] in {"conversion-load", "asset-ledger-byte-hashes"} for item in report.checks)
 
 
-def test_different_titles_with_high_action_overlap_create_proposal(vault: Path, source_factory) -> None:
-    steps = ["保存原始资料并计算哈希。", "记录原文行号和摘录。", "输出前核对结论边界。"]
+def test_different_titles_with_high_action_overlap_are_quarantined_as_duplicates(vault: Path, source_factory) -> None:
+    steps = [
+        "保存原始资料并计算 SHA-256 哈希，记录保存路径与校验结果。",
+        "为每条结论记录原文行号和摘录，缺少定位信息时停止提交。",
+        "输出前核对结论是否超出原文边界，并记录通过或阻断状态。",
+    ]
     first = source_factory(book="A", method_title="来源核验流程", steps=steps)
     second = source_factory(book="B", method_title="原文证据检查方法", steps=steps)
     make_production_pipeline(vault).distill(str(first), title="A")
     result = make_production_pipeline(vault).distill(str(second), title="B")
-    assert result.status == "completed"
-    proposals = list(SynthesisRegistry.load(vault).proposals.values())
-    matching = [item for item in proposals if {member["title"] for member in item["members"]} == {"来源核验流程", "原文证据检查方法"}]
-    assert matching
-    assert matching[0]["match"]["action_score"] >= 85
+    assert result.status == "blocked"
+    assert not SynthesisRegistry.load(vault).proposals
+    assert any(item.code == "skill-quality-blocked" for item in result.validation.errors)
 
 
 class CountingFakeLLM:
@@ -211,13 +214,29 @@ class CountingFakeLLM:
         statement = lambda item: {
             "text": item["excerpt"], "selected_evidence_indexes": [item["index"]],
         }
+        def action(item):  # type: ignore[no-untyped-def]
+            words: list[str] = []
+            for token in re.findall(r"[a-z]{4,}", item["excerpt"].casefold()):
+                if token not in words:
+                    words.append(token)
+                if len(words) >= 3:
+                    break
+            assert len(words) >= 3
+            return {
+                "text": (
+                    f'When evidence candidate {item["index"]} requires verification, check source signals'
+                    f'"{", ".join(words)}"; record supported, conflicting, or missing status; '
+                    'stop if a signal cannot be located.'
+                ),
+                "selected_evidence_indexes": [item["index"]],
+            }
         return {
             "concepts": [{"title": f"证据核验 {first['section']}", "definition": statement(first), "confidence": 0.9}], "relations": [],
             "skills": [{
                 "title": "长文证据核验流程", "positioning": statement(first),
                 "scenarios": [statement(first)], "input_requirements": [statement(second)],
                 "decision_flow": [statement(first), statement(second)],
-                "actions": [statement(first), statement(second)], "output_format": statement(second),
+                "actions": [action(first), action(second)], "output_format": statement(second),
                 "boundaries": [statement(first)], "prohibited_scenarios": [statement(second)],
                 "confidence": 0.9,
             }],
@@ -258,7 +277,7 @@ def test_100k_llm_e2e_uses_true_map_reduce_and_rebinds_current_evidence(vault: P
         "warnings": second.warnings,
         "validation": [item.__dict__ for item in second.validation.issues],
     }
-    assert current_records
+    assert current_records, [item.__dict__ for item in second.validation.issues]
     for version in current_records:
         assert all(evidence_id.startswith("ev-") for evidence_id in version["evidence_bindings"])
         evidence_path = vault / Path(version["artifact_path"]).parent / "references/evidence.json"

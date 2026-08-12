@@ -1,0 +1,12 @@
+{
+  "conversion_id": "9b0b854ffb8980d7ac06ad77a2eee0fba07001a80ff8daca8375b842e51f5683",
+  "engine_version": "3.3.0",
+  "evidence_sha256": "a526535f1217254d8bf4f483718434b54da9a93a42bf9c83e80b1fd7983971a0",
+  "name": "apply-source-method-07575997-75dba888",
+  "schema_version": 4,
+  "skill_id": "dbe07e33-7c38-4e21-b49f-d1c58f98c39d",
+  "skill_sha256": "12c5d1911e20b13dfe84a1b2b984da13866f1773f118b7238bbed37c948599c5",
+  "source_id": "75dba888e796b4aae0ef85f99798b6c8eab002e2c2b213e98b9b3e5d5c32b828",
+  "status": "candidate",
+  "version": "1.0.0"
+}

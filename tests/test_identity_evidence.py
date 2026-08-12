@@ -29,7 +29,10 @@ def test_same_title_sources_and_editions_coexist(vault: Path, source_factory) ->
     assert (two.source_root / "originals").is_dir()
     index = json.loads((vault / "06_Sources/Books/SOURCE_INDEX.json").read_text(encoding="utf-8"))
     assert len(index["titles"]["同名书"]) == 2
-    assert len(SkillRegistry.load(vault).records) == 2
+    # Source identity remains independent even when a shallow edition-specific
+    # procedure is correctly quarantined by the semantic production gate.
+    assert len(SkillRegistry.load(vault).records) == 1
+    assert any(item.code == "skill-candidate-quarantined" for item in two.validation.warnings)
 
 
 def test_conversion_identity_changes_with_converter_config(tmp_path: Path) -> None:

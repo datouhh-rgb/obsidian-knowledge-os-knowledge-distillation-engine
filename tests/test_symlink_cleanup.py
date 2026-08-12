@@ -16,7 +16,12 @@ def test_remove_exposure_link_preserves_link_target(tmp_path: Path) -> None:
     sentinel = target / "SKILL.md"
     sentinel.write_text("canonical", encoding="utf-8")
     link = tmp_path / "linked-skill"
-    VaultTransaction._create_directory_link(link, target)
+    try:
+        VaultTransaction._create_directory_link(link, target)
+    except Exception as exc:
+        if os.name == "nt" and ("privilege" in str(exc).lower() or "特权" in str(exc)):
+            pytest.skip("Windows true-symlink privilege is unavailable; managed-cache is tested separately.")
+        raise
 
     remove_exposure_link(link)
 

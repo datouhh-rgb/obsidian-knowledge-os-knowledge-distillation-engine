@@ -78,6 +78,11 @@ class SemanticSupportGate:
         if not statement_tokens:
             return "unsupported", "Statement has no comparable semantic tokens."
         coverage = len(statement_tokens & evidence_tokens) / len(statement_tokens)
+        if cls._evidence_bound_procedural_abstraction(normalized_statement, joined, coverage):
+            return "supported", (
+                "Evidence-bound procedural abstraction passed: at least three atomic source signals are "
+                f"present in the bound Evidence and lexical support coverage is {coverage:.2f}."
+            )
         if coverage >= 0.72:
             return "supported", f"Conservative lexical support coverage is {coverage:.2f}."
         if coverage >= 0.35:
@@ -97,3 +102,24 @@ class SemanticSupportGate:
         affirmative = any(marker in item.casefold() for item in excerpts for marker in ("must ", "必须", "应当", "always "))
         negative = any(marker in item.casefold() for item in excerpts for marker in ("must not", "不得", "禁止", "never "))
         return affirmative and negative
+
+    @staticmethod
+    def _evidence_bound_procedural_abstraction(statement: str, evidence: str, coverage: float) -> bool:
+        signal_match = re.search(
+            r"(?:原文信号|source signals?)[“\"]([^”\"]+)[”\"]",
+            statement,
+            re.IGNORECASE,
+        )
+        signals = [] if signal_match is None else [
+            normalize_excerpt(item).strip()
+            for item in re.split(r"[、,，]|\band\b", signal_match.group(1), flags=re.IGNORECASE)
+            if normalize_excerpt(item).strip()
+        ]
+        exact_signals = (
+            len(set(signals)) >= 3
+            and all(2 <= len(item) <= 8 and item.casefold() in evidence.casefold() for item in signals)
+        )
+        condition = bool(re.search(r"(?:当|若|如果|一旦|when|if).{1,100}(?:时|then|,|，)", statement, re.IGNORECASE))
+        observable = bool(re.search(r"(?:记录|输出|生成|保存|record|output|return)", statement, re.IGNORECASE))
+        stop = bool(re.search(r"(?:停止|终止|拒绝|stop|block)", statement, re.IGNORECASE))
+        return exact_signals and condition and observable and stop and coverage >= 0.05

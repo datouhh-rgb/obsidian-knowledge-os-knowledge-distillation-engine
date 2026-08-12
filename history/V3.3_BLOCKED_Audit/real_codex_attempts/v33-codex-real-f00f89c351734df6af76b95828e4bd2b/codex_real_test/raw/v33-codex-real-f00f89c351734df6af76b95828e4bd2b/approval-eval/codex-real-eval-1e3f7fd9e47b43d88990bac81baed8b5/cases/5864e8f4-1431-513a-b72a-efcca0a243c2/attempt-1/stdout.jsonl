@@ -1,0 +1,4 @@
+{"type":"thread.started","thread_id":"019ff5a9-6a62-7892-b961-06217388f6dc"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"Skill unavailable: `apply-source-method-07575997-75dba888` is not installed."}}
+{"type":"turn.completed","usage":{"input_tokens":13166,"cached_input_tokens":12032,"output_tokens":107,"reasoning_output_tokens":80}}

@@ -94,16 +94,24 @@ class RealStructureNormalizer:
         re.IGNORECASE,
     )
     IMAGE = re.compile(r"!\[[^\]]*\]\(([^)]+)\)|\[IMAGE OMITTED(?::\s*([^\]]+))?\]", re.IGNORECASE)
+    TOOL_METADATA_KEY = re.compile(
+        r"^[\s\"']*(?:title|source[_-]?format|source[_-]?path|source[_-]?sha256|converter|"
+        r"kindleunpack[_-]?(?:commit|version)|conversion[_-]?scope|isbn)[\s\"']*[:=]",
+        re.IGNORECASE,
+    )
 
     def normalize(self, text: str, source_format: str) -> NormalizedDocument:
         conversion_text = normalize_text(text)
         raw_lines = conversion_text.replace("\f", f"\n{self.PAGE_MARKER}\n").splitlines()
         pages = self._pages(raw_lines)
         repeated_margin = self._repeated_margin_lines(pages)
+        metadata_lines = self._metadata_line_numbers(raw_lines)
         mapped: list[_MappedLine] = []
         omissions: list[str] = []
         warnings: list[str] = []
         for line_no, raw in enumerate(raw_lines, start=1):
+            if line_no in metadata_lines:
+                continue
             stripped = raw.strip()
             if stripped == self.PAGE_MARKER:
                 mapped.append(_MappedLine(self.PAGE_MARKER, line_no, line_no))
@@ -153,6 +161,41 @@ class RealStructureNormalizer:
             image_omissions=tuple(sorted(set(omissions))),
             warnings=tuple(warnings),
         )
+
+    @classmethod
+    def _metadata_line_numbers(cls, lines: list[str]) -> set[int]:
+        """Identify explicit converter/tool headers without deleting book prose."""
+        removed: set[int] = set()
+        first = next((index for index, line in enumerate(lines) if line.strip()), None)
+        if first is None:
+            return removed
+        if lines[first].strip() == "---":
+            closing = next(
+                (index for index in range(first + 1, min(len(lines), first + 200)) if lines[index].strip() == "---"),
+                None,
+            )
+            if closing is not None:
+                removed.update(range(first + 1, closing + 2))
+        elif lines[first].strip().startswith("{"):
+            depth = 0
+            closing = None
+            header = []
+            for index in range(first, min(len(lines), first + 200)):
+                header.append(lines[index])
+                depth += lines[index].count("{") - lines[index].count("}")
+                if depth <= 0:
+                    closing = index
+                    break
+            if closing is not None and any(cls.TOOL_METADATA_KEY.match(line.strip()) for line in header):
+                removed.update(range(first + 1, closing + 2))
+        # Some converters emit a flat YAML-like tool preamble without delimiters.
+        for index in range(first, min(len(lines), first + 80)):
+            stripped = lines[index].strip()
+            if stripped.startswith("#"):
+                break
+            if cls.TOOL_METADATA_KEY.match(stripped):
+                removed.add(index + 1)
+        return removed
 
     def _pages(self, lines: list[str]) -> list[list[str]]:
         pages: list[list[str]] = [[]]

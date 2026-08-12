@@ -146,12 +146,14 @@ class ConceptQualityAssessment:
     score: float
     reasons: tuple[str, ...]
     skill_potential: bool
+    disposition: str = "accepted"
 
 
 @dataclass(frozen=True)
 class ConceptQualityResult:
     accepted: tuple[ConceptCandidate, ...]
     rejected: tuple[ConceptCandidate, ...]
+    quarantined: tuple[ConceptCandidate, ...]
     assessments: tuple[ConceptQualityAssessment, ...]
     duplicate_rate: float
     evidence_density: float
@@ -161,14 +163,84 @@ class ConceptQualityResult:
     def passed(self) -> bool:
         return bool(self.accepted)
 
+    @property
+    def invalid_rate(self) -> float:
+        total = len(self.accepted) + len(self.rejected)
+        return 0.0 if total == 0 else round(100.0 * len(self.rejected) / total, 2)
+
+
+@dataclass(frozen=True)
+class BookQualityAssessment:
+    passed: bool
+    accepted_count: int
+    quarantined_count: int
+    rejected_count: int
+    invalid_rate: float
+    chapter_coverage: float
+    systemic_blockers: tuple[str, ...]
+    block_reason: str
+
+    def as_dict(self) -> dict[str, object]:
+        return {
+            "schema_version": 1,
+            "passed": self.passed,
+            "accepted_count": self.accepted_count,
+            "quarantined_count": self.quarantined_count,
+            "rejected_count": self.rejected_count,
+            "invalid_rate": self.invalid_rate,
+            "chapter_coverage": self.chapter_coverage,
+            "systemic_blockers": list(self.systemic_blockers),
+            "block_reason": self.block_reason,
+        }
+
+
+class BookKnowledgeGate:
+    """Keep candidate quarantine separate from book-level fail-closed conditions."""
+
+    MAX_INVALID_RATE = 80.0
+
+    def validate(self, result: ConceptQualityResult) -> BookQualityAssessment:
+        blockers: list[str] = []
+        if not result.accepted:
+            blockers.append("zero viable knowledge candidates")
+        if result.evidence_density < 100.0:
+            blockers.append("Evidence integrity is incomplete")
+        if result.invalid_rate > self.MAX_INVALID_RATE:
+            blockers.append(
+                f"systemic candidate invalid rate {result.invalid_rate:.2f}% exceeds {self.MAX_INVALID_RATE:.2f}%"
+            )
+        reason = "; ".join(blockers)
+        return BookQualityAssessment(
+            passed=not blockers,
+            accepted_count=len(result.accepted),
+            quarantined_count=len(result.quarantined),
+            rejected_count=len(result.rejected),
+            invalid_rate=result.invalid_rate,
+            chapter_coverage=result.chapter_coverage,
+            systemic_blockers=tuple(blockers),
+            block_reason=reason,
+        )
+
 
 class ConceptQualityGate:
     """Semantic fragment gate; title length alone never determines acceptance."""
 
-    FRAGMENTS = {"这就", "也就", "的就", "所以说", "就是说", "于是就", "然后就", "还有就是"}
-    TAIL_PARTICLE = re.compile(r"(?:的|地|得|就|也|而|且|但|却|呢|啊)$")
+    FRAGMENTS = {"则", "这就", "也就", "的就", "所以说", "就是说", "于是就", "然后就", "还有就是"}
+    TAIL_PARTICLE = re.compile(r"(?:的|地|得|就|也|而|且|但|却|呢|啊|不|都|在|和|与|或)$")
     CHAPTER_ONLY = re.compile(r"^(?:第[一二三四五六七八九十百0-9]+[章节篇部卷]|[一二三四五六七八九十]+[、.])$")
     SKILL_SIGNAL = re.compile(r"(?:方法|步骤|判断|检查|选择|执行|建立|分析|评估|核验|流程|原则|rule|process|method)", re.IGNORECASE)
+    NARRATIVE_PREFIX = re.compile(
+        r'^[\s"\'“”‘’]*(?:我|你|他|她|它|我们|你们|他们|这|那|如果|无论|因为|所以|但是|然而|'
+        r'当然|报告显示|有人|朋友|先生|太太|公众应当|公众应该|读者应当|下一天|请看|告诉|为什么|问题不在于|对于)'
+    )
+    SENTENCE_PUNCTUATION = re.compile(r"[，。！？；：!?;:]")
+    ENGLISH_TRAILING_FRAGMENT = re.compile(r"\b(?:a|an|the|and|or|but|if|when|of|to|for|as|is|are|was|were)$", re.IGNORECASE)
+    METADATA_SIGNAL = re.compile(
+        r"(?:出版社|出版|印刷|邮编|网址|电话|书号|ISBN|版权|社址|集团地址|联系信息|"
+        r"publisher|publication metadata|production credits|copyright-page|contact information)",
+        re.IGNORECASE,
+    )
+    INVALID_TEXT = re.compile(r"\ufffd")
 
     def validate(
         self,
@@ -187,6 +259,7 @@ class ConceptQualityGate:
         assessments: list[ConceptQualityAssessment] = []
         accepted: list[ConceptCandidate] = []
         rejected: list[ConceptCandidate] = []
+        quarantined: list[ConceptCandidate] = []
         for item in ordered:
             title = normalize_excerpt(item.title).strip("# ")
             definition = normalize_excerpt(item.definition.text)
@@ -195,12 +268,30 @@ class ConceptQualityGate:
             if not item.definition.evidence_ids:
                 reasons.append("missing Evidence")
                 score -= 50
+            if not title or len(title) > 60:
+                reasons.append("title is empty or too long for a stable concept label")
+                score -= 80
+            if self.INVALID_TEXT.search(title) or self.INVALID_TEXT.search(definition):
+                reasons.append("text contains an undecodable replacement character")
+                score -= 80
             if title in self.FRAGMENTS or self.CHAPTER_ONLY.fullmatch(title):
                 reasons.append("known discourse/chapter fragment")
                 score -= 70
             if self.TAIL_PARTICLE.search(title) and not re.search(r"(?:力|率|论|法|性|值|熵)$", title):
                 reasons.append("linguistically incomplete title")
                 score -= 45
+            if self.ENGLISH_TRAILING_FRAGMENT.search(title):
+                reasons.append("English title ends with a discourse fragment")
+                score -= 60
+            if self.NARRATIVE_PREFIX.search(title):
+                reasons.append("title is narrative speech rather than a concept label")
+                score -= 70
+            if self.SENTENCE_PUNCTUATION.search(title):
+                reasons.append("title contains sentence punctuation rather than label syntax")
+                score -= 70
+            if self.METADATA_SIGNAL.search(title + " " + definition):
+                reasons.append("publication or converter metadata is not knowledge Evidence")
+                score -= 90
             if definition and definition[-1:] in {"的", "地", "得", "就", "而", "与", "或", "：", ":"}:
                 reasons.append("definition is a trailing sentence fragment")
                 score -= 35
@@ -208,15 +299,38 @@ class ConceptQualityGate:
                 reasons.append("no semantic definition beyond the label")
                 score -= 35
             # Legitimate short concepts survive when their definition is complete and grounded.
-            if len(title) <= 4 and len(definition) >= 6 and item.definition.evidence_ids and title not in self.FRAGMENTS:
+            hard_reasons = {
+                "known discourse/chapter fragment",
+                "linguistically incomplete title",
+                "title is narrative speech rather than a concept label",
+                "title contains sentence punctuation rather than label syntax",
+                "publication or converter metadata is not knowledge Evidence",
+                "text contains an undecodable replacement character",
+            }
+            if (
+                2 <= len(title) <= 4
+                and len(definition) >= 6
+                and item.definition.evidence_ids
+                and title not in self.FRAGMENTS
+                and not (hard_reasons & set(reasons))
+            ):
                 score = max(score, 75.0)
                 reasons = [reason for reason in reasons if reason != "no semantic definition beyond the label"]
             skill_potential = bool(self.SKILL_SIGNAL.search(title + " " + definition))
-            assessment = ConceptQualityAssessment(title, score >= minimum_score, max(0.0, score), tuple(reasons), skill_potential)
+            passed = score >= minimum_score
+            disposition = "accepted" if passed else ("rejected" if not item.definition.evidence_ids else "quarantined")
+            assessment = ConceptQualityAssessment(
+                title, passed, max(0.0, score), tuple(reasons), skill_potential, disposition,
+            )
             assessments.append(assessment)
-            (accepted if assessment.passed else rejected).append(item)
+            if assessment.passed:
+                accepted.append(item)
+            else:
+                rejected.append(item)
+                if disposition == "quarantined":
+                    quarantined.append(item)
         return ConceptQualityResult(
-            accepted=tuple(accepted), rejected=tuple(rejected), assessments=tuple(assessments),
+            accepted=tuple(accepted), rejected=tuple(rejected), quarantined=tuple(quarantined), assessments=tuple(assessments),
             duplicate_rate=round(duplicate_rate * 100.0, 2), evidence_density=round(evidence_density, 2),
             chapter_coverage=round(chapter_coverage, 2),
         )
@@ -225,7 +339,8 @@ class ConceptQualityGate:
         report = ValidationReport()
         for assessment in result.assessments:
             if not assessment.passed:
-                report.add("warning", "concept-fragment-rejected", f"{assessment.title}: {', '.join(assessment.reasons)}")
+                code = "concept-candidate-quarantined" if assessment.disposition == "quarantined" else "concept-candidate-rejected"
+                report.add("warning", code, f"{assessment.title}: {', '.join(assessment.reasons)}")
         if result.evidence_density < 100:
             report.add("error", "concept-evidence-density", f"Concept Evidence density is {result.evidence_density}%; 100% is required.")
         return report

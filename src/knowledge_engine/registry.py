@@ -23,7 +23,7 @@ from .utils import ascii_slug, now_iso, wikilink
 
 REGISTRY_JSON = Path("05_Knowledge/Skills/REGISTRY_V3.json")
 REGISTRY_MD = Path("05_Knowledge/Skills/Skill-Registry-V3.md")
-REAL_EVALUATORS = {"codex-cli-implicit", "approved-external-router"}
+REAL_EVALUATORS = {"codex-cli-implicit", "codex-cli-explicit", "approved-external-router"}
 
 
 @dataclass

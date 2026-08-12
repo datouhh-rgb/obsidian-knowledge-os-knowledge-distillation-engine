@@ -29,8 +29,14 @@ def test_expose_discover_status_unexpose_preserves_vault(distilled, tmp_path: Pa
     before = sha256_file(source_skill)
     exposed = manager.expose(skill, "repo", repo)
     link = Path(exposed.link_path or "")
-    assert VaultTransaction._is_link_like(link)
-    assert link.resolve() == source_skill.parent.resolve()
+    if exposed.deployment_mode == "symlink":
+        assert link.is_symlink()
+        assert link.resolve() == source_skill.parent.resolve()
+    else:
+        assert exposed.deployment_mode == "managed-cache"
+        assert not VaultTransaction._is_link_like(link)
+        assert (link / "DEPLOYMENT_MANIFEST.json").is_file()
+        assert sha256_file(link / "SKILL.md") == sha256_file(source_skill)
     assert manager.status(skill).status == "healthy"
     policy = (source_skill.parent / "agents/openai.yaml").read_text(encoding="utf-8")
     assert "allow_implicit_invocation: false" in policy
@@ -50,12 +56,22 @@ def test_broken_wrong_target_and_scope_conflict_are_detected(distilled, tmp_path
     with pytest.raises(ValueError, match="重复暴露"):
         manager.expose(skill, "user")
     link = Path(exposed.link_path or "")
-    remove_exposure_link(link)
-    assert manager.status(skill).issues[0]["code"] == "broken-link"
+    if exposed.deployment_mode == "symlink":
+        remove_exposure_link(link)
+    else:
+        manager._make_tree_writable(link)
+        (link / "SKILL.md").write_text("drift", encoding="utf-8")
+    assert manager.status(skill).status == "invalid"
     manager.reconcile(repair=True)
-    other = tmp_path / "other"; other.mkdir()
-    VaultTransaction._create_directory_link(link, other)
-    with pytest.raises(ValueError, match="冲突|错误"):
+    assert manager.status(skill).status == "healthy"
+    if exposed.deployment_mode == "symlink":
+        remove_exposure_link(link)
+        other = tmp_path / "other"; other.mkdir()
+        VaultTransaction._create_directory_link(link, other)
+    else:
+        manager._make_tree_writable(link)
+        (link / "SKILL.md").write_text("drift again", encoding="utf-8")
+    with pytest.raises(ValueError, match="冲突|错误|conflict|drift"):
         manager.expose(skill, "repo", repo)
     remove_exposure_link(link)
 
@@ -67,7 +83,7 @@ def test_manual_entity_at_exposure_path_is_never_deleted(distilled, tmp_path: Pa
     repo = tmp_path / "repo"; repo.mkdir()
     conflict = repo / ".agents/skills" / skill
     conflict.mkdir(parents=True)
-    with pytest.raises(ValueError, match="冲突"):
+    with pytest.raises(ValueError, match="冲突|conflict"):
         SkillExposureManager(vault).expose(skill, "repo", repo)
     assert conflict.is_dir()
 

@@ -7,7 +7,16 @@ Evidence → Concept → Canonicalization → Method Cluster
          → Skill Synthesis → Quality Gate → Candidate Skill
 ```
 
-The caller-provided Obsidian Vault remains the only knowledge authority. V3.3 Final Production Verification does not change Source Identity, Conversion Identity, the V3.2.1 Evidence-selection contract, lifecycle states, approval rules, exposure structure, or the atomic Vault transaction model. Exposure keeps implicit invocation disabled and makes no Skill copy.
+The caller-provided Obsidian Vault remains the only knowledge authority. V3.3 Final Production Acceptance does not change Source Identity, Conversion Identity, the V3.2.1 Evidence-selection contract, lifecycle states, approval rules, or the atomic Vault transaction model. Exposure keeps implicit invocation disabled. It uses a true directory symlink where supported; otherwise it creates a read-only, hash-bound, disposable deployment cache whose manifest points back to the approved immutable Vault version. The derived cache is never a knowledge source and cannot sync changes back to the Vault.
+
+## Final production remediation
+
+- Skill actions are now Evidence-bound procedural abstractions. Raw Evidence excerpts, narrative quotations, and generic policy shells cannot pass the semantic release gate.
+- Method Clusters require explainable multi-signal cohesion that includes a semantic signal; sharing only a book, purpose label, chapter, or action word is insufficient.
+- Conversion/front-matter metadata is retained as provenance but excluded from body Evidence and Concept promotion.
+- Invalid Concept candidates are quarantined individually. The book-level gate blocks only systemic failure and reports accepted, quarantined, rejected, invalid-rate, and chapter-coverage data.
+- Authoritative schemas are reproducible from Python models. Git-source and final-archive manifests are separate, and the final archive manifest validates exact bytes.
+- Current book evidence is canonicalized to one file per named regression. Previous blocked evidence and hashes remain under `history/`.
 
 ## Knowledge Synthesis contracts
 
@@ -76,7 +85,7 @@ Distillation writes only to the selected Vault. Approval and link-only exposure 
 .knowledge-engine/{STATE.json, journal/, staging/, migrations/}
 ```
 
-The repository stores engine code, tests, and release evidence; it is not a second knowledge base. Canonical knowledge and Skill files stay in the Vault, and exposure locations contain managed links only.
+The repository stores engine code, tests, and release evidence; it is not a second knowledge base. Canonical knowledge and Skill files stay in the Vault. Exposure locations contain either a managed link or a derived, read-only deployment cache with an ownership manifest and drift detection.
 
 ## Production acceptance
 
@@ -93,6 +102,6 @@ python scripts\final_v33_acceptance.py `
   --ci-evidence release\evidence\ci\cross_platform_matrix.json
 ```
 
-The final gate accepts exactly six successful jobs—Windows, Ubuntu, and macOS with Python 3.11 and 3.12—all attesting the same commit SHA. It also requires genuine Codex Discovery, explicit `$skill` loading, trigger precision, both named real-book regressions, release/history isolation, and all tests. It emits only `V3.3.0_PRODUCTION_READY` or `V3.3.0_BLOCKED`.
+The final gate accepts exactly six successful portable jobs—Windows, Ubuntu, and macOS with Python 3.11 and 3.12—all attesting the same commit SHA. It separately requires Windows Real Codex Discovery, explicit `$skill` loading with a successful target `SKILL.md` read event, both named real-book regressions, release/history isolation, and all tests. The production profile is `explicit_only`; implicit invocation remains disabled and no implicit precision/recall is claimed. The gate emits only `V3.3.0_PRODUCTION_READY` or `V3.3.0_BLOCKED`.
 
 Current reports are under `release/`. Prior V3.1/V3.2 audits are isolated under `history/`. The authoritative decision is `FINAL_PRODUCTION_ACCEPTANCE_REPORT.md`.

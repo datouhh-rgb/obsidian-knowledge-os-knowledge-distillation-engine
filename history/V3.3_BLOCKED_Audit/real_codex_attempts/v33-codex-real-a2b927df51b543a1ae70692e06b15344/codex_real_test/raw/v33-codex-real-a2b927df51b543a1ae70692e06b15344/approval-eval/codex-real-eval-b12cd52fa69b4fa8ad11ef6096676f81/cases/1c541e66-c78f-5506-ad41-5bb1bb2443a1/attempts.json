@@ -1,0 +1,23 @@
+[
+  {
+    "attempt": 1,
+    "exit_code": 3221226356,
+    "observed_skill_read": false,
+    "stderr_sha256": "4b3a602661e7b5706f27473110e27dc83325d6ec38317777cc7314606a4b2e16",
+    "stdout_sha256": "edd42d6ed0262d0a1768dfa9e094b5c066dc03eaae6b9ccb26e4dee5d935a904"
+  },
+  {
+    "attempt": 2,
+    "exit_code": 3221225477,
+    "observed_skill_read": true,
+    "stderr_sha256": "1cf7e8be8f1bf8da943806865be5c98dfff18a778b2f3cfc1734c2563182c8b3",
+    "stdout_sha256": "7db1e4306132fc5dd167a413ad097ea4fdd8721d87bd9f9b478d86f0c9c5b2bf"
+  },
+  {
+    "attempt": 3,
+    "exit_code": 0,
+    "observed_skill_read": true,
+    "stderr_sha256": "16d764975f8d3417daab3342fdcbea17892255b9108dd554d8a7cc1346cafa3a",
+    "stdout_sha256": "879137fd961dfdf95d9380d823561a92cb1d25be67837c3b034e05f1604b501e"
+  }
+]

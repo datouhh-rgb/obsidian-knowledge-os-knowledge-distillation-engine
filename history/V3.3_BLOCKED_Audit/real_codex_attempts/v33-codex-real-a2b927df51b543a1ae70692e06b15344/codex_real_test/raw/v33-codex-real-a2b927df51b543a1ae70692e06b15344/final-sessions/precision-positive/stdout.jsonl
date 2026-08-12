@@ -1,0 +1,4 @@
+{"type":"thread.started","thread_id":"019ff5a7-2198-75b1-b7df-bb09d03102cb"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"是，执行前需要关键输入。"}}
+{"type":"turn.completed","usage":{"input_tokens":15848,"cached_input_tokens":12032,"output_tokens":12,"reasoning_output_tokens":0}}

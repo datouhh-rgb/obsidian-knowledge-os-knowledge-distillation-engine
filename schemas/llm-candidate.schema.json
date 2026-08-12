@@ -14,18 +14,17 @@
           "definition": {
             "additionalProperties": false,
             "properties": {
-              "evidence_ids": {
+              "origin": {
+                "const": "source"
+              },
+              "selected_evidence_indexes": {
                 "items": {
-                  "maxLength": 80,
-                  "minLength": 1,
-                  "type": "string"
+                  "minimum": 1,
+                  "type": "integer"
                 },
                 "maxItems": 100,
                 "minItems": 1,
                 "type": "array"
-              },
-              "origin": {
-                "const": "source"
               },
               "text": {
                 "maxLength": 10000,
@@ -35,7 +34,7 @@
             },
             "required": [
               "text",
-              "evidence_ids"
+              "selected_evidence_indexes"
             ],
             "type": "object"
           },
@@ -66,18 +65,17 @@
           "relation": {
             "additionalProperties": false,
             "properties": {
-              "evidence_ids": {
+              "origin": {
+                "const": "source"
+              },
+              "selected_evidence_indexes": {
                 "items": {
-                  "maxLength": 80,
-                  "minLength": 1,
-                  "type": "string"
+                  "minimum": 1,
+                  "type": "integer"
                 },
                 "maxItems": 100,
                 "minItems": 1,
                 "type": "array"
-              },
-              "origin": {
-                "const": "source"
               },
               "text": {
                 "maxLength": 10000,
@@ -87,7 +85,7 @@
             },
             "required": [
               "text",
-              "evidence_ids"
+              "selected_evidence_indexes"
             ],
             "type": "object"
           },
@@ -114,42 +112,23 @@
     },
     "skills": {
       "items": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
         "additionalProperties": false,
         "properties": {
           "actions": {
             "items": {
               "additionalProperties": false,
-              "allOf": [
-                {
-                  "if": {
-                    "properties": {
-                      "origin": {
-                        "const": "source"
-                      }
-                    }
-                  },
-                  "then": {
-                    "properties": {
-                      "evidence_ids": {
-                        "minItems": 1
-                      }
-                    }
-                  }
-                }
-              ],
               "properties": {
-                "evidence_ids": {
-                  "items": {
-                    "maxLength": 100,
-                    "minLength": 1,
-                    "type": "string"
-                  },
-                  "maxItems": 100,
-                  "type": "array"
-                },
                 "origin": {
                   "const": "source"
+                },
+                "selected_evidence_indexes": {
+                  "items": {
+                    "minimum": 1,
+                    "type": "integer"
+                  },
+                  "maxItems": 100,
+                  "minItems": 1,
+                  "type": "array"
                 },
                 "text": {
                   "maxLength": 10000,
@@ -159,7 +138,7 @@
               },
               "required": [
                 "text",
-                "evidence_ids"
+                "selected_evidence_indexes"
               ],
               "type": "object"
             },
@@ -170,36 +149,18 @@
           "boundaries": {
             "items": {
               "additionalProperties": false,
-              "allOf": [
-                {
-                  "if": {
-                    "properties": {
-                      "origin": {
-                        "const": "source"
-                      }
-                    }
-                  },
-                  "then": {
-                    "properties": {
-                      "evidence_ids": {
-                        "minItems": 1
-                      }
-                    }
-                  }
-                }
-              ],
               "properties": {
-                "evidence_ids": {
-                  "items": {
-                    "maxLength": 100,
-                    "minLength": 1,
-                    "type": "string"
-                  },
-                  "maxItems": 100,
-                  "type": "array"
-                },
                 "origin": {
                   "const": "source"
+                },
+                "selected_evidence_indexes": {
+                  "items": {
+                    "minimum": 1,
+                    "type": "integer"
+                  },
+                  "maxItems": 100,
+                  "minItems": 1,
+                  "type": "array"
                 },
                 "text": {
                   "maxLength": 10000,
@@ -209,7 +170,7 @@
               },
               "required": [
                 "text",
-                "evidence_ids"
+                "selected_evidence_indexes"
               ],
               "type": "object"
             },
@@ -225,36 +186,18 @@
           "decision_flow": {
             "items": {
               "additionalProperties": false,
-              "allOf": [
-                {
-                  "if": {
-                    "properties": {
-                      "origin": {
-                        "const": "source"
-                      }
-                    }
-                  },
-                  "then": {
-                    "properties": {
-                      "evidence_ids": {
-                        "minItems": 1
-                      }
-                    }
-                  }
-                }
-              ],
               "properties": {
-                "evidence_ids": {
-                  "items": {
-                    "maxLength": 100,
-                    "minLength": 1,
-                    "type": "string"
-                  },
-                  "maxItems": 100,
-                  "type": "array"
-                },
                 "origin": {
                   "const": "source"
+                },
+                "selected_evidence_indexes": {
+                  "items": {
+                    "minimum": 1,
+                    "type": "integer"
+                  },
+                  "maxItems": 100,
+                  "minItems": 1,
+                  "type": "array"
                 },
                 "text": {
                   "maxLength": 10000,
@@ -264,7 +207,7 @@
               },
               "required": [
                 "text",
-                "evidence_ids"
+                "selected_evidence_indexes"
               ],
               "type": "object"
             },
@@ -275,36 +218,18 @@
           "input_requirements": {
             "items": {
               "additionalProperties": false,
-              "allOf": [
-                {
-                  "if": {
-                    "properties": {
-                      "origin": {
-                        "const": "source"
-                      }
-                    }
-                  },
-                  "then": {
-                    "properties": {
-                      "evidence_ids": {
-                        "minItems": 1
-                      }
-                    }
-                  }
-                }
-              ],
               "properties": {
-                "evidence_ids": {
-                  "items": {
-                    "maxLength": 100,
-                    "minLength": 1,
-                    "type": "string"
-                  },
-                  "maxItems": 100,
-                  "type": "array"
-                },
                 "origin": {
                   "const": "source"
+                },
+                "selected_evidence_indexes": {
+                  "items": {
+                    "minimum": 1,
+                    "type": "integer"
+                  },
+                  "maxItems": 100,
+                  "minItems": 1,
+                  "type": "array"
                 },
                 "text": {
                   "maxLength": 10000,
@@ -314,7 +239,7 @@
               },
               "required": [
                 "text",
-                "evidence_ids"
+                "selected_evidence_indexes"
               ],
               "type": "object"
             },
@@ -324,36 +249,18 @@
           },
           "output_format": {
             "additionalProperties": false,
-            "allOf": [
-              {
-                "if": {
-                  "properties": {
-                    "origin": {
-                      "const": "source"
-                    }
-                  }
-                },
-                "then": {
-                  "properties": {
-                    "evidence_ids": {
-                      "minItems": 1
-                    }
-                  }
-                }
-              }
-            ],
             "properties": {
-              "evidence_ids": {
-                "items": {
-                  "maxLength": 100,
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "maxItems": 100,
-                "type": "array"
-              },
               "origin": {
                 "const": "source"
+              },
+              "selected_evidence_indexes": {
+                "items": {
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                "maxItems": 100,
+                "minItems": 1,
+                "type": "array"
               },
               "text": {
                 "maxLength": 10000,
@@ -363,42 +270,24 @@
             },
             "required": [
               "text",
-              "evidence_ids"
+              "selected_evidence_indexes"
             ],
             "type": "object"
           },
           "positioning": {
             "additionalProperties": false,
-            "allOf": [
-              {
-                "if": {
-                  "properties": {
-                    "origin": {
-                      "const": "source"
-                    }
-                  }
-                },
-                "then": {
-                  "properties": {
-                    "evidence_ids": {
-                      "minItems": 1
-                    }
-                  }
-                }
-              }
-            ],
             "properties": {
-              "evidence_ids": {
-                "items": {
-                  "maxLength": 100,
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "maxItems": 100,
-                "type": "array"
-              },
               "origin": {
                 "const": "source"
+              },
+              "selected_evidence_indexes": {
+                "items": {
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                "maxItems": 100,
+                "minItems": 1,
+                "type": "array"
               },
               "text": {
                 "maxLength": 10000,
@@ -408,43 +297,25 @@
             },
             "required": [
               "text",
-              "evidence_ids"
+              "selected_evidence_indexes"
             ],
             "type": "object"
           },
           "prohibited_scenarios": {
             "items": {
               "additionalProperties": false,
-              "allOf": [
-                {
-                  "if": {
-                    "properties": {
-                      "origin": {
-                        "const": "source"
-                      }
-                    }
-                  },
-                  "then": {
-                    "properties": {
-                      "evidence_ids": {
-                        "minItems": 1
-                      }
-                    }
-                  }
-                }
-              ],
               "properties": {
-                "evidence_ids": {
-                  "items": {
-                    "maxLength": 100,
-                    "minLength": 1,
-                    "type": "string"
-                  },
-                  "maxItems": 100,
-                  "type": "array"
-                },
                 "origin": {
                   "const": "source"
+                },
+                "selected_evidence_indexes": {
+                  "items": {
+                    "minimum": 1,
+                    "type": "integer"
+                  },
+                  "maxItems": 100,
+                  "minItems": 1,
+                  "type": "array"
                 },
                 "text": {
                   "maxLength": 10000,
@@ -454,7 +325,7 @@
               },
               "required": [
                 "text",
-                "evidence_ids"
+                "selected_evidence_indexes"
               ],
               "type": "object"
             },
@@ -465,36 +336,18 @@
           "scenarios": {
             "items": {
               "additionalProperties": false,
-              "allOf": [
-                {
-                  "if": {
-                    "properties": {
-                      "origin": {
-                        "const": "source"
-                      }
-                    }
-                  },
-                  "then": {
-                    "properties": {
-                      "evidence_ids": {
-                        "minItems": 1
-                      }
-                    }
-                  }
-                }
-              ],
               "properties": {
-                "evidence_ids": {
-                  "items": {
-                    "maxLength": 100,
-                    "minLength": 1,
-                    "type": "string"
-                  },
-                  "maxItems": 100,
-                  "type": "array"
-                },
                 "origin": {
                   "const": "source"
+                },
+                "selected_evidence_indexes": {
+                  "items": {
+                    "minimum": 1,
+                    "type": "integer"
+                  },
+                  "maxItems": 100,
+                  "minItems": 1,
+                  "type": "array"
                 },
                 "text": {
                   "maxLength": 10000,
@@ -504,7 +357,7 @@
               },
               "required": [
                 "text",
-                "evidence_ids"
+                "selected_evidence_indexes"
               ],
               "type": "object"
             },

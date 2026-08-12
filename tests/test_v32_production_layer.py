@@ -53,8 +53,14 @@ def _catalog(text: str = "# Book\n\nalpha evidence.\n\nbeta evidence.\n") -> Evi
 
 
 def _candidate(evidence_ids: tuple[str, ...], provider: str = "llm:fixture") -> SkillCandidate:
-    first = GroundedStatement("Apply the source procedure.", evidence_ids)
-    second = GroundedStatement("Verify the result against the source.", evidence_ids)
+    first = GroundedStatement(
+        'When the source procedure applies, check "alpha evidence" and record the result; stop if unverified.',
+        evidence_ids,
+    )
+    second = GroundedStatement(
+        'When verification is required, compare "beta evidence" and return the status; stop if unsupported.',
+        evidence_ids,
+    )
     policy = lambda text: GroundedStatement(text, (), "engine_policy")
     return SkillCandidate(
         "Evidence Procedure", policy("Evidence-bound procedure."),

@@ -5,7 +5,11 @@ __pycache__/
 .pytest_cache/
 .acceptance-temp/
 .acceptance-run.lock
+.knowledge-engine/
 .agents/
+/Microsoft/
 build/
 dist/
+/release/
+/FINAL_PRODUCTION_ACCEPTANCE_REPORT.md
 release/evidence/v33_prior/audit/gh*/FINAL_PRODUCTION_AUDIT/

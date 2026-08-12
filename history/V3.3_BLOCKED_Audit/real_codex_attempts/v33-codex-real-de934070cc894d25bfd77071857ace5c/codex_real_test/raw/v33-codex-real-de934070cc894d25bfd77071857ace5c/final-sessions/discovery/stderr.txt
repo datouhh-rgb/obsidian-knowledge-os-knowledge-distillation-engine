@@ -1,0 +1,2 @@
+2026-08-12T10:57:53.582458Z  WARN codex_core::shell_snapshot: Failed to create shell snapshot for powershell: Shell snapshot not supported yet for PowerShell
+Failed to write last message file "C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-real-codex-qzoiksp5\\final-sessions\\discovery\\last-message.txt": 系统找不到指定的路径。 (os error 3)

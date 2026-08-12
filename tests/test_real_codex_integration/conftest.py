@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 from pathlib import Path
 from typing import Any
 
@@ -22,12 +23,14 @@ def _sha256(path: Path) -> str:
 
 @pytest.fixture(scope="session")
 def real_codex_audit() -> dict[str, Any]:
+    if os.environ.get("RUN_REAL_CODEX_TESTS") != "1":
+        pytest.skip("Live Codex E2E runs only in the dedicated real-codex-windows-e2e gate.")
     assert EVIDENCE.is_file(), (
         "Real Codex evidence is missing. Run scripts/run_v33_real_codex_integration.py; "
         "unit fixtures and mock discovery are not accepted."
     )
     payload = json.loads(EVIDENCE.read_text(encoding="utf-8"))
-    assert payload["mode"] == "real-codex-cli-disposable-vault-strict-transcript-revalidation-no-mocks"
+    assert payload["mode"] == "real-codex-cli-explicit-only-disposable-vault-transcript-revalidation-no-mocks"
     assert payload["status"] == "passed", payload.get("blockers")
     assert payload["codex_cli_version"].startswith("codex-cli ")
     assert payload["raw_evidence"]

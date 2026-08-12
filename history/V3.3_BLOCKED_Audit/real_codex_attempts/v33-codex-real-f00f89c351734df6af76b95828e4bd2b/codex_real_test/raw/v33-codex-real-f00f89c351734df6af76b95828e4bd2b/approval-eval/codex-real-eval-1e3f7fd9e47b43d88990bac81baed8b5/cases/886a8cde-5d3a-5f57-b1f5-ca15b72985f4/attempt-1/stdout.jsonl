@@ -1,0 +1,4 @@
+{"type":"thread.started","thread_id":"019ff5ab-187d-7413-92f7-4ac01c2a3fd6"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"Skill unavailable; version and invocation fingerprint cannot be determined."}}
+{"type":"turn.completed","usage":{"input_tokens":13170,"cached_input_tokens":9984,"output_tokens":93,"reasoning_output_tokens":76}}

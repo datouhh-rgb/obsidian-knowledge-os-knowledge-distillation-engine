@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 from pathlib import Path
 
@@ -44,10 +45,22 @@ class FixtureEvidenceBoundProvider:
             provenance={"provider": self.name, "model": "pytest-fixture", "evidence_selection": "system-only"},
         )
         for method in analysis.methods:
-            actions = tuple(
-                GroundedStatement(step, catalog.ids_for_evidence(evidence))
-                for step, evidence in zip(method.steps, method.evidence)
-            )
+            actions_list = []
+            for step, evidence in zip(method.steps, method.evidence):
+                chinese = "".join(re.findall(r"[\u4e00-\u9fff]", evidence.excerpt))
+                signals: list[str] = []
+                for index in range(max(0, len(chinese) - 1)):
+                    term = chinese[index:index + 2]
+                    if term not in signals:
+                        signals.append(term)
+                    if len(signals) >= 3:
+                        break
+                actions_list.append(GroundedStatement(
+                    f'当需要执行来源步骤时，检查原文信号“{"、".join(signals)}”与“{step[:18]}”对应输入事实的一致性，'
+                    '并记录支持、冲突或缺失状态；不确认则停止。',
+                    catalog.ids_for_evidence(evidence),
+                ))
+            actions = tuple(actions_list)
             if len(actions) < 2 or any(not item.evidence_ids for item in actions):
                 continue
             policy = lambda text: GroundedStatement(text, (), "engine_policy")

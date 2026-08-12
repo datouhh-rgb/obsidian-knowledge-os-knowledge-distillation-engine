@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import json
 from pathlib import Path
 
@@ -34,14 +35,30 @@ SCHEMAS = {
 }
 
 
+def rendered_schemas() -> dict[str, bytes]:
+    return {
+        name: (json.dumps(schema, ensure_ascii=False, indent=2, sort_keys=True) + "\n").encode("utf-8")
+        for name, schema in SCHEMAS.items()
+    }
+
+
 def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--check", action="store_true", help="Fail when committed schema files drift from code.")
+    args = parser.parse_args()
     target = ROOT / "schemas"
     target.mkdir(parents=True, exist_ok=True)
-    for name, schema in SCHEMAS.items():
-        (target / name).write_text(
-            json.dumps(schema, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
-            encoding="utf-8",
-        )
+    drift: list[str] = []
+    for name, content in rendered_schemas().items():
+        path = target / name
+        if args.check:
+            if not path.is_file() or path.read_bytes() != content:
+                drift.append(name)
+        else:
+            path.write_bytes(content)
+    if args.check:
+        print(f"schema_drift={len(drift)} files={','.join(drift)}")
+        return 1 if drift else 0
     print(f"Exported {len(SCHEMAS)} schemas to {target}")
     return 0
 

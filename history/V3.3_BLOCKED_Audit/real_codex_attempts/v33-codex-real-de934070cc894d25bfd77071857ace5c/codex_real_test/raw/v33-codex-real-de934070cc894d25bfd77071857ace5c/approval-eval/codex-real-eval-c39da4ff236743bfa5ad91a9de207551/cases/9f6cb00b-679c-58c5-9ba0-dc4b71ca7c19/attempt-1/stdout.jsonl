@@ -1,0 +1,4 @@
+{"type":"thread.started","thread_id":"019ff59c-d544-7350-8e7f-3b5bbce2ce11"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"“Good morning” 中文是：**早上好**（zǎo shang hǎo）。"}}
+{"type":"turn.completed","usage":{"input_tokens":13128,"cached_input_tokens":12032,"output_tokens":26,"reasoning_output_tokens":0}}

@@ -1,0 +1,4 @@
+{"type":"thread.started","thread_id":"019ff5ae-05b3-7e40-abcc-46bcd0324304"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"Skill not found"}}
+{"type":"turn.completed","usage":{"input_tokens":13038,"cached_input_tokens":12032,"output_tokens":7,"reasoning_output_tokens":0}}

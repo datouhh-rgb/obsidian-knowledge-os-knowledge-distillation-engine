@@ -1,0 +1,9 @@
+2026-08-12T11:09:54.411278Z  WARN codex_core::shell_snapshot: Failed to create shell snapshot for powershell: Shell snapshot not supported yet for PowerShell
+2026-08-12T11:09:59.358881Z ERROR codex_models_manager::manager: failed to refresh available models: timeout waiting for child process to exit
+2026-08-12T11:10:16.011961Z ERROR codex_core::tools::router: error=Exit code: 1
+Wall time: 0.8 seconds
+Output:
+
+2026-08-12T11:10:16.118201Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `base_instructions` at line 94 column 5
+2026-08-12T11:10:21.526735Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-ChildItem -Path 'C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\v33-real-codex-kqzga7l4\\vault' -Recurse -Filter SKILL.md -ErrorAction SilentlyContinue | Where-Object { "'$_.FullName -like '"'*apply-source-method-07575997-75dba888*' } | Select-Object -ExpandProperty FullName"` rejected: blocked by policy
+2026-08-12T11:10:33.040219Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-ChildItem -Recurse -Force .agents | Select-Object FullName,Length'` rejected: blocked by policy

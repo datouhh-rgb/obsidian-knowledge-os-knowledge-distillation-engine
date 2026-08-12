@@ -32,7 +32,10 @@ package-dir = {knowledge_engine = "src/knowledge_engine", scripts = "scripts"}
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "--strict-markers"
+addopts = "--strict-markers -m 'not real_codex'"
+markers = [
+  "real_codex: requires a live Codex CLI session and immutable transcript evidence",
+]
 
 [tool.coverage.run]
 branch = true

@@ -9,7 +9,7 @@ from typing import Any
 
 from .analyzer import BookAnalyzer
 from .chunking import ChapterChunker, ChunkRunResult, ProviderMapReducer, ResumableChunkRunner
-from .concepts import CanonicalizationResult, ConceptCanonicalizer, ConceptQualityGate
+from .concepts import BookKnowledgeGate, BookQualityAssessment, CanonicalizationResult, ConceptCanonicalizer, ConceptQualityGate
 from .evidence import EvidenceCatalog, EvidenceGate
 from .graph import GRAPH_JSON, GRAPH_MD, ConceptGraph
 from .gates import SkillExecutabilityGate, SkillStructureGate
@@ -65,6 +65,7 @@ class DistillationResult:
     synthesis_proposals: list[str] = field(default_factory=list)
     chunk_run: dict[str, Any] | None = None
     method_clusters: list[str] = field(default_factory=list)
+    concept_gate: dict[str, object] = field(default_factory=dict)
 
     @property
     def source_sha256(self) -> str:
@@ -86,6 +87,7 @@ class DistillationResult:
             "graph": {"nodes": self.graph_nodes, "edges": self.graph_edges},
             "synthesis_proposals": self.synthesis_proposals,
             "method_clusters": self.method_clusters,
+            "concept_gate": self.concept_gate,
             "chunk_run": self.chunk_run,
             "validation": {"passed": self.validation.passed, "issues": [issue.__dict__ for issue in self.validation.issues]},
             "git_status": self.git_status, "warnings": self.warnings,
@@ -134,6 +136,7 @@ class DistillationPipeline:
         self.quality = SkillQualityEvaluator()
         self.concept_canonicalizer = ConceptCanonicalizer()
         self.concept_quality = ConceptQualityGate()
+        self.book_knowledge_gate = BookKnowledgeGate()
         self.knowledge_synthesizer = KnowledgeSynthesizer()
         self.skill_production_gate = SkillProductionGate()
         self.structure_normalizer = RealStructureNormalizer()
@@ -182,6 +185,7 @@ class DistillationPipeline:
             concept_quality = self.concept_quality.validate(
                 canonicalization.candidates, (section.title for section in analysis.sections),
             )
+            book_quality = self.book_knowledge_gate.validate(concept_quality)
             accepted = {self.concept_canonicalizer.normalized_title(item.title): item for item in concept_quality.accepted}
             conflicted_titles = {item.normalized_title for item in canonicalization.conflicts}
             stable_canonical = tuple(
@@ -220,10 +224,21 @@ class DistillationPipeline:
                     "skill_candidates": len(knowledge_synthesis.skills),
                     "blocked_candidates": len(knowledge_synthesis.blocked),
                 },
+                "concept_quality": book_quality.as_dict(),
             }
             structural = ValidationReport()
-            structural.issues.extend(self.evidence_gate.validate(provider_result, catalog).issues)
+            knowledge_only = ProviderResult(
+                provider=provider_result.provider,
+                concepts=list(provider_result.concepts), relations=list(provider_result.relations), skills=[],
+                warnings=list(provider_result.warnings), provenance=dict(provider_result.provenance),
+            )
+            structural.issues.extend(self.evidence_gate.validate(knowledge_only, catalog).issues)
             structural.issues.extend(self.concept_quality.report(concept_quality).issues)
+            if not book_quality.passed:
+                structural.add(
+                    "error", "book-knowledge-gate", book_quality.block_reason,
+                    analysis.title,
+                )
             for conflict in canonicalization.conflicts:
                 structural.add(
                     "warning", "unresolved-concept-conflict-isolated",
@@ -232,7 +247,7 @@ class DistillationPipeline:
                 )
             base_graph = ConceptGraph.load(self.vault)
             graph_dry_run = base_graph.dry_run_distillation(
-                analysis.title, source.source_id, conversion.conversion_id, analysis, catalog, provider_result, [],
+                analysis.title, source.source_id, conversion.conversion_id, analysis, catalog, knowledge_only, [],
                 tuple(knowledge_synthesis.method_clusters), stable_canonical, knowledge_synthesis.skill_method_ids,
             )
             for issue in graph_dry_run.issues:
@@ -254,15 +269,15 @@ class DistillationPipeline:
                     quality_score=score,
                 )
                 candidate_errors = [*semantic.report.errors, *candidate_gate.errors]
-                if is_synthesized and candidate_errors:
-                    method_id = knowledge_synthesis.skill_method_ids.pop(candidate.fingerprint())
+                if candidate_errors:
+                    method_id = knowledge_synthesis.skill_method_ids.pop(candidate.fingerprint(), None)
                     knowledge_synthesis.blocked.append({
-                        "method_cluster_id": method_id,
+                        **({"method_cluster_id": method_id} if method_id else {}),
                         "skill_fingerprint": candidate.fingerprint(),
                         "reasons": [f"{item.code}: {item.message}" for item in candidate_errors],
                     })
                     structural.add(
-                        "warning", "synthesized-candidate-blocked",
+                        "warning", "skill-candidate-quarantined",
                         "; ".join(f"{item.code}: {item.message}" for item in candidate_errors),
                         candidate.title,
                     )
@@ -277,7 +292,7 @@ class DistillationPipeline:
             ]
             if structural.errors:
                 reason = "; ".join(f"{issue.code}: {issue.message}" for issue in structural.errors)
-                return self._archive_blocked(source, conversion, analysis, reason, edition_id, dry_run, structural, chunk_run)
+                return self._archive_blocked(source, conversion, analysis, reason, edition_id, dry_run, structural, chunk_run, book_quality)
 
             if source.warnings and not allow_warnings:
                 # Warnings are archived as review snapshots, never silently promoted.
@@ -319,7 +334,7 @@ class DistillationPipeline:
                     if gate.errors:
                         structural.issues.extend(gate.issues)
                         reason = "; ".join(f"{issue.code}: {issue.message}" for issue in gate.errors)
-                        return self._archive_blocked(source, conversion, analysis, reason, edition_id, dry_run, structural, chunk_run)
+                        return self._archive_blocked(source, conversion, analysis, reason, edition_id, dry_run, structural, chunk_run, book_quality)
                     item = registry.create_source_candidate(
                         candidate, source, conversion, analysis.title, score, semantic.assessments,
                         provider_result.provenance or {"provider": provider_result.provider, "rule_version": "rule-v3"},
@@ -332,7 +347,7 @@ class DistillationPipeline:
                 if not final_graph_dry_run.passed or final_graph_dry_run.graph is None:
                     reason = "; ".join(item["message"] for item in final_graph_dry_run.issues) or "Graph dry-run failed."
                     structural.add("error", "graph-dry-run", reason)
-                    return self._archive_blocked(source, conversion, analysis, reason, edition_id, dry_run, structural, chunk_run)
+                    return self._archive_blocked(source, conversion, analysis, reason, edition_id, dry_run, structural, chunk_run, book_quality)
                 graph = final_graph_dry_run.graph
                 bundle = self.renderer.render(
                     source, conversion, analysis, catalog, provider_result, skills, edition_id,
@@ -389,13 +404,13 @@ class DistillationPipeline:
                     raise PipelineError("生成结果未通过 V3 质量门：" + "; ".join(f"{item.code}: {item.message}" for item in validation.errors))
                 planned = self._preflight(bundle)
                 if dry_run:
-                    return self._result(source, conversion, analysis, provider_result, bundle, "dry-run", [], planned, validation, graph, new_proposals, chunk_run, knowledge_synthesis)
+                    return self._result(source, conversion, analysis, provider_result, bundle, "dry-run", [], planned, validation, graph, new_proposals, chunk_run, knowledge_synthesis, book_quality)
                 for relative, content in bundle.binary_artifacts.items():
                     tx.stage_bytes(relative, content)
                 for relative, content in bundle.artifacts.items():
                     tx.stage_text(relative, content)
                 committed = tx.commit({"source_id": source.source_id, "conversion_id": conversion.conversion_id, "skills": [item.name for item in skills]})
-                result = self._result(source, conversion, analysis, provider_result, bundle, "completed", list(committed.written_paths), planned, validation, graph, new_proposals, chunk_run, knowledge_synthesis)
+                result = self._result(source, conversion, analysis, provider_result, bundle, "completed", list(committed.written_paths), planned, validation, graph, new_proposals, chunk_run, knowledge_synthesis, book_quality)
                 result.git_status = self._git_status([*bundle.artifacts, *bundle.binary_artifacts])
                 return result
 
@@ -424,7 +439,7 @@ class DistillationPipeline:
                 validation.issues.extend(self.executability_gate.validate(candidate).issues)
             return InspectionResult(source, conversion, analysis, catalog, provider_result, validation)
 
-    def _archive_blocked(self, source: IngestedSource, conversion: ConversionIdentity, analysis: Analysis, reason: str, edition_id: str | None, dry_run: bool, validation: ValidationReport, chunk_run: ChunkRunResult) -> DistillationResult:
+    def _archive_blocked(self, source: IngestedSource, conversion: ConversionIdentity, analysis: Analysis, reason: str, edition_id: str | None, dry_run: bool, validation: ValidationReport, chunk_run: ChunkRunResult, book_quality: BookQualityAssessment | None = None) -> DistillationResult:
         # V3.2 fail-closed: blocked source/conversion bundles are not knowledge assets.
         # Operational run diagnostics remain under .knowledge-engine/runs only.
         source_root = source_directory(analysis.title, source.source_id, edition_id)
@@ -433,6 +448,7 @@ class DistillationPipeline:
             "blocked-dry-run" if dry_run else "blocked", "blocked", self.vault,
             self.vault / source_root, written_paths=[], planned_paths=[], validation=validation,
             warnings=[*source.warnings, reason], chunk_run=self._chunk_dict(chunk_run),
+            concept_gate={} if book_quality is None else book_quality.as_dict(),
         )
 
     def _run_chunks_v3_legacy(self, source: IngestedSource, conversion: ConversionIdentity) -> ChunkRunResult:
@@ -570,7 +586,7 @@ class DistillationPipeline:
                 raise PipelineError(f"不可变资产发生覆盖冲突：{target}")
         return planned
 
-    def _result(self, source: IngestedSource, conversion: ConversionIdentity, analysis: Analysis, provider: ProviderResult, bundle: RenderedBundle, status: str, written: list[Path], planned: list[Path], validation: ValidationReport, graph: ConceptGraph, proposals: list[dict[str, Any]], chunk_run: ChunkRunResult, knowledge_synthesis: KnowledgeSynthesisResult | None = None) -> DistillationResult:
+    def _result(self, source: IngestedSource, conversion: ConversionIdentity, analysis: Analysis, provider: ProviderResult, bundle: RenderedBundle, status: str, written: list[Path], planned: list[Path], validation: ValidationReport, graph: ConceptGraph, proposals: list[dict[str, Any]], chunk_run: ChunkRunResult, knowledge_synthesis: KnowledgeSynthesisResult | None = None, book_quality: BookQualityAssessment | None = None) -> DistillationResult:
         return DistillationResult(
             analysis.title, source.source_id, conversion.conversion_id, status, provider.provider,
             self.vault, self.vault / bundle.source_root, written, planned,
@@ -579,6 +595,7 @@ class DistillationPipeline:
             graph_nodes=len(graph.nodes), graph_edges=len(graph.edges),
             synthesis_proposals=[item["proposal_id"] for item in proposals], chunk_run=self._chunk_dict(chunk_run),
             method_clusters=[item.id for item in (knowledge_synthesis.method_clusters if knowledge_synthesis else [])],
+            concept_gate={} if book_quality is None else book_quality.as_dict(),
         )
 
     @staticmethod
