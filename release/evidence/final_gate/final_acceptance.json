@@ -58,73 +58,73 @@
       "reason": "per-job pytest result must be present in CI matrix evidence"
     },
     {
-      "commit_sha": "fd30b6f25ffab7db26ae7c879e2b62a97554c080",
+      "commit_sha": "691c7b95c69d0bbe54c314ee9b211e915cbe0519",
       "jobs": [
         {
-          "commit_sha": "fd30b6f25ffab7db26ae7c879e2b62a97554c080",
+          "commit_sha": "691c7b95c69d0bbe54c314ee9b211e915cbe0519",
           "job_status": "blocked",
           "os": "macos-latest",
-          "production_check_status": "passed",
+          "production_check_status": "failed",
           "pytest_status": "failed",
           "python": "3.11",
           "schema_version": 1,
-          "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31556058977"
+          "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31563583747"
         },
         {
-          "commit_sha": "fd30b6f25ffab7db26ae7c879e2b62a97554c080",
+          "commit_sha": "691c7b95c69d0bbe54c314ee9b211e915cbe0519",
           "job_status": "blocked",
           "os": "macos-latest",
-          "production_check_status": "passed",
+          "production_check_status": "failed",
           "pytest_status": "failed",
           "python": "3.12",
           "schema_version": 1,
-          "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31556058977"
+          "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31563583747"
         },
         {
-          "commit_sha": "fd30b6f25ffab7db26ae7c879e2b62a97554c080",
+          "commit_sha": "691c7b95c69d0bbe54c314ee9b211e915cbe0519",
           "job_status": "blocked",
           "os": "ubuntu-latest",
-          "production_check_status": "passed",
+          "production_check_status": "failed",
           "pytest_status": "failed",
           "python": "3.11",
           "schema_version": 1,
-          "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31556058977"
+          "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31563583747"
         },
         {
-          "commit_sha": "fd30b6f25ffab7db26ae7c879e2b62a97554c080",
+          "commit_sha": "691c7b95c69d0bbe54c314ee9b211e915cbe0519",
           "job_status": "blocked",
           "os": "ubuntu-latest",
-          "production_check_status": "passed",
+          "production_check_status": "failed",
           "pytest_status": "failed",
           "python": "3.12",
           "schema_version": 1,
-          "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31556058977"
+          "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31563583747"
         },
         {
-          "commit_sha": "fd30b6f25ffab7db26ae7c879e2b62a97554c080",
+          "commit_sha": "691c7b95c69d0bbe54c314ee9b211e915cbe0519",
           "job_status": "blocked",
           "os": "windows-latest",
-          "production_check_status": "passed",
+          "production_check_status": "failed",
           "pytest_status": "failed",
           "python": "3.11",
           "schema_version": 1,
-          "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31556058977"
+          "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31563583747"
         },
         {
-          "commit_sha": "fd30b6f25ffab7db26ae7c879e2b62a97554c080",
+          "commit_sha": "691c7b95c69d0bbe54c314ee9b211e915cbe0519",
           "job_status": "blocked",
           "os": "windows-latest",
-          "production_check_status": "passed",
+          "production_check_status": "failed",
           "pytest_status": "failed",
           "python": "3.12",
           "schema_version": 1,
-          "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31556058977"
+          "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31563583747"
         }
       ],
       "name": "github_six_environment_ci",
       "passed": false,
       "reason": "failed jobs: ['macos-latest/3.11', 'macos-latest/3.12', 'ubuntu-latest/3.11', 'ubuntu-latest/3.12', 'windows-latest/3.11', 'windows-latest/3.12']",
-      "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31556058977"
+      "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31563583747"
     },
     {
       "codex_cli_version": "codex-cli 0.144.6",
@@ -181,7 +181,7 @@
     }
   ],
   "engine_version": "3.3.0",
-  "generated_at": "2026-08-12T12:30:31+08:00",
+  "generated_at": "2026-08-12T12:50:14+08:00",
   "schema_version": 1,
   "status": "blocked"
 }

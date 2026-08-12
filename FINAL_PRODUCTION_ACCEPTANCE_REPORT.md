@@ -3,7 +3,8 @@
 Authoritative report: [`release/FINAL_ACCEPTANCE_REPORT.md`](release/FINAL_ACCEPTANCE_REPORT.md)
 
 - GitHub draft PR: https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/pull/1
-- Last formal six-environment CI: https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31556058977 (`0/6 PASS`)
+- Verification commit: `a83d98b4ff1dd58b74456dc2376a4605f157e5ee`
+- Current formal six-environment CI: https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31563583747 (`0/6 PASS`)
 - Real Codex Discovery: BLOCKED
 - Explicit Skill call: BLOCKED
 - Trigger evaluation: BLOCKED after strict transcript revalidation

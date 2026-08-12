@@ -1,66 +1,66 @@
 {
   "jobs": [
     {
-      "commit_sha": "fd30b6f25ffab7db26ae7c879e2b62a97554c080",
+      "commit_sha": "691c7b95c69d0bbe54c314ee9b211e915cbe0519",
       "job_status": "blocked",
       "os": "macos-latest",
-      "production_check_status": "passed",
+      "production_check_status": "failed",
       "pytest_status": "failed",
       "python": "3.11",
       "schema_version": 1,
-      "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31556058977"
+      "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31563583747"
     },
     {
-      "commit_sha": "fd30b6f25ffab7db26ae7c879e2b62a97554c080",
+      "commit_sha": "691c7b95c69d0bbe54c314ee9b211e915cbe0519",
       "job_status": "blocked",
       "os": "macos-latest",
-      "production_check_status": "passed",
+      "production_check_status": "failed",
       "pytest_status": "failed",
       "python": "3.12",
       "schema_version": 1,
-      "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31556058977"
+      "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31563583747"
     },
     {
-      "commit_sha": "fd30b6f25ffab7db26ae7c879e2b62a97554c080",
+      "commit_sha": "691c7b95c69d0bbe54c314ee9b211e915cbe0519",
       "job_status": "blocked",
       "os": "ubuntu-latest",
-      "production_check_status": "passed",
+      "production_check_status": "failed",
       "pytest_status": "failed",
       "python": "3.11",
       "schema_version": 1,
-      "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31556058977"
+      "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31563583747"
     },
     {
-      "commit_sha": "fd30b6f25ffab7db26ae7c879e2b62a97554c080",
+      "commit_sha": "691c7b95c69d0bbe54c314ee9b211e915cbe0519",
       "job_status": "blocked",
       "os": "ubuntu-latest",
-      "production_check_status": "passed",
+      "production_check_status": "failed",
       "pytest_status": "failed",
       "python": "3.12",
       "schema_version": 1,
-      "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31556058977"
+      "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31563583747"
     },
     {
-      "commit_sha": "fd30b6f25ffab7db26ae7c879e2b62a97554c080",
+      "commit_sha": "691c7b95c69d0bbe54c314ee9b211e915cbe0519",
       "job_status": "blocked",
       "os": "windows-latest",
-      "production_check_status": "passed",
+      "production_check_status": "failed",
       "pytest_status": "failed",
       "python": "3.11",
       "schema_version": 1,
-      "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31556058977"
+      "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31563583747"
     },
     {
-      "commit_sha": "fd30b6f25ffab7db26ae7c879e2b62a97554c080",
+      "commit_sha": "691c7b95c69d0bbe54c314ee9b211e915cbe0519",
       "job_status": "blocked",
       "os": "windows-latest",
-      "production_check_status": "passed",
+      "production_check_status": "failed",
       "pytest_status": "failed",
       "python": "3.12",
       "schema_version": 1,
-      "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31556058977"
+      "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31563583747"
     }
   ],
   "schema_version": 1,
-  "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31556058977"
+  "workflow_url": "https://github.com/datouhh-rgb/obsidian-knowledge-os-knowledge-distillation-engine/actions/runs/31563583747"
 }
