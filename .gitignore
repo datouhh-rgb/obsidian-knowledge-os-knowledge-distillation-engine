@@ -8,4 +8,4 @@ __pycache__/
 .agents/
 build/
 dist/
-FINAL_PRODUCTION_AUDIT/GITHUB_RUN_*/FINAL_PRODUCTION_AUDIT/
+release/evidence/v33_prior/audit/gh*/FINAL_PRODUCTION_AUDIT/

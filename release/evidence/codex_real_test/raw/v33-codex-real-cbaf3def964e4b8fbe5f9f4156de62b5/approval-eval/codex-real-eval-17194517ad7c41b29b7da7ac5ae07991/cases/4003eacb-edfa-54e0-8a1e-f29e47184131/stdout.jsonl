@@ -1,0 +1,4 @@
+{"type":"thread.started","thread_id":"019ff3a4-33ee-7dd3-b319-406839e75534"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"The wind whispers softly through the world."}}
+{"type":"turn.completed","usage":{"input_tokens":13131,"cached_input_tokens":12032,"output_tokens":12,"reasoning_output_tokens":0}}

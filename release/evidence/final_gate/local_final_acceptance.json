@@ -1,0 +1,136 @@
+{
+  "blockers": [
+    {
+      "item": "pytest",
+      "reason": "      E         - passed\nE         E         + blocked\nE         \nE         tests\\test_real_codex_integration\\conftest.py:31: AssertionError\nE         =========================== short test summary info ===========================\nE         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_skill_exposure\nE         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_skill_metadata\nE         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_explicit_skill_call\nE         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_trigger_precision\nE         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_bad_description_block\nE         128 passed, 1 skipped, 5 errors in 98.79s (0:01:38)\nE         \nE         stderr:\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['C:\\\\Users\\\\ThinkPad\\\\AppData\\\\Local\\\\Temp\\\\pytest-of-ThinkPad\\\\pytest-999\\\\test_editable_insta...ex_integration.py::test_codex_bad_description_block\\n128 passed, 1 skipped, 5 errors in 98.79s (0:01:38)\\n', stderr='').returncode\n\ntests\\test_clean_install_environment.py:33: AssertionError\n=========================== short test summary info ===========================\nFAILED tests/test_clean_install_environment.py::test_editable_install_runs_suite_and_local_production_check\nERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_skill_exposure\nERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_skill_metadata\nERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_explicit_skill_call\nERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_trigger_precision\nERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_bad_description_block\n1 failed, 128 passed, 1 skipped, 5 errors in 251.68s (0:04:11)\n"
+    },
+    {
+      "item": "github_six_environment_ci",
+      "reason": "Current V3.3 matrix evidence is missing."
+    },
+    {
+      "item": "real_codex_discovery_and_call",
+      "reason": "failed checks: approved_after_review, codex_discovery, codex_explicit_call, trigger_positive"
+    },
+    {
+      "item": "cognitive_awakening_regression",
+      "reason": "failed checks: atomic_vault_commit, evidence_catalog_written, pipeline_completed, portable_evidence_selection"
+    }
+  ],
+  "checks": [
+    {
+      "name": "version",
+      "passed": true,
+      "reason": "VERSION must be 3.3.0"
+    },
+    {
+      "name": "protected_v33_contracts_unchanged",
+      "observed": {
+        "src/knowledge_engine/concepts.py": "5d91cd8a35947fe3367a2be7ddd7abc6058bde817c22cbb551ff74289cd36f7a",
+        "src/knowledge_engine/evidence.py": "8e8be253892f312fa4dd11fd9e66518fbb8cd633256a5eff14457ef5dd11b91e",
+        "src/knowledge_engine/evidence_selector.py": "c9ece164c3cc7407b765cadcce0cb0820275eda595561a5c0af3873840a49c9c",
+        "src/knowledge_engine/graph.py": "b6dd811fec3d706a6d2121d64e3f6a37fc3cc0614d00f60ec0c2ee31813f5556",
+        "src/knowledge_engine/identity.py": "92aca7792a093308189aca635e3cd36052acd99107478b48ca5d756bff55869e",
+        "src/knowledge_engine/knowledge_synthesis.py": "5ed4e466ea75bf81f8b616bc557f2f53fe0d6d93bff888e95bb17a13891b5e6b",
+        "src/knowledge_engine/models.py": "0bfe001de161374d4d036f34c1b72223afe182ca3b532408c483f550f173defa",
+        "src/knowledge_engine/pipeline.py": "869c21e6a8faea83d2d667e11941f7d4b6ca192587896fba20799df629a2d1f1",
+        "src/knowledge_engine/transaction.py": "705dcbc37bbd0636df96c53642fc654362eebd7a94c472e9c37317f4e97d329d"
+      },
+      "passed": true,
+      "reason": ""
+    },
+    {
+      "command": [
+        "C:\\Users\\ThinkPad\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-m",
+        "compileall",
+        "-q",
+        "src",
+        "scripts",
+        "tests"
+      ],
+      "exit_code": 0,
+      "log": "release/evidence/final_gate/compile.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "compile",
+      "passed": true,
+      "reason": ""
+    },
+    {
+      "command": [
+        "C:\\Users\\ThinkPad\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "exit_code": 1,
+      "log": "release/evidence/final_gate/pytest.log",
+      "log_sha256": "570c7751c5139ebb081fa22511d2c4daf6257bc9b602d7e380fc2e64a60281cc",
+      "name": "pytest",
+      "passed": false,
+      "reason": "      E         - passed\nE         E         + blocked\nE         \nE         tests\\test_real_codex_integration\\conftest.py:31: AssertionError\nE         =========================== short test summary info ===========================\nE         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_skill_exposure\nE         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_skill_metadata\nE         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_explicit_skill_call\nE         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_trigger_precision\nE         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_bad_description_block\nE         128 passed, 1 skipped, 5 errors in 98.79s (0:01:38)\nE         \nE         stderr:\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['C:\\\\Users\\\\ThinkPad\\\\AppData\\\\Local\\\\Temp\\\\pytest-of-ThinkPad\\\\pytest-999\\\\test_editable_insta...ex_integration.py::test_codex_bad_description_block\\n128 passed, 1 skipped, 5 errors in 98.79s (0:01:38)\\n', stderr='').returncode\n\ntests\\test_clean_install_environment.py:33: AssertionError\n=========================== short test summary info ===========================\nFAILED tests/test_clean_install_environment.py::test_editable_install_runs_suite_and_local_production_check\nERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_skill_exposure\nERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_skill_metadata\nERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_explicit_skill_call\nERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_trigger_precision\nERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_bad_description_block\n1 failed, 128 passed, 1 skipped, 5 errors in 251.68s (0:04:11)\n"
+    },
+    {
+      "name": "github_six_environment_ci",
+      "passed": false,
+      "reason": "Current V3.3 matrix evidence is missing."
+    },
+    {
+      "codex_cli_version": "codex-cli 0.144.6",
+      "name": "real_codex_discovery_and_call",
+      "passed": false,
+      "reason": "failed checks: approved_after_review, codex_discovery, codex_explicit_call, trigger_positive",
+      "review": {
+        "accepted_for_release": false,
+        "after_status": "invalidated-disposable-attempt",
+        "approval_event_id": "event-ac371b49-e043-437f-8232-009d12ef488e",
+        "automatic": false,
+        "before_status": "candidate",
+        "reason": "Exact preserved candidate passed real Codex explicit-only evaluation and all Evidence/quality gates.",
+        "reviewer": "Andy / V3.3 production acceptance",
+        "timestamp": "2026-08-12T09:48:16+08:00"
+      },
+      "run_id": "v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5",
+      "skill": {
+        "artifact_sha256": "905a0a109a986731c4211be465cfaf05fda25dbd892e050802f56c9e010ca750",
+        "frontmatter": {
+          "description": "Apply 买进与卖出的风险执行方法 to evidence-grounded tasks. Use when the user explicitly needs this method and supplies its required inputs. Do not use for unrelated requests, missing critical inputs, or claims beyond the bound source Evidence. On Windows PowerShell, read this UTF-8 SKILL.md with -Encoding UTF8.",
+          "name": "apply-source-method-a4e20f8d-75dba888"
+        },
+        "invocation_fingerprint": "5572895a87ffbf486fc2",
+        "name": "apply-source-method-a4e20f8d-75dba888",
+        "openai_yaml_policy": "allow_implicit_invocation: false",
+        "skill_id": "917fb6b6-27d2-47a5-a943-06343f66b6a0",
+        "trigger_contract": "Codex implicit selection is described by frontmatter.description; no non-standard trigger field is added.",
+        "version": "1.0.0"
+      }
+    },
+    {
+      "conversion_id": "d563d127872852958eb4b6e311258407b5865229e0eb52342963c113ad0a25e3",
+      "name": "stock_operator_regression",
+      "passed": true,
+      "pipeline_status": "completed",
+      "reason": "",
+      "run_id": "run-0612616f2d21999e726a3ba1",
+      "source_id": "75dba888e796b4aae0ef85f99798b6c8eab002e2c2b213e98b9b3e5d5c32b828"
+    },
+    {
+      "conversion_id": "044729267958dc4755a3bf33a67bb16f5a667079422a62d092d1ba7f2963cf73",
+      "name": "cognitive_awakening_regression",
+      "passed": false,
+      "pipeline_status": "blocked",
+      "reason": "failed checks: atomic_vault_commit, evidence_catalog_written, pipeline_completed, portable_evidence_selection",
+      "run_id": "run-0762d8c86ba886ba8bcba322",
+      "source_id": "db48eecb044ede32061660722051a87540cf8f8cb907b2fde860719141ff2734"
+    },
+    {
+      "name": "release_history_isolation",
+      "passed": true,
+      "reason": ""
+    }
+  ],
+  "engine_version": "3.3.0",
+  "generated_at": "2026-08-12T10:03:47+08:00",
+  "schema_version": 1,
+  "status": "blocked"
+}

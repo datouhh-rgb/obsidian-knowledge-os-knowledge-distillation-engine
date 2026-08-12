@@ -1,0 +1,1238 @@
+{
+  "blockers": [
+    "approved_after_review",
+    "codex_discovery",
+    "codex_explicit_call",
+    "trigger_positive"
+  ],
+  "checks": {
+    "approval_real_codex_eval": true,
+    "approved_after_review": false,
+    "bad_description_block": true,
+    "candidate_before_human_review": true,
+    "candidate_replayed_exactly": true,
+    "codex_discovery": false,
+    "codex_explicit_call": false,
+    "evidence_bound": true,
+    "exposure_health": true,
+    "exposure_is_link_not_copy": true,
+    "human_review_recorded": true,
+    "implicit_invocation_off_during_exposure": true,
+    "no_auto_approve": true,
+    "no_project_connection": true,
+    "raw_evidence_integrity": true,
+    "source_unchanged": true,
+    "trigger_negative": true,
+    "trigger_positive": false,
+    "unexposed_after_test": true
+  },
+  "codex_cli_version": "codex-cli 0.144.6",
+  "commit_sha": "0f0ad7ef45552d26b006d7c4acc6dc660cde4ba4",
+  "engine_version": "3.3.0",
+  "exposure": {
+    "copied_skill_file": false,
+    "create_status": "exposed",
+    "health_status": "healthy",
+    "implicit_invocation": false,
+    "mechanism": "managed-directory-link",
+    "removed_after_test": true,
+    "scope": "repo",
+    "unexpose_status": "unexposed"
+  },
+  "generated_at": "2026-08-12T09:50:45+08:00",
+  "mode": "real-codex-cli-disposable-vault-strict-transcript-revalidation-no-mocks",
+  "official_skill_contract": "https://learn.chatgpt.com/docs/build-skills",
+  "raw_evidence": [
+    {
+      "bytes": 121,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/05b0725c-94a9-5df2-9d14-10ab18c72712/last-message.txt",
+      "sha256": "c7055f294254d05970bb8bed4e7be53630212f6a7f444390fbe21c22a37df255"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/05b0725c-94a9-5df2-9d14-10ab18c72712/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 158,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/05b0725c-94a9-5df2-9d14-10ab18c72712/stderr.txt",
+      "sha256": "35e24ea90fa392a49276b4bf568c0072325598886754e93b44611c9852508e0e"
+    },
+    {
+      "bytes": 435,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/05b0725c-94a9-5df2-9d14-10ab18c72712/stdout.jsonl",
+      "sha256": "d0e5595b5bc3c25e1ad96b1b9fe8f999728f4ba298d7263d3ed67c599479a480"
+    },
+    {
+      "bytes": 5,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/14868fd4-a60b-56c6-9969-4ac72ccef30a/last-message.txt",
+      "sha256": "3733cd977ff8eb18b987357e22ced99f46097f31ecb239e878ae63760e83e4d5"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/14868fd4-a60b-56c6-9969-4ac72ccef30a/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 462,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/14868fd4-a60b-56c6-9969-4ac72ccef30a/stderr.txt",
+      "sha256": "3cc8157cecc89b9a995a8f364404bdb642b13e4a960bf8a411d5076f223a91da"
+    },
+    {
+      "bytes": 318,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/14868fd4-a60b-56c6-9969-4ac72ccef30a/stdout.jsonl",
+      "sha256": "8917718e53c7e792dd08299fea7f5dfb59f5e13a93ecd58e9b42c85fe23538b0"
+    },
+    {
+      "bytes": 26,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/1d22625b-4235-559b-b041-e751ad6bdbab/last-message.txt",
+      "sha256": "fad8fb93294c7edaf3d031c96458c69c70ec7fc534384665ce67040ac2804e7b"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/1d22625b-4235-559b-b041-e751ad6bdbab/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 1451,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/1d22625b-4235-559b-b041-e751ad6bdbab/stderr.txt",
+      "sha256": "743714892747f8c297b8e36891601ff7fb2e108540115d4bc8071b5b27874eca"
+    },
+    {
+      "bytes": 16957,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/1d22625b-4235-559b-b041-e751ad6bdbab/stdout.jsonl",
+      "sha256": "6228bfdbea29e956996296f49169b789699c4b824eed9fcb0c9a7afab96f36ba"
+    },
+    {
+      "bytes": 317,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/1f26aa3c-bac9-529e-a102-5714f5c72e7e/last-message.txt",
+      "sha256": "5ed4e0e6a67947ee09cc1a78eb03b57b45adc5b626e42a939b043b80a8a7709f"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/1f26aa3c-bac9-529e-a102-5714f5c72e7e/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 158,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/1f26aa3c-bac9-529e-a102-5714f5c72e7e/stderr.txt",
+      "sha256": "1e728e55c54ecdccd0a7fe03b8c960c6aa5c5b762826a552f7c93a355a521a0a"
+    },
+    {
+      "bytes": 22747,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/1f26aa3c-bac9-529e-a102-5714f5c72e7e/stdout.jsonl",
+      "sha256": "744bf0bb65f4427b9f67ce150ada795a3e623433d71e3dcc0e48dbcc1c4a7766"
+    },
+    {
+      "bytes": 137,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/1f55dd4c-3d69-5b63-9bdf-14a35250d048/last-message.txt",
+      "sha256": "59c7fb9a1023f8a7eab6fffe20ef8438355f7f01ebbe7e7356aa5a570a94463e"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/1f55dd4c-3d69-5b63-9bdf-14a35250d048/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 301,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/1f55dd4c-3d69-5b63-9bdf-14a35250d048/stderr.txt",
+      "sha256": "62346588391dd0083d07581dcca587c5d5b64fbb849ece559925261dbc2aea77"
+    },
+    {
+      "bytes": 451,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/1f55dd4c-3d69-5b63-9bdf-14a35250d048/stdout.jsonl",
+      "sha256": "521ae4483c943a921ba670be3b23e3070d65fe00973ff31bfed8181e31858c00"
+    },
+    {
+      "bytes": 8,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/2985c456-6d4e-56aa-aecf-296b9efaf5d2/last-message.txt",
+      "sha256": "fdf346c763fdb05b3fd8d288e86aacd86117da46e629edfe47bf07a56fd8f2a5"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/2985c456-6d4e-56aa-aecf-296b9efaf5d2/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 301,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/2985c456-6d4e-56aa-aecf-296b9efaf5d2/stderr.txt",
+      "sha256": "830a3da6d4e6ad5bd21fa32d93de8d95132aeb659b1dba5e728f182e3ad722d3"
+    },
+    {
+      "bytes": 322,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/2985c456-6d4e-56aa-aecf-296b9efaf5d2/stdout.jsonl",
+      "sha256": "980eba866de8a631ef34c01bab79e14c7c15b8d3a8ac4e381c33406858ffb7df"
+    },
+    {
+      "bytes": 26,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/2f53ff8a-9fbb-57b1-9549-c29919e9cea4/last-message.txt",
+      "sha256": "fad8fb93294c7edaf3d031c96458c69c70ec7fc534384665ce67040ac2804e7b"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/2f53ff8a-9fbb-57b1-9549-c29919e9cea4/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 671,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/2f53ff8a-9fbb-57b1-9549-c29919e9cea4/stderr.txt",
+      "sha256": "329d0a5a61b5e727109ea7a4a00e4b4bb7cd7bcfac9cbac92df1767d9c900597"
+    },
+    {
+      "bytes": 14591,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/2f53ff8a-9fbb-57b1-9549-c29919e9cea4/stdout.jsonl",
+      "sha256": "50a122fb3d7c6a6068b12cc11111de0db554edbf3954312d4f582530fcd0fe72"
+    },
+    {
+      "bytes": 68,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/3982f91c-5b93-58a0-9852-0d66392b5885/last-message.txt",
+      "sha256": "ed8096ff60f0881b427322785797ead9e92f1ab4a187251bf2e64e05433528b8"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/3982f91c-5b93-58a0-9852-0d66392b5885/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 606,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/3982f91c-5b93-58a0-9852-0d66392b5885/stderr.txt",
+      "sha256": "e76e980390091c2182d0273c515c8dd66d27e562ac403215484f117156cd674f"
+    },
+    {
+      "bytes": 383,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/3982f91c-5b93-58a0-9852-0d66392b5885/stdout.jsonl",
+      "sha256": "e39a5290bb79bb088da30728b84e4a83606025261ebc0d6139195700093ad9b8"
+    },
+    {
+      "bytes": 503,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/3ba6835c-6480-5884-a02a-d75e51efc644/last-message.txt",
+      "sha256": "70ec3de08bb7378305cf6cac549f2216826e1b50df2b069c3c1c98a088034f46"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/3ba6835c-6480-5884-a02a-d75e51efc644/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 584,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/3ba6835c-6480-5884-a02a-d75e51efc644/stderr.txt",
+      "sha256": "84f962cfec51616851d7e3de6e7715f89a42d18c6d644081adccdc35e0611d89"
+    },
+    {
+      "bytes": 19888,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/3ba6835c-6480-5884-a02a-d75e51efc644/stdout.jsonl",
+      "sha256": "211cd3141db6d0e1df0074956ad567a3274ed250c29a93f286391093a09786fe"
+    },
+    {
+      "bytes": 14,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/3ccf8304-e5c2-5c27-92e5-01d96300a1db/last-message.txt",
+      "sha256": "ccd6ec584ad2c9809d91de7b01cacf09fa49df55d21e279c853642c51a244740"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/3ccf8304-e5c2-5c27-92e5-01d96300a1db/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 879,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/3ccf8304-e5c2-5c27-92e5-01d96300a1db/stderr.txt",
+      "sha256": "a458b3264bf3f7229dfee285b4f1b459f8196d75db29ad6a4beb5b53d1d00390"
+    },
+    {
+      "bytes": 327,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/3ccf8304-e5c2-5c27-92e5-01d96300a1db/stdout.jsonl",
+      "sha256": "a1505db6eca5c402b7c803e94b2c026ad78fba2f37e0f0fef055788d529677a1"
+    },
+    {
+      "bytes": 43,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/4003eacb-edfa-54e0-8a1e-f29e47184131/last-message.txt",
+      "sha256": "e244ea1ed8cf8a56b55796c5b871f632d98116e792b85d4e7a2cd88ab7c0606f"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/4003eacb-edfa-54e0-8a1e-f29e47184131/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 556,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/4003eacb-edfa-54e0-8a1e-f29e47184131/stderr.txt",
+      "sha256": "b5c2ea812308c1736357ccd4039bcb5091733a747ac276fcce076cc574b18dde"
+    },
+    {
+      "bytes": 358,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/4003eacb-edfa-54e0-8a1e-f29e47184131/stdout.jsonl",
+      "sha256": "f8a79d46ab2b58f28d4c852c4b5c06401d8de62fa7430265b31ade62bd7c1f9b"
+    },
+    {
+      "bytes": 37,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/46a649e9-b1ba-5724-b74f-65b9540dd886/last-message.txt",
+      "sha256": "afeadb665fde8ca0c34548fa26f9e3b9f1a7fc3139796c123cdd63cc388a3136"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/46a649e9-b1ba-5724-b74f-65b9540dd886/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 301,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/46a649e9-b1ba-5724-b74f-65b9540dd886/stderr.txt",
+      "sha256": "70cff768a55494c35411b5899c980be49ac184059bc792c5a4b41e80f314ba5e"
+    },
+    {
+      "bytes": 351,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/46a649e9-b1ba-5724-b74f-65b9540dd886/stdout.jsonl",
+      "sha256": "35d00e81f3ac45b1f3bc5c4bff49a078acd3be4b3c176ee8d45cfb809d86b99f"
+    },
+    {
+      "bytes": 26,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/4f7c4e05-4c1b-5b7d-a531-a137e940b003/last-message.txt",
+      "sha256": "fad8fb93294c7edaf3d031c96458c69c70ec7fc534384665ce67040ac2804e7b"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/4f7c4e05-4c1b-5b7d-a531-a137e940b003/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 1243,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/4f7c4e05-4c1b-5b7d-a531-a137e940b003/stderr.txt",
+      "sha256": "338562d8d649096cd8fa99432bc92ba7191a3d6760d095b2090f94d7bbcd67d4"
+    },
+    {
+      "bytes": 13928,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/4f7c4e05-4c1b-5b7d-a531-a137e940b003/stdout.jsonl",
+      "sha256": "e091c335fb1b5699f3ada78fcaa8b96084e9b6f38386edf578738e406b722e81"
+    },
+    {
+      "bytes": 26,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/5205a45b-80fa-586e-a8a6-75cd4dd00532/last-message.txt",
+      "sha256": "fad8fb93294c7edaf3d031c96458c69c70ec7fc534384665ce67040ac2804e7b"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/5205a45b-80fa-586e-a8a6-75cd4dd00532/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 864,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/5205a45b-80fa-586e-a8a6-75cd4dd00532/stderr.txt",
+      "sha256": "433f236a37fd76498759e8d36f54f2126254e3753ff4b35d71c44e7e02de6b3a"
+    },
+    {
+      "bytes": 13182,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/5205a45b-80fa-586e-a8a6-75cd4dd00532/stdout.jsonl",
+      "sha256": "49c30e035e520212963fe6cf60e21119ad5e686cdacc9e888ae067cd1ef3ed9f"
+    },
+    {
+      "bytes": 45,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/5f73c569-fce7-5c7d-9392-d21e82b951f8/last-message.txt",
+      "sha256": "d79eb83d98da67bd43a687ab9e55752d04791b12bf74b104448eaa22a8d26bbd"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/5f73c569-fce7-5c7d-9392-d21e82b951f8/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 2957,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/5f73c569-fce7-5c7d-9392-d21e82b951f8/stderr.txt",
+      "sha256": "522a265410570a3d79180b59eb3343afa272a84ab51fd6c0355e8c154fbee712"
+    },
+    {
+      "bytes": 360,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/5f73c569-fce7-5c7d-9392-d21e82b951f8/stdout.jsonl",
+      "sha256": "551d39d9e421ae96b9c1ee51d9634266081e3216eb816c0b5ba78b3dc3e41236"
+    },
+    {
+      "bytes": 26,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/617f57b4-04e5-5af8-b9f7-f600379e132d/last-message.txt",
+      "sha256": "fad8fb93294c7edaf3d031c96458c69c70ec7fc534384665ce67040ac2804e7b"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/617f57b4-04e5-5af8-b9f7-f600379e132d/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 1230,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/617f57b4-04e5-5af8-b9f7-f600379e132d/stderr.txt",
+      "sha256": "82d1d262e19047071661b66e3f400ee51ed0111955c62ccad17a997ea438e076"
+    },
+    {
+      "bytes": 12757,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/617f57b4-04e5-5af8-b9f7-f600379e132d/stdout.jsonl",
+      "sha256": "97accef861697ce14afb4b2874acd120e08e4336b6a15e5c512c005e01ba3493"
+    },
+    {
+      "bytes": 26,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/661a74c5-ebae-56a1-b1f9-fb863748f445/last-message.txt",
+      "sha256": "fad8fb93294c7edaf3d031c96458c69c70ec7fc534384665ce67040ac2804e7b"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/661a74c5-ebae-56a1-b1f9-fb863748f445/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 1540,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/661a74c5-ebae-56a1-b1f9-fb863748f445/stderr.txt",
+      "sha256": "cc4c8e547406ca80a9bb2fc4fad9ea36a3d5c4710b9c491c5b823d7d3b8057f9"
+    },
+    {
+      "bytes": 14854,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/661a74c5-ebae-56a1-b1f9-fb863748f445/stdout.jsonl",
+      "sha256": "9450ff87fe2b5079040dc42a0dad72b7fa148469f072aad8a026819837287c31"
+    },
+    {
+      "bytes": 3,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/a03a7fef-3332-5788-a326-2fe3973ac7dc/last-message.txt",
+      "sha256": "a934c244755c66aebb0d6f9f5687038ffae8f00b00b28b4e17521016393f38b9"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/a03a7fef-3332-5788-a326-2fe3973ac7dc/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 158,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/a03a7fef-3332-5788-a326-2fe3973ac7dc/stderr.txt",
+      "sha256": "6ecfc612914856069ccf750954acd553f13d4b78d983958d711c02f67fa3f586"
+    },
+    {
+      "bytes": 316,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/a03a7fef-3332-5788-a326-2fe3973ac7dc/stdout.jsonl",
+      "sha256": "f6cd340fd568fae4ef5dd80cb7fa7e1dddaf454c5926c2dbd8fbaa8da5ee3e92"
+    },
+    {
+      "bytes": 122,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/b218e4ea-cfa9-5a03-9a7b-9baedc02a081/last-message.txt",
+      "sha256": "06b73c0fe03ee880be6d65f7ff142da6b02156a6f9814b33c9da9d53c96c2d65"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/b218e4ea-cfa9-5a03-9a7b-9baedc02a081/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 556,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/b218e4ea-cfa9-5a03-9a7b-9baedc02a081/stderr.txt",
+      "sha256": "6a29568d3be517b3bdf7c008aedf9afe761cda88d05bb5870b0e6d55ab40f367"
+    },
+    {
+      "bytes": 437,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/b218e4ea-cfa9-5a03-9a7b-9baedc02a081/stdout.jsonl",
+      "sha256": "2bda6699310f87b6476c2dd4043b9cf557cbd48f05d4d4b22af80b4de0803efa"
+    },
+    {
+      "bytes": 98,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/bd9a0c12-2599-5ec9-aee6-4acfc1283cd3/last-message.txt",
+      "sha256": "e8f0ed6560c5f1c88f7b6991dcff0b61097434dee6658308db0b6bffd58bda3e"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/bd9a0c12-2599-5ec9-aee6-4acfc1283cd3/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 301,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/bd9a0c12-2599-5ec9-aee6-4acfc1283cd3/stderr.txt",
+      "sha256": "d3963c6d69c2b3dd5048f9ee91eede20481e9eb330a92fb1eb98c0380aafaea9"
+    },
+    {
+      "bytes": 411,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/bd9a0c12-2599-5ec9-aee6-4acfc1283cd3/stdout.jsonl",
+      "sha256": "1cb24fbec76b4ebafb7915cc75540c6301b79f86ec7ef81ce2a7f2b096e54356"
+    },
+    {
+      "bytes": 46,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/bfa9bcf7-8ad9-550b-bb29-1c23d4035819/last-message.txt",
+      "sha256": "e78234ffc19c4e74270adf7cb6f794531fc660ca4f4de52254b3e0218f08c525"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/bfa9bcf7-8ad9-550b-bb29-1c23d4035819/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 158,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/bfa9bcf7-8ad9-550b-bb29-1c23d4035819/stderr.txt",
+      "sha256": "362df9e4c04893c1155089aa90c18b3ee35d5958e009fe5254bfb97589cfc2a2"
+    },
+    {
+      "bytes": 360,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/bfa9bcf7-8ad9-550b-bb29-1c23d4035819/stdout.jsonl",
+      "sha256": "6b328943253d3cd9a45efbf8ab912a5272f35b67b1b47b1418085b77c1f9a116"
+    },
+    {
+      "bytes": 26,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/d7d79e19-e1b3-5d79-855f-0b804f110915/last-message.txt",
+      "sha256": "fad8fb93294c7edaf3d031c96458c69c70ec7fc534384665ce67040ac2804e7b"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/d7d79e19-e1b3-5d79-855f-0b804f110915/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 991,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/d7d79e19-e1b3-5d79-855f-0b804f110915/stderr.txt",
+      "sha256": "601c5517a5b4a7af5a22765155ec75e8675860f6afac33812c906a23c802c673"
+    },
+    {
+      "bytes": 14708,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/d7d79e19-e1b3-5d79-855f-0b804f110915/stdout.jsonl",
+      "sha256": "ec4df8f073edc4393896d0451d43e69c678146bf643edad7054a277e00ed64c0"
+    },
+    {
+      "bytes": 450,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/e425428a-6a77-5b30-ad07-2d61dfd333a4/last-message.txt",
+      "sha256": "c49bf165b177a21c9794da441b5d24d37a43a45e6255a6ed535a72c527831b08"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/e425428a-6a77-5b30-ad07-2d61dfd333a4/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 3343,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/e425428a-6a77-5b30-ad07-2d61dfd333a4/stderr.txt",
+      "sha256": "fb4117517b24c5ac1bc4ca61f51ac70439bab3409f0db428042cb23315ce57c2"
+    },
+    {
+      "bytes": 22296,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/e425428a-6a77-5b30-ad07-2d61dfd333a4/stdout.jsonl",
+      "sha256": "b90d3bf8f2844c12746ccf071cbf7f5ecee21f0fd16170cb0e3fee08b1073d08"
+    },
+    {
+      "bytes": 26,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/f064e141-78f0-583d-b330-47dc20b8b8f6/last-message.txt",
+      "sha256": "fad8fb93294c7edaf3d031c96458c69c70ec7fc534384665ce67040ac2804e7b"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/f064e141-78f0-583d-b330-47dc20b8b8f6/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 920,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/f064e141-78f0-583d-b330-47dc20b8b8f6/stderr.txt",
+      "sha256": "304dc113fac850bd82086c2842c841b9144fda02f48ab115245aa7f6ad6c5d45"
+    },
+    {
+      "bytes": 11346,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/f064e141-78f0-583d-b330-47dc20b8b8f6/stdout.jsonl",
+      "sha256": "74d02cad8d914270c9f2f2810a7474dd35cd393dfc649ba57d8bb82f2246a51d"
+    },
+    {
+      "bytes": 26,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/f08d373d-6cfb-5dae-b7a6-28daffedf19c/last-message.txt",
+      "sha256": "fad8fb93294c7edaf3d031c96458c69c70ec7fc534384665ce67040ac2804e7b"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/f08d373d-6cfb-5dae-b7a6-28daffedf19c/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 1090,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/f08d373d-6cfb-5dae-b7a6-28daffedf19c/stderr.txt",
+      "sha256": "51d459638d4195d355bd216dbade72109a01bf86167a50f43a41b6a72801d509"
+    },
+    {
+      "bytes": 14713,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/cases/f08d373d-6cfb-5dae-b7a6-28daffedf19c/stdout.jsonl",
+      "sha256": "9e53608d56d15592276de2fc56d4b7e19d65a53c066c94076fd9eaa0c794bc41"
+    },
+    {
+      "bytes": 42585,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/approval-eval/codex-real-eval-17194517ad7c41b29b7da7ac5ae07991/evaluation.json",
+      "sha256": "04a1c5b3819104207fe564be8012f0f5fd2820e7f193d15cabb77cbcea85e45d"
+    },
+    {
+      "bytes": 43,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/bad-description/decoy/bad-description-control/agents/openai.yaml",
+      "sha256": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94"
+    },
+    {
+      "bytes": 162,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/bad-description/decoy/bad-description-control/SKILL.md",
+      "sha256": "a919ce66bed7b9b3f368e8b50e600e1a61f9f6fa8c9168867a929d468ac5871f"
+    },
+    {
+      "bytes": 1,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/bad-description/last-message.txt",
+      "sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a"
+    },
+    {
+      "bytes": 130,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/bad-description/repo/.git/config",
+      "sha256": "05becdb83bb897f6103c8d91439e2e9092144edf5b3955a746fce4975c12bfdc"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/bad-description/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 21,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/bad-description/repo/.git/HEAD",
+      "sha256": "28d25bf82af4c0e2b72f50959b2beb859e3e60b9630a5e8c603dad4ddb2b6e80"
+    },
+    {
+      "bytes": 478,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/bad-description/repo/.git/hooks/applypatch-msg.sample",
+      "sha256": "0223497a0b8b033aa58a3a521b8629869386cf7ab0e2f101963d328aa62193f7"
+    },
+    {
+      "bytes": 1972,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/bad-description/repo/.git/hooks/commit-msg.sample",
+      "sha256": "efc1401b0e99d1ff51494d154d98b46c1e99059bcd8bf9f73cecde19fd3eb23b"
+    },
+    {
+      "bytes": 4611,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/bad-description/repo/.git/hooks/fsmonitor-watchman.sample",
+      "sha256": "9159720099ad5595b8e66645cbfd47763c1e920f46e0b50ae75e642bbec57ef0"
+    },
+    {
+      "bytes": 189,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/bad-description/repo/.git/hooks/post-update.sample",
+      "sha256": "81765af2daef323061dcbc5e61fc16481cb74b3bac9ad8a174b186523586f6c5"
+    },
+    {
+      "bytes": 424,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/bad-description/repo/.git/hooks/pre-applypatch.sample",
+      "sha256": "e15c5b469ea3e0a695bea6f2c82bcf8e62821074939ddd85b77e0007ff165475"
+    },
+    {
+      "bytes": 1649,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/bad-description/repo/.git/hooks/pre-commit.sample",
+      "sha256": "57185b7b9f05239d7ab52db045f5b89eb31348d7b2177eab214f5eb872e1971b"
+    },
+    {
+      "bytes": 416,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/bad-description/repo/.git/hooks/pre-merge-commit.sample",
+      "sha256": "d3825a70337940ebbd0a5c072984e13245920cdf8898bd225c8d27a6dfc9cb53"
+    },
+    {
+      "bytes": 1374,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/bad-description/repo/.git/hooks/pre-push.sample",
+      "sha256": "ecce9c7e04d3f5dd9d8ada81753dd1d549a9634b26770042b58dda00217d086a"
+    },
+    {
+      "bytes": 4898,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/bad-description/repo/.git/hooks/pre-rebase.sample",
+      "sha256": "4febce867790052338076f4e66cc47efb14879d18097d1d61c8261859eaaa7b3"
+    },
+    {
+      "bytes": 544,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/bad-description/repo/.git/hooks/pre-receive.sample",
+      "sha256": "a4c3d2b9c7bb3fd8d1441c31bd4ee71a595d66b44fcf49ddb310252320169989"
+    },
+    {
+      "bytes": 1492,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/bad-description/repo/.git/hooks/prepare-commit-msg.sample",
+      "sha256": "e9ddcaa4189fddd25ed97fc8c789eca7b6ca16390b2392ae3276f0c8e1aa4619"
+    },
+    {
+      "bytes": 2783,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/bad-description/repo/.git/hooks/push-to-checkout.sample",
+      "sha256": "a53d0741798b287c6dd7afa64aee473f305e65d3f49463bb9d7408ec3b12bf5f"
+    },
+    {
+      "bytes": 2308,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/bad-description/repo/.git/hooks/sendemail-validate.sample",
+      "sha256": "44ebfc923dc5466bc009602f0ecf067b9c65459abfe8868ddc49b78e6ced7a92"
+    },
+    {
+      "bytes": 3650,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/bad-description/repo/.git/hooks/update.sample",
+      "sha256": "8d5f2fa83e103cf08b57eaa67521df9194f45cbdbcb37da52ad586097a14d106"
+    },
+    {
+      "bytes": 240,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/bad-description/repo/.git/info/exclude",
+      "sha256": "6671fe83b7a07c8932ee89164d1f2793b2318058eb8b98dc5c06ee0a5a3b0ec1"
+    },
+    {
+      "bytes": 301,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/bad-description/stderr.txt",
+      "sha256": "8460e56040e36be05bc2843d676591687f739421c6856f45ab157b890b1b3d18"
+    },
+    {
+      "bytes": 315,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/bad-description/stdout.jsonl",
+      "sha256": "6e429ebb0146f4d5458cc3e63594c4608c2bfe492a4069f70a8ff272a13e9f5d"
+    },
+    {
+      "bytes": 39,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/discovery/last-message.txt",
+      "sha256": "99bcbc5cf00fd40d309058e4489fb4558f441c2bb2039c0ea000c30b58fb6e80"
+    },
+    {
+      "bytes": 130,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/discovery/repo/.git/config",
+      "sha256": "05becdb83bb897f6103c8d91439e2e9092144edf5b3955a746fce4975c12bfdc"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/discovery/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 21,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/discovery/repo/.git/HEAD",
+      "sha256": "28d25bf82af4c0e2b72f50959b2beb859e3e60b9630a5e8c603dad4ddb2b6e80"
+    },
+    {
+      "bytes": 478,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/discovery/repo/.git/hooks/applypatch-msg.sample",
+      "sha256": "0223497a0b8b033aa58a3a521b8629869386cf7ab0e2f101963d328aa62193f7"
+    },
+    {
+      "bytes": 1972,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/discovery/repo/.git/hooks/commit-msg.sample",
+      "sha256": "efc1401b0e99d1ff51494d154d98b46c1e99059bcd8bf9f73cecde19fd3eb23b"
+    },
+    {
+      "bytes": 4611,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/discovery/repo/.git/hooks/fsmonitor-watchman.sample",
+      "sha256": "9159720099ad5595b8e66645cbfd47763c1e920f46e0b50ae75e642bbec57ef0"
+    },
+    {
+      "bytes": 189,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/discovery/repo/.git/hooks/post-update.sample",
+      "sha256": "81765af2daef323061dcbc5e61fc16481cb74b3bac9ad8a174b186523586f6c5"
+    },
+    {
+      "bytes": 424,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/discovery/repo/.git/hooks/pre-applypatch.sample",
+      "sha256": "e15c5b469ea3e0a695bea6f2c82bcf8e62821074939ddd85b77e0007ff165475"
+    },
+    {
+      "bytes": 1649,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/discovery/repo/.git/hooks/pre-commit.sample",
+      "sha256": "57185b7b9f05239d7ab52db045f5b89eb31348d7b2177eab214f5eb872e1971b"
+    },
+    {
+      "bytes": 416,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/discovery/repo/.git/hooks/pre-merge-commit.sample",
+      "sha256": "d3825a70337940ebbd0a5c072984e13245920cdf8898bd225c8d27a6dfc9cb53"
+    },
+    {
+      "bytes": 1374,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/discovery/repo/.git/hooks/pre-push.sample",
+      "sha256": "ecce9c7e04d3f5dd9d8ada81753dd1d549a9634b26770042b58dda00217d086a"
+    },
+    {
+      "bytes": 4898,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/discovery/repo/.git/hooks/pre-rebase.sample",
+      "sha256": "4febce867790052338076f4e66cc47efb14879d18097d1d61c8261859eaaa7b3"
+    },
+    {
+      "bytes": 544,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/discovery/repo/.git/hooks/pre-receive.sample",
+      "sha256": "a4c3d2b9c7bb3fd8d1441c31bd4ee71a595d66b44fcf49ddb310252320169989"
+    },
+    {
+      "bytes": 1492,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/discovery/repo/.git/hooks/prepare-commit-msg.sample",
+      "sha256": "e9ddcaa4189fddd25ed97fc8c789eca7b6ca16390b2392ae3276f0c8e1aa4619"
+    },
+    {
+      "bytes": 2783,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/discovery/repo/.git/hooks/push-to-checkout.sample",
+      "sha256": "a53d0741798b287c6dd7afa64aee473f305e65d3f49463bb9d7408ec3b12bf5f"
+    },
+    {
+      "bytes": 2308,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/discovery/repo/.git/hooks/sendemail-validate.sample",
+      "sha256": "44ebfc923dc5466bc009602f0ecf067b9c65459abfe8868ddc49b78e6ced7a92"
+    },
+    {
+      "bytes": 3650,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/discovery/repo/.git/hooks/update.sample",
+      "sha256": "8d5f2fa83e103cf08b57eaa67521df9194f45cbdbcb37da52ad586097a14d106"
+    },
+    {
+      "bytes": 240,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/discovery/repo/.git/info/exclude",
+      "sha256": "6671fe83b7a07c8932ee89164d1f2793b2318058eb8b98dc5c06ee0a5a3b0ec1"
+    },
+    {
+      "bytes": 158,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/discovery/stderr.txt",
+      "sha256": "65c7980df1bb1c5a47fa4ddb61af19df648b0cbd5d5ccd3593fbf5be35a24c4c"
+    },
+    {
+      "bytes": 356,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/discovery/stdout.jsonl",
+      "sha256": "0007865c33b88e5f5dface22fb85e3e22d601e2b97bee6ede65a98a93e5d1a4c"
+    },
+    {
+      "bytes": 58,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/explicit/last-message.txt",
+      "sha256": "98eed52d77201957f6f8c8665f4f19f9bfc543d6e3c5370d266d7743c5a7435b"
+    },
+    {
+      "bytes": 130,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/explicit/repo/.git/config",
+      "sha256": "05becdb83bb897f6103c8d91439e2e9092144edf5b3955a746fce4975c12bfdc"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/explicit/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 21,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/explicit/repo/.git/HEAD",
+      "sha256": "28d25bf82af4c0e2b72f50959b2beb859e3e60b9630a5e8c603dad4ddb2b6e80"
+    },
+    {
+      "bytes": 478,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/explicit/repo/.git/hooks/applypatch-msg.sample",
+      "sha256": "0223497a0b8b033aa58a3a521b8629869386cf7ab0e2f101963d328aa62193f7"
+    },
+    {
+      "bytes": 1972,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/explicit/repo/.git/hooks/commit-msg.sample",
+      "sha256": "efc1401b0e99d1ff51494d154d98b46c1e99059bcd8bf9f73cecde19fd3eb23b"
+    },
+    {
+      "bytes": 4611,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/explicit/repo/.git/hooks/fsmonitor-watchman.sample",
+      "sha256": "9159720099ad5595b8e66645cbfd47763c1e920f46e0b50ae75e642bbec57ef0"
+    },
+    {
+      "bytes": 189,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/explicit/repo/.git/hooks/post-update.sample",
+      "sha256": "81765af2daef323061dcbc5e61fc16481cb74b3bac9ad8a174b186523586f6c5"
+    },
+    {
+      "bytes": 424,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/explicit/repo/.git/hooks/pre-applypatch.sample",
+      "sha256": "e15c5b469ea3e0a695bea6f2c82bcf8e62821074939ddd85b77e0007ff165475"
+    },
+    {
+      "bytes": 1649,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/explicit/repo/.git/hooks/pre-commit.sample",
+      "sha256": "57185b7b9f05239d7ab52db045f5b89eb31348d7b2177eab214f5eb872e1971b"
+    },
+    {
+      "bytes": 416,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/explicit/repo/.git/hooks/pre-merge-commit.sample",
+      "sha256": "d3825a70337940ebbd0a5c072984e13245920cdf8898bd225c8d27a6dfc9cb53"
+    },
+    {
+      "bytes": 1374,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/explicit/repo/.git/hooks/pre-push.sample",
+      "sha256": "ecce9c7e04d3f5dd9d8ada81753dd1d549a9634b26770042b58dda00217d086a"
+    },
+    {
+      "bytes": 4898,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/explicit/repo/.git/hooks/pre-rebase.sample",
+      "sha256": "4febce867790052338076f4e66cc47efb14879d18097d1d61c8261859eaaa7b3"
+    },
+    {
+      "bytes": 544,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/explicit/repo/.git/hooks/pre-receive.sample",
+      "sha256": "a4c3d2b9c7bb3fd8d1441c31bd4ee71a595d66b44fcf49ddb310252320169989"
+    },
+    {
+      "bytes": 1492,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/explicit/repo/.git/hooks/prepare-commit-msg.sample",
+      "sha256": "e9ddcaa4189fddd25ed97fc8c789eca7b6ca16390b2392ae3276f0c8e1aa4619"
+    },
+    {
+      "bytes": 2783,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/explicit/repo/.git/hooks/push-to-checkout.sample",
+      "sha256": "a53d0741798b287c6dd7afa64aee473f305e65d3f49463bb9d7408ec3b12bf5f"
+    },
+    {
+      "bytes": 2308,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/explicit/repo/.git/hooks/sendemail-validate.sample",
+      "sha256": "44ebfc923dc5466bc009602f0ecf067b9c65459abfe8868ddc49b78e6ced7a92"
+    },
+    {
+      "bytes": 3650,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/explicit/repo/.git/hooks/update.sample",
+      "sha256": "8d5f2fa83e103cf08b57eaa67521df9194f45cbdbcb37da52ad586097a14d106"
+    },
+    {
+      "bytes": 240,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/explicit/repo/.git/info/exclude",
+      "sha256": "6671fe83b7a07c8932ee89164d1f2793b2318058eb8b98dc5c06ee0a5a3b0ec1"
+    },
+    {
+      "bytes": 301,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/explicit/stderr.txt",
+      "sha256": "40087a18c74a14bf2557b9aa2d150414532d676e7ba378061942b11c5c4ed916"
+    },
+    {
+      "bytes": 375,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/explicit/stdout.jsonl",
+      "sha256": "ba042cc1ea64e988e6ae5b3968818d49e26c14fa012bb014807be1015f634cf2"
+    },
+    {
+      "bytes": 16,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-negative/last-message.txt",
+      "sha256": "161757d7a3b7a92c83cf5e9f530c402862110baeb4479329c0875b41fb340f07"
+    },
+    {
+      "bytes": 130,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-negative/repo/.git/config",
+      "sha256": "05becdb83bb897f6103c8d91439e2e9092144edf5b3955a746fce4975c12bfdc"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-negative/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 21,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-negative/repo/.git/HEAD",
+      "sha256": "28d25bf82af4c0e2b72f50959b2beb859e3e60b9630a5e8c603dad4ddb2b6e80"
+    },
+    {
+      "bytes": 478,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-negative/repo/.git/hooks/applypatch-msg.sample",
+      "sha256": "0223497a0b8b033aa58a3a521b8629869386cf7ab0e2f101963d328aa62193f7"
+    },
+    {
+      "bytes": 1972,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-negative/repo/.git/hooks/commit-msg.sample",
+      "sha256": "efc1401b0e99d1ff51494d154d98b46c1e99059bcd8bf9f73cecde19fd3eb23b"
+    },
+    {
+      "bytes": 4611,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-negative/repo/.git/hooks/fsmonitor-watchman.sample",
+      "sha256": "9159720099ad5595b8e66645cbfd47763c1e920f46e0b50ae75e642bbec57ef0"
+    },
+    {
+      "bytes": 189,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-negative/repo/.git/hooks/post-update.sample",
+      "sha256": "81765af2daef323061dcbc5e61fc16481cb74b3bac9ad8a174b186523586f6c5"
+    },
+    {
+      "bytes": 424,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-negative/repo/.git/hooks/pre-applypatch.sample",
+      "sha256": "e15c5b469ea3e0a695bea6f2c82bcf8e62821074939ddd85b77e0007ff165475"
+    },
+    {
+      "bytes": 1649,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-negative/repo/.git/hooks/pre-commit.sample",
+      "sha256": "57185b7b9f05239d7ab52db045f5b89eb31348d7b2177eab214f5eb872e1971b"
+    },
+    {
+      "bytes": 416,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-negative/repo/.git/hooks/pre-merge-commit.sample",
+      "sha256": "d3825a70337940ebbd0a5c072984e13245920cdf8898bd225c8d27a6dfc9cb53"
+    },
+    {
+      "bytes": 1374,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-negative/repo/.git/hooks/pre-push.sample",
+      "sha256": "ecce9c7e04d3f5dd9d8ada81753dd1d549a9634b26770042b58dda00217d086a"
+    },
+    {
+      "bytes": 4898,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-negative/repo/.git/hooks/pre-rebase.sample",
+      "sha256": "4febce867790052338076f4e66cc47efb14879d18097d1d61c8261859eaaa7b3"
+    },
+    {
+      "bytes": 544,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-negative/repo/.git/hooks/pre-receive.sample",
+      "sha256": "a4c3d2b9c7bb3fd8d1441c31bd4ee71a595d66b44fcf49ddb310252320169989"
+    },
+    {
+      "bytes": 1492,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-negative/repo/.git/hooks/prepare-commit-msg.sample",
+      "sha256": "e9ddcaa4189fddd25ed97fc8c789eca7b6ca16390b2392ae3276f0c8e1aa4619"
+    },
+    {
+      "bytes": 2783,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-negative/repo/.git/hooks/push-to-checkout.sample",
+      "sha256": "a53d0741798b287c6dd7afa64aee473f305e65d3f49463bb9d7408ec3b12bf5f"
+    },
+    {
+      "bytes": 2308,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-negative/repo/.git/hooks/sendemail-validate.sample",
+      "sha256": "44ebfc923dc5466bc009602f0ecf067b9c65459abfe8868ddc49b78e6ced7a92"
+    },
+    {
+      "bytes": 3650,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-negative/repo/.git/hooks/update.sample",
+      "sha256": "8d5f2fa83e103cf08b57eaa67521df9194f45cbdbcb37da52ad586097a14d106"
+    },
+    {
+      "bytes": 240,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-negative/repo/.git/info/exclude",
+      "sha256": "6671fe83b7a07c8932ee89164d1f2793b2318058eb8b98dc5c06ee0a5a3b0ec1"
+    },
+    {
+      "bytes": 301,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-negative/stderr.txt",
+      "sha256": "b2a1f03c343a5f527adf3436fbe2567fde2cecb5e78671337f5fdf2d5afdce2e"
+    },
+    {
+      "bytes": 329,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-negative/stdout.jsonl",
+      "sha256": "3533617ea8e520594797077c17eaf3f6a0b9cfb0c6d2d93180357a704d3d5aa2"
+    },
+    {
+      "bytes": 50,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-positive/last-message.txt",
+      "sha256": "b06bf7b8b9c0cafc32a733a2e85df69ccd1d573afdb621324a02ea8a39604876"
+    },
+    {
+      "bytes": 130,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-positive/repo/.git/config",
+      "sha256": "05becdb83bb897f6103c8d91439e2e9092144edf5b3955a746fce4975c12bfdc"
+    },
+    {
+      "bytes": 73,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-positive/repo/.git/description",
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    {
+      "bytes": 21,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-positive/repo/.git/HEAD",
+      "sha256": "28d25bf82af4c0e2b72f50959b2beb859e3e60b9630a5e8c603dad4ddb2b6e80"
+    },
+    {
+      "bytes": 478,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-positive/repo/.git/hooks/applypatch-msg.sample",
+      "sha256": "0223497a0b8b033aa58a3a521b8629869386cf7ab0e2f101963d328aa62193f7"
+    },
+    {
+      "bytes": 1972,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-positive/repo/.git/hooks/commit-msg.sample",
+      "sha256": "efc1401b0e99d1ff51494d154d98b46c1e99059bcd8bf9f73cecde19fd3eb23b"
+    },
+    {
+      "bytes": 4611,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-positive/repo/.git/hooks/fsmonitor-watchman.sample",
+      "sha256": "9159720099ad5595b8e66645cbfd47763c1e920f46e0b50ae75e642bbec57ef0"
+    },
+    {
+      "bytes": 189,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-positive/repo/.git/hooks/post-update.sample",
+      "sha256": "81765af2daef323061dcbc5e61fc16481cb74b3bac9ad8a174b186523586f6c5"
+    },
+    {
+      "bytes": 424,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-positive/repo/.git/hooks/pre-applypatch.sample",
+      "sha256": "e15c5b469ea3e0a695bea6f2c82bcf8e62821074939ddd85b77e0007ff165475"
+    },
+    {
+      "bytes": 1649,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-positive/repo/.git/hooks/pre-commit.sample",
+      "sha256": "57185b7b9f05239d7ab52db045f5b89eb31348d7b2177eab214f5eb872e1971b"
+    },
+    {
+      "bytes": 416,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-positive/repo/.git/hooks/pre-merge-commit.sample",
+      "sha256": "d3825a70337940ebbd0a5c072984e13245920cdf8898bd225c8d27a6dfc9cb53"
+    },
+    {
+      "bytes": 1374,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-positive/repo/.git/hooks/pre-push.sample",
+      "sha256": "ecce9c7e04d3f5dd9d8ada81753dd1d549a9634b26770042b58dda00217d086a"
+    },
+    {
+      "bytes": 4898,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-positive/repo/.git/hooks/pre-rebase.sample",
+      "sha256": "4febce867790052338076f4e66cc47efb14879d18097d1d61c8261859eaaa7b3"
+    },
+    {
+      "bytes": 544,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-positive/repo/.git/hooks/pre-receive.sample",
+      "sha256": "a4c3d2b9c7bb3fd8d1441c31bd4ee71a595d66b44fcf49ddb310252320169989"
+    },
+    {
+      "bytes": 1492,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-positive/repo/.git/hooks/prepare-commit-msg.sample",
+      "sha256": "e9ddcaa4189fddd25ed97fc8c789eca7b6ca16390b2392ae3276f0c8e1aa4619"
+    },
+    {
+      "bytes": 2783,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-positive/repo/.git/hooks/push-to-checkout.sample",
+      "sha256": "a53d0741798b287c6dd7afa64aee473f305e65d3f49463bb9d7408ec3b12bf5f"
+    },
+    {
+      "bytes": 2308,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-positive/repo/.git/hooks/sendemail-validate.sample",
+      "sha256": "44ebfc923dc5466bc009602f0ecf067b9c65459abfe8868ddc49b78e6ced7a92"
+    },
+    {
+      "bytes": 3650,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-positive/repo/.git/hooks/update.sample",
+      "sha256": "8d5f2fa83e103cf08b57eaa67521df9194f45cbdbcb37da52ad586097a14d106"
+    },
+    {
+      "bytes": 240,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-positive/repo/.git/info/exclude",
+      "sha256": "6671fe83b7a07c8932ee89164d1f2793b2318058eb8b98dc5c06ee0a5a3b0ec1"
+    },
+    {
+      "bytes": 3253,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-positive/stderr.txt",
+      "sha256": "3dcb9cd141c770222746d85f39a2fbb00c04dd8dc60f81ec297786374f8f26c4"
+    },
+    {
+      "bytes": 6434,
+      "path": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-positive/stdout.jsonl",
+      "sha256": "5f93244f6a04b6b30fdbff51c1dab44e07575e0cf63f3d5043ca51053916d4d0"
+    }
+  ],
+  "review": {
+    "accepted_for_release": false,
+    "after_status": "invalidated-disposable-attempt",
+    "approval_event_id": "event-ac371b49-e043-437f-8232-009d12ef488e",
+    "automatic": false,
+    "before_status": "candidate",
+    "reason": "Exact preserved candidate passed real Codex explicit-only evaluation and all Evidence/quality gates.",
+    "reviewer": "Andy / V3.3 production acceptance",
+    "timestamp": "2026-08-12T09:48:16+08:00"
+  },
+  "run_id": "v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5",
+  "schema_version": 1,
+  "sessions": {
+    "bad_description": {
+      "command_sha256": "1c4f29fed75772a4d752eb867106b65a29e4ffa1b133c13b8743a174a8d7cb80",
+      "decoy_observed": false,
+      "detection": "no-successful-target-skill-content-read",
+      "exit_code": 0,
+      "last_message": "4",
+      "matching_event_sha256": null,
+      "observed_skill_read": false,
+      "raw_directory": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/bad-description"
+    },
+    "discovery": {
+      "command_sha256": "cdf32a291ebc346d74cfc5b5c334e5f9205805382842207677af18363e32461c",
+      "decoy_observed": false,
+      "detection": "no-successful-target-skill-content-read",
+      "exit_code": 0,
+      "last_message": "股票大作手回忆录-evidence-bound",
+      "matching_event_sha256": null,
+      "observed_skill_read": false,
+      "raw_directory": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/discovery"
+    },
+    "explicit": {
+      "command_sha256": "68e5aa6a567ec2b7d5a016efcd0ee0815f159d2e33205a5e8a10e0384d63fe90",
+      "decoy_observed": false,
+      "detection": "no-successful-target-skill-content-read",
+      "exit_code": 0,
+      "last_message": "Skill unavailable: `apply-source-method-a4e20f8d-75dba888`",
+      "matching_event_sha256": null,
+      "observed_skill_read": false,
+      "raw_directory": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/explicit"
+    },
+    "trigger_negative": {
+      "command_sha256": "319350d291b4986d37ac5b20126a927990fef1c13f02d3908b5a8e54023f7f29",
+      "decoy_observed": false,
+      "detection": "no-successful-target-skill-content-read",
+      "exit_code": 0,
+      "last_message": "KEEP_DISCIPLINE.",
+      "matching_event_sha256": null,
+      "observed_skill_read": false,
+      "raw_directory": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-negative"
+    },
+    "trigger_positive": {
+      "command_sha256": "e9984ac8591114b1cce038106af8129985ba75db5760056862244ae247ce14cc",
+      "decoy_observed": false,
+      "detection": "no-successful-target-skill-content-read",
+      "exit_code": 0,
+      "last_message": "Cannot determine—the named skill is unavailable.",
+      "matching_event_sha256": "6ba9f587761374f214a93bcbcac3bb73cee61b0919785fcb1a8ce2d990a72831",
+      "observed_skill_read": false,
+      "raw_directory": "release/evidence/codex_real_test/raw/v33-codex-real-cbaf3def964e4b8fbe5f9f4156de62b5/final-sessions/precision-positive"
+    }
+  },
+  "skill": {
+    "artifact_sha256": "905a0a109a986731c4211be465cfaf05fda25dbd892e050802f56c9e010ca750",
+    "frontmatter": {
+      "description": "Apply 买进与卖出的风险执行方法 to evidence-grounded tasks. Use when the user explicitly needs this method and supplies its required inputs. Do not use for unrelated requests, missing critical inputs, or claims beyond the bound source Evidence. On Windows PowerShell, read this UTF-8 SKILL.md with -Encoding UTF8.",
+      "name": "apply-source-method-a4e20f8d-75dba888"
+    },
+    "invocation_fingerprint": "5572895a87ffbf486fc2",
+    "name": "apply-source-method-a4e20f8d-75dba888",
+    "openai_yaml_policy": "allow_implicit_invocation: false",
+    "skill_id": "917fb6b6-27d2-47a5-a943-06343f66b6a0",
+    "trigger_contract": "Codex implicit selection is described by frontmatter.description; no non-standard trigger field is added.",
+    "version": "1.0.0"
+  },
+  "source_audit_path": "release/evidence/codex_real_test/codex_real_integration.pre-strict.json",
+  "source_audit_sha256": "013e4130712bab8e85af17cd205c3ddc3bf8ae68845ef6cf32692d3041442985",
+  "source_chain": {
+    "book": "股票大作手回忆录",
+    "candidate_status": "candidate",
+    "candidate_title": "买进与卖出的风险执行方法",
+    "concept_ids": [
+      "concept:4755dc148d793fb87fc613e3",
+      "concept:9c62f9630321dfd1b904a61d",
+      "concept:c7594d03e642cfc1e66d5e78"
+    ],
+    "conversion_id": "d563d127872852958eb4b6e311258407b5865229e0eb52342963c113ad0a25e3",
+    "evidence_count": 3,
+    "evidence_ids": [
+      "ev-30d84734bcd3ffedb6e1aa16e8067842bd923f0686412c32df0851cde7ba4942",
+      "ev-72d15188387b0ffd98b56c30df38cc02db4af851bb602bcace999ff8eb57e235",
+      "ev-ce476184cbce28d70d23c029e6ef09bc52aee99df4cb5af4d7a5a258ecdefc54"
+    ],
+    "method_cluster_id": "method-cluster:5d8b41b09a9577c332b07fb8",
+    "openai_policy": "interface:\n  display_name: \"买进与卖出的风险执行方法\"\n  short_description: \"Apply 买进与卖出的风险执行方法 with source-bound Evidence\"\n  default_prompt: \"Use $apply-source-method-a4e20f8d-75dba888 to apply the approved evidence-bound method. On Windows PowerShell, read SKILL.md with -Encoding UTF8.\"\npolicy:\n  allow_implicit_invocation: false\n",
+    "skill_candidate_fingerprint": "fae402a49b5d7993097dea72ba2af88ec4ad89773c959aa693ecec6c44f9aede",
+    "skill_metadata": {
+      "description": "Apply 买进与卖出的风险执行方法 to evidence-grounded tasks. Use when the user explicitly needs this method and supplies its required inputs. Do not use for unrelated requests, missing critical inputs, or claims beyond the bound source Evidence. On Windows PowerShell, read this UTF-8 SKILL.md with -Encoding UTF8.",
+      "name": "apply-source-method-a4e20f8d-75dba888"
+    },
+    "skill_path": "05_Knowledge/Skills/apply-source-method-a4e20f8d-75dba888/SKILL.md",
+    "source_id": "75dba888e796b4aae0ef85f99798b6c8eab002e2c2b213e98b9b3e5d5c32b828",
+    "upstream_run_id": "run-0612616f2d21999e726a3ba1"
+  },
+  "status": "blocked",
+  "strict_revalidation": {
+    "approval_evaluation": {
+      "case_count": 25,
+      "counts": {
+        "boundary": 5,
+        "negative": 10,
+        "positive": 10
+      },
+      "detector": "successful-command-output-containing-generated-skill-content",
+      "metrics": {
+        "boundary_score": 100.0,
+        "trigger_precision": 100.0,
+        "trigger_recall": 90.0
+      },
+      "passed": true,
+      "run_id": "codex-real-eval-17194517ad7c41b29b7da7ac5ae07991"
+    },
+    "artifact_failures": [],
+    "detector": "successful command output must contain generated Skill content",
+    "discovery_response_sha256": "99bcbc5cf00fd40d309058e4489fb4558f441c2bb2039c0ea000c30b58fb6e80",
+    "explicit_response_sha256": "98eed52d77201957f6f8c8665f4f19f9bfc543d6e3c5370d266d7743c5a7435b"
+  },
+  "trigger_evaluation": {
+    "case_count": 25,
+    "counts": {
+      "boundary": 5,
+      "negative": 10,
+      "positive": 10
+    },
+    "kind": "approved-external-router",
+    "metrics": {
+      "boundary_score": 100.0,
+      "trigger_precision": 100.0,
+      "trigger_recall": 90.0
+    },
+    "passed": true,
+    "run_id": "codex-real-eval-17194517ad7c41b29b7da7ac5ae07991"
+  },
+  "vault": {
+    "deleted_after_run": true,
+    "production_vault_opened": false,
+    "project_connections": [],
+    "temporary": true
+  }
+}

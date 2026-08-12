@@ -1,0 +1,8 @@
+Skill loaded. Boundary B2 stop triggered because these critical inputs are missing:
+
+- Decision target: the specific buy/sell decision or asset.
+- Current constraints: risk tolerance, position, time horizon, loss limits, liquidity, etc.
+- Relevant observable facts: current evidence-based market and position data.
+- Confirmation of access to the three bound Evidence records/source conversion.
+
+Without these, applicability cannot be confirmed and the method must not execute. Stopped for human review.

@@ -1,0 +1,6 @@
+interface:
+  display_name: "买进与卖出的风险执行方法"
+  short_description: "Apply 买进与卖出的风险执行方法 with source-bound Evidence"
+  default_prompt: "Use $apply-source-method-a4e20f8d-75dba888 to apply the approved evidence-bound method. On Windows PowerShell, read SKILL.md with -Encoding UTF8."
+policy:
+  allow_implicit_invocation: false

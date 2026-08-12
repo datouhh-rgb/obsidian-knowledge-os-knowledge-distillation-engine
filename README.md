@@ -7,7 +7,7 @@ Evidence → Concept → Canonicalization → Method Cluster
          → Skill Synthesis → Quality Gate → Candidate Skill
 ```
 
-The caller-provided Obsidian Vault remains the only knowledge authority. V3.3 does not change Source Identity, Conversion Identity, the V3.2.1 Evidence-selection contract, lifecycle states, approval rules, exposure behavior, or the atomic Vault transaction model.
+The caller-provided Obsidian Vault remains the only knowledge authority. V3.3 Final Production Verification does not change Source Identity, Conversion Identity, the V3.2.1 Evidence-selection contract, lifecycle states, approval rules, exposure structure, or the atomic Vault transaction model. Exposure keeps implicit invocation disabled and makes no Skill copy.
 
 ## Knowledge Synthesis contracts
 
@@ -80,20 +80,19 @@ The repository stores engine code, tests, and release evidence; it is not a seco
 
 ## Production acceptance
 
-Local verification:
+Engine verification:
 
 ```powershell
 python scripts\final_production_check.py --local-only
 ```
 
-Final verification after the six GitHub Actions jobs and real-book regression evidence are available:
+Fail-closed final verification after current six-job CI, both real-book regressions, and real Codex evidence are available:
 
 ```powershell
-python scripts\final_production_check.py --skip-tests `
-  --ci-evidence FINAL_PRODUCTION_AUDIT\cross_platform_matrix.json `
-  --regression-evidence FINAL_PRODUCTION_AUDIT\stock_operator_v33_regression.json
+python scripts\final_v33_acceptance.py `
+  --ci-evidence release\evidence\ci\cross_platform_matrix.json
 ```
 
-The final gate accepts exactly six successful jobs—Windows, Ubuntu, and macOS with Python 3.11 and 3.12—all attesting the same commit SHA. Local success alone cannot emit `V3.3_KNOWLEDGE_SYNTHESIS_READY`.
+The final gate accepts exactly six successful jobs—Windows, Ubuntu, and macOS with Python 3.11 and 3.12—all attesting the same commit SHA. It also requires genuine Codex Discovery, explicit `$skill` loading, trigger precision, both named real-book regressions, release/history isolation, and all tests. It emits only `V3.3.0_PRODUCTION_READY` or `V3.3.0_BLOCKED`.
 
-See `docs/ARCHITECTURE_V3_3.md`, `REGRESSION_REPORT_V3_3.md`, `SKILL_SYNTHESIS_REPORT.md`, `FINAL_PRODUCTION_REPORT.md`, and `CI_REPORT.md`.
+Current reports are under `release/`. Prior V3.1/V3.2 audits are isolated under `history/`. The authoritative decision is `FINAL_PRODUCTION_ACCEPTANCE_REPORT.md`.

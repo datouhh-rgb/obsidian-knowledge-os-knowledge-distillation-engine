@@ -107,7 +107,10 @@ class SkillExposureManager:
             tx.stage_text(EXPOSURE_JSON, json.dumps(exposure, ensure_ascii=False, indent=2, sort_keys=True) + "\n")
             tx.stage_text(REGISTRY_JSON, registry.to_json())
             tx.stage_text(REGISTRY_MD, registry.to_markdown())
-            tx.stage_text(agent_path.relative_to(self.vault), self._set_implicit(agent_path.read_text(encoding="utf-8"), True))
+            # Exposure makes an approved Skill discoverable, but V3.3 production
+            # acceptance keeps implicit invocation disabled. Explicit `$skill`
+            # invocation remains available through Codex's standard policy.
+            tx.stage_text(agent_path.relative_to(self.vault), self._set_implicit(agent_path.read_text(encoding="utf-8"), False))
             tx.stage_text(
                 AUDIT_ROOT / f"{tx.event_id}.json",
                 self._audit(tx.event_id, "expose", skill_name, record["current_version"], scope, link, target),

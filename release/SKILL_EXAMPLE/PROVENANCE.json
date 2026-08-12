@@ -1,0 +1,41 @@
+{
+  "artifact_sha256": "d270409c79eea387e96bb80a15e6857ff6ebd6c15194555832e1e8610cb1d8b5",
+  "automatic_approval": false,
+  "engine_version": "3.3.0",
+  "exposed": false,
+  "name": "apply-source-method-a4e20f8d-75dba888",
+  "project_connections": [],
+  "purpose": "release-review-example-not-exposed",
+  "schema_version": 1,
+  "skill_id": "61742ef4-9e61-4a9d-bf24-8986aac7b44f",
+  "source_chain": {
+    "book": "股票大作手回忆录",
+    "candidate_status": "candidate",
+    "candidate_title": "买进与卖出的风险执行方法",
+    "concept_ids": [
+      "concept:4755dc148d793fb87fc613e3",
+      "concept:9c62f9630321dfd1b904a61d",
+      "concept:c7594d03e642cfc1e66d5e78"
+    ],
+    "conversion_id": "d563d127872852958eb4b6e311258407b5865229e0eb52342963c113ad0a25e3",
+    "evidence_count": 3,
+    "evidence_ids": [
+      "ev-30d84734bcd3ffedb6e1aa16e8067842bd923f0686412c32df0851cde7ba4942",
+      "ev-72d15188387b0ffd98b56c30df38cc02db4af851bb602bcace999ff8eb57e235",
+      "ev-ce476184cbce28d70d23c029e6ef09bc52aee99df4cb5af4d7a5a258ecdefc54"
+    ],
+    "method_cluster_id": "method-cluster:5d8b41b09a9577c332b07fb8",
+    "openai_policy": "interface:\n  display_name: \"买进与卖出的风险执行方法\"\n  short_description: \"Apply 买进与卖出的风险执行方法 with source-bound Evidence\"\n  default_prompt: \"Use $apply-source-method-a4e20f8d-75dba888 to apply the approved evidence-bound method. On Windows PowerShell, read SKILL.md with -Encoding UTF8.\"\npolicy:\n  allow_implicit_invocation: false\n",
+    "skill_candidate_fingerprint": "fae402a49b5d7993097dea72ba2af88ec4ad89773c959aa693ecec6c44f9aede",
+    "skill_metadata": {
+      "description": "Apply 买进与卖出的风险执行方法 to evidence-grounded tasks. Use when the user explicitly needs this method and supplies its required inputs. Do not use for unrelated requests, missing critical inputs, or claims beyond the bound source Evidence. On Windows PowerShell, read this UTF-8 SKILL.md with -Encoding UTF8.",
+      "name": "apply-source-method-a4e20f8d-75dba888"
+    },
+    "skill_path": "05_Knowledge/Skills/apply-source-method-a4e20f8d-75dba888/SKILL.md",
+    "source_id": "75dba888e796b4aae0ef85f99798b6c8eab002e2c2b213e98b9b3e5d5c32b828",
+    "upstream_run_id": "run-0612616f2d21999e726a3ba1"
+  },
+  "status": "candidate",
+  "upstream_regression": "release/evidence/regressions/stock_operator_v33_regression.json",
+  "version": "1.0.0"
+}

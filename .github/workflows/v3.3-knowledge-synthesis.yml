@@ -25,12 +25,46 @@ jobs:
       - name: Clean editable install
         run: python -m pip install -e .
       - name: Full pytest
+        id: pytest
+        continue-on-error: true
         run: python -m pytest -q
       - name: Production check
+        id: production
+        continue-on-error: true
         env:
           MATRIX_OS: ${{ matrix.os }}
           MATRIX_PYTHON: ${{ matrix.python }}
-        run: python scripts/final_production_check.py --local-only --skip-tests --json-out .ci-evidence/job.json
+        run: python scripts/final_production_check.py --local-only --skip-tests --json-out .ci-evidence/engine-job.json
+      - name: Build immutable job evidence
+        if: always()
+        shell: bash
+        env:
+          MATRIX_OS: ${{ matrix.os }}
+          MATRIX_PYTHON: ${{ matrix.python }}
+          PYTEST_OUTCOME: ${{ steps.pytest.outcome }}
+          PRODUCTION_OUTCOME: ${{ steps.production.outcome }}
+          COMMIT_SHA: ${{ github.sha }}
+          WORKFLOW_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          pytest_pass = os.environ["PYTEST_OUTCOME"] == "success"
+          production_pass = os.environ["PRODUCTION_OUTCOME"] == "success"
+          payload = {
+              "schema_version": 1,
+              "os": os.environ["MATRIX_OS"],
+              "python": os.environ["MATRIX_PYTHON"],
+              "commit_sha": os.environ["COMMIT_SHA"],
+              "workflow_url": os.environ["WORKFLOW_URL"],
+              "pytest_status": "passed" if pytest_pass else "failed",
+              "production_check_status": "passed" if production_pass else "failed",
+              "job_status": "passed" if pytest_pass and production_pass else "blocked",
+          }
+          output = Path(".ci-evidence/job.json")
+          output.parent.mkdir(parents=True, exist_ok=True)
+          output.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+          PY
       - name: Upload immutable job evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -38,8 +72,19 @@ jobs:
           name: v33-${{ matrix.os }}-py${{ matrix.python }}
           path: |
             .ci-evidence/job.json
-            FINAL_PRODUCTION_AUDIT/*.log
+            .ci-evidence/engine-job.json
+            release/evidence/engine_gate/*.log
           if-no-files-found: error
+      - name: Enforce matrix job
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          payload = json.loads(Path(".ci-evidence/job.json").read_text(encoding="utf-8"))
+          raise SystemExit(0 if payload["job_status"] == "passed" else 1)
+          PY
 
   production-release-gate:
     name: Aggregate exact six-environment evidence
@@ -65,26 +110,23 @@ jobs:
           import json, os
           from pathlib import Path
           jobs = [json.loads(path.read_text(encoding="utf-8")) for path in sorted(Path(".ci-evidence/downloaded").glob("**/job.json"))]
-          compact = [{
-              "os": item["matrix_os"], "python": item["matrix_python"],
-              "commit_sha": item["commit_sha"], "status": item["status"],
-              "pytest_exit_code": item["pytest_exit_code"], "checks": item["checks"],
-          } for item in jobs]
-          payload = {"schema_version": 1, "run_url": os.environ["RUN_URL"], "jobs": compact}
-          output = Path(".ci-evidence/cross_platform_matrix.json")
+          payload = {
+              "schema_version": 1,
+              "workflow_url": os.environ["RUN_URL"],
+              "jobs": jobs,
+          }
+          output = Path("release/evidence/ci/cross_platform_matrix.json")
+          output.parent.mkdir(parents=True, exist_ok=True)
           output.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
           PY
       - name: Final V3.3 release decision
-        run: >-
-          python scripts/final_production_check.py --skip-tests
-          --ci-evidence .ci-evidence/cross_platform_matrix.json
-          --regression-evidence FINAL_PRODUCTION_AUDIT/stock_operator_v33_regression.json
+        run: python scripts/final_v33_acceptance.py --skip-tests --ci-evidence release/evidence/ci/cross_platform_matrix.json
       - name: Upload final evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: v3.3-final-production-audit
           path: |
-            .ci-evidence/cross_platform_matrix.json
-            FINAL_PRODUCTION_AUDIT/
+            release/evidence/ci/cross_platform_matrix.json
+            release/evidence/final_gate/
           if-no-files-found: error

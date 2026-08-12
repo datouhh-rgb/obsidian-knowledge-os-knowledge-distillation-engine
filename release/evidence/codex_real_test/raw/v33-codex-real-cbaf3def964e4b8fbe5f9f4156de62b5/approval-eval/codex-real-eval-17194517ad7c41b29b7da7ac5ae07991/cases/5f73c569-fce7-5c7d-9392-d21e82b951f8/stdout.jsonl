@@ -1,0 +1,4 @@
+{"type":"thread.started","thread_id":"019ff3a3-b47d-7ed1-8a5c-ad9b69694822"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"Mango, Pumpkin, Cheeto, Marmalade, and Sunny."}}
+{"type":"turn.completed","usage":{"input_tokens":12922,"cached_input_tokens":12032,"output_tokens":19,"reasoning_output_tokens":0}}

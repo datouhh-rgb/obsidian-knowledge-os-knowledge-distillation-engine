@@ -1,0 +1,9 @@
+2026-08-12T01:33:59.732948Z ERROR codex_models_manager::cache: failed to load models cache: missing field `base_instructions` at line 87 column 5
+2026-08-12T01:34:04.533897Z  WARN codex_core::shell_snapshot: Failed to create shell snapshot for powershell: Shell snapshot not supported yet for PowerShell
+2026-08-12T01:34:04.692879Z ERROR codex_models_manager::manager: failed to refresh available models: timeout waiting for child process to exit
+2026-08-12T01:34:21.336437Z ERROR codex_core::tools::router: error=Exit code: 1
+Wall time: 0.3 seconds
+Output:
+
+2026-08-12T01:34:29.697152Z  WARN codex_core_plugins::manager: failed to warm remote plugin catalog cache error=failed to parse remote plugin catalog response from https://chatgpt.com/backend-api/ps/plugins/list: EOF while parsing a value at line 1 column 0
+2026-08-12T01:34:32.415884Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-ChildItem -Recurse -Force .agents | Format-List FullName,Name,Length,Attributes,LinkType,Target'` rejected: blocked by policy

@@ -32,6 +32,8 @@ def test_expose_discover_status_unexpose_preserves_vault(distilled, tmp_path: Pa
     assert VaultTransaction._is_link_like(link)
     assert link.resolve() == source_skill.parent.resolve()
     assert manager.status(skill).status == "healthy"
+    policy = (source_skill.parent / "agents/openai.yaml").read_text(encoding="utf-8")
+    assert "allow_implicit_invocation: false" in policy
     result = manager.unexpose(skill)
     assert result.status == "unexposed"
     assert not os.path.lexists(link)

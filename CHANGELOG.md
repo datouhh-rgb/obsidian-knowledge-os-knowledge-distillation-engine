@@ -2,6 +2,19 @@
 
 ## 3.3.0 — Knowledge Synthesis Layer
 
+### Final Production Verification
+
+- Added a real-Codex acceptance harness and persisted raw JSONL provenance for Discovery, explicit invocation, positive/negative precision, and bad-description controls.
+- Added the formal `tests/test_real_codex_integration/` suite. It rejects mock evidence and verifies every retained raw artifact hash.
+- Kept implicit invocation OFF during Exposure; Exposure remains a managed link and does not copy `SKILL.md`.
+- Replayed one exact 《股票大作手回忆录》 candidate with its original Source, Conversion, Method, fingerprint, and Evidence bindings in a disposable Vault.
+- Re-ran 《认知觉醒》 from the original PDF through local Microsoft MarkItDown and the real Hybrid/Codex pipeline; the run failed closed before formal asset commit.
+- Isolated prior V3.1 and V3.2 audits under `history/` and current V3.3 reports under `release/`.
+- Added the fail-closed `scripts/final_v33_acceptance.py` gate and current six-environment evidence format.
+- Real Codex Discovery remains blocked on this Windows host because Codex CLI 0.144.6 does not discover the junction exposure and the host cannot create a true directory symlink without elevated OS capability.
+
+No new Knowledge Synthesis capability or data model was added. The current release decision remains fail-closed.
+
 - Added `KnowledgeSynthesizer` to aggregate stable canonical Concepts into auditable Method Clusters using semantic, Evidence-source, chapter, decision-purpose, and action-flow signals.
 - Added the Evidence-bound `MethodCluster` contract and Vault rendering under `05_Knowledge/Methods`.
 - Added `SkillSynthesizer` with a fail-closed minimum of two Concepts and three Evidence records while preserving all existing Skill production gates.

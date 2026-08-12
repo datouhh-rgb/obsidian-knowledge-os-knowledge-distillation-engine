@@ -17,7 +17,7 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
-AUDIT = ROOT / "FINAL_PRODUCTION_AUDIT"
+AUDIT = ROOT / "release" / "evidence" / "engine_gate"
 EXPECTED_MATRIX = {
     ("windows-latest", "3.11"), ("windows-latest", "3.12"),
     ("ubuntu-latest", "3.11"), ("ubuntu-latest", "3.12"),
