@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
+from zipfile import ZipFile
 
 from knowledge_engine.evidence import EvidenceCatalog
 from knowledge_engine.gates import ProceduralActionGate, SemanticSkillGate
@@ -122,16 +123,18 @@ def test_generic_engine_policy_shell_is_blocked(stock_operator_synthesis_fixture
 
 
 def test_exported_stock_operator_sample_is_rejected_before_fix() -> None:
-    skill_path = ROOT / "history/V3.3_BLOCKED_Audit/SKILL_EXAMPLE_pre_remediation/apply-source-method-a4e20f8d-75dba888/versions/1.0.0/SKILL.md"
-    evidence_path = skill_path.parent / "references/evidence.json"
-    payload = json.loads(evidence_path.read_text(encoding="utf-8"))
+    archive_path = ROOT / "history/V3.3_BLOCKED_Audit/SKILL_EXAMPLE_pre_remediation.zip"
+    skill_entry = "apply-source-method-a4e20f8d-75dba888/versions/1.0.0/SKILL.md"
+    evidence_entry = "apply-source-method-a4e20f8d-75dba888/versions/1.0.0/references/evidence.json"
+    with ZipFile(archive_path) as archive:
+        payload = json.loads(archive.read(evidence_entry).decode("utf-8"))
+        text = archive.read(skill_entry).decode("utf-8")
     catalog = EvidenceCatalog.from_dict({
         "source_title": "股票大作手回忆录",
         "source_id": payload["source_id"],
         "conversion_id": payload["conversion_id"],
         "items": payload["evidence"],
     }, "")
-    text = skill_path.read_text(encoding="utf-8")
     action_section = text.split("## 5. 执行动作", 1)[1].split("## 6.", 1)[0]
     actions = []
     for line in action_section.splitlines():
