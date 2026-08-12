@@ -1,4 +1,0 @@
-{"type":"thread.started","thread_id":"019ff59d-7c7c-7811-998a-0dde3a516ddd"}
-{"type":"turn.started"}
-{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"The wind whispers softly through the day."}}
-{"type":"turn.completed","usage":{"input_tokens":13124,"cached_input_tokens":8960,"output_tokens":12,"reasoning_output_tokens":0}}

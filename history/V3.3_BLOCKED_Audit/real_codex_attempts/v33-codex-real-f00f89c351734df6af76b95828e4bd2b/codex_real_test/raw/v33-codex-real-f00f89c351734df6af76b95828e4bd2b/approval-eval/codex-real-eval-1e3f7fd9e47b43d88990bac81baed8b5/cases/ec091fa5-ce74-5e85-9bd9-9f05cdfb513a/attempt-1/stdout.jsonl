@@ -1,4 +1,0 @@
-{"type":"thread.started","thread_id":"019ff5ab-b2bb-7653-94e9-84ccb0138d17"}
-{"type":"turn.started"}
-{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"Red, orange, yellow, green, and blue."}}
-{"type":"turn.completed","usage":{"input_tokens":13139,"cached_input_tokens":12032,"output_tokens":15,"reasoning_output_tokens":0}}

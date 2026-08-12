@@ -1,8 +1,0 @@
-Boundary B3 stop triggered. Missing critical inputs:
-
-- Decision target: what buy/sell decision is being evaluated.
-- Current constraints: risk limits, time horizon, capital/exposure, and decision deadline.
-- Relevant observable facts: verified market/position data, separated from rumor or opinion.
-- Confirmation that the bound Evidence is accessible and valid for this case.
-
-The method was not executed. Human input is required before proceeding.

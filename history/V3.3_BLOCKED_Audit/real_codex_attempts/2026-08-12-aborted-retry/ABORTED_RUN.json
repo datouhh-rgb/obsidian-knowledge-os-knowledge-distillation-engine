@@ -1,8 +1,0 @@
-{
-  "schema_version": 1,
-  "engine_version": "3.3.0",
-  "status": "aborted-by-user-pause",
-  "current_release_evidence": false,
-  "commit_sha": "d36d83608f27144c80a1bdf57bba797cf9fba57b",
-  "note": "The user paused execution after the authorized test approval produced a release Skill example but before the complete Real Codex audit was written. The generated example is preserved here and excluded from the current release."
-}

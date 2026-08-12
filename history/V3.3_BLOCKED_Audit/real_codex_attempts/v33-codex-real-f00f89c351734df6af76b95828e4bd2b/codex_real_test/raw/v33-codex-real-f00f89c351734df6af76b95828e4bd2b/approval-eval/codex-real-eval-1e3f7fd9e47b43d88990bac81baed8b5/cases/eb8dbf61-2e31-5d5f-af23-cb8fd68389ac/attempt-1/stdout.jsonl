@@ -1,4 +1,0 @@
-{"type":"thread.started","thread_id":"019ff5ab-8b2d-7460-9248-341097d24cfe"}
-{"type":"turn.started"}
-{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"Rain stitched silver curtains around the empty station as the last train sighed into view. Beneath the flickering clock, she recognized the passenger who had promised never to return."}}
-{"type":"turn.completed","usage":{"input_tokens":13143,"cached_input_tokens":12032,"output_tokens":38,"reasoning_output_tokens":0}}

@@ -284,31 +284,39 @@ class SkillExposureManager:
         issues.extend({"code": "orphan-managed-cache", "message": str(path)} for path in orphans)
         event_id: str | None = None
         if repair and (issues or repair_actions):
-            removable = {
+            recreatable = {
                 item["skill"] for item in results
                 if item["status"] == "invalid"
                 and item.get("deployment_mode") == "symlink"
                 and all(issue["code"] == "missing-deployment" for issue in item["issues"])
             }
-            if removable or repair_actions:
+            if recreatable or repair_actions:
                 with VaultTransaction(
                     self.vault, "skill-reconcile",
-                    request_payload={"removed": sorted(removable), "repair_actions": repair_actions},
+                    request_payload={"recreated": sorted(recreatable), "repair_actions": repair_actions},
                 ) as tx:
-                    for name in removable:
-                        exposure["skills"].pop(name, None)
+                    for name in recreatable:
+                        registered = exposure["skills"][name]
+                        tx.stage_link_create(
+                            Path(str(registered["link_path"])),
+                            Path(str(registered["target_path"])),
+                        )
+                        repair_actions.append({"skill": name, "action": "recreate-symlink"})
                     exposure["updated_at"] = now_iso()
                     event_id = tx.event_id
                     tx.stage_text(EXPOSURE_JSON, json.dumps(exposure, ensure_ascii=False, indent=2, sort_keys=True) + "\n")
                     tx.stage_text(
                         AUDIT_ROOT / f"{event_id}.json",
                         json.dumps({
-                            "event_id": event_id, "action": "reconcile", "removed": sorted(removable),
+                            "event_id": event_id, "action": "reconcile", "recreated": sorted(recreatable),
                             "repair_actions": repair_actions,
                             "created_at": now_iso(),
                         }, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
                     )
-                    tx.commit({"removed": sorted(removable), "repair_actions": repair_actions})
+                    tx.commit({"recreated": sorted(recreatable), "repair_actions": repair_actions})
+                results = [self.status(name).as_dict() for name in sorted(exposure["skills"])]
+                issues = [issue for item in results for issue in item["issues"]]
+                issues.extend({"code": "orphan-managed-cache", "message": str(path)} for path in orphans)
         return {
             "status": "passed" if not issues else "issues",
             "results": results,
@@ -528,11 +536,11 @@ class SkillExposureManager:
     def _make_tree_writable(root: Path) -> None:
         for path in sorted(root.rglob("*"), reverse=True):
             try:
-                path.chmod(stat.S_IWRITE | stat.S_IREAD)
+                path.chmod(0o700 if path.is_dir() else 0o600)
             except OSError:
                 pass
         try:
-            root.chmod(stat.S_IWRITE | stat.S_IREAD)
+            root.chmod(0o700)
         except OSError:
             pass
 

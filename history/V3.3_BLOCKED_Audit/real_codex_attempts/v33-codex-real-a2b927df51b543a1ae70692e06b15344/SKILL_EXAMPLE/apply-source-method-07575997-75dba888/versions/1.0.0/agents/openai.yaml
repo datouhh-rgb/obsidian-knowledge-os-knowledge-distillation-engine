@@ -1,6 +1,0 @@
-interface:
-  display_name: "事前记录与事后核验预测与基于历史价格行为识别重复模式的决策分析方法"
-  short_description: "Apply 事前记录与事后核验预测与基于历史价格行为识别重复模式的决策分析方法 with source-bound Eviden"
-  default_prompt: "Use $apply-source-method-07575997-75dba888 to apply the approved evidence-bound method. On Windows PowerShell, read SKILL.md with -Encoding UTF8."
-policy:
-  allow_implicit_invocation: false

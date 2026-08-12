@@ -1,6 +1,0 @@
-2026-08-12T10:54:33.891617Z  WARN codex_core::shell_snapshot: Failed to create shell snapshot for powershell: Shell snapshot not supported yet for PowerShell
-2026-08-12T10:54:54.746542Z ERROR codex_core::tools::router: error=Exit code: 1
-Wall time: 1.1 seconds
-Output:
-
-2026-08-12T10:55:07.292216Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `base_instructions` at line 94 column 5

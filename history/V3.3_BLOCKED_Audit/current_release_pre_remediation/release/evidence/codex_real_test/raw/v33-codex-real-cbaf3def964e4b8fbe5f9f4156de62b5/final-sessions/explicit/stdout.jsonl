@@ -1,4 +1,0 @@
-{"type":"thread.started","thread_id":"019ff3a8-2c28-7dd1-aee5-e81bc6bfea1f"}
-{"type":"turn.started"}
-{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"Skill unavailable: `apply-source-method-a4e20f8d-75dba888`"}}
-{"type":"turn.completed","usage":{"input_tokens":12996,"cached_input_tokens":8960,"output_tokens":173,"reasoning_output_tokens":147}}

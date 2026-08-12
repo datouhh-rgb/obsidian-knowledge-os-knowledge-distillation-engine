@@ -1,6 +1,0 @@
-2026-08-12T11:02:27.640715Z  WARN codex_core::shell_snapshot: Failed to create shell snapshot for powershell: Shell snapshot not supported yet for PowerShell
-2026-08-12T11:02:43.428056Z ERROR codex_core::tools::router: error=Exit code: 1
-Wall time: 0.6 seconds
-Output:
-
-2026-08-12T11:02:48.501131Z ERROR codex_core::tools::router: error=`"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-ChildItem -Force -Recurse | Select-Object FullName,Length'` rejected: blocked by policy

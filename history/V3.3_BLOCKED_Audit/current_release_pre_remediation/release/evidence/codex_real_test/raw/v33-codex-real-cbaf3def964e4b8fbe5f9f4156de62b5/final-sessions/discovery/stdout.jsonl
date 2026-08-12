@@ -1,4 +1,0 @@
-{"type":"thread.started","thread_id":"019ff3a7-f034-7e41-a666-918c0dff2247"}
-{"type":"turn.started"}
-{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"股票大作手回忆录-evidence-bound"}}
-{"type":"turn.completed","usage":{"input_tokens":12998,"cached_input_tokens":12032,"output_tokens":105,"reasoning_output_tokens":89}}

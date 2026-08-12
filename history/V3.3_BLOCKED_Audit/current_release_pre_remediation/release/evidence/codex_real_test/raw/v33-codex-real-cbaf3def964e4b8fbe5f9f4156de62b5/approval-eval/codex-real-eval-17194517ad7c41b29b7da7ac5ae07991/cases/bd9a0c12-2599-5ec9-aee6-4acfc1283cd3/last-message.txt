@@ -1,1 +1,0 @@
-Skill unavailable: `apply-source-method-a4e20f8d-75dba888` is not in the available Skills catalog.

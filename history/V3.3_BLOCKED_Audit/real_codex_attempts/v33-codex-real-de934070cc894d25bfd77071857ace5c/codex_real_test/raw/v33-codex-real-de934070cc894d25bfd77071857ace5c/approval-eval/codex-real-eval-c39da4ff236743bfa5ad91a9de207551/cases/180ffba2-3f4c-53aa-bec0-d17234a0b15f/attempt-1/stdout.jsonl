@@ -1,4 +1,0 @@
-{"type":"thread.started","thread_id":"019ff59d-9129-7150-ad94-7ad759bcd327"}
-{"type":"turn.started"}
-{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"Happy birthday! Wishing you a joyful day and a wonderful year ahead."}}
-{"type":"turn.completed","usage":{"input_tokens":13125,"cached_input_tokens":12032,"output_tokens":19,"reasoning_output_tokens":0}}

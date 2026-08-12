@@ -1,1 +1,0 @@
-A Python list comprehension creates a new list concisely by transforming and optionally filtering items from an iterable.

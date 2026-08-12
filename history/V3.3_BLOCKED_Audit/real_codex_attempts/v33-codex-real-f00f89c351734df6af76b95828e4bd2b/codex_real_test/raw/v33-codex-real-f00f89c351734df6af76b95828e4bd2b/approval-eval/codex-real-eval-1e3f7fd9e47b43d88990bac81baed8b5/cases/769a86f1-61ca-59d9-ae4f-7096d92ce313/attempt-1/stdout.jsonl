@@ -1,4 +1,0 @@
-{"type":"thread.started","thread_id":"019ff5ac-3258-72a1-941d-8eea2164d29a"}
-{"type":"turn.started"}
-{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"Happy birthday! Wishing you a wonderful day filled with joy, laughter, and everything you love."}}
-{"type":"turn.completed","usage":{"input_tokens":13141,"cached_input_tokens":12032,"output_tokens":24,"reasoning_output_tokens":0}}

@@ -1,4 +1,0 @@
-{"type":"thread.started","thread_id":"019ff5a4-77ec-70d2-8ffb-4363b7421669"}
-{"type":"turn.started"}
-{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"“Good morning” 用中文是“早上好”。"}}
-{"type":"turn.completed","usage":{"input_tokens":13123,"cached_input_tokens":8960,"output_tokens":16,"reasoning_output_tokens":0}}

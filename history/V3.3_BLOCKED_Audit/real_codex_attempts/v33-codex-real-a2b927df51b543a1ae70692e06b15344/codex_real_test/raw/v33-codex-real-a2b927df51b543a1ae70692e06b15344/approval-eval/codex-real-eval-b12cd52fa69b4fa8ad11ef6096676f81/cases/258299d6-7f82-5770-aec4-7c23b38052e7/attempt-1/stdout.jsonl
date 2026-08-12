@@ -1,4 +1,0 @@
-{"type":"thread.started","thread_id":"019ff5a4-c4d1-78e1-b967-2b457d1a8ffb"}
-{"type":"turn.started"}
-{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"Mango, Marmalade, Pumpkin, Peaches, and Cheddar."}}
-{"type":"turn.completed","usage":{"input_tokens":13129,"cached_input_tokens":9984,"output_tokens":19,"reasoning_output_tokens":0}}

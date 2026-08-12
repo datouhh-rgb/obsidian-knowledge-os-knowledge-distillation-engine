@@ -1,4 +1,0 @@
-{"type":"thread.started","thread_id":"019ff59d-55be-7000-b108-e1a1a8995400"}
-{"type":"turn.started"}
-{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"- Watermelon-lime cooler with mint and sparkling water.\n- Iced hibiscus tea with orange slices and honey."}}
-{"type":"turn.completed","usage":{"input_tokens":16595,"cached_input_tokens":8960,"output_tokens":28,"reasoning_output_tokens":0}}

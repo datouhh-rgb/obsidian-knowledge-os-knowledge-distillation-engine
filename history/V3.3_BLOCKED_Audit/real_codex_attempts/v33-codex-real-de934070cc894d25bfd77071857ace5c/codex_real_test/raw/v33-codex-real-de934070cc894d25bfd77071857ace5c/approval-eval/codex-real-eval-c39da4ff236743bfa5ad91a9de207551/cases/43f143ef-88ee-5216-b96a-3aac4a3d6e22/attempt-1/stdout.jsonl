@@ -1,4 +1,0 @@
-{"type":"thread.started","thread_id":"019ff59d-40a7-7a41-8730-c06d77e0f90a"}
-{"type":"turn.started"}
-{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"A Python list comprehension creates a new list concisely by transforming and optionally filtering items from an iterable."}}
-{"type":"turn.completed","usage":{"input_tokens":13125,"cached_input_tokens":8960,"output_tokens":25,"reasoning_output_tokens":0}}
