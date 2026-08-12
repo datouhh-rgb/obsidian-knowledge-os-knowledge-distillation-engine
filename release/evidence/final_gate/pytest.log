@@ -94,7 +94,7 @@ tests\test_real_codex_integration\conftest.py:31: AssertionError
 ================================== FAILURES ===================================
 _________ test_editable_install_runs_suite_and_local_production_check _________
 
-tmp_path = WindowsPath('C:/Users/ThinkPad/AppData/Local/Temp/pytest-of-ThinkPad/pytest-999/test_editable_install_runs_sui0')
+tmp_path = WindowsPath('C:/Users/ThinkPad/AppData/Local/Temp/pytest-of-ThinkPad/pytest-1002/test_editable_install_runs_sui0')
 
     def test_editable_install_runs_suite_and_local_production_check(tmp_path: Path) -> None:
         """Prove the release works from a clean venv without source-path injection."""
@@ -132,7 +132,7 @@ tmp_path = WindowsPath('C:/Users/ThinkPad/AppData/Local/Temp/pytest-of-ThinkPad/
 tests\test_clean_install_environment.py:64: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
-command = ['C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\pytest-of-ThinkPad\\pytest-999\\test_editable_install_runs_sui0\\clean-venv\\Scripts\\python.exe', '-m', 'pytest', '-q', '--ignore=tests/test_clean_install_environment.py']
+command = ['C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\pytest-of-ThinkPad\\pytest-1002\\test_editable_install_runs_sui0\\clean-venv\\Scripts\\python.exe', '-m', 'pytest', '-q', '--ignore=tests/test_clean_install_environment.py']
 cwd = WindowsPath('C:/Users/ThinkPad/Documents/Codex/2026-08-10/yaml-obsidian-knowledge-os-book-distiller/work/knowledge-distillation-engine-v3.2.0-build')
 timeout = 1200
 
@@ -155,7 +155,7 @@ timeout = 1200
             f"command failed ({completed.returncode}): {subprocess.list2cmdline(command)}\n"
             f"stdout:\n{completed.stdout}\nstderr:\n{completed.stderr}"
         )
-E       AssertionError: command failed (1): C:\Users\ThinkPad\AppData\Local\Temp\pytest-of-ThinkPad\pytest-999\test_editable_install_runs_sui0\clean-venv\Scripts\python.exe -m pytest -q --ignore=tests/test_clean_install_environment.py
+E       AssertionError: command failed (1): C:\Users\ThinkPad\AppData\Local\Temp\pytest-of-ThinkPad\pytest-1002\test_editable_install_runs_sui0\clean-venv\Scripts\python.exe -m pytest -q --ignore=tests/test_clean_install_environment.py
 E         stdout:
 E         ....................................................EEEEE............... [ 53%]
 E         .........................s....................................           [100%]
@@ -256,12 +256,12 @@ E         ERROR tests/test_real_codex_integration/test_real_codex_integration.py
 E         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_explicit_skill_call
 E         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_trigger_precision
 E         ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_bad_description_block
-E         128 passed, 1 skipped, 5 errors in 98.79s (0:01:38)
+E         128 passed, 1 skipped, 5 errors in 100.03s (0:01:40)
 E         
 E         stderr:
 E         
 E       assert 1 == 0
-E        +  where 1 = CompletedProcess(args=['C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\pytest-of-ThinkPad\\pytest-999\\test_editable_insta...ex_integration.py::test_codex_bad_description_block\n128 passed, 1 skipped, 5 errors in 98.79s (0:01:38)\n', stderr='').returncode
+E        +  where 1 = CompletedProcess(args=['C:\\Users\\ThinkPad\\AppData\\Local\\Temp\\pytest-of-ThinkPad\\pytest-1002\\test_editable_inst...x_integration.py::test_codex_bad_description_block\n128 passed, 1 skipped, 5 errors in 100.03s (0:01:40)\n', stderr='').returncode
 
 tests\test_clean_install_environment.py:33: AssertionError
 =========================== short test summary info ===========================
@@ -271,4 +271,4 @@ ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_cod
 ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_explicit_skill_call
 ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_trigger_precision
 ERROR tests/test_real_codex_integration/test_real_codex_integration.py::test_codex_bad_description_block
-1 failed, 128 passed, 1 skipped, 5 errors in 251.68s (0:04:11)
+1 failed, 128 passed, 1 skipped, 5 errors in 332.64s (0:05:32)
