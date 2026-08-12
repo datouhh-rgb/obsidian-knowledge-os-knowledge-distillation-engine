@@ -5,5 +5,5 @@ This directory preserves V3.3.0 blocked reports and machine evidence generated b
 - Historical files are retained without rewriting their reported outcomes.
 - `v33_prior/` contains the earlier V3.3 synthesis and release-verification evidence moved out of the current release root.
 - Files prefixed with `release__` are immutable snapshots of the immediately preceding blocked acceptance package.
+- Long-path historical trees are preserved byte-for-byte in ZIP archives whose hashes and file counts are recorded in `HISTORY_ARCHIVES.sha256`.
 - Current V3.3.0 reports live only under `release/` and do not claim Production Ready.
-
