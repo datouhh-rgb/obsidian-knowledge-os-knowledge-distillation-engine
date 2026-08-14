@@ -28,6 +28,11 @@ JOURNAL_ROOT = Path(".knowledge-engine/journal")
 STAGING_ROOT = Path(".knowledge-engine/staging")
 LOCK_PATH = Path(".knowledge-engine/vault.lock")
 
+# Windows hosted runners can serialize durable Vault writes slowly enough that
+# a valid 20-writer burst exceeds 30 seconds.  Keep the lock fail-closed, but
+# give queued writers a production-safe acquisition budget.
+DEFAULT_LOCK_TIMEOUT_SECONDS = 120.0
+
 
 class TransactionError(RuntimeError):
     pass
@@ -107,7 +112,7 @@ class VaultTransaction:
         idempotency_key: str | None = None,
         request_payload: dict[str, Any] | None = None,
         expected_revision: int | None = None,
-        lock_timeout: float = 30.0,
+        lock_timeout: float = DEFAULT_LOCK_TIMEOUT_SECONDS,
         fail_after: int | None = None,
         crash_after: int | None = None,
         crash_after_replace: int | None = None,
@@ -388,7 +393,11 @@ class VaultTransaction:
         return state
 
     @classmethod
-    def recover(cls, vault: Path, lock_timeout: float = 30.0) -> list[str]:
+    def recover(
+        cls,
+        vault: Path,
+        lock_timeout: float = DEFAULT_LOCK_TIMEOUT_SECONDS,
+    ) -> list[str]:
         resolved = vault.resolve()
         (resolved / ".knowledge-engine").mkdir(parents=True, exist_ok=True)
         lock = FileLock(str(resolved / LOCK_PATH), timeout=lock_timeout)
