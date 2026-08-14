@@ -41,6 +41,14 @@ def test_workflow_uploads_blocked_book_evidence() -> None:
     assert "Aggregate book acceptance after evidence upload" in book_section
 
 
+def test_book_regressions_use_fresh_disposable_vaults() -> None:
+    workflow = WORKFLOW.read_text(encoding="utf-8")
+    book_section = workflow.split("book-regression-windows:", 1)[1].split("real-codex-windows-e2e:", 1)[0]
+    assert "--work-dir" not in book_section
+    assert "stock-final" not in book_section
+    assert "cognitive-final" not in book_section
+
+
 def test_cognitive_report_exists_when_stock_blocked() -> None:
     workflow = WORKFLOW.read_text(encoding="utf-8")
     book_section = workflow.split("book-regression-windows:", 1)[1].split("real-codex-windows-e2e:", 1)[0]

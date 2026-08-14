@@ -98,12 +98,10 @@ jobs:
         run: |
           $source = [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($env:STOCK_SOURCE_B64))
           $kindleUnpack = [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($env:KINDLEUNPACK_SCRIPT_B64))
-          $workDir = Join-Path $env:USERPROFILE ".cache\knowledge-engine-v33\stock-final"
           python scripts/run_stock_operator_regression.py `
             --source-azw3 "$source" `
             --kindleunpack-script "$kindleUnpack" `
-            --output release/evidence/regressions/stock_operator_v33_canonical.json `
-            --work-dir "$workDir"
+            --output release/evidence/regressions/stock_operator_v33_canonical.json
       - name: Cognitive Awakening canonical regression
         id: cognitive_regression
         if: always()
@@ -115,12 +113,10 @@ jobs:
         run: |
           $source = [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($env:COGNITIVE_SOURCE_B64))
           $wrapper = [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($env:PDF_WRAPPER_B64))
-          $workDir = Join-Path $env:USERPROFILE ".cache\knowledge-engine-v33\cognitive-final"
           python scripts/run_cognitive_awakening_regression.py `
             --source-pdf "$source" `
             --pdf-wrapper "$wrapper" `
-            --output release/evidence/regressions/cognitive_awakening_v33_canonical.json `
-            --work-dir "$workDir"
+            --output release/evidence/regressions/cognitive_awakening_v33_canonical.json
       - name: Ensure both book reports exist even when blocked
         if: always()
         shell: powershell
