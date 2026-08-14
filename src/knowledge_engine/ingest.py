@@ -437,17 +437,30 @@ class SourceIngester:
         if metadata["converter"] != "Microsoft MarkItDown":
             raise IngestError("PDF converter 不是 Microsoft MarkItDown。")
         output_hash = sha256_file(output)
+        converted_text = output.read_text(encoding="utf-8")
+        form_feed_count = converted_text.count("\f")
+        if form_feed_count:
+            # Microsoft MarkItDown uses U+000C as a structural PDF page break.
+            # Normalize that transport marker before quality evaluation while
+            # preserving the exact transformation in conversion provenance.
+            converted_text = converted_text.replace("\f", "\n\n")
+        converter_config: dict[str, object] = {"enable_plugins": False, "no_cache": True}
+        if form_feed_count:
+            converter_config.update({
+                "page_break_normalization": "form-feed-to-blank-line-v1",
+                "form_feed_page_break_count": form_feed_count,
+            })
         verified = dict(metadata)
         verified.update({
             "version": str(metadata["markitdown_version"]),
-            "config": {"enable_plugins": False, "no_cache": True},
+            "config": converter_config,
             "source_id": source_id,
             "output_sha256": output_hash,
             "wrapper_validation": "v3-strict",
         })
         warnings = [str(item) for item in payload.get("warnings", [])]
         warnings.extend(str(item) for item in metadata.get("warnings", []) if str(item) not in warnings)
-        return output.read_text(encoding="utf-8"), verified, warnings
+        return converted_text, verified, warnings
 
     def _confined_reported_path(self, value: object, fallback: Path) -> Path:
         reported = Path(str(value or fallback))

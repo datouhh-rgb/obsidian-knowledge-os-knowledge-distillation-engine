@@ -41,7 +41,15 @@ def test_public_redirect_to_private_is_blocked(monkeypatch) -> None:
         fetcher.fetch("http://public.test")
 
 
-def _pdf_ingester(tmp_path: Path, monkeypatch, *, metadata_overrides=None, output_outside=False, timeout=False):
+def _pdf_ingester(
+    tmp_path: Path,
+    monkeypatch,
+    *,
+    metadata_overrides=None,
+    output_outside=False,
+    timeout=False,
+    output_text="# Converted\n\ntext\n",
+):
     source = tmp_path / "book.pdf"; source.write_bytes(b"%PDF-test")
     wrapper = tmp_path / "wrapper.ps1"; wrapper.write_text("# mock", encoding="utf-8")
     work = tmp_path / "work"; work.mkdir()
@@ -50,7 +58,7 @@ def _pdf_ingester(tmp_path: Path, monkeypatch, *, metadata_overrides=None, outpu
         if timeout:
             raise subprocess.TimeoutExpired(command, 1)
         output = (tmp_path / "outside.md") if output_outside else (work / "pdf/markitdown-output.md")
-        output.parent.mkdir(parents=True, exist_ok=True); output.write_text("# Converted\n\ntext\n", encoding="utf-8")
+        output.parent.mkdir(parents=True, exist_ok=True); output.write_text(output_text, encoding="utf-8")
         metadata_path = Path(str(output) + ".meta.json")
         metadata = {
             "status": "ok", "source_sha256": sha256_file(source), "converter": "Microsoft MarkItDown",
@@ -63,6 +71,21 @@ def _pdf_ingester(tmp_path: Path, monkeypatch, *, metadata_overrides=None, outpu
 
     monkeypatch.setattr(subprocess, "run", run)
     return SourceIngester(work, pdf_wrapper=wrapper, timeout=1), source
+
+
+def test_pdf_form_feed_page_breaks_are_normalized_and_attested(tmp_path: Path, monkeypatch) -> None:
+    ingester, source = _pdf_ingester(
+        tmp_path,
+        monkeypatch,
+        output_text="\fPage one\n\n\fPage two\n",
+    )
+
+    ingested = ingester.ingest(str(source))
+
+    assert "\f" not in ingested.text
+    assert "Page one" in ingested.text and "Page two" in ingested.text
+    assert ingested.converter_metadata["config"]["page_break_normalization"] == "form-feed-to-blank-line-v1"
+    assert ingested.converter_metadata["config"]["form_feed_page_break_count"] == 2
 
 
 def test_pdf_timeout_is_blocked(tmp_path: Path, monkeypatch) -> None:
