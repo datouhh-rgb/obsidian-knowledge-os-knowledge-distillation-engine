@@ -67,7 +67,8 @@ def revalidate_skills_list(
             response = event
             break
     data = (response or {}).get("result", {}).get("data", [])
-    matches: list[dict[str, Any]] = []
+    repo_name_entries: list[dict[str, Any]] = []
+    canonical_matches: list[dict[str, Any]] = []
     errors: list[str] = []
     for scope in data if isinstance(data, list) else []:
         if not isinstance(scope, dict):
@@ -79,24 +80,32 @@ def revalidate_skills_list(
                 continue
             path = _normalized_path(str(item.get("path", ""))).replace("\\", "/")
             expected_suffix = f"/.agents/skills/{skill_name}/skill.md".casefold()
+            if item.get("name") != skill_name or item.get("scope") != "repo":
+                continue
+            repo_name_entries.append(item)
             if (
-                item.get("name") == skill_name
-                and item.get("description") == description
-                and item.get("scope") == "repo"
+                item.get("description") == description
                 and item.get("enabled") is True
                 and path.casefold().endswith(expected_suffix)
                 and "/versions/" not in path.casefold()
             ):
-                matches.append(item)
+                canonical_matches.append(item)
     requests = raw_directory / "requests.jsonl"
     request_text = requests.read_text(encoding="utf-8", errors="replace") if requests.is_file() else ""
     force_reload = '"forceReload": true' in request_text or '"forceReload":true' in request_text
     return {
         "method": "skills/list",
         "force_reload": force_reload,
-        "matching_entry_count": len(matches),
+        "matching_entry_count": len(repo_name_entries),
+        "canonical_entry_count": len(canonical_matches),
+        "duplicate_name_count": max(0, len(repo_name_entries) - 1),
         "errors": errors,
-        "passed": len(matches) == 1 and not errors and force_reload,
+        "passed": (
+            len(repo_name_entries) == 1
+            and len(canonical_matches) == 1
+            and not errors
+            and force_reload
+        ),
     }
 
 

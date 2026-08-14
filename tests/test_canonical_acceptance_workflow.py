@@ -5,6 +5,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+from scripts.run_v33_real_codex_integration import validate_skills_list_response
+
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = ROOT / ".github/workflows/v3.3-knowledge-synthesis.yml"
@@ -42,6 +44,57 @@ def test_real_codex_discovery_uses_official_force_reloaded_catalog() -> None:
     assert 'resolve_app_server_executable' in script
     assert 'revalidate_skills_list' in revalidator
     assert 'matching_entry_count' in revalidator
+
+
+def test_concurrent_real_codex_sessions_isolate_writable_state() -> None:
+    script = (ROOT / "scripts/run_v33_real_codex_integration.py").read_text(encoding="utf-8")
+    assert 'session_home = codex_home / "sessions"' in script
+    assert '"CODEX_HOME": str(session_home)' in script
+    assert '"HOME": str(session_home)' in script
+    assert '"USERPROFILE": str(session_home)' in script
+    assert 'shutil.copy2(codex_home / "auth.json", session_home / "auth.json")' in script
+    assert 'shutil.rmtree(session_home)' in script
+    assert '"<PROMPT_ARGUMENT>"' in script
+    assert 'subprocess.run(\n            [*command, prompt]' in script
+    assert '"<PROMPT_STDIN>"' not in script
+    assert 'version_record["artifact_path"]' in script
+    assert 'duplicate_name_count' in script
+
+
+def test_codex_catalog_rejects_nested_same_name_skill(tmp_path: Path) -> None:
+    skill = "example-skill"
+    description = "Example description"
+    canonical = tmp_path / ".agents" / "skills" / skill / "SKILL.md"
+    nested = canonical.parent / "versions" / "1.0.0" / "SKILL.md"
+    response = {
+        "result": {
+            "data": [{
+                "cwd": str(tmp_path),
+                "errors": [],
+                "skills": [
+                    {
+                        "name": skill,
+                        "description": description,
+                        "scope": "repo",
+                        "enabled": True,
+                        "path": str(canonical),
+                    },
+                    {
+                        "name": skill,
+                        "description": description,
+                        "scope": "repo",
+                        "enabled": True,
+                        "path": str(nested),
+                    },
+                ],
+            }],
+        },
+    }
+    result = validate_skills_list_response(response, tmp_path, skill, description)
+    assert result["passed"] is False
+    assert result["matching_entry_count"] == 2
+    assert result["canonical_entry_count"] == 1
+    assert result["duplicate_name_count"] == 1
 
 
 def test_workflow_uploads_blocked_book_evidence() -> None:

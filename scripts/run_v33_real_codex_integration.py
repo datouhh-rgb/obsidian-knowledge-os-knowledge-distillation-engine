@@ -382,7 +382,7 @@ def command_template(codex: str, repo: Path, vault: Path, last_message: Path) ->
         codex, "exec", "--ephemeral", "--ignore-user-config", "--ignore-rules",
         "--skip-git-repo-check", "--sandbox", "read-only", "--json",
         "--cd", str(repo), "--add-dir", str(vault),
-        "--output-last-message", str(last_message), "-",
+        "--output-last-message", str(last_message),
     ]
 
 
@@ -398,6 +398,12 @@ def run_codex_session(
     repo_override: Path | None = None,
 ) -> dict[str, Any]:
     session_root.mkdir(parents=True, exist_ok=True)
+    # Concurrent Codex processes must never share a writable CODEX_HOME. The
+    # state database performs migrations at startup, so sharing the evaluator
+    # home can race and make repo Skills disappear nondeterministically.
+    session_home = codex_home / "sessions" / sha256_text(str(session_root.resolve()))[:24]
+    session_home.mkdir(parents=True, exist_ok=False)
+    shutil.copy2(codex_home / "auth.json", session_home / "auth.json")
     repo = repo_override or (session_root / "repo")
     repo.mkdir(parents=True, exist_ok=True)
     if not (repo / ".git").exists():
@@ -406,8 +412,18 @@ def run_codex_session(
     link = repo / ".agents" / "skills" / skill_name
     if staged:
         # Isolated pre-approval evaluator material, removed after each case.
-        # Formal production discovery later uses approved-only ExposureManager.
-        shutil.copytree(vault / "05_Knowledge/Skills" / skill_name, link)
+        # Stage only the sealed version directory. Copying the whole Skill root
+        # would expose both the canonical and versions/<version>/SKILL.md files,
+        # which Codex correctly treats as two ambiguous same-name Skills.
+        _record, version_record, _lifecycle = SkillRegistry.load(vault).version(skill_name)
+        staged_source = (vault / str(version_record["artifact_path"])).resolve().parent
+        try:
+            staged_source.relative_to(vault.resolve())
+        except ValueError as exc:
+            raise RuntimeError("Evaluator Skill version escapes the disposable Vault.") from exc
+        if not (staged_source / "SKILL.md").is_file():
+            raise RuntimeError("Evaluator Skill version is incomplete.")
+        shutil.copytree(staged_source, link)
     decoy_link: Path | None = None
     if decoy_name:
         decoy_root = session_root / "decoy" / decoy_name
@@ -423,16 +439,18 @@ def run_codex_session(
         shutil.copytree(decoy_root, decoy_link)
     last_path = session_root / "last-message.txt"
     command = command_template(codex, repo, vault, last_path)
-    command_hash = sha256_text(canonical_json([*command, "<PROMPT_STDIN>", sha256_text(prompt)]))
+    # Exercise the CLI's documented `[PROMPT]` `$skill-name` mention path
+    # directly instead of relying on a separate stdin transport path.
+    command_hash = sha256_text(canonical_json([*command, "<PROMPT_ARGUMENT>", sha256_text(prompt)]))
     try:
         completed = subprocess.run(
-            command, input=prompt, capture_output=True, text=True,
+            [*command, prompt], capture_output=True, text=True,
             encoding="utf-8", errors="replace", timeout=timeout, shell=False,
             env={
                 **os.environ,
-                "CODEX_HOME": str(codex_home),
-                "HOME": str(codex_home),
-                "USERPROFILE": str(codex_home),
+                "CODEX_HOME": str(session_home),
+                "HOME": str(session_home),
+                "USERPROFILE": str(session_home),
             },
         )
         stdout, stderr, exit_code = completed.stdout, completed.stderr, completed.returncode
@@ -446,6 +464,8 @@ def run_codex_session(
             shutil.rmtree(link)
         if decoy_link and decoy_link.is_dir():
             shutil.rmtree(decoy_link)
+        if session_home.is_dir():
+            shutil.rmtree(session_home)
     last = last_path.read_text(encoding="utf-8", errors="replace") if last_path.is_file() else ""
     observed, event = skill_read_event(stdout, skill_name)
     decoy_observed, decoy_event = skill_read_event(stdout, decoy_name or "__no_decoy__")
@@ -695,7 +715,8 @@ def validate_skills_list_response(
     """Validate a real Codex app-server skills/list response fail closed."""
     expected_cwd = _normalized_path(repo)
     expected_path = _normalized_path(repo / ".agents/skills" / skill_name / "SKILL.md")
-    matching_entries: list[dict[str, Any]] = []
+    repo_name_entries: list[dict[str, Any]] = []
+    canonical_entries: list[dict[str, Any]] = []
     errors: list[str] = []
     data = (response or {}).get("result", {}).get("data", [])
     if not isinstance(data, list):
@@ -712,26 +733,29 @@ def validate_skills_list_response(
         for item in skills:
             if not isinstance(item, dict):
                 continue
-            if (
-                item.get("name") == skill_name
-                and item.get("description") == description
-                and item.get("scope") == "repo"
-                and item.get("enabled") is True
-                and _normalized_path(str(item.get("path", ""))) == expected_path
-            ):
-                matching_entries.append(item)
+            if item.get("name") != skill_name or item.get("scope") != "repo":
+                continue
+            repo_name_entries.append(item)
+            if _normalized_path(str(item.get("path", ""))) == expected_path:
+                canonical_entries.append(item)
+    sole = canonical_entries[0] if len(repo_name_entries) == 1 and len(canonical_entries) == 1 else None
+    checks = {
+        "exact_name": len(repo_name_entries) == 1,
+        "exact_description": bool(sole and sole.get("description") == description),
+        "repo_scope": bool(sole and sole.get("scope") == "repo"),
+        "enabled": bool(sole and sole.get("enabled") is True),
+        "canonical_exposure_path": sole is not None,
+    }
     return {
         "method": "skills/list",
         "force_reload": True,
         "cwd_scope": "disposable-exposure-repo",
-        "matching_entry_count": len(matching_entries),
-        "exact_name": len(matching_entries) == 1,
-        "exact_description": len(matching_entries) == 1,
-        "repo_scope": len(matching_entries) == 1,
-        "enabled": len(matching_entries) == 1,
-        "canonical_exposure_path": len(matching_entries) == 1,
+        "matching_entry_count": len(repo_name_entries),
+        "canonical_entry_count": len(canonical_entries),
+        "duplicate_name_count": max(0, len(repo_name_entries) - 1),
+        **checks,
         "errors": errors,
-        "passed": len(matching_entries) == 1 and not errors,
+        "passed": all(checks.values()) and not errors,
     }
 
 
