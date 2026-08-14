@@ -12,6 +12,7 @@ from scripts.build_v33_release_manifest import (
     verify_staging_manifest,
 )
 from scripts.export_schemas import ROOT, rendered_schemas
+from scripts.verify_v33_release_archive import verification_temp_parent
 
 
 def test_export_schemas_produces_clean_git_diff() -> None:
@@ -53,6 +54,24 @@ def test_release_manifest_cross_platform_extraction(tmp_path: Path) -> None:
         handle.extractall(extracted)
     assert not verify_staging_manifest(extracted, extracted / "release" / "MANIFEST.sha256")
     assert (extracted / "payload.txt").read_bytes() == b"exact\r\nbytes\n"
+
+
+def test_windows_archive_verification_uses_short_runner_temp(
+    tmp_path: Path, monkeypatch,
+) -> None:
+    runner_temp = tmp_path / "runner-temp"
+    monkeypatch.setattr("scripts.verify_v33_release_archive.platform.system", lambda: "Windows")
+    monkeypatch.setenv("RUNNER_TEMP", str(runner_temp))
+    assert verification_temp_parent() == runner_temp.resolve()
+    assert runner_temp.is_dir()
+
+
+def test_non_windows_archive_verification_keeps_system_temp(
+    tmp_path: Path, monkeypatch,
+) -> None:
+    monkeypatch.setattr("scripts.verify_v33_release_archive.platform.system", lambda: "Linux")
+    monkeypatch.setenv("RUNNER_TEMP", str(tmp_path / "runner-temp"))
+    assert verification_temp_parent() is None
 
 
 def test_schema_manifest_matches_archive(tmp_path: Path) -> None:

@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import platform
 from pathlib import Path
 import tempfile
@@ -22,9 +23,23 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def verification_temp_parent() -> Path | None:
+    """Use the runner's short temp root on Windows to avoid MAX_PATH failures."""
+    if platform.system() != "Windows":
+        return None
+    runner_temp = os.environ.get("RUNNER_TEMP")
+    if not runner_temp:
+        return None
+    parent = Path(runner_temp).resolve()
+    parent.mkdir(parents=True, exist_ok=True)
+    return parent
+
+
 def verify_archive(archive: Path, expected_commit: str, workflow_url: str) -> dict[str, object]:
     failures: list[str] = []
-    with tempfile.TemporaryDirectory(prefix="v33-archive-verify-") as temporary:
+    with tempfile.TemporaryDirectory(
+        prefix="v33av-", dir=verification_temp_parent(),
+    ) as temporary:
         root = Path(temporary)
         with zipfile.ZipFile(archive) as handle:
             unsafe = [
@@ -76,6 +91,8 @@ def main() -> int:
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
     print(f"archive_manifest={payload['status']}")
+    for failure in payload["failures"]:
+        print(f"- {failure}")
     return 0 if payload["status"] == "passed" else 1
 
 
