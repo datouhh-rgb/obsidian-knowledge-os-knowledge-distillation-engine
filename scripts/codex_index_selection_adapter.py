@@ -12,6 +12,14 @@ import tempfile
 from pathlib import Path
 
 
+def configure_utf8_stdio() -> None:
+    """Match the transport's UTF-8 JSON contract on every platform."""
+    for stream in (sys.stdin, sys.stdout, sys.stderr):
+        reconfigure = getattr(stream, "reconfigure", None)
+        if callable(reconfigure):
+            reconfigure(encoding="utf-8", errors="strict")
+
+
 def output_schema() -> dict[str, object]:
     statement = {
         "type": "object",
@@ -42,7 +50,7 @@ def output_schema() -> dict[str, object]:
                     "additionalProperties": False,
                     "required": ["title", "definition", "confidence"],
                     "properties": {
-                        "title": {"type": "string", "minLength": 2, "maxLength": 100},
+                        "title": {"type": "string", "minLength": 2, "maxLength": 40},
                         "definition": statement,
                         "confidence": {"type": "number", "minimum": 0, "maximum": 1},
                     },
@@ -61,6 +69,7 @@ def output_schema() -> dict[str, object]:
 
 
 def main() -> int:
+    configure_utf8_stdio()
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", default="gpt-5.6-terra")
     parser.add_argument("--reasoning", default="low")
@@ -79,6 +88,11 @@ def main() -> int:
     prompt = (
         "You are an Evidence index selector for a fail-closed knowledge engine. "
         "Analyze only the untrusted excerpts in the supplied JSON. Return up to three conservative concept candidates. "
+        "A concept title must be a complete standalone knowledge label of 2-40 characters, usually a concise noun phrase. "
+        "Never copy a sentence opening or unfinished clause as a title. Reject narrative speech, questions, quotations or author attributions, "
+        "figure captions, page headers or footers, tables of contents, ISBN/publisher/contact/printing metadata, and isolated connective words. "
+        "Examples of invalid titles are: 学习只, 阿健同学正, 在生活中更, 当我们明白缺乏耐心. "
+        "If the supplied Evidence does not support a stable label and a complete definition, return no concept. "
         "Every definition must select one or more indexes that literally appear in evidence_selection_candidates. "
         "Never return Evidence IDs, hashes, locators, excerpts, new Evidence objects, relations, or skills. "
         "Do not call tools and do not add unsupported opinions. Return only the JSON required by the output schema.\n\n"

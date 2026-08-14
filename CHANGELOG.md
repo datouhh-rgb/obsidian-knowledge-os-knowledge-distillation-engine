@@ -4,6 +4,11 @@
 
 ### Final Production Acceptance Remediation
 
+- Forced the real Codex adapter stdin/stdout/stderr contract to strict UTF-8 on Windows, invalidated legacy GBK-corrupted extraction caches, and kept non-UTF-8 provider output fail-closed.
+- Normalized Microsoft MarkItDown `U+000C` page-break markers before quality evaluation while attesting the exact count and normalization strategy in Conversion provenance.
+- Kept Rule Analyzer concepts diagnostic-only in Hybrid production admission; they remain auditable in extraction evidence but cannot contaminate formal Concept, Method, or Graph assets.
+- Added real-book fragment and publication-metadata isolation, containment-safe Method anchors, and intra-batch duplicate Skill quarantine without weakening cross-book duplicate blocking.
+- Distinguished audited image omissions with no visual claims from material text-conversion warnings, while preserving the omission report and all approval gates.
 - Replaced the stale `--conversion-snapshot` regression path with a canonical KindleUnpack AZW3 adapter that reads the immutable original, records OPF/spine/member hashes and strict per-member decoding provenance, and disables unbound conversion caches.
 - Added `ConversionQualityGate` before structure normalization, chunking, and LLM calls. Replacement characters, mojibake, unreliable decoding, systemic duplication, metadata leakage, and structural corruption now fail closed with zero formal Vault writes.
 - Removed arbitrary Chinese bigram fallback from Skill signals. Every retained signal must be a complete Concept/Evidence phrase, and each action now has a distinct condition, operation, object, observable output, stop/escalation rule, and statement-level Evidence.

@@ -33,6 +33,38 @@ def test_candidate_quarantine_does_not_automatically_abort_clean_book() -> None:
     assert {item.title for item in result.quarantined} == {"则"}
 
 
+def test_hybrid_rule_concepts_remain_diagnostic_and_never_enter_formal_graph(
+    tmp_path: Path,
+    vault: Path,
+) -> None:
+    class HybridDiagnosticProvider:
+        name = "hybrid"
+
+        def propose(self, analysis, catalog):  # type: ignore[no-untyped-def]
+            evidence_id = next(iter(catalog.items))
+            evidence = catalog.items[evidence_id]
+            statement = GroundedStatement(evidence.excerpt, (evidence_id,))
+            return ProviderResult(
+                provider="hybrid:test",
+                concepts=[
+                    ConceptCandidate("们总", statement, "rule", 0.8),
+                    ConceptCandidate("注意力选择", statement, "llm:test", 0.9),
+                ],
+            )
+
+    source = tmp_path / "hybrid-diagnostic.md"
+    source.write_text("# 一\n\n注意力选择决定进入认知加工的信息。\n", encoding="utf-8")
+    result = DistillationPipeline(vault, provider=HybridDiagnosticProvider(), chunk_chars=30_000).distill(
+        str(source), title="Hybrid Diagnostic"
+    )
+
+    assert result.status == "completed"
+    graph_text = (vault / "05_Knowledge/Graph/concept-graph.v3.json").read_text(encoding="utf-8")
+    assert '"title": "注意力选择"' in graph_text
+    assert '"title": "们总"' not in graph_text
+    assert any("extraction diagnostics only" in warning for warning in result.warnings)
+
+
 def test_quarantined_candidate_never_reaches_graph_or_skill(tmp_path: Path, vault: Path) -> None:
     class Provider:
         name = "llm:candidate-isolation"
@@ -87,11 +119,19 @@ def test_cognitive_awakening_candidate_title_regression() -> None:
         _concept("注意力选择", definition="注意力选择决定了可被感知和处理的信息。"),
         _concept("则", definition="则"),
         _concept("这就", definition="这就是一个不完整的过渡语。"),
+        _concept("学习只", definition="学习只是冰山一角。"),
+        _concept("阿健同学正", definition="阿健同学正是因为没有意识到学习动机已经转移。"),
+        _concept("在生活中更", definition="在生活中更是如此。"),
+        _concept("潜意识的感性总能帮我们发现什么", definition="潜意识的感性总能帮我们发现什么。"),
+        _concept("当我们明白缺乏耐心", definition="当我们明白缺乏耐心时会做出不同选择。"),
     ])
     assessment = BookKnowledgeGate().validate(result)
-    assert assessment.passed
-    assert {item.title for item in result.quarantined} == {"则", "这就"}
-    assert assessment.block_reason == ""
+    assert not assessment.passed
+    assert {item.title for item in result.quarantined} == {
+        "则", "这就", "学习只", "阿健同学正", "在生活中更",
+        "潜意识的感性总能帮我们发现什么", "当我们明白缺乏耐心",
+    }
+    assert "systemic candidate invalid rate" in assessment.block_reason
 
 
 def test_narrative_metadata_and_decoder_fragments_are_quarantined() -> None:
@@ -100,10 +140,14 @@ def test_narrative_metadata_and_decoder_fragments_are_quarantined() -> None:
         _concept("我从来都", definition="我从来都是单打独斗。"),
         _concept("集团社址 南京市湖南路1号A楼，邮编", definition="出版社联系信息。"),
         _concept("Market trend�alignment", definition="A decoder-damaged candidate."),
+        _concept("◆ 开本", definition="◆ 开本：720×960 1/16"),
+        _concept("印张", definition="印张：17.25"),
+        _concept("定价", definition="定价：59.80元"),
     ])
     assert {item.title for item in result.accepted} == {"市场趋势判断"}
     assert {item.title for item in result.quarantined} == {
         "我从来都", "集团社址 南京市湖南路1号A楼，邮编", "Market trend�alignment",
+        "◆ 开本", "印张", "定价",
     }
 
 

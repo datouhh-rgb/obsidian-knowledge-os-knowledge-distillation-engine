@@ -3,6 +3,8 @@ from __future__ import annotations
 import base64
 import hashlib
 import json
+import subprocess
+import sys
 from dataclasses import replace
 from pathlib import Path
 
@@ -67,10 +69,32 @@ def test_valid_evidence_index_selection() -> None:
     request = transport.requests[0]
     assert "evidence_catalog" not in request
     assert request["prompt_version"] == "distillation-map-prompt-v3.2.1-index-selection"
+    assert request["concept_title_policy"]["version"] == "canonical-concept-label-v1"
+    assert "学习只" in request["concept_title_policy"]["invalid_titles"]
     assert request["examples"] == {
         "invalid": {"evidence": "ev-629"},
         "valid": {"selected_evidence_indexes": [3, 7]},
     }
+
+
+def test_codex_adapter_utf8_stdio_round_trip() -> None:
+    payload = {"title": "注意力选择", "definition": "注意力决定进入认知加工的信息。"}
+    code = (
+        "import json,sys; "
+        "from scripts.codex_index_selection_adapter import configure_utf8_stdio; "
+        "configure_utf8_stdio(); value=json.load(sys.stdin); "
+        "json.dump(value,sys.stdout,ensure_ascii=False)"
+    )
+    completed = subprocess.run(
+        [sys.executable, "-c", code],
+        input=json.dumps(payload, ensure_ascii=False),
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="strict",
+        check=True,
+    )
+    assert json.loads(completed.stdout) == payload
 
 
 def test_invalid_evidence_index() -> None:

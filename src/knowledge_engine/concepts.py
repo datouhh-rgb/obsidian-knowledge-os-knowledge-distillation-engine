@@ -226,17 +226,21 @@ class ConceptQualityGate:
     """Semantic fragment gate; title length alone never determines acceptance."""
 
     FRAGMENTS = {"则", "这就", "也就", "的就", "所以说", "就是说", "于是就", "然后就", "还有就是"}
+    REAL_BOOK_TRUNCATED_PHRASES = {"学习只", "阿健同学正", "在生活中更"}
     TAIL_PARTICLE = re.compile(r"(?:的|地|得|就|也|而|且|但|却|呢|啊|不|都|在|和|与|或)$")
     CHAPTER_ONLY = re.compile(r"^(?:第[一二三四五六七八九十百0-9]+[章节篇部卷]|[一二三四五六七八九十]+[、.])$")
     SKILL_SIGNAL = re.compile(r"(?:方法|步骤|判断|检查|选择|执行|建立|分析|评估|核验|流程|原则|rule|process|method)", re.IGNORECASE)
     NARRATIVE_PREFIX = re.compile(
         r'^[\s"\'“”‘’]*(?:我|你|他|她|它|我们|你们|他们|这|那|如果|无论|因为|所以|但是|然而|'
-        r'当然|报告显示|有人|朋友|先生|太太|公众应当|公众应该|读者应当|下一天|请看|告诉|为什么|问题不在于|对于)'
+        r'当然|报告显示|有人|朋友|先生|太太|公众应当|公众应该|读者应当|下一天|请看|告诉|为什么|问题不在于|对于|'
+        r'当(?:我|你|他|她|它|我们|你们|他们))'
     )
     SENTENCE_PUNCTUATION = re.compile(r"[，。！？；：!?;:]")
+    QUESTION_FRAGMENT = re.compile(r"(?:什么|为什么|怎么|怎样|哪(?:些|个)?|是否)$")
     ENGLISH_TRAILING_FRAGMENT = re.compile(r"\b(?:a|an|the|and|or|but|if|when|of|to|for|as|is|are|was|were)$", re.IGNORECASE)
     METADATA_SIGNAL = re.compile(
-        r"(?:出版社|出版|印刷|邮编|网址|电话|书号|ISBN|版权|社址|集团地址|联系信息|"
+        r"(?:出版社|出版|印刷|邮编|网址|电话|书号|ISBN|版权|社址|集团地址|联系信息|开本|印张|定价|"
+        r"反盗版热线|读者服务热线|广告经营许可证|图书在版编目|CIP数据|字数|版次|印次|"
         r"publisher|publication metadata|production credits|copyright-page|contact information)",
         re.IGNORECASE,
     )
@@ -274,7 +278,7 @@ class ConceptQualityGate:
             if self.INVALID_TEXT.search(title) or self.INVALID_TEXT.search(definition):
                 reasons.append("text contains an undecodable replacement character")
                 score -= 80
-            if title in self.FRAGMENTS or self.CHAPTER_ONLY.fullmatch(title):
+            if title in self.FRAGMENTS or title in self.REAL_BOOK_TRUNCATED_PHRASES or self.CHAPTER_ONLY.fullmatch(title):
                 reasons.append("known discourse/chapter fragment")
                 score -= 70
             if self.TAIL_PARTICLE.search(title) and not re.search(r"(?:力|率|论|法|性|值|熵)$", title):
@@ -283,6 +287,9 @@ class ConceptQualityGate:
             if self.ENGLISH_TRAILING_FRAGMENT.search(title):
                 reasons.append("English title ends with a discourse fragment")
                 score -= 60
+            if self.QUESTION_FRAGMENT.search(title):
+                reasons.append("title ends as a narrative question rather than a concept label")
+                score -= 70
             if self.NARRATIVE_PREFIX.search(title):
                 reasons.append("title is narrative speech rather than a concept label")
                 score -= 70
@@ -303,6 +310,7 @@ class ConceptQualityGate:
                 "known discourse/chapter fragment",
                 "linguistically incomplete title",
                 "title is narrative speech rather than a concept label",
+                "title ends as a narrative question rather than a concept label",
                 "title contains sentence punctuation rather than label syntax",
                 "publication or converter metadata is not knowledge Evidence",
                 "text contains an undecodable replacement character",

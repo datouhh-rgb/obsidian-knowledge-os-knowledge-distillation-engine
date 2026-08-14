@@ -161,7 +161,11 @@ def main() -> int:
         (sys.executable, str(adapter), "--model", args.model, "--reasoning", args.reasoning, "--timeout", "300"),
         timeout=330,
         model=args.model,
-        config={"reasoning": args.reasoning, "evidence_protocol": "selected-indexes-only"},
+        config={
+            "reasoning": args.reasoning,
+            "evidence_protocol": "selected-indexes-only",
+            "transport_encoding": "utf8-strict-v1",
+        },
     )
     if args.work_dir:
         work_root = args.work_dir.resolve()
@@ -300,6 +304,8 @@ def main() -> int:
             "model": args.model,
             "reasoning": args.reasoning,
             "prompt_version": "distillation-map-prompt-v3.2.1-index-selection",
+            "concept_title_policy_version": "canonical-concept-label-v1",
+            "transport_encoding": "utf8-strict-v1",
             "portable_schema_version": "portable-provider-map-v3",
             "source_id": result.source_id,
             "conversion_id": result.conversion_id,

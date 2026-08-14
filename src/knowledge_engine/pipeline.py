@@ -216,6 +216,20 @@ class DistillationPipeline:
                     source, conversion, analysis, reason, edition_id, dry_run, validation, chunk_run,
                     conversion_quality=conversion_quality,
                 )
+            if str(getattr(self.provider, "name", "")) == "hybrid":
+                diagnostic_rule_concepts = [item for item in provider_result.concepts if item.provider == "rule"]
+                provider_result.concepts = [item for item in provider_result.concepts if item.provider != "rule"]
+                provider_result.provenance = {
+                    **provider_result.provenance,
+                    "formal_concept_policy": "llm-candidates-only-rule-diagnostic-v1",
+                    "diagnostic_rule_concept_count": len(diagnostic_rule_concepts),
+                    "formal_concept_candidate_count": len(provider_result.concepts),
+                }
+                if diagnostic_rule_concepts:
+                    provider_result.warnings.append(
+                        f"{len(diagnostic_rule_concepts)} Rule Analyzer concept candidate(s) retained in extraction diagnostics only; "
+                        "none entered formal Concept admission."
+                    )
             canonicalization = self.concept_canonicalizer.canonicalize(provider_result.concepts, source.source_id)
             concept_quality = self.concept_quality.validate(
                 canonicalization.candidates, (section.title for section in analysis.sections),
@@ -354,7 +368,9 @@ class DistillationPipeline:
                 graph = ConceptGraph.load(self.vault)
                 synthesis = SynthesisRegistry.load(self.vault)
                 ledger = AssetLedger.load(self.vault)
+                registry_had_records = bool(registry.records)
                 skills: list[SkillMaterialization] = []
+                materialized_candidates = []
                 for candidate in provider_result.skills:
                     is_synthesized = candidate.fingerprint() in knowledge_synthesis.skill_method_ids
                     semantic = semantic_by_fingerprint[candidate.fingerprint()]
@@ -367,14 +383,41 @@ class DistillationPipeline:
                         quality_score=score,
                     )
                     if gate.errors:
-                        structural.issues.extend(gate.issues)
-                        reason = "; ".join(f"{issue.code}: {issue.message}" for issue in gate.errors)
-                        return self._archive_blocked(source, conversion, analysis, reason, edition_id, dry_run, structural, chunk_run, book_quality, conversion_quality)
+                        intra_batch_duplicate = (
+                            not registry_had_records
+                            and score.duplicate_overlap >= self.quality.HIGH_DUPLICATE_THRESHOLD
+                            and all(item.code == "skill-quality-blocked" for item in gate.errors)
+                        )
+                        if not intra_batch_duplicate:
+                            structural.issues.extend(gate.issues)
+                            reason = "; ".join(f"{issue.code}: {issue.message}" for issue in gate.errors)
+                            return self._archive_blocked(
+                                source, conversion, analysis, reason, edition_id, dry_run,
+                                structural, chunk_run, book_quality, conversion_quality,
+                            )
+                        method_id = knowledge_synthesis.skill_method_ids.pop(candidate.fingerprint(), None)
+                        knowledge_synthesis.blocked.append({
+                            **({"method_cluster_id": method_id} if method_id else {}),
+                            "skill_fingerprint": candidate.fingerprint(),
+                            "reasons": [f"{item.code}: {item.message}" for item in gate.errors],
+                        })
+                        structural.add(
+                            "warning", "skill-candidate-quarantined",
+                            "; ".join(f"{item.code}: {item.message}" for item in gate.errors),
+                            candidate.title,
+                        )
+                        continue
                     item = registry.create_source_candidate(
                         candidate, source, conversion, analysis.title, score, semantic.assessments,
                         provider_result.provenance or {"provider": provider_result.provider, "rule_version": "rule-v3"},
                     )
                     skills.append(item)
+                    materialized_candidates.append(candidate)
+                provider_result.skills = materialized_candidates
+                knowledge_synthesis.skills = [
+                    item for item in knowledge_synthesis.skills
+                    if item.fingerprint() in knowledge_synthesis.skill_method_ids
+                ]
                 final_graph_dry_run = graph.dry_run_distillation(
                     analysis.title, source.source_id, conversion.conversion_id, analysis, catalog, provider_result, skills,
                     tuple(knowledge_synthesis.method_clusters), stable_canonical, knowledge_synthesis.skill_method_ids,
@@ -539,6 +582,9 @@ class DistillationPipeline:
             transport = getattr(self.provider.llm, "transport", None)
         model = str(getattr(transport, "model", "rule"))
         config = dict(getattr(transport, "config", None) or {})
+        if provider_name == "hybrid":
+            config["concept_title_policy"] = "canonical-concept-label-v1"
+            config["transport_encoding"] = "utf8-strict-v1"
         run = runner.run(
             chunks, conversion.conversion_id, provider_name, model, config,
             "distillation-map-prompt-v3.2.1-index-selection", "portable-provider-map-v3", extract,

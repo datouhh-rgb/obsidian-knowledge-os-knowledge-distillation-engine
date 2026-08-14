@@ -70,7 +70,11 @@ def main() -> int:
     transport = CommandLLMTransport(
         ("python", str(adapter), "--model", args.model, "--reasoning", args.reasoning, "--timeout", "300"),
         timeout=330, model=args.model,
-        config={"reasoning": args.reasoning, "evidence_protocol": "selected-indexes-only"},
+        config={
+            "reasoning": args.reasoning,
+            "evidence_protocol": "selected-indexes-only",
+            "transport_encoding": "utf8-strict-v1",
+        },
     )
     if args.work_dir:
         work_root = args.work_dir.resolve()
@@ -127,24 +131,30 @@ def main() -> int:
         reserved_metadata = (
             "sourcepath", "sourcesha256", "kindleunpack", "converter",
             "isbn", "publication metadata", "publisher contact", "copyright-page",
+            "开本", "印张", "定价", "反盗版热线", "读者服务热线", "广告经营许可证", "图书在版编目",
         )
         metadata_concepts = [
             title for title in concept_titles
             if any(term in title.casefold() for term in reserved_metadata)
         ]
+        real_fragment_titles = {"则", "这就", "也就", "的就", "学习只", "阿健同学正", "在生活中更"}
         quarantined_fragments = [
             item.message for item in result.validation.issues
             if item.code == "concept-candidate-quarantined"
-            and item.message.split(":", 1)[0].strip() in {"则", "这就", "也就", "的就"}
+            and item.message.split(":", 1)[0].strip() in real_fragment_titles
         ]
         fragment_inputs: list[str] = []
         for cache_path in (vault / ".knowledge-engine/runs/extraction-cache").glob("*.json"):
             cache = json.loads(cache_path.read_text(encoding="utf-8"))
             for candidate in cache.get("result", {}).get("concepts", []):
                 title = str(candidate.get("title", "")).strip()
-                if title in {"则", "这就", "也就", "的就"}:
+                if title in real_fragment_titles:
                     fragment_inputs.append(title)
-        fragment_survivors = [title for title in concept_titles if title.strip() in {"则", "这就", "也就", "的就"}]
+        fragment_survivors = [title for title in concept_titles if title.strip() in real_fragment_titles]
+        diagnostic_rule_exclusion_recorded = any(
+            "Rule Analyzer concept candidate(s) retained in extraction diagnostics only" in warning
+            for warning in result.warnings
+        )
         synthesis_paths = list(vault.rglob("KNOWLEDGE_SYNTHESIS.json"))
         synthesis = json.loads(synthesis_paths[0].read_text(encoding="utf-8")) if len(synthesis_paths) == 1 else {}
         synthesis_methods = synthesis.get("method_clusters", [])
@@ -175,9 +185,10 @@ def main() -> int:
             "no_unknown_evidence": "unknown Evidence" not in diagnostic and "ev-629" not in diagnostic,
             "evidence_catalog_written": evidence_count > 0,
             "fragment_candidates_quarantined": not fragment_survivors and (
-                not fragment_inputs or bool(quarantined_fragments)
+                not fragment_inputs or bool(quarantined_fragments) or diagnostic_rule_exclusion_recorded
             ),
             "metadata_to_concept_leakage_zero": not metadata_concepts,
+            "diagnostic_rule_concepts_not_formal": all(item.get("provider") != "rule" for item in concept_nodes),
             "method_clusters_cohesive_if_present": methods_cohesive,
             "no_graph_identity_collision": "graph-identity-conflict" not in diagnostic,
             "candidate_status_only_if_present": all(item == "candidate" for item in statuses),
@@ -216,10 +227,13 @@ def main() -> int:
             "quarantined_fragments": quarantined_fragments,
             "fragment_candidate_inputs": fragment_inputs,
             "fragment_candidate_survivors": fragment_survivors,
+            "diagnostic_rule_exclusion_recorded": diagnostic_rule_exclusion_recorded,
             "metadata_concepts": metadata_concepts,
             "knowledge_synthesis": synthesis,
             "portable_validation": portable,
             "model": args.model, "reasoning": args.reasoning,
+            "concept_title_policy_version": "canonical-concept-label-v1",
+            "transport_encoding": "utf8-strict-v1",
             "live_vault_opened": False,
             "work_dir": "[DISPOSABLE_SELF_HOSTED_WORKDIR]",
             "temporary_vault_deleted_after_run": not bool(args.work_dir),

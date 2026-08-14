@@ -88,10 +88,10 @@ class CommandLLMTransport:
         try:
             completed = subprocess.run(
                 list(self.command), input=json.dumps(request, ensure_ascii=False),
-                capture_output=True, text=True, encoding="utf-8", errors="replace",
+                capture_output=True, text=True, encoding="utf-8", errors="strict",
                 timeout=self.timeout, shell=False,
             )
-        except (OSError, subprocess.SubprocessError) as exc:
+        except (OSError, UnicodeError, subprocess.SubprocessError) as exc:
             raise AnalyzerProviderError(f"LLM command 执行失败：{type(exc).__name__}: {exc}") from exc
         if completed.returncode != 0:
             raise AnalyzerProviderError(f"LLM command 返回 {completed.returncode}：{completed.stderr.strip()}")
@@ -124,6 +124,15 @@ class LLMAnalyzerProvider:
         request = {
             "task": "Propose only evidence-grounded knowledge candidates by selecting system-issued Evidence indexes.",
             "prompt_version": "distillation-map-prompt-v3.2.1-index-selection",
+            "concept_title_policy": {
+                "version": "canonical-concept-label-v1",
+                "requirements": [
+                    "Use a complete standalone knowledge label, not a copied sentence prefix or suffix.",
+                    "Reject narrative speech, questions, author-attribution sentences, page furniture, and publication metadata.",
+                    "Return no concept when the supplied Evidence does not support a stable label and complete definition.",
+                ],
+                "invalid_titles": ["学习只", "阿健同学正", "在生活中更", "当我们明白缺乏耐心"],
+            },
             "untrusted_document_boundary": {
                 "begin": "BEGIN_UNTRUSTED_SOURCE_EVIDENCE",
                 "end": "END_UNTRUSTED_SOURCE_EVIDENCE",
@@ -143,6 +152,9 @@ class LLMAnalyzerProvider:
             },
             "rules": [
                 "Every generated statement must contain non-empty text and selected_evidence_indexes.",
+                "Every concept title must be a complete standalone knowledge label of 2-40 characters.",
+                "Never use a sentence opening, unfinished clause, question, quotation attribution, figure caption, page header/footer, or publication metadata as a concept title.",
+                "If no stable concept label is directly supported, return no concept for that Evidence.",
                 "Select only indexes present in evidence_selection_candidates.",
                 "Never output an Evidence ID, Evidence hash, locator, or new Evidence object.",
                 "Return candidates, not verified facts.",

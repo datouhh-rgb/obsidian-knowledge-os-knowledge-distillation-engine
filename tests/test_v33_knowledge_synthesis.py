@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from dataclasses import replace
 from pathlib import Path
 
 import pytest
@@ -119,6 +120,25 @@ def test_concept_to_method_cluster(stock_operator_synthesis_fixture) -> None:  #
     assert all(len(item.concept_ids) >= 2 for item in result.method_clusters)
     assert all("semantic_similarity=" in item.creation_reason for item in result.method_clusters)
     assert all("shared_chapter_pairs=" in item.creation_reason for item in result.method_clusters)
+
+
+@pytest.mark.parametrize("title", ["学习只", "阿健同学正", "在生活中更"])
+def test_real_pdf_truncated_concept_never_enters_method_synthesis(
+    title: str,
+    stock_operator_synthesis_fixture,
+) -> None:  # type: ignore[no-untyped-def]
+    catalog, concepts = stock_operator_synthesis_fixture
+    fragment = replace(concepts[0], canonical_title=title)
+    assert KnowledgeSynthesizer()._profile(fragment, catalog) is None
+
+
+def test_method_anchor_selection_rejects_containment_duplicates() -> None:
+    anchors = KnowledgeSynthesizer._distinct_anchors([
+        "极度专注与主动休息",
+        "主动休息",
+        "注意力恢复",
+    ])
+    assert anchors == ["极度专注与主动休息", "注意力恢复"]
 
 
 def test_method_cluster_evidence_union(stock_operator_synthesis_fixture) -> None:  # type: ignore[no-untyped-def]

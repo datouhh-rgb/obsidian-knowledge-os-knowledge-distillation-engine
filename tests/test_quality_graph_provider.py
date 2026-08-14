@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from dataclasses import replace
 from pathlib import Path
 
 import pytest
@@ -14,7 +15,7 @@ from knowledge_engine.providers import HybridAnalyzerProvider, LLMAnalyzerProvid
 from knowledge_engine.quality import SkillQualityEvaluator
 from knowledge_engine.registry import SkillRegistry
 from knowledge_engine.semantic import SemanticSupportGate
-from conftest import make_production_pipeline
+from conftest import FixtureEvidenceBoundProvider, make_production_pipeline
 
 
 class FakeTransport:
@@ -89,6 +90,25 @@ def test_high_duplicate_fails_closed_before_registry(vault: Path, source_factory
     assert result.status == "blocked"
     assert not result.written_paths
     assert not result.synthesis_proposals
+
+
+def test_intra_batch_duplicate_skill_is_quarantined_without_aborting_book(vault: Path, source_factory) -> None:
+    class DuplicateSkillProvider(FixtureEvidenceBoundProvider):
+        def propose(self, analysis, catalog):  # type: ignore[no-untyped-def]
+            result = super().propose(analysis, catalog)
+            if result.skills:
+                result.skills.append(replace(result.skills[0], title=result.skills[0].title + "审查"))
+            return result
+
+    result = DistillationPipeline(vault, provider=DuplicateSkillProvider()).distill(
+        str(source_factory()), title="Book"
+    )
+
+    assert result.status == "completed", [
+        (item.severity, item.code, item.message) for item in result.validation.issues
+    ]
+    assert len(SkillRegistry.load(vault).records) == 1
+    assert any(item.code == "skill-candidate-quarantined" for item in result.validation.warnings)
 
 
 def test_rule_provider_is_diagnostic_only() -> None:

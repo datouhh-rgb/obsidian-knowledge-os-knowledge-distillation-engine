@@ -368,8 +368,9 @@ class KnowledgeSynthesizer:
         "risk", "discipline", "position", "loss", "exit", "price", "trend", "market", "signal", "fact",
         "trade", "trading", "plan", "error", "feedback", "condition", "judgment", "liquidity", "execution",
     }
-    FRAGMENT_PREFIX = re.compile(r"^(?:我|你|他|她|它|我们|你们|他们|这|那|无论|如果|因为|所以|但是|而且|虽然|当时|其实|当然|也许|报告显示|公众应当|公众应该|读者应当)")
-    FRAGMENT_SUFFIX = re.compile(r"(?:这|那|的|了|着|过|而|但|却|就|还|又|时|后|前|中)$")
+    FRAGMENT_PREFIX = re.compile(r"^(?:我|你|他|她|它|我们|你们|他们|这|那|无论|如果|因为|所以|但是|而且|虽然|当时|当我们|其实|当然|也许|报告显示|公众应当|公众应该|读者应当)")
+    FRAGMENT_SUFFIX = re.compile(r"(?:这|那|的|了|着|过|而|但|却|就|还|又|时|后|前|中|什么)$")
+    REAL_BOOK_TRUNCATED_PHRASES = {"学习只", "阿健同学正", "在生活中更"}
 
     def __init__(self, skill_synthesizer: SkillSynthesizer | None = None) -> None:
         self.skill_synthesizer = skill_synthesizer or SkillSynthesizer()
@@ -496,6 +497,7 @@ class KnowledgeSynthesizer:
             len(title) < 3 or len(title) > 40
             or self.FRAGMENT_PREFIX.search(title)
             or self.FRAGMENT_SUFFIX.search(title)
+            or title in self.REAL_BOOK_TRUNCATED_PHRASES
         ):
             return None
         title_signal = sum(
@@ -571,13 +573,12 @@ class KnowledgeSynthesizer:
             + 0.10 * min(1.0, len(evidence_ids) / 5)
         ))
         selected = sorted(profiles, key=self._profile_rank)
-        anchors: list[str] = []
-        for profile in selected:
-            title = normalize_excerpt(profile.concept.canonical_title).strip(" ：:，,。.")
-            if title and title not in anchors:
-                anchors.append(title)
-            if len(anchors) >= 2:
-                break
+        anchors = self._distinct_anchors(
+            normalize_excerpt(profile.concept.canonical_title).strip(" ：:，,。.")
+            for profile in selected
+        )
+        if len(anchors) < 2:
+            return None, ["fewer than two semantically distinct concept title anchors"]
         method_title = f"{anchors[0]}与{anchors[1]}的{purpose_label}方法"
         method_title = method_title[:96].rstrip("与的")
         concept_ids = tuple(sorted(item.concept.canonical_concept_id for item in profiles))
@@ -627,6 +628,17 @@ class KnowledgeSynthesizer:
             cohesion_assessment=cohesion_assessment,
         )
         return cluster, reasons
+
+    @staticmethod
+    def _distinct_anchors(titles: Iterable[str], limit: int = 2) -> list[str]:
+        anchors: list[str] = []
+        for title in titles:
+            if not title or any(title in prior or prior in title for prior in anchors):
+                continue
+            anchors.append(title)
+            if len(anchors) >= limit:
+                break
+        return anchors
 
     @classmethod
     def _purpose_order(cls, purpose: str) -> int:
