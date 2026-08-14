@@ -68,12 +68,32 @@ def main() -> int:
         f"| 认知觉醒 | {cognitive.get('status')} | `{cognitive.get('run_id')}` | {cognitive.get('chunk_count')} | {cognitive.get('method_cluster_count')} | {cognitive.get('skill_candidate_count')} |",
         "", "Both runs use disposable Vaults; production Vault access is prohibited.",
     ])
+    stock_quality = stock.get("conversion_quality", {})
+    cognitive_quality = cognitive.get("conversion_quality", {})
+    stock_metrics = stock_quality.get("metrics", {}) if isinstance(stock_quality, dict) else {}
+    cognitive_metrics = cognitive_quality.get("metrics", {}) if isinstance(cognitive_quality, dict) else {}
+    stock_converter = stock.get("conversion_provenance", {})
+    cognitive_converter = cognitive.get("conversion_provenance", {})
+    write("release/CONVERSION_QUALITY_REPORT.md", [
+        "# Canonical Conversion Quality Report", "",
+        "| Book | Gate | Characters | U+FFFD | Mojibake | Headings |",
+        "|---|---|---:|---:|---:|---:|",
+        f"| 股票大作手回忆录 | {stock_quality.get('status')} | {stock_metrics.get('characters')} | {stock_metrics.get('replacement_character_count')} | {stock_metrics.get('mojibake_hit_count')} | {stock_metrics.get('heading_count')} |",
+        f"| 认知觉醒 | {cognitive_quality.get('status')} | {cognitive_metrics.get('characters')} | {cognitive_metrics.get('replacement_character_count')} | {cognitive_metrics.get('mojibake_hit_count')} | {cognitive_metrics.get('heading_count')} |",
+        "",
+        f"- Stock converter: `{stock_converter.get('converter')}` / `{stock_converter.get('version')}`",
+        f"- Cognitive converter: `{cognitive_converter.get('converter')}` / `{cognitive_converter.get('version')}`",
+        f"- Stock stale snapshot used: `{stock.get('stale_snapshot_used')}`",
+        "- Gate position: before structure normalization, chunking, and LLM calls.",
+        "- Blocked conversions write diagnostics only; formal Source, Graph, Registry, Skill, and ledger writes remain zero.",
+    ])
     stock_skills = stock.get("knowledge_synthesis", {}).get("skills", [])
     write("release/SKILL_SEMANTIC_QUALITY_REPORT.md", [
         "# Skill Semantic Quality Report", "",
         f"- Stock candidate count: `{len(stock_skills)}`",
         f"- Raw Evidence action gate: `{'PASS' if stock.get('release_checks', {}).get('skill_actions_not_raw_evidence') else 'BLOCKED'}`",
         f"- Method cohesion gate: `{'PASS' if stock.get('release_checks', {}).get('method_clusters_cohesive') else 'BLOCKED'}`",
+        f"- Complete signal phrase gate: `{'PASS' if stock.get('release_checks', {}).get('no_arbitrary_bigram_signal') else 'BLOCKED'}`",
         "- Each accepted action must carry a verb, object, condition, observable output/stop condition, and statement-level Evidence binding.",
         "- Generic engine-policy shells and narrative quotations are quarantined.",
     ])
@@ -82,10 +102,19 @@ def main() -> int:
         f"- Final status: `{status}`", f"- Commit SHA: `{commit}`",
         f"- GitHub Actions: {ci.get('workflow_url', '')}",
         f"- Portable matrix: `{ci.get('status')}` (jobs: {len(ci.get('jobs', []))}/6)",
+        f"- Matrix summary: `{sum(item.get('job_status') == 'passed' for item in ci.get('jobs', []))}/6 passed`",
         f"- Real Codex explicit-only: `{'PASS' if passed(codex) else 'BLOCKED'}`",
         f"- 股票大作手回忆录: `{stock.get('status')}`",
         f"- 认知觉醒: `{cognitive.get('status')}`",
         f"- One release commit: `{same_commit}`", "",
+        "## Skill lifecycle snapshot", "",
+        f"- Current Skills: `{stock.get('skill_candidate_count', 0)}`",
+        f"- Candidates: `{sum(item == 'candidate' for item in stock.get('skill_candidate_statuses', []))}`",
+        f"- Approved in real test: `{1 if codex.get('review', {}).get('status') == 'approved' else 0}`",
+        f"- Exposure status after test: `{codex.get('exposure', {}).get('final_status', codex.get('exposure', {}).get('unexposed'))}`",
+        "- Automatic approval: `OFF`",
+        "- Automatic exposure: `OFF`",
+        "- Project connection: `OFF`", "",
         "## Known limitations", "",
         "- Implicit invocation remains disabled and is not a release claim.",
         "- No production project connection is created.",

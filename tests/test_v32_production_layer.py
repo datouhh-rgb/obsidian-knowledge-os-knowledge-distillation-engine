@@ -213,17 +213,29 @@ def test_azw3_source_identity(tmp_path: Path) -> None:
     azw3 = tmp_path / "book.azw3"; azw3.write_bytes(b"immutable-azw3-fixture")
     converter = tmp_path / "converter.py"
     converter.write_text(
-        "from pathlib import Path\nimport sys\nPath(sys.argv[2]).write_text('# Book\\n\\nConverted evidence.\\n', encoding='utf-8')\n",
+        """from pathlib import Path
+import sys
+output = Path(sys.argv[2])
+(output / 'META-INF').mkdir(parents=True)
+(output / 'OEBPS/Text').mkdir(parents=True)
+(output / 'META-INF/container.xml').write_text(
+    \"<container><rootfiles><rootfile full-path='OEBPS/content.opf'/></rootfiles></container>\", encoding='utf-8')
+(output / 'OEBPS/content.opf').write_text(
+    \"<package><manifest><item id='c' href='Text/c.xhtml' media-type='application/xhtml+xml'/></manifest><spine><itemref idref='c'/></spine></package>\", encoding='utf-8')
+(output / 'OEBPS/Text/c.xhtml').write_text(
+    \"<?xml version='1.0' encoding='utf-8'?><html><body><h1>Book</h1><p>Converted evidence.</p></body></html>\", encoding='utf-8')
+print('KindleUnpack v0.83')
+""",
         encoding="utf-8",
     )
     source = SourceIngester(
-        tmp_path / "work", azw3_command=(sys.executable, str(converter), "{input}", "{output}"),
+        tmp_path / "work", azw3_command=(sys.executable, str(converter), "{input}", "{output_dir}"),
     ).ingest(str(azw3))
     bind_source_identity(source, "azw3-edition")
     identity = build_source_identity(source, conversion_identity(source), "azw3-edition", "2026-01-01T00:00:00+00:00")
     assert identity.original_hash == hashlib.sha256(azw3.read_bytes()).hexdigest()
     assert identity.format == "azw3"
-    assert identity.converter == "configured local AZW3 converter"
+    assert identity.converter == "KindleUnpack canonical EPUB spine adapter"
     assert source.local_path == azw3.resolve()
 
 

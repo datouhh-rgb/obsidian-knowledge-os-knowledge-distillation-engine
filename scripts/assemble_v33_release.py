@@ -46,7 +46,7 @@ def copy_current_release(stage: Path) -> None:
     target.mkdir(parents=True)
     for name in (
         "FINAL_ACCEPTANCE_REPORT.md", "CI_REPORT.md", "REAL_CODEX_EXPLICIT_ONLY_REPORT.md",
-        "BOOK_REGRESSION_REPORT.md", "SKILL_SEMANTIC_QUALITY_REPORT.md",
+        "BOOK_REGRESSION_REPORT.md", "CONVERSION_QUALITY_REPORT.md", "SKILL_SEMANTIC_QUALITY_REPORT.md",
     ):
         shutil.copy2(ROOT / "release" / name, target / name)
     for relative in (

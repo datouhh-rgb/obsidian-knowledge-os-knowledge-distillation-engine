@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any
 
 from .evidence import EvidenceCatalog, EvidenceUniverse
+from .conversion_quality import ConversionQualityGate
 from .exposure import SkillExposureManager
 from .graph import ConceptGraph
 from .ledger import ASSET_LEDGER_JSON, AssetLedger
@@ -82,6 +83,23 @@ class IntegrityReconciler:
                     "converter_config": metadata["converter_config"],
                 }
                 self._check(checks, sha256_text(canonical_json(identity_payload)) == conversion_id, "conversion-id", str(conversion_path))
+
+                quality_path = conversion_path.parent / "CONVERSION_QUALITY.json"
+                quality = json.loads(quality_path.read_text(encoding="utf-8"))
+                require_schema(quality, ConversionQualityGate.schema(), "CONVERSION_QUALITY.json")
+                quality_hash_payload = {
+                    key: value for key, value in quality.items() if key not in {"schema_version", "attestation_sha256"}
+                }
+                converter_output_hash = metadata.get("converter_config", {}).get("normalized_output_sha256")
+                self._check(
+                    checks,
+                    quality["status"] == "passed"
+                    and quality["source_id"] == source_id
+                    and quality["conversion_id"] == conversion_id
+                    and quality["normalized_output_sha256"] == converter_output_hash
+                    and quality["attestation_sha256"] == sha256_text(canonical_json(quality_hash_payload)),
+                    "conversion-quality-attestation", str(quality_path),
+                )
 
                 identity_path = conversion_path.parent / "SOURCE_IDENTITY.json"
                 if metadata.get("engine_version") in {"3.2.0", "3.3.0"}:

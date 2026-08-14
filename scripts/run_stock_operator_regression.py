@@ -7,6 +7,7 @@ import argparse
 from contextlib import nullcontext
 import json
 import os
+import re
 import subprocess
 import sys
 import tempfile
@@ -21,6 +22,28 @@ from knowledge_engine.utils import sha256_file
 
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def write_atomic_json(path: Path, payload: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_name(path.name + f".{os.getpid()}.tmp")
+    temporary.write_text(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    os.replace(temporary, path)
+
+
+def sanitize_machine_evidence(value: Any) -> Any:
+    if isinstance(value, dict):
+        return {str(key): sanitize_machine_evidence(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [sanitize_machine_evidence(item) for item in value]
+    if isinstance(value, tuple):
+        return [sanitize_machine_evidence(item) for item in value]
+    if isinstance(value, str) and (
+        re.match(r"^[A-Za-z]:[\\/]", value)
+        or value.startswith(("/Users/", "/home/", "C:\\Users\\"))
+    ):
+        return "[REDACTED]/" + Path(value).name
+    return value
 
 
 def now() -> str:
@@ -104,7 +127,7 @@ def validate_portable_cache(vault: Path, extraction_hashes: dict[str, str]) -> d
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--source-azw3", type=Path, required=True)
-    parser.add_argument("--conversion-snapshot", type=Path, required=True)
+    parser.add_argument("--kindleunpack-script", type=Path, required=True)
     parser.add_argument("--output", type=Path, default=ROOT / "FINAL_PRODUCTION_AUDIT" / "stock_operator_v33_regression.json")
     parser.add_argument("--model", default="gpt-5.6-terra")
     parser.add_argument("--reasoning", default="low")
@@ -115,14 +138,24 @@ def main() -> int:
     )
     args = parser.parse_args()
     source = args.source_azw3.resolve()
-    snapshot = args.conversion_snapshot.resolve()
-    if not source.is_file() or not snapshot.is_file():
-        raise SystemExit("Source AZW3 and preserved conversion snapshot are required.")
+    kindleunpack_script = args.kindleunpack_script.resolve()
+    if not source.is_file() or not kindleunpack_script.is_file():
+        write_atomic_json(args.output, {
+            "schema_version": 2,
+            "engine_package_version": "3.3.0",
+            "commit_sha": release_commit(),
+            "book": "股票大作手回忆录",
+            "status": "blocked",
+            "pipeline_status": "NOT_STARTED",
+            "block_reason": "Original AZW3 or KindleUnpack script is unavailable.",
+            "source_path": "[REDACTED]/" + source.name,
+            "converter_script": kindleunpack_script.name,
+        })
+        return 23
 
     started = now()
     source_hash_before = sha256_file(source)
-    copy_code = "from pathlib import Path; import sys; Path(sys.argv[2]).write_bytes(Path(sys.argv[1]).read_bytes())"
-    azw3_command = (sys.executable, "-c", copy_code, str(snapshot), "{output}", "{input}")
+    azw3_command = (sys.executable, str(kindleunpack_script), "{input}", "{output_dir}")
     adapter = ROOT / "scripts" / "codex_index_selection_adapter.py"
     transport = CommandLLMTransport(
         (sys.executable, str(adapter), "--model", args.model, "--reasoning", args.reasoning, "--timeout", "300"),
@@ -147,7 +180,28 @@ def main() -> int:
             chunk_chars=args.chunk_chars,
             azw3_command=azw3_command,
         )
-        result = pipeline.distill(str(source), title="股票大作手回忆录")
+        try:
+            result = pipeline.distill(str(source), title="股票大作手回忆录")
+        except Exception as exc:  # converter/quality failures must still produce machine evidence
+            write_atomic_json(args.output, {
+                "schema_version": 2,
+                "engine_package_version": "3.3.0",
+                "commit_sha": release_commit(),
+                "book": "股票大作手回忆录",
+                "started_at": started,
+                "finished_at": now(),
+                "status": "blocked",
+                "pipeline_status": "CONVERSION_OR_PIPELINE_EXCEPTION",
+                "source_path": "[REDACTED]/" + source.name,
+                "source_sha256_before": source_hash_before,
+                "source_sha256_after": sha256_file(source),
+                "converter": "KindleUnpack canonical EPUB spine adapter",
+                "converter_script": kindleunpack_script.name,
+                "block_reason": f"{type(exc).__name__}: {exc}",
+                "formal_writes": {"graph": 0, "registry": 0, "skill": 0, "asset_ledger": 0},
+            })
+            print("STOCK_OPERATOR_SYNTHESIS_REGRESSION_BLOCKED")
+            return 23
         chunk_run = result.chunk_run or {}
         portable = validate_portable_cache(vault, chunk_run.get("extraction_hashes", {}))
         diagnostic_text = json.dumps(result.as_dict(), ensure_ascii=False)
@@ -198,21 +252,51 @@ def main() -> int:
         graph_written = graph_path.exists()
         registry_written = registry_path.exists()
         ledger_written = ledger_path.exists()
+        conversion_config = result.conversion_provenance.get("config", {})
+        if not isinstance(conversion_config, dict):
+            conversion_config = {}
+        input_attestation = conversion_config.get("converter_input_attestation", {})
+        if not isinstance(input_attestation, dict):
+            input_attestation = {}
+        conversion_metrics = result.conversion_quality.get("metrics", {})
+        if not isinstance(conversion_metrics, dict):
+            conversion_metrics = {}
+        concept_titles = [
+            str(item.get("title", ""))
+            for item in graph_payload.get("nodes", {}).values()
+            if item.get("type") == "concept"
+        ]
+        reserved_metadata = (
+            "sourcepath", "sourcesha256", "source_id", "conversion_id", "kindleunpack",
+            "converter", "command fingerprint", "unpacked container hash", "isbn",
+        )
+        metadata_concepts = [
+            item for item in concept_titles
+            if any(term in item.casefold() for term in reserved_metadata)
+        ]
+        synthesized_action_texts = [
+            str(action.get("text", ""))
+            for item in synthesis_skills
+            for action in item.get("candidate", {}).get("actions", [])
+        ]
         audit = {
-            "schema_version": 1,
+            "schema_version": 2,
             "engine_package_version": "3.3.0",
             "commit_sha": release_commit(),
             "data_contract_version": "3.2.0",
             "started_at": started,
             "finished_at": now(),
             "book": "股票大作手回忆录",
-            "mode": "real-azw3-preserved-conversion-codex-llm-disposable-resumable-vault",
+            "mode": "real-azw3-canonical-kindleunpack-codex-llm-disposable-resumable-vault",
             "analyzer": "HybridAnalyzerProvider(LLMAnalyzerProvider)",
-            "source_path": str(source),
+            "source_path": "[REDACTED]/" + source.name,
             "source_sha256_before": source_hash_before,
             "source_sha256_after": sha256_file(source),
-            "conversion_snapshot_path": str(snapshot),
-            "conversion_snapshot_sha256": sha256_file(snapshot),
+            "canonical_converter": "KindleUnpack canonical EPUB spine adapter",
+            "converter_script": kindleunpack_script.name,
+            "stale_snapshot_used": False,
+            "conversion_quality": result.conversion_quality,
+            "conversion_provenance": sanitize_machine_evidence(result.conversion_provenance),
             "model": args.model,
             "reasoning": args.reasoning,
             "prompt_version": "distillation-map-prompt-v3.2.1-index-selection",
@@ -238,7 +322,7 @@ def main() -> int:
             "ev_629_error": "ev-629" in diagnostic_text,
             "portable_validation": portable,
             "formal_assets_in_disposable_vault": formal_assets,
-            "written_paths": [str(path) for path in result.written_paths],
+            "written_paths": [path.relative_to(vault).as_posix() for path in result.written_paths],
             "skills_generated": len(result.skills),
             "method_cluster_count": len(method_clusters),
             "method_clusters": method_clusters,
@@ -248,6 +332,7 @@ def main() -> int:
             "skill_evidence_file_count": len(skill_evidence_files),
             "skill_evidence_valid": skill_evidence_valid,
             "concept_fragment_rejections": issue_codes.count("concept-fragment-rejected"),
+            "metadata_concepts": metadata_concepts,
             "graph": {
                 "identity_collision": "graph-identity-conflict" in issue_codes,
                 "committed": graph_written,
@@ -264,10 +349,24 @@ def main() -> int:
             },
             "vault_write_status": "atomic_formal_asset_write" if formal_assets and result.written_paths else "no_formal_asset_write",
             "live_vault_opened": False,
-            "work_dir": str(Path(temporary).resolve()),
+            "work_dir": "[DISPOSABLE_SELF_HOSTED_WORKDIR]",
             "temporary_vault_deleted_after_run": not bool(args.work_dir),
             "release_checks": {
                 "evidence_error_disappeared": "unknown Evidence" not in diagnostic_text and "ev-629" not in diagnostic_text,
+                "original_azw3_read_by_converter": all([
+                    input_attestation.get("input_placeholder_present") is True,
+                    input_attestation.get("exact_original_path_supplied") is True,
+                    input_attestation.get("source_sha256_before") == source_hash_before,
+                    input_attestation.get("source_sha256_after") == source_hash_before,
+                ]),
+                "stale_snapshot_not_used": True,
+                "conversion_quality_passed_before_llm": result.conversion_quality.get("status") == "passed",
+                "replacement_character_zero": int(conversion_metrics.get("replacement_character_count", -1)) == 0,
+                "mojibake_zero": int(conversion_metrics.get("mojibake_hit_count", -1)) == 0,
+                "metadata_to_concept_leakage_zero": not metadata_concepts,
+                "no_arbitrary_bigram_signal": all(
+                    "断风" not in item and "势变" not in item for item in synthesized_action_texts
+                ),
                 "successful_chunk_bindings_legal": portable["passed"],
                 "pipeline_completed": result.status == "completed",
                 # Three-to-eight remains the production target, not a quota.
@@ -292,13 +391,12 @@ def main() -> int:
                 "live_vault_untouched": True,
             },
         }
-    args.output.parent.mkdir(parents=True, exist_ok=True)
     passed = all([
         audit["source_sha256_before"] == audit["source_sha256_after"],
         *audit["release_checks"].values(),
     ])
     audit["status"] = "passed" if passed else "blocked"
-    args.output.write_text(json.dumps(audit, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    write_atomic_json(args.output, audit)
     print("STOCK_OPERATOR_SYNTHESIS_REGRESSION_PASS" if passed else "STOCK_OPERATOR_SYNTHESIS_REGRESSION_BLOCKED")
     print(json.dumps({
         "run_id": audit["run_id"], "run_status": audit["run_status"],

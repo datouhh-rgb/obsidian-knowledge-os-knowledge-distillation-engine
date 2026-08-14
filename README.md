@@ -3,7 +3,8 @@
 V3.3.0 adds the Knowledge Synthesis Layer. It turns stable, Evidence-bound Concepts into reviewable Method Clusters and then into candidate Skills:
 
 ```text
-Evidence → Concept → Canonicalization → Method Cluster
+Original Source → Canonical Converter → ConversionQualityGate
+→ Structure Normalizer → Evidence → Concept → Canonicalization → Method Cluster
          → Skill Synthesis → Quality Gate → Candidate Skill
 ```
 
@@ -11,6 +12,10 @@ The caller-provided Obsidian Vault remains the only knowledge authority. V3.3 Fi
 
 ## Final production remediation
 
+- AZW3 acceptance now starts from the immutable original and a local KindleUnpack adapter. The previous preserved-Markdown snapshot path is historical-fixture-only and cannot be selected by the production regression command.
+- EPUB/KF8 members are decoded in BOM/declaration/meta/strict-UTF-8 order, followed only by audited Chinese fallbacks. Production text never uses replacement decoding.
+- `ConversionQualityGate` executes before chunking and LLM calls. A blocker records a conversion diagnostic under `.knowledge-engine/runs` while Graph, Registry, Skill, Source assets, and the Asset Ledger remain untouched.
+- Skill signal extraction no longer manufactures sliding Chinese bigrams. Insufficient complete, Evidence-grounded phrases block the action or candidate.
 - Skill actions are now Evidence-bound procedural abstractions. Raw Evidence excerpts, narrative quotations, and generic policy shells cannot pass the semantic release gate.
 - Method Clusters require explainable multi-signal cohesion that includes a semantic signal; sharing only a book, purpose label, chapter, or action word is insufficient.
 - Conversion/front-matter metadata is retained as provenance but excluded from body Evidence and Concept promotion.
@@ -80,7 +85,7 @@ Distillation writes only to the selected Vault. Approval and link-only exposure 
 ├─ SOURCE_INDEX.json
 └─ <title>--<source-id>/
    ├─ originals/
-   └─ conversions/<conversion-id>/
+   └─ conversions/<conversion-id>/{CONVERSION.json, CONVERSION_QUALITY.json, ...}
 10_Reviews/
 .knowledge-engine/{STATE.json, journal/, staging/, migrations/}
 ```
@@ -102,6 +107,6 @@ python scripts\final_v33_acceptance.py `
   --ci-evidence release\evidence\ci\cross_platform_matrix.json
 ```
 
-The final gate accepts exactly six successful portable jobs—Windows, Ubuntu, and macOS with Python 3.11 and 3.12—all attesting the same commit SHA. It separately requires Windows Real Codex Discovery, explicit `$skill` loading with a successful target `SKILL.md` read event, both named real-book regressions, release/history isolation, and all tests. The production profile is `explicit_only`; implicit invocation remains disabled and no implicit precision/recall is claimed. The gate emits only `V3.3.0_PRODUCTION_READY` or `V3.3.0_BLOCKED`.
+The final gate accepts exactly six successful portable jobs—Windows, Ubuntu, and macOS with Python 3.11 and 3.12—all attesting the same immutable merged/tagged commit SHA. It separately requires canonical original-book conversion, Windows Real Codex Discovery, explicit `$skill` loading with a successful target `SKILL.md` read event, both named real-book regressions, release/history isolation, and all tests. Blocked components still upload atomic machine evidence and may create only a `BLOCKED-Audit.zip`; they cannot create a Production-Ready archive. The production profile is `explicit_only`; implicit invocation remains disabled and no implicit precision/recall is claimed. The gate emits only `V3.3.0_PRODUCTION_READY` or `V3.3.0_BLOCKED`.
 
 Current reports are under `release/`. Prior V3.1/V3.2 audits are isolated under `history/`. The authoritative decision is `FINAL_PRODUCTION_ACCEPTANCE_REPORT.md`.

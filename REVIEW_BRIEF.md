@@ -1,26 +1,24 @@
-# V3.1.1 LTS Reviewer Brief
+# V3.3.0 Final Production Acceptance Reviewer Brief
 
-Review these files first:
+This candidate is accepted only when one immutable merged commit or protected release tag proves all of the following:
 
-1. `FINAL_LTS_REPORT.md`
-2. `FINAL_LTS_AUDIT/CHECK_RESULTS.json`
-3. `FINAL_LTS_AUDIT/MANIFEST.sha256`
-4. `.github/workflows/v3.1-cross-platform.yml`
-5. `CHANGELOG.md`
+1. Six portable CI jobs pass on Windows, Ubuntu, and macOS with Python 3.11 and 3.12.
+2. The original 《股票大作手回忆录》 AZW3 is read by the canonical KindleUnpack adapter; no preserved Markdown snapshot is used as production input.
+3. `ConversionQualityGate` passes before chunking and LLM calls, with zero replacement characters, mojibake blockers, and provenance-to-Concept leakage.
+4. Both real-book regressions complete on the same commit with valid Evidence, Concept, Method, Graph, and transaction evidence.
+5. A real Candidate is explicitly approved by a human reviewer, deployed as one immutable approved version, discovered and explicitly invoked by Codex, then unexposed with no drift.
+6. The exact final archive passes its manifest on Windows, Ubuntu, and macOS and has an adjacent real SHA-256 record.
 
-The LTS decision is fail-closed. It requires named passing checks for manifest integrity, compilation, full pytest, the exact six-job operating-system/runtime matrix, Evidence validation, Skill validation, migration, exposure create/discover/remove/recreate, and rollback. Test counts alone cannot approve the release.
+Review current evidence under `release/`. Historical failures remain under `history/` and never determine the current report by filename alone.
 
-Rerun with the consolidated CI evidence downloaded from the official workflow:
-
-```text
-python scripts/final_lts_check.py --cross-platform-evidence <cross-platform-evidence.json>
-```
-
-Accept only the exact output:
+The only successful terminal state is:
 
 ```text
-SUCCESS:
-V3.1_LTS_READY
+V3.3.0_PRODUCTION_READY
 ```
 
-`V3.1_LTS_BLOCKED` means the package remains an audited stability candidate, not an LTS-ready release.
+Any missing or failed gate must remain:
+
+```text
+V3.3.0_BLOCKED
+```

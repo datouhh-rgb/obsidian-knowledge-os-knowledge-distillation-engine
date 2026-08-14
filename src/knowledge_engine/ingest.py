@@ -19,8 +19,14 @@ from xml.etree import ElementTree
 
 from jsonschema import Draft202012Validator
 
+from .conversion import (
+    CANONICAL_CONVERSION_SCHEMA,
+    CanonicalConversionError,
+    convert_epub_archive,
+    convert_epub_directory,
+)
 from .models import IngestedSource
-from .utils import normalize_text, safe_filename, safe_relative_target, sha256_file
+from .utils import canonical_json, normalize_text, safe_filename, safe_relative_target, sha256_file, sha256_text
 
 
 class IngestError(RuntimeError):
@@ -211,15 +217,18 @@ class SourceIngester:
         raw_path.write_bytes(raw)
         warnings: list[str] = []
         try:
-            decoded = raw.decode(charset)
-        except (LookupError, UnicodeDecodeError):
-            decoded = raw.decode("utf-8", errors="replace")
-            warnings.append(f"网页声明编码 {charset!r} 无法可靠解码，已用 UTF-8 replacement 模式。")
+            decoded = raw.decode(charset, errors="strict")
+        except (LookupError, UnicodeDecodeError) as exc:
+            raise IngestError(f"网页声明编码 {charset!r} 无法可靠解码；已 fail closed：{exc}") from exc
         text = self._html_to_markdown(decoded) if "html" in content_type else normalize_text(decoded)
+        normalized_output = normalize_text(text)
         return IngestedSource(
             input_ref=url, local_path=raw_path, original_name=fallback, media_type=content_type,
-            source_kind="webpage", sha256=sha256_file(raw_path), text=text,
-            converter_metadata={"converter": "stdlib HTMLParser", "version": "3", "config": {"content_type": content_type}, "url_audit": audit},
+            source_kind="webpage", sha256=sha256_file(raw_path), text=normalized_output,
+            converter_metadata={"converter": "stdlib HTMLParser", "version": "3", "config": {
+                "content_type": content_type,
+                "normalized_output_sha256": sha256_text(normalized_output),
+            }, "url_audit": audit},
             warnings=warnings,
         )
 
@@ -256,91 +265,124 @@ class SourceIngester:
                 warnings.append(warning)
         if not text.strip():
             raise IngestError("转换结果为空。")
-        return IngestedSource(input_ref, path, path.name, media_type, kind, sha256_file(path), normalize_text(text), metadata, warnings)
+        normalized_output = normalize_text(text)
+        config = metadata.get("config", {})
+        if not isinstance(config, dict):
+            config = {"legacy_config": config}
+        config.setdefault("normalized_output_sha256", sha256_text(normalized_output))
+        metadata["config"] = config
+        metadata.setdefault("output_sha256", sha256_text(normalized_output))
+        return IngestedSource(input_ref, path, path.name, media_type, kind, sha256_file(path), normalized_output, metadata, warnings)
 
     def _epub_to_markdown(self, path: Path) -> tuple[str, dict[str, object], list[str]]:
         try:
             with zipfile.ZipFile(path) as archive:
                 self._validate_ebook_archive(archive)
-                container = ElementTree.fromstring(archive.read("META-INF/container.xml"))
-                rootfile = next(
-                    (item.attrib.get("full-path", "") for item in container.iter() if item.tag.rsplit("}", 1)[-1] == "rootfile"),
-                    "",
-                )
-                if not rootfile:
-                    raise IngestError("EPUB container.xml 缺少 rootfile。")
-                opf = ElementTree.fromstring(archive.read(rootfile))
-                manifest: dict[str, str] = {}
-                for item in opf.iter():
-                    if item.tag.rsplit("}", 1)[-1] == "item" and item.attrib.get("id") and item.attrib.get("href"):
-                        manifest[item.attrib["id"]] = item.attrib["href"]
-                spine = [item.attrib.get("idref", "") for item in opf.iter() if item.tag.rsplit("}", 1)[-1] == "itemref"]
-                base = Path(rootfile).parent
-                chapters: list[str] = []
-                omissions: list[str] = []
-                for identifier in spine:
-                    href = manifest.get(identifier)
-                    if not href:
-                        continue
-                    member = (base / urllib.parse.unquote(href.split("#", 1)[0])).as_posix()
-                    if member not in archive.namelist():
-                        raise IngestError(f"EPUB spine 引用了缺失成员：{member}")
-                    raw = archive.read(member)
-                    if len(raw) > self.MAX_DOCX_XML_BYTES:
-                        raise IngestError(f"EPUB chapter 超过安全上限：{member}")
-                    parser = _MarkdownHTMLParser()
-                    parser.feed(raw.decode("utf-8", errors="replace"))
-                    chapter = parser.markdown()
-                    if chapter.strip():
-                        chapters.append(chapter)
-                    omissions.extend(f"{member}:{item}" for item in parser.image_omissions)
-        except (zipfile.BadZipFile, KeyError, ElementTree.ParseError) as exc:
-            raise IngestError(f"EPUB 结构无效：{exc}") from exc
-        if not chapters:
-            raise IngestError("EPUB spine 中没有可提取正文。")
-        warnings = [f"EPUB contains {len(omissions)} declared image omission(s)."] if omissions else []
+            converted = convert_epub_archive(path)
+        except (zipfile.BadZipFile, KeyError, ElementTree.ParseError, CanonicalConversionError) as exc:
+            raise IngestError(f"EPUB 结构或字符解码无效：{exc}") from exc
         metadata: dict[str, object] = {
-            "converter": "stdlib EPUB spine",
-            "version": "3.2.0",
-            "config": {"spine_order": True, "image_policy": "declare-omission"},
+            "converter": "canonical EPUB spine adapter",
+            "version": CANONICAL_CONVERSION_SCHEMA,
+            "config": {
+                **converted.metadata,
+                "image_policy": "declare-omission",
+                "cache_policy": "disabled-canonical-acceptance",
+            },
             "source_id": sha256_file(path),
-            "image_omissions": omissions,
+            "output_sha256": sha256_text(converted.text),
         }
-        return normalize_text("\n\n".join(chapters)), metadata, warnings
+        return converted.text, metadata, list(converted.warnings)
 
     def _convert_azw3(self, path: Path) -> tuple[str, dict[str, object], list[str]]:
         if not self.azw3_command:
             raise IngestError(
                 "AZW3 requires an explicit local converter command in BOOK_DISTILLER_AZW3_COMMAND; "
-                "use {input} and {output} placeholders."
+                "use {input} and {output_dir} placeholders."
             )
-        output = safe_relative_target(self.work_dir, Path("azw3") / "converted.md")
-        output.parent.mkdir(parents=True, exist_ok=True)
-        command = [item.format(input=str(path), output=str(output)) for item in self.azw3_command]
-        if all("{input}" not in item and "{output}" not in item for item in self.azw3_command):
-            command.extend([str(path), str(output)])
+        template_text = "\0".join(self.azw3_command)
+        if "{input}" not in template_text or "{output_dir}" not in template_text:
+            raise IngestError("Canonical AZW3 command must explicitly contain {input} and {output_dir}.")
+        if "{output}" in template_text:
+            raise IngestError("Legacy single-file {output} AZW3 conversion is prohibited; use canonical {output_dir} unpacking.")
+        output_dir = safe_relative_target(self.work_dir, Path("azw3") / "kindleunpack")
+        output_dir.mkdir(parents=True, exist_ok=True)
+        command = [item.format(input=str(path), output_dir=str(output_dir)) for item in self.azw3_command]
+        source_hash_before = sha256_file(path)
+        command_contract = [
+            "{input}" if item == str(path) else "{output_dir}" if item == str(output_dir) else Path(item).name if Path(item).is_absolute() else item
+            for item in command
+        ]
+        command_fingerprint = sha256_text(canonical_json({
+            "schema": CANONICAL_CONVERSION_SCHEMA,
+            "argv": command_contract,
+            "shell": False,
+            "encoding": "utf-8-strict",
+        }))
+        environment = dict(os.environ)
+        environment["PYTHONUTF8"] = "1"
         try:
             completed = subprocess.run(
-                command, capture_output=True, text=True, encoding="utf-8", errors="replace",
-                timeout=self.timeout, shell=False,
+                command, capture_output=True, text=True, encoding="utf-8", errors="strict",
+                timeout=self.timeout, shell=False, env=environment,
             )
-        except (OSError, subprocess.SubprocessError) as exc:
+        except (OSError, UnicodeError, subprocess.SubprocessError) as exc:
             raise IngestError(f"AZW3 local converter failed: {type(exc).__name__}: {exc}") from exc
-        if completed.returncode != 0 or not output.is_file():
+        if completed.returncode != 0:
             raise IngestError(f"AZW3 local converter returned {completed.returncode}: {completed.stderr.strip()}")
-        text = output.read_text(encoding="utf-8")
-        if not text.strip():
-            raise IngestError("AZW3 local converter produced empty text.")
-        command_fingerprint = " ".join("{input}" if item == str(path) else "{output}" if item == str(output) else item for item in command)
+        if sha256_file(path) != source_hash_before:
+            raise IngestError("AZW3 converter modified the immutable original source.")
+        try:
+            converted = convert_epub_directory(output_dir)
+        except CanonicalConversionError as exc:
+            raise IngestError(f"KindleUnpack output failed canonical EPUB parsing: {exc}") from exc
+        version_match = re.search(r"KindleUnpack\s+v([^\s]+)", completed.stdout)
+        converter_version = version_match.group(1) if version_match else "unreported"
+        converter_commit = self._converter_commit(command)
         metadata: dict[str, object] = {
-            "converter": "configured local AZW3 converter",
-            "version": "command-contract-v1",
-            "config": {"command_fingerprint": command_fingerprint},
-            "source_id": sha256_file(path),
-            "output_sha256": sha256_file(output),
+            "converter": "KindleUnpack canonical EPUB spine adapter",
+            "version": f"KindleUnpack-{converter_version}+{CANONICAL_CONVERSION_SCHEMA}",
+            "config": {
+                **converted.metadata,
+                "converter_name": "KindleUnpack",
+                "converter_version": converter_version,
+                "converter_commit": converter_commit,
+                "command_fingerprint": command_fingerprint,
+                "command_config": command_contract,
+                "conversion_schema_version": CANONICAL_CONVERSION_SCHEMA,
+                "source_bytes_sha256": source_hash_before,
+                "converter_input_attestation": {
+                    "input_placeholder_present": True,
+                    "exact_original_path_supplied": True,
+                    "source_sha256_before": source_hash_before,
+                    "source_sha256_after": sha256_file(path),
+                },
+                "original_source_name": path.name,
+                "original_source_path_redacted": True,
+                "cache_policy": "disabled-canonical-acceptance",
+            },
+            "source_id": source_hash_before,
+            "output_sha256": sha256_text(converted.text),
         }
         warnings = [line for line in completed.stderr.splitlines() if line.strip()][:100]
-        return normalize_text(text), metadata, warnings
+        warnings.extend(item for item in converted.warnings if item not in warnings)
+        return converted.text, metadata, warnings
+
+    @staticmethod
+    def _converter_commit(command: list[str]) -> str:
+        candidates = [Path(item) for item in command if item.casefold().endswith((".py", ".pyw"))]
+        for candidate in candidates:
+            if not candidate.is_file():
+                continue
+            completed = subprocess.run(
+                ["git", "-C", str(candidate.parent), "rev-parse", "HEAD"],
+                capture_output=True, text=True, encoding="utf-8", errors="strict", timeout=10, check=False,
+            )
+            commit = completed.stdout.strip().casefold()
+            if completed.returncode == 0 and re.fullmatch(r"[0-9a-f]{40}", commit):
+                return commit
+            return "script-sha256:" + sha256_file(candidate)
+        return "unresolved"
 
     @staticmethod
     def _validate_ebook_archive(archive: zipfile.ZipFile) -> None:
@@ -449,8 +491,8 @@ class SourceIngester:
     def _read_text(path: Path) -> tuple[str, str | None]:
         try:
             return path.read_text(encoding="utf-8-sig"), None
-        except UnicodeDecodeError:
-            return path.read_text(encoding="utf-8", errors="replace"), "源文本不是可靠 UTF-8；已替换无法解码字符。"
+        except UnicodeDecodeError as exc:
+            raise IngestError(f"源文本不是可靠 UTF-8；禁止 replacement 解码：{path.name}: {exc}") from exc
 
     @staticmethod
     def _html_to_markdown(html: str) -> str:

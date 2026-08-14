@@ -3,6 +3,7 @@ from __future__ import annotations
 import re
 from collections import Counter
 from dataclasses import dataclass, field
+from difflib import SequenceMatcher
 from itertools import combinations
 from typing import Iterable
 
@@ -104,6 +105,45 @@ class SkillSynthesisGate:
         report.issues.extend(self.executability.validate(candidate).issues)
         report.issues.extend(self.procedural.validate(candidate, catalog).issues)
         report.issues.extend(self.semantic_skill.validate(cluster, candidate, catalog).issues)
+        concept_phrases = {
+            normalize_excerpt(str(item.get("title", ""))).strip()
+            for item in cluster.cohesion_assessment.get("concepts", [])
+            if isinstance(item, dict) and str(item.get("title", "")).strip()
+        }
+        for index, action in enumerate(candidate.actions, start=1):
+            evidence_text = " ".join(
+                item.excerpt for evidence_id in action.evidence_ids
+                if (item := catalog.get(evidence_id)) is not None
+            )
+            phrases = [
+                phrase.strip()
+                for quoted in re.findall(r"[“\"]([^”\"]+)[”\"]", action.text)
+                for phrase in quoted.split("、")
+                if phrase.strip()
+            ]
+            for phrase in phrases:
+                if phrase in {"断风", "势变"}:
+                    report.add(
+                        "error", "arbitrary-chinese-bigram",
+                        f"Meaningless sliding-window phrase is prohibited: {phrase}",
+                        f"actions:{index}",
+                    )
+                if phrase not in evidence_text and phrase not in concept_phrases:
+                    report.add(
+                        "error", "semantic-signal-not-grounded",
+                        f"Action signal is absent from its Evidence and Method concepts: {phrase}",
+                        f"actions:{index}",
+                    )
+        for left_index, left in enumerate(candidate.actions):
+            for right_index, right in enumerate(candidate.actions[left_index + 1:], start=left_index + 1):
+                left_shape = re.sub(r"[“\"][^”\"]+[”\"]", "<object>", normalize_excerpt(left.text))
+                right_shape = re.sub(r"[“\"][^”\"]+[”\"]", "<object>", normalize_excerpt(right.text))
+                if SequenceMatcher(None, left_shape, right_shape).ratio() >= 0.85:
+                    report.add(
+                        "error", "procedural-action-template-duplicate",
+                        "Skill actions repeat the same procedural role with substituted words.",
+                        f"actions:{left_index + 1},{right_index + 1}",
+                    )
         bound = {item for statement in candidate.source_statements() for item in statement.evidence_ids}
         if len(bound) < 3:
             report.add("error", "synthesized-skill-evidence", "A synthesized Skill requires at least three Evidence bindings.", candidate.title)
@@ -138,11 +178,22 @@ class SkillSynthesizer:
         "观点", "能力", "注意力", "潜意识", "元认知", "成长", "反馈", "耐心", "焦虑", "困难",
         "认知", "思考", "情绪", "大脑", "专注", "选择", "时间", "阅读", "练习", "目标",
         "环境", "反思", "改变", "知识", "身体", "习惯", "觉知", "意识", "理性", "感性",
+        "暴露", "退出", "条件", "停止", "增加", "止损", "纪律", "限制", "扩大", "范围",
+        "比较", "核验", "区分", "计划", "偏差", "修正", "执行", "连续", "波动", "实际",
+        "assess", "analyze", "overall", "market", "trend", "trade", "observe", "facts",
+        "alignment", "price", "signals", "compare", "prevailing", "risk", "loss", "discipline",
+        "position", "exit", "record", "feedback", "condition", "result", "plan", "error",
     )
     SIGNAL_STOP = {
         "一个", "这个", "那个", "时候", "自己", "可以", "如果", "因为", "所以", "但是",
         "已经", "还是", "就是", "不是", "没有", "他们", "我们", "你们", "什么", "怎么",
     }
+    ACTION_ROLES = (
+        ("识别", "当判断对象首次进入流程时", "输出可观察原文信号清单", "无法定位任一信号则停止并转人工核验"),
+        ("比较", "当原文信号清单已经形成时", "输出支持、冲突或缺失三态对照", "出现无法解释的冲突则停止并升级复核"),
+        ("核验", "当三态对照存在关键条件或缺失时", "输出条件已满足、未满足或待确认状态", "关键条件缺失则停止后续动作"),
+        ("记录", "当前述信号与条件均完成核验时", "生成包含信号、条件和结果的复核记录", "记录无法绑定原文定位时拒绝提交"),
+    )
 
     def __init__(self) -> None:
         self.gate = SkillSynthesisGate()
@@ -162,15 +213,27 @@ class SkillSynthesizer:
             ]
             if not concept_anchors:
                 concept_anchors = [cluster.title]
-            actions = tuple(
-                GroundedStatement(
-                    self._procedural_action(
-                        cluster, concept_anchors[(index - 1) % len(concept_anchors)], index, item.excerpt,
-                    ),
+            action_values: list[GroundedStatement] = []
+            insufficient: list[str] = []
+            for index, item in enumerate(evidence, start=1):
+                anchor = concept_anchors[(index - 1) % len(concept_anchors)]
+                signals = self._evidence_signal_terms(item.excerpt, anchor)
+                if len(signals) < 3:
+                    insufficient.append(item.evidence_id)
+                    continue
+                action_values.append(GroundedStatement(
+                    self._procedural_action(cluster, anchor, index, signals),
                     (item.evidence_id,), "source",
+                ))
+            if insufficient or len(action_values) < 2:
+                validation = ValidationReport()
+                validation.add(
+                    "error", "insufficient-semantic-signal",
+                    "Skill action synthesis could not locate at least three complete Evidence-bound phrases for every selected action.",
+                    ",".join(insufficient),
                 )
-                for index, item in enumerate(evidence, start=1)
-            )
+                return SkillSynthesisOutcome(None, validation)
+            actions = tuple(action_values)
             signal_one = concept_anchors[0]
             signal_two = concept_anchors[1] if len(concept_anchors) > 1 else signal_one
 
@@ -213,19 +276,13 @@ class SkillSynthesizer:
         return SkillSynthesisOutcome(candidate if validation.passed else None, validation)
 
     @classmethod
-    def _procedural_action(cls, cluster: MethodCluster, anchor: str, index: int, excerpt: str) -> str:
-        signal = normalize_excerpt(cluster.title + " " + anchor)
-        operation = "核对"
-        for keywords, verb, _output in cls.OPERATIONS:
-            if any(keyword in signal for keyword in keywords):
-                operation = verb
-                break
-        object_text = cls._clip(anchor, 22) or cls._clip(cluster.title, 22)
-        evidence_signals = "、".join(cls._evidence_signal_terms(excerpt, anchor))
+    def _procedural_action(cls, cluster: MethodCluster, anchor: str, index: int, signals: tuple[str, ...]) -> str:
+        operation, condition, output, stop = cls.ACTION_ROLES[(index - 1) % len(cls.ACTION_ROLES)]
+        object_text = normalize_excerpt(anchor).strip() or normalize_excerpt(cluster.title).strip()
+        evidence_signals = "、".join(signals)
         return (
-            f"当执行第{index}步且输入事实可核对时，"
-            f"{operation}原文信号“{evidence_signals}”与“{object_text}”对应输入事实的一致性，"
-            "记录支持、冲突或缺失；无法定位原文或条件不完整则停止。"
+            f"{condition}，{operation}“{object_text}”对应的原文信号“{evidence_signals}”，"
+            f"{output}；{stop}。"
         )
 
     @classmethod
@@ -236,27 +293,17 @@ class SkillSynthesizer:
             position = normalized.find(term)
             if position >= 0:
                 candidates.append((position, term))
-        anchor_chinese = "".join(re.findall(r"[\u4e00-\u9fff]", normalize_excerpt(anchor)))
-        for index in range(max(0, len(anchor_chinese) - 1)):
-            term = anchor_chinese[index:index + 2]
-            position = normalized.find(term)
-            if position >= 0 and term not in cls.SIGNAL_STOP:
-                candidates.append((position, term))
+        normalized_anchor = normalize_excerpt(anchor).strip(" ：:，,。.；;、")
+        if len(normalized_anchor) >= 2:
+            position = normalized.find(normalized_anchor)
+            if position >= 0 and normalized_anchor not in cls.SIGNAL_STOP:
+                candidates.append((position, normalized_anchor))
         selected: list[str] = []
         for _position, term in sorted(candidates, key=lambda item: (item[0], -len(item[1]), item[1])):
             if term not in selected and not any(term in prior or prior in term for prior in selected):
                 selected.append(term)
             if len(selected) >= 4:
                 break
-        if len(selected) < 3:
-            chinese = "".join(re.findall(r"[\u4e00-\u9fff]", normalized))
-            for index in range(max(0, len(chinese) - 1)):
-                term = chinese[index:index + 2]
-                if term in cls.SIGNAL_STOP or term in selected:
-                    continue
-                selected.append(term)
-                if len(selected) >= 3:
-                    break
         return tuple(selected[:4])
 
     @classmethod

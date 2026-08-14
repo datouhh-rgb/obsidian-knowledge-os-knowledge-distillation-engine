@@ -25,6 +25,14 @@ def test_single_bad_concept_is_quarantined_not_book_blocker() -> None:
     assert assessment.quarantined_count == 1
 
 
+def test_candidate_quarantine_does_not_automatically_abort_clean_book() -> None:
+    result = ConceptQualityGate().validate([_concept("注意力选择"), _concept("则")])
+    assessment = BookKnowledgeGate().validate(result)
+    assert assessment.passed
+    assert {item.title for item in result.accepted} == {"注意力选择"}
+    assert {item.title for item in result.quarantined} == {"则"}
+
+
 def test_quarantined_candidate_never_reaches_graph_or_skill(tmp_path: Path, vault: Path) -> None:
     class Provider:
         name = "llm:candidate-isolation"
@@ -57,6 +65,13 @@ def test_systemic_fragment_rate_blocks_book() -> None:
     candidates = [_concept("有效概念")] + [_concept("则") for _ in range(10)]
     result = ConceptQualityGate().validate(candidates)
     assessment = BookKnowledgeGate().validate(result)
+    assert not assessment.passed
+    assert "invalid rate" in assessment.block_reason
+
+
+def test_systematic_fragment_rate_blocks_book() -> None:
+    candidates = [_concept("有效概念")] + [_concept("则") for _ in range(10)]
+    assessment = BookKnowledgeGate().validate(ConceptQualityGate().validate(candidates))
     assert not assessment.passed
     assert "invalid rate" in assessment.block_reason
 

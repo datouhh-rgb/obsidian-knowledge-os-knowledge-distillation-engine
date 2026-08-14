@@ -8,6 +8,7 @@ import json
 from pathlib import Path
 
 from knowledge_engine.graph import ConceptGraph
+from knowledge_engine.conversion_quality import ConversionQualityGate
 from knowledge_engine.gates import skill_candidate_schema
 from knowledge_engine.ingest import SourceIngester
 from knowledge_engine.ledger import AssetLedger
@@ -25,6 +26,7 @@ SCHEMAS = {
     "skill-candidate.schema.json": skill_candidate_schema(),
     "skill-registry.schema.json": SkillRegistry.schema(),
     "conversion.schema.json": CONVERSION_SCHEMA,
+    "conversion-quality.schema.json": ConversionQualityGate.schema(),
     "source-identity.schema.json": SOURCE_IDENTITY_SCHEMA,
     "evidence-catalog.schema.json": EVIDENCE_CATALOG_SCHEMA,
     "distillation-manifest.schema.json": MANIFEST_SCHEMA,

@@ -89,20 +89,25 @@ jobs:
         run: python -c "import sys; assert sys.version_info[:2] == (3, 12), sys.version"
       - run: python -m pip install -e .
       - name: Stock Operator canonical regression
+        id: stock_regression
+        continue-on-error: true
         shell: powershell
         env:
           STOCK_SOURCE_B64: QzpcVXNlcnNcVGhpbmtQYWRcRG93bmxvYWRzXOiCoeelqOWkp+S9nOaJi+WbnuW/huW9lS5hencz
-          STOCK_SNAPSHOT_B64: QzpcVXNlcnNcVGhpbmtQYWRcRG9jdW1lbnRzXENvZGV4XDIwMjYtMDgtMTFcb2JzaWRpYW4ta25vd2xlZGdlLW9zLWtub3dsZWRnZS1kaXN0aWxsYXRpb24tZW5naW5lXHdvcmtcY29udmVydGVkXOiCoeelqOWkp+S9nOaJi+WbnuW/huW9lS0tNzVkYmE4ODgubWQ=
+          KINDLEUNPACK_SCRIPT_B64: QzpcVXNlcnNcVGhpbmtQYWRcRG9jdW1lbnRzXENvZGV4XDIwMjYtMDgtMTFcb2JzaWRpYW4ta25vd2xlZGdlLW9zLWtub3dsZWRnZS1kaXN0aWxsYXRpb24tZW5naW5lXHdvcmtcS2luZGxlVW5wYWNrXGxpYlxraW5kbGV1bnBhY2sucHk=
         run: |
           $source = [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($env:STOCK_SOURCE_B64))
-          $snapshot = [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($env:STOCK_SNAPSHOT_B64))
+          $kindleUnpack = [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($env:KINDLEUNPACK_SCRIPT_B64))
           $workDir = Join-Path $env:USERPROFILE ".cache\knowledge-engine-v33\stock-final"
           python scripts/run_stock_operator_regression.py `
             --source-azw3 "$source" `
-            --conversion-snapshot "$snapshot" `
+            --kindleunpack-script "$kindleUnpack" `
             --output release/evidence/regressions/stock_operator_v33_canonical.json `
             --work-dir "$workDir"
       - name: Cognitive Awakening canonical regression
+        id: cognitive_regression
+        if: always()
+        continue-on-error: true
         shell: powershell
         env:
           COGNITIVE_SOURCE_B64: QzpcVXNlcnNcVGhpbmtQYWRcRG93bmxvYWRzXOiupOefpeiniemGku+8muW8gOWQr+iHquaIkeaUueWPmOeahOWOn+WKqOWKmyso5ZGo5bKtKSsoWi1MaWJyYXJ5KS5wZGY=
@@ -116,15 +121,49 @@ jobs:
             --pdf-wrapper "$wrapper" `
             --output release/evidence/regressions/cognitive_awakening_v33_canonical.json `
             --work-dir "$workDir"
+      - name: Ensure both book reports exist even when blocked
+        if: always()
+        shell: powershell
+        run: |
+          python scripts/ensure_v33_machine_evidence.py `
+            --path release/evidence/regressions/stock_operator_v33_canonical.json `
+            --component stock-operator-real-book `
+            --step-outcome "${{ steps.stock_regression.outcome }}"
+          python scripts/ensure_v33_machine_evidence.py `
+            --path release/evidence/regressions/cognitive_awakening_v33_canonical.json `
+            --component cognitive-awakening-real-book `
+            --step-outcome "${{ steps.cognitive_regression.outcome }}"
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: canonical-book-regressions
           path: release/evidence/regressions/*_canonical.json
           if-no-files-found: error
+      - name: Aggregate book acceptance after evidence upload
+        if: always()
+        shell: powershell
+        run: |
+          @'
+          import json
+          from pathlib import Path
+          paths = [
+              Path("release/evidence/regressions/stock_operator_v33_canonical.json"),
+              Path("release/evidence/regressions/cognitive_awakening_v33_canonical.json"),
+          ]
+          failed = []
+          for path in paths:
+              payload = json.loads(path.read_text(encoding="utf-8"))
+              if payload.get("status") != "passed":
+                  failed.append(f"{path.name}: {payload.get('status')}: {payload.get('block_reason') or payload.get('reason')}")
+          if failed:
+              raise SystemExit("BOOK_REGRESSION_BLOCKED\n" + "\n".join(failed))
+          print("BOOK_REGRESSION_PASS")
+          '@ | python -
 
   real-codex-windows-e2e:
     name: real-codex-windows-e2e / explicit-only
     needs: [portable-core, book-regression-windows]
+    if: always()
     runs-on: [self-hosted, Windows, X64, knowledge-engine-release]
     timeout-minutes: 120
     steps:
@@ -133,10 +172,13 @@ jobs:
         run: python -c "import sys; assert sys.version_info[:2] == (3, 12), sys.version"
       - run: python -m pip install -e .
       - uses: actions/download-artifact@v4
+        if: needs.book-regression-windows.result == 'success'
         with:
           name: canonical-book-regressions
           path: release/evidence/regressions
       - name: Real Codex approved-only deployment and explicit call
+        id: real_codex
+        if: needs.book-regression-windows.result == 'success'
         shell: powershell
         env:
           STOCK_SOURCE_B64: QzpcVXNlcnNcVGhpbmtQYWRcRG93bmxvYWRzXOiCoeelqOWkp+S9nOaJi+WbnuW/huW9lS5hencz
@@ -147,11 +189,21 @@ jobs:
             --source-original "$source" `
             --concurrency 2
       - name: Revalidate raw transcript hashes
+        if: needs.book-regression-windows.result == 'success'
         run: python scripts/revalidate_v33_codex_audit.py
       - name: Dedicated live integration tests
+        if: needs.book-regression-windows.result == 'success'
         env:
           RUN_REAL_CODEX_TESTS: "1"
         run: python -m pytest -q -m real_codex -o addopts="--strict-markers"
+      - name: Record Real Codex NOT_RUN after upstream blocker
+        if: needs.book-regression-windows.result != 'success'
+        run: >-
+          python scripts/ensure_v33_machine_evidence.py
+          --path release/evidence/codex_real_test/codex_real_integration.json
+          --component real-codex-explicit-only
+          --step-outcome not_run
+          --upstream-reason "Book regression gate did not pass."
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -161,6 +213,9 @@ jobs:
             release/SKILL_EXAMPLE
             history/V3.3_BLOCKED_Audit/real_codex_attempts
           if-no-files-found: warn
+      - name: Preserve fail-closed Real Codex job result
+        if: needs.book-regression-windows.result != 'success'
+        run: exit 31
 
   release-assembly:
     name: release-assembly / immutable candidate
@@ -193,14 +248,21 @@ jobs:
       - name: Render reports from canonical machine evidence
         run: python scripts/generate_v33_release_reports.py
       - name: Final fail-closed acceptance
+        id: acceptance
+        continue-on-error: true
         run: >-
           python scripts/final_v33_acceptance.py --skip-tests
           --ci-evidence release/evidence/ci/cross_platform_matrix.json
           --stock-regression release/evidence/regressions/stock_operator_v33_canonical.json
           --cognitive-regression release/evidence/regressions/cognitive_awakening_v33_canonical.json
       - name: Assemble exact-byte archive
+        if: steps.acceptance.outcome == 'success'
         run: python scripts/assemble_v33_release.py --commit "${{ github.sha }}" --workflow-url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+      - name: Assemble machine-generated BLOCKED audit
+        if: steps.acceptance.outcome != 'success'
+        run: python scripts/assemble_v33_release.py --blocked --commit "${{ github.sha }}" --workflow-url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
       - uses: actions/upload-artifact@v4
+        if: steps.acceptance.outcome == 'success'
         with:
           name: v3.3.0-release-assembly-candidate
           path: |
@@ -209,6 +271,19 @@ jobs:
             release/MANIFEST.sha256
             release/evidence
           if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: steps.acceptance.outcome != 'success'
+        with:
+          name: v3.3.0-blocked-audit
+          path: |
+            Obsidian-Knowledge-OS-Knowledge-Distillation-Engine-v3.3.0-BLOCKED-Audit.zip
+            release/ZIP_SHA256.txt
+            release/MANIFEST.sha256
+            release/evidence
+          if-no-files-found: error
+      - name: Preserve fail-closed release result
+        if: steps.acceptance.outcome != 'success'
+        run: exit 41
 
   archive-verification:
     name: archive-verification / ${{ matrix.os }}

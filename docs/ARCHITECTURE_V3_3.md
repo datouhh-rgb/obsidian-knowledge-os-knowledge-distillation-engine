@@ -5,6 +5,12 @@
 V3.3 adds one processing layer between canonical Concepts and candidate Skills. The selected Obsidian Vault remains the sole persistent knowledge authority.
 
 ```text
+immutable original source
+  ↓ canonical PDF/EPUB/AZW3 adapter
+strict per-member decoding + conversion provenance
+  ↓ ConversionQualityGate (LLM calls = 0)
+structure normalization
+  ↓
 system Evidence
   ↓
 Concept Candidate
@@ -19,6 +25,12 @@ review-only Vault asset
 ```
 
 Source Identity, Conversion Identity, Evidence index selection, lifecycle states, approval/exposure rules, and Vault transaction semantics are inherited unchanged from V3.2.1.
+
+## Canonical source conversion boundary
+
+The production AZW3 path invokes a configured local KindleUnpack script with the exact original path and a disposable output directory. It parses the resulting EPUB container, OPF, and spine inside the engine and records converter version/commit, command fingerprint, container manifest hash, ordered member hashes, declared/detected encodings, decoding strategies, omissions, and normalized output hash. A preserved Markdown snapshot can remain only as an immutable historical failure fixture.
+
+`ConversionQualityGate` examines the canonical converter output before structure normalization, chunking, or provider calls. Any replacement character, known mojibake, unreliable member decode, structural blocker, missing resource, systemic duplication, or provenance leakage returns `CONVERSION_QUALITY_BLOCKED`. Only the diagnostic area under `.knowledge-engine/runs` may be written; formal Source, Graph, Registry, Skill, and ledger writes remain zero.
 
 ## Method Cluster
 
@@ -40,6 +52,8 @@ A cluster requires at least two Concepts and three unique Evidence records. Dupl
 ## Skill synthesis and gates
 
 `SkillSynthesizer` creates the full existing `SkillCandidate` structure: positioning, scenarios/trigger, inputs, decision flow, source actions, output, boundaries, prohibited scenarios, provider provenance, and Evidence bindings.
+
+Signal phrases are restricted to complete Concept titles/aliases or complete phrases found in the bound Evidence through the controlled lexicon. Sliding-window Chinese bigrams are prohibited. If a selected Evidence cannot provide enough complete semantic signals, the action or candidate is blocked with `insufficient-semantic-signal`. Retained actions must have distinct procedural roles and explicit condition, action, object, observable output, stop/escalation rule, and statement-level Evidence.
 
 The synthesis gate is additive. It cannot replace or relax:
 

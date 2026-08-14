@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "attestation_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "conversion_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "gate_version": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "issues": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "locator": {
+            "type": "string"
+          },
+          "member": {
+            "type": "string"
+          },
+          "message": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "severity": {
+            "enum": [
+              "warning",
+              "blocker"
+            ]
+          }
+        },
+        "required": [
+          "severity",
+          "code",
+          "message",
+          "member",
+          "locator"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "metrics": {
+      "additionalProperties": true,
+      "type": "object"
+    },
+    "normalized_output_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "prior_attestation_difference": {
+      "additionalProperties": true,
+      "type": "object"
+    },
+    "schema_version": {
+      "const": 1
+    },
+    "source_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "passed",
+        "blocked"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "status",
+    "gate_version",
+    "source_id",
+    "conversion_id",
+    "normalized_output_sha256",
+    "metrics",
+    "issues",
+    "prior_attestation_difference",
+    "attestation_sha256"
+  ],
+  "type": "object"
+}

@@ -15,7 +15,7 @@ from pathlib import Path
 from knowledge_engine.pipeline import DistillationPipeline
 from knowledge_engine.providers import CommandLLMTransport, HybridAnalyzerProvider, LLMAnalyzerProvider
 from knowledge_engine.utils import sha256_file
-from run_stock_operator_regression import validate_portable_cache
+from run_stock_operator_regression import sanitize_machine_evidence, validate_portable_cache, write_atomic_json
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -51,7 +51,18 @@ def main() -> int:
     source = args.source_pdf.resolve()
     wrapper = args.pdf_wrapper.resolve()
     if not source.is_file() or not wrapper.is_file():
-        raise SystemExit("Source PDF and the local MarkItDown wrapper are required.")
+        write_atomic_json(args.output, {
+            "schema_version": 2,
+            "engine_version": "3.3.0",
+            "commit_sha": release_commit(),
+            "book": "认知觉醒",
+            "status": "blocked",
+            "pipeline_status": "NOT_STARTED",
+            "block_reason": "Original PDF or local MarkItDown wrapper is unavailable.",
+            "source_path": "[REDACTED]/" + source.name,
+            "pdf_wrapper": wrapper.name,
+        })
+        return 29
 
     started = now()
     source_hash_before = sha256_file(source)
@@ -77,7 +88,27 @@ def main() -> int:
             chunk_chars=args.chunk_chars,
             pdf_wrapper=wrapper,
         )
-        result = pipeline.distill(str(source), title="认知觉醒")
+        try:
+            result = pipeline.distill(str(source), title="认知觉醒")
+        except Exception as exc:
+            write_atomic_json(args.output, {
+                "schema_version": 2,
+                "engine_version": "3.3.0",
+                "commit_sha": release_commit(),
+                "book": "认知觉醒",
+                "started_at": started,
+                "finished_at": now(),
+                "status": "blocked",
+                "pipeline_status": "CONVERSION_OR_PIPELINE_EXCEPTION",
+                "source_path": "[REDACTED]/" + source.name,
+                "source_sha256": source_hash_before,
+                "pdf_converter": "Microsoft MarkItDown",
+                "pdf_wrapper": wrapper.name,
+                "block_reason": f"{type(exc).__name__}: {exc}",
+                "formal_writes": {"graph": 0, "registry": 0, "skill": 0, "asset_ledger": 0},
+            })
+            print("COGNITIVE_AWAKENING_V33_REGRESSION_BLOCKED")
+            return 29
         chunk = result.chunk_run or {}
         diagnostic = json.dumps(result.as_dict(), ensure_ascii=False)
         portable = validate_portable_cache(vault, chunk.get("extraction_hashes", {}))
@@ -135,6 +166,9 @@ def main() -> int:
         ]
         checks = {
             "source_unchanged": sha256_file(source) == source_hash_before,
+            "conversion_quality_passed_before_llm": result.conversion_quality.get("status") == "passed",
+            "replacement_character_zero": result.conversion_quality.get("metrics", {}).get("replacement_character_count") == 0,
+            "mojibake_zero": result.conversion_quality.get("metrics", {}).get("mojibake_hit_count") == 0,
             "pipeline_completed": result.status == "completed",
             "all_chunks_completed": not chunk.get("failed_chunk") and int(chunk.get("chunk_count", 0)) == len(chunk.get("processed", [])) + len(chunk.get("cache_hits", [])),
             "portable_evidence_selection": portable["passed"],
@@ -154,13 +188,15 @@ def main() -> int:
             "live_vault_untouched": True,
         }
         audit = {
-            "schema_version": 1, "engine_version": "3.3.0", "commit_sha": release_commit(),
+            "schema_version": 2, "engine_version": "3.3.0", "commit_sha": release_commit(),
             "book": "认知觉醒", "started_at": started, "finished_at": now(),
             "mode": "real-pdf-markitdown-codex-llm-disposable-resumable-vault",
-            "source_path": str(source), "source_sha256": source_hash_before,
-            "pdf_converter": "Microsoft MarkItDown", "pdf_wrapper": str(wrapper),
+            "source_path": "[REDACTED]/" + source.name, "source_sha256": source_hash_before,
+            "pdf_converter": "Microsoft MarkItDown", "pdf_wrapper": wrapper.name,
             "conversion_status": "ok" if conversion else "missing",
             "conversion_warnings": conversion.get("warnings", []),
+            "conversion_quality": result.conversion_quality,
+            "conversion_provenance": sanitize_machine_evidence(result.conversion_provenance),
             "source_id": result.source_id, "conversion_id": result.conversion_id,
             "run_id": chunk.get("run_id"), "pipeline_status": result.status,
             "run_status": chunk.get("status"),
@@ -185,14 +221,13 @@ def main() -> int:
             "portable_validation": portable,
             "model": args.model, "reasoning": args.reasoning,
             "live_vault_opened": False,
-            "work_dir": str(Path(temporary).resolve()),
+            "work_dir": "[DISPOSABLE_SELF_HOSTED_WORKDIR]",
             "temporary_vault_deleted_after_run": not bool(args.work_dir),
             "checks": checks,
             "status": "passed" if all(checks.values()) else "blocked",
             "blockers": [name for name, passed in checks.items() if not passed],
         }
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(json.dumps(audit, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    write_atomic_json(args.output, audit)
     print("COGNITIVE_AWAKENING_V33_REGRESSION_PASS" if audit["status"] == "passed" else "COGNITIVE_AWAKENING_V33_REGRESSION_BLOCKED")
     print(json.dumps({
         "run_id": audit["run_id"], "chunks": audit["chunk_count"],

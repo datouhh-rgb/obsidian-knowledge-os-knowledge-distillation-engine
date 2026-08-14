@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import subprocess
 import sys
 from datetime import datetime, timezone
@@ -152,11 +153,49 @@ def regression_check(name: str, path: Path) -> dict[str, Any]:
     }
 
 
+def release_identity_check(paths: list[Path | None]) -> dict[str, Any]:
+    head = subprocess.run(
+        ["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True, check=False,
+    ).stdout.strip()
+    ref = os.environ.get("GITHUB_REF", "")
+    event = os.environ.get("GITHUB_EVENT_NAME", "")
+    github_sha = os.environ.get("GITHUB_SHA", head)
+    payloads = [load_json(path)[0] for path in paths if path is not None]
+    evidence_commits = {
+        str(payload.get("commit_sha", ""))
+        for payload in payloads if isinstance(payload, dict)
+    }
+    trusted_ref = ref == "refs/heads/main" or ref == "refs/tags/v3.3.0"
+    local_mode = not os.environ.get("GITHUB_ACTIONS")
+    passed = (
+        len(evidence_commits) == 1
+        and head == github_sha
+        and github_sha in evidence_commits
+        and (trusted_ref or local_mode)
+    )
+    reasons: list[str] = []
+    if len(evidence_commits) != 1 or github_sha not in evidence_commits:
+        reasons.append(f"machine evidence commit mismatch: {sorted(evidence_commits)} != {github_sha}")
+    if head != github_sha:
+        reasons.append(f"checked-out HEAD {head} differs from GITHUB_SHA {github_sha}")
+    if not trusted_ref and not local_mode:
+        reasons.append(f"release ref {ref or '(missing)'} from event {event or '(missing)'} is not merged main or v3.3.0 tag")
+    return {
+        "name": "immutable_merged_or_tagged_release_identity",
+        "passed": passed,
+        "reason": "; ".join(reasons),
+        "commit_sha": github_sha,
+        "git_ref": ref,
+        "event": event,
+        "evidence_commits": sorted(evidence_commits),
+    }
+
+
 def release_layout_check() -> dict[str, Any]:
     required = [
         "release/FINAL_ACCEPTANCE_REPORT.md", "release/CI_REPORT.md",
         "release/REAL_CODEX_EXPLICIT_ONLY_REPORT.md", "release/BOOK_REGRESSION_REPORT.md",
-        "release/SKILL_SEMANTIC_QUALITY_REPORT.md",
+        "release/CONVERSION_QUALITY_REPORT.md", "release/SKILL_SEMANTIC_QUALITY_REPORT.md",
         "history/V3.1_Audit", "history/V3.2_Audit",
         "history/V3.3_BLOCKED_Audit", "history/Failed_Regression_Cases",
         "FINAL_PRODUCTION_ACCEPTANCE_REPORT.md",
@@ -202,6 +241,9 @@ def main() -> int:
         real_codex_check(args.codex_evidence),
         regression_check("stock_operator_regression", args.stock_regression),
         regression_check("cognitive_awakening_regression", args.cognitive_regression),
+        release_identity_check([
+            args.ci_evidence, args.codex_evidence, args.stock_regression, args.cognitive_regression,
+        ]),
         release_layout_check(),
     ])
     blockers = [item for item in checks if not item["passed"]]

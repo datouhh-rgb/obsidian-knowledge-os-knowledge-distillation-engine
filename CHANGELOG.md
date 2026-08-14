@@ -4,6 +4,10 @@
 
 ### Final Production Acceptance Remediation
 
+- Replaced the stale `--conversion-snapshot` regression path with a canonical KindleUnpack AZW3 adapter that reads the immutable original, records OPF/spine/member hashes and strict per-member decoding provenance, and disables unbound conversion caches.
+- Added `ConversionQualityGate` before structure normalization, chunking, and LLM calls. Replacement characters, mojibake, unreliable decoding, systemic duplication, metadata leakage, and structural corruption now fail closed with zero formal Vault writes.
+- Removed arbitrary Chinese bigram fallback from Skill signals. Every retained signal must be a complete Concept/Evidence phrase, and each action now has a distinct condition, operation, object, observable output, stop/escalation rule, and statement-level Evidence.
+- Made both real-book reports and Real Codex `NOT_RUN` evidence atomic and machine-readable on blocked workflows; blocked audit assembly now happens in CI before the release job fails closed.
 - Replaced raw-quotation Skill actions with ordered, observable, Evidence-bound procedural abstractions and added separate `ProceduralActionGate` and `SemanticSkillGate` checks.
 - Required Method Clusters to pass machine-readable, multi-signal cohesion with semantic support; same-book provenance and action-word frequency no longer count as sufficient cohesion.
 - Isolated converter/front-matter metadata from body Evidence and Concept creation while preserving Source and Conversion provenance.
