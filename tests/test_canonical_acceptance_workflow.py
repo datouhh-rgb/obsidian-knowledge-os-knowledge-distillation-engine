@@ -149,3 +149,13 @@ def test_final_publication_requires_all_gates() -> None:
     assert "Final fail-closed acceptance" in release
     assert "Preserve fail-closed release result" in release
     assert "v3.3.0-blocked-audit" in release
+
+
+def test_release_assembly_restores_multi_root_codex_artifact_at_repo_root() -> None:
+    workflow = WORKFLOW.read_text(encoding="utf-8")
+    release = workflow.split("release-assembly:", 1)[1].split("archive-verification:", 1)[0]
+    download = release.split("name: real-codex-explicit-only", 1)[1].split(
+        "- name: Aggregate one machine matrix source", 1,
+    )[0]
+    assert "path: ." in download
+    assert "path: release" not in download

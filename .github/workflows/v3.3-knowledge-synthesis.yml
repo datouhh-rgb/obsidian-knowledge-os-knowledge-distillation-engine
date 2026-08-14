@@ -238,7 +238,9 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: real-codex-explicit-only
-          path: release
+          # This multi-root artifact already contains release/ and history/.
+          # Restore those repository-relative paths without adding release/release/.
+          path: .
       - name: Aggregate one machine matrix source
         env:
           RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
