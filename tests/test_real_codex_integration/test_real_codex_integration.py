@@ -15,6 +15,12 @@ def test_codex_skill_exposure(real_codex_audit) -> None:  # type: ignore[no-unty
     assert exposure["create_status"] == "exposed"
     assert exposure["health_status"] == "healthy"
     assert real_codex_audit["checks"]["codex_discovery"] is True
+    discovery = real_codex_audit["discovery_evaluation"]
+    assert discovery["kind"] == "real-codex-app-server-skills-list"
+    assert discovery["method"] == "skills/list"
+    assert discovery["force_reload"] is True
+    assert discovery["matching_entry_count"] == 1
+    assert discovery["passed"] is True
     assert exposure["unexpose_status"] == "unexposed"
     assert exposure["removed_after_test"] is True
     assert real_codex_audit["vault"]["production_vault_opened"] is False
@@ -38,7 +44,7 @@ def test_codex_explicit_skill_call(real_codex_audit) -> None:  # type: ignore[no
     session = real_codex_audit["sessions"]["explicit"]
     assert session["exit_code"] == 0
     assert session["observed_skill_read"] is True
-    assert session["detection"] == "raw-codex-event-read-target-skill"
+    assert session["detection"] == "strict-content-read-event"
     assert real_codex_audit["skill"]["invocation_fingerprint"] in session["last_message"]
     assert real_codex_audit["review"]["automatic"] is False
     assert real_codex_audit["review"]["before_status"] == "candidate"
