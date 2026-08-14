@@ -159,6 +159,18 @@ def test_archive_verification_uploads_failure_evidence() -> None:
     assert ".ci-evidence/archive-verification.json" in upload
 
 
+def test_archive_verification_uses_cross_shell_github_identity_expressions() -> None:
+    workflow = WORKFLOW.read_text(encoding="utf-8")
+    archive = workflow.split("archive-verification:", 1)[1].split("final-publication:", 1)[0]
+    verify = archive.split("Extract and verify exact final ZIP bytes", 1)[1].split(
+        "- uses: actions/upload-artifact@v4", 1,
+    )[0]
+    assert '--expected-commit "${{ github.sha }}"' in verify
+    assert '--workflow-url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"' in verify
+    assert "$COMMIT_SHA" not in verify
+    assert "$RUN_URL" not in verify
+
+
 def test_release_assembly_restores_multi_root_codex_artifact_at_repo_root() -> None:
     workflow = WORKFLOW.read_text(encoding="utf-8")
     release = workflow.split("release-assembly:", 1)[1].split("archive-verification:", 1)[0]
