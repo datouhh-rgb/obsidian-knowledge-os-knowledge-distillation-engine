@@ -20,6 +20,17 @@ def test_azw3_regression_does_not_copy_stale_snapshot() -> None:
     assert '"{input}", "{output_dir}"' in script
 
 
+def test_real_codex_rebuilds_canonical_text_without_publishing_snapshot() -> None:
+    script = (ROOT / "scripts/run_v33_real_codex_integration.py").read_text(encoding="utf-8")
+    workflow = WORKFLOW.read_text(encoding="utf-8")
+    assert "conversion_snapshot_path" not in script
+    assert "reconstruct_canonical_source" in script
+    assert "copyrighted_snapshot_published" in script
+    real_codex = workflow.split("real-codex-windows-e2e:", 1)[1].split("release-assembly:", 1)[0]
+    assert "KINDLEUNPACK_SCRIPT_B64" in real_codex
+    assert '--kindleunpack-script "$kindleUnpack"' in real_codex
+
+
 def test_workflow_uploads_blocked_book_evidence() -> None:
     workflow = WORKFLOW.read_text(encoding="utf-8")
     book_section = workflow.split("book-regression-windows:", 1)[1].split("real-codex-windows-e2e:", 1)[0]

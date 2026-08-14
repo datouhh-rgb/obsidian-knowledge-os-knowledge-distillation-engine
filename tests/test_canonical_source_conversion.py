@@ -125,6 +125,49 @@ def test_per_spine_encoding_manifest_is_deterministic(tmp_path: Path) -> None:
     assert member["raw_sha256"] and member["decoded_sha256"]  # type: ignore[index]
 
 
+def test_repacked_epub_byproduct_does_not_change_conversion_identity(tmp_path: Path) -> None:
+    source = tmp_path / "book.azw3"
+    source.write_bytes(b"stable-original")
+    converter = tmp_path / "kindleunpack.py"
+    converter.write_text(
+        """from __future__ import annotations
+import os, sys
+from pathlib import Path
+source, output = Path(sys.argv[-2]), Path(sys.argv[-1])
+(output / 'META-INF').mkdir(parents=True, exist_ok=True)
+(output / 'OEBPS/Text').mkdir(parents=True, exist_ok=True)
+(output / 'META-INF/container.xml').write_text(
+    \"<?xml version='1.0' encoding='utf-8'?><container><rootfiles><rootfile full-path='OEBPS/content.opf'/></rootfiles></container>\",
+    encoding='utf-8')
+(output / 'OEBPS/content.opf').write_text(
+    \"<?xml version='1.0' encoding='utf-8'?><package><manifest><item id='c' href='Text/c.xhtml' media-type='application/xhtml+xml'/></manifest><spine><itemref idref='c'/></spine></package>\",
+    encoding='utf-8')
+(output / 'OEBPS/Text/c.xhtml').write_text(
+    \"<?xml version='1.0' encoding='utf-8'?><html><body><h1>正文</h1><p>市场趋势需要连续观察。</p></body></html>\",
+    encoding='utf-8')
+(output / 'derived.epub').write_bytes(os.urandom(32))
+print('KindleUnpack v0.83')
+""",
+        encoding="utf-8",
+    )
+
+    def convert(label: str) -> IngestedSource:
+        result = SourceIngester(
+            tmp_path / label,
+            azw3_command=(sys.executable, str(converter), "{input}", "{output_dir}"),
+        ).ingest(str(source))
+        bind_source_identity(result)
+        return result
+
+    first = convert("first")
+    second = convert("second")
+    assert first.text == second.text
+    assert conversion_identity(first).conversion_id == conversion_identity(second).conversion_id
+    config = first.converter_metadata["config"]
+    assert config["container_manifest_policy"] == "canonical-members-exclude-derived-archives-v1"  # type: ignore[index]
+    assert config["excluded_derived_members"] == ["derived.epub"]  # type: ignore[index]
+
+
 def test_converter_input_was_original_source(tmp_path: Path) -> None:
     source = _ingest_fake_azw3(tmp_path, b"original-azw3-bytes")
     config = source.converter_metadata["config"]

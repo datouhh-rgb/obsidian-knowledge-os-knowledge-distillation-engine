@@ -16,6 +16,7 @@ import json
 import os
 import shutil
 import subprocess
+import sys
 import tempfile
 import uuid
 from concurrent.futures import ThreadPoolExecutor
@@ -26,6 +27,9 @@ from typing import Any
 from knowledge_engine.evidence import EvidenceCatalog
 from knowledge_engine.exposure import SkillExposureManager
 from knowledge_engine.gates import ProceduralActionGate, SemanticSkillGate
+from knowledge_engine.conversion_quality import ConversionQualityGate
+from knowledge_engine.identity import bind_source_identity, conversion_identity
+from knowledge_engine.ingest import SourceIngester
 from knowledge_engine.lifecycle import SkillLifecycleService
 from knowledge_engine.models import ConversionIdentity, IngestedSource, MethodCluster, SkillCandidate
 from knowledge_engine.quality import SkillQualityEvaluator
@@ -153,10 +157,75 @@ def _method_from_dict(value: dict[str, Any]) -> MethodCluster:
     )
 
 
+def reconstruct_canonical_source(
+    source_original: Path,
+    kindleunpack_script: Path,
+    work_dir: Path,
+    upstream: dict[str, Any],
+) -> tuple[IngestedSource, ConversionIdentity, dict[str, Any]]:
+    """Rebuild the exact canonical text without publishing a copyrighted snapshot."""
+    if not source_original.is_file() or not kindleunpack_script.is_file():
+        raise RuntimeError("Original AZW3 or KindleUnpack script is unavailable for canonical replay.")
+    original_before = sha256_file(source_original)
+    source = SourceIngester(
+        work_dir,
+        timeout=300,
+        azw3_command=(
+            sys.executable,
+            str(kindleunpack_script),
+            "{input}",
+            "{output_dir}",
+        ),
+    ).ingest(str(source_original))
+    bind_source_identity(source)
+    quality = ConversionQualityGate().validate(source)
+    if not quality.passed:
+        raise RuntimeError("Canonical replay failed ConversionQualityGate before candidate materialization.")
+    conversion_output_sha256 = sha256_text(source.text)
+    normalized_document = RealStructureNormalizer().normalize(source.text, source.source_kind)
+    source.text = normalized_document.text
+    source.warnings.extend(item for item in normalized_document.warnings if item not in source.warnings)
+    conversion = conversion_identity(source, source.text)
+    quality = quality.bind(conversion.conversion_id)
+    quality_payload = quality.as_dict()
+    upstream_quality = dict(upstream.get("conversion_quality", {}))
+    expected = {
+        "source_id": str(upstream.get("source_id", "")),
+        "conversion_id": str(upstream.get("conversion_id", "")),
+        "conversion_output_sha256": str(upstream_quality.get("normalized_output_sha256", "")),
+        "attestation_sha256": str(upstream_quality.get("attestation_sha256", "")),
+    }
+    observed = {
+        "source_id": source.source_id,
+        "conversion_id": conversion.conversion_id,
+        "conversion_output_sha256": conversion_output_sha256,
+        "attestation_sha256": str(quality_payload.get("attestation_sha256", "")),
+    }
+    mismatches = [key for key, value in expected.items() if not value or observed[key] != value]
+    if mismatches:
+        raise RuntimeError(
+            "Canonical replay identity mismatch: "
+            + ", ".join(f"{key} expected={expected[key]!r} observed={observed[key]!r}" for key in mismatches)
+        )
+    if sha256_file(source_original) != original_before:
+        raise RuntimeError("Canonical replay modified the immutable original AZW3.")
+    return source, conversion, {
+        **observed,
+        "structured_text_sha256": sha256_text(source.text),
+        "conversion_quality_status": quality.status,
+        "converter": str(source.converter_metadata.get("converter", "")),
+        "converter_version": str(source.converter_metadata.get("version", "")),
+        "source_unchanged": True,
+        "copyrighted_snapshot_published": False,
+    }
+
+
 def materialize_preserved_candidate(
     vault: Path,
     source_original: Path,
     upstream: dict[str, Any],
+    source: IngestedSource,
+    conversion: ConversionIdentity,
 ) -> tuple[str, str, str, dict[str, Any]]:
     entries = list(upstream["knowledge_synthesis"]["skills"])
     if not entries:
@@ -166,13 +235,11 @@ def materialize_preserved_candidate(
     if candidate.fingerprint() != selected["fingerprint"]:
         raise RuntimeError("Preserved candidate fingerprint mismatch.")
 
-    snapshot = Path(upstream["conversion_snapshot_path"])
-    if not snapshot.is_file():
-        raise RuntimeError(f"Preserved conversion snapshot is missing: {snapshot}")
-    raw_text = snapshot.read_text(encoding="utf-8")
-    normalized = RealStructureNormalizer().normalize(raw_text, "markdown").text
+    normalized = source.text
     source_id = str(upstream["source_id"])
     conversion_id = str(upstream["conversion_id"])
+    if source.source_id != source_id or conversion.conversion_id != conversion_id:
+        raise RuntimeError("Canonical replay does not match the preserved Source/Conversion identity.")
     catalog = EvidenceCatalog.from_text(
         str(upstream["book"]), source_id, normalized, conversion_id,
         original_path=str(source_original),
@@ -197,19 +264,6 @@ def materialize_preserved_candidate(
     source_hash = sha256_file(source_original)
     if source_hash != source_id:
         raise RuntimeError("Original source hash does not match the preserved Source Identity.")
-    source = IngestedSource(
-        input_ref=str(source_original), local_path=source_original,
-        original_name=source_original.name, media_type="application/vnd.amazon.ebook",
-        source_kind="azw3", sha256=source_hash, text=normalized,
-        converter_metadata={"mode": "preserved-v3.3-regression-replay"},
-        identity_source_id=source_id,
-    )
-    conversion = ConversionIdentity(
-        source_id=source_id, conversion_id=conversion_id,
-        normalized_text_sha256=sha256_text(normalized),
-        converter="preserved-v3.3-regression-conversion", converter_version="3.3.0",
-        converter_config={"snapshot_sha256": sha256_file(snapshot)}, warnings=(),
-    )
     semantic = SemanticSupportGate().assess_skill(candidate, catalog)
     score = SkillQualityEvaluator().score(candidate, catalog, {}, semantic.assessments)
     procedural = ProceduralActionGate().validate(candidate, catalog)
@@ -615,6 +669,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--upstream-regression", type=Path, default=DEFAULT_UPSTREAM)
     parser.add_argument("--source-original", type=Path, required=True)
+    parser.add_argument("--kindleunpack-script", type=Path, required=True)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--codex-command", default="codex")
     parser.add_argument("--timeout", type=int, default=300)
@@ -638,6 +693,7 @@ def main() -> int:
     cli_version = codex_version(codex)
     upstream = json.loads(args.upstream_regression.read_text(encoding="utf-8"))
     original = args.source_original.resolve()
+    kindleunpack_script = args.kindleunpack_script.resolve()
     original_before = sha256_file(original)
     run_id = "v33-codex-real-" + uuid.uuid4().hex
     output = args.output.resolve()
@@ -651,7 +707,13 @@ def main() -> int:
         for path in (vault / "05_Knowledge", vault / "06_Sources", repo):
             path.mkdir(parents=True, exist_ok=True)
         subprocess.run(["git", "init", "-q"], cwd=repo, capture_output=True, timeout=30, check=False)
-        skill_name, version, skill_id, chain = materialize_preserved_candidate(vault, original, upstream)
+        canonical_source, canonical_conversion, canonical_replay = reconstruct_canonical_source(
+            original, kindleunpack_script, root / "canonical-conversion", upstream,
+        )
+        skill_name, version, skill_id, chain = materialize_preserved_candidate(
+            vault, original, upstream, canonical_source, canonical_conversion,
+        )
+        chain["canonical_replay"] = canonical_replay
         before_record = SkillRegistry.load(vault).require(skill_name)
         before_status = before_record["lifecycle"][version]["status"]
         policy_path = vault / "05_Knowledge/Skills" / skill_name / "agents/openai.yaml"

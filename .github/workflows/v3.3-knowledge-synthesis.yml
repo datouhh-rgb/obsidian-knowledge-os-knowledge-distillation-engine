@@ -182,11 +182,14 @@ jobs:
         shell: powershell
         env:
           STOCK_SOURCE_B64: QzpcVXNlcnNcVGhpbmtQYWRcRG93bmxvYWRzXOiCoeelqOWkp+S9nOaJi+WbnuW/huW9lS5hencz
+          KINDLEUNPACK_SCRIPT_B64: QzpcVXNlcnNcVGhpbmtQYWRcRG9jdW1lbnRzXENvZGV4XDIwMjYtMDgtMTFcb2JzaWRpYW4ta25vd2xlZGdlLW9zLWtub3dsZWRnZS1kaXN0aWxsYXRpb24tZW5naW5lXHdvcmtcS2luZGxlVW5wYWNrXGxpYlxraW5kbGV1bnBhY2sucHk=
         run: |
           $source = [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($env:STOCK_SOURCE_B64))
+          $kindleUnpack = [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($env:KINDLEUNPACK_SCRIPT_B64))
           python scripts/run_v33_real_codex_integration.py `
             --upstream-regression release/evidence/regressions/stock_operator_v33_canonical.json `
             --source-original "$source" `
+            --kindleunpack-script "$kindleUnpack" `
             --concurrency 2
       - name: Revalidate raw transcript hashes
         if: needs.book-regression-windows.result == 'success'

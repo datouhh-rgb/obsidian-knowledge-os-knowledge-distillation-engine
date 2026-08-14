@@ -188,7 +188,13 @@ def _join_member(base: str, value: str) -> str:
     return _safe_member(joined.as_posix())
 
 
-def _parse_epub_members(members: Mapping[str, bytes], *, container_label: str) -> CanonicalEbookDocument:
+def _parse_epub_members(
+    members: Mapping[str, bytes],
+    *,
+    container_label: str,
+    excluded_derived_members: tuple[str, ...] = (),
+    container_manifest_policy: str = "all-archive-members-v1",
+) -> CanonicalEbookDocument:
     canonical_members = {_safe_member(name): raw for name, raw in members.items()}
     containers = sorted(name for name in canonical_members if name.endswith("META-INF/container.xml"))
     if len(containers) != 1:
@@ -273,6 +279,8 @@ def _parse_epub_members(members: Mapping[str, bytes], *, container_label: str) -
         "container_path": container_path,
         "unpacked_container_hash": sha256_text(canonical_json(manifest_rows)),
         "unpacked_member_count": len(manifest_rows),
+        "container_manifest_policy": container_manifest_policy,
+        "excluded_derived_members": list(excluded_derived_members),
         "opf_rootfile": rootfile,
         "spine_order": [str(item["path"]) for item in spine_records],
         "spine_members": spine_records,
@@ -303,9 +311,21 @@ def convert_epub_archive(path: Path) -> CanonicalEbookDocument:
 def convert_epub_directory(path: Path) -> CanonicalEbookDocument:
     root = path.resolve()
     members: dict[str, bytes] = {}
+    excluded_derived_members: list[str] = []
     for item in sorted(root.rglob("*")):
         if not item.is_file():
             continue
         relative = item.relative_to(root).as_posix()
+        # KindleUnpack emits a convenience EPUB beside the extracted canonical
+        # members.  Its ZIP timestamps are nondeterministic and it is not an
+        # OPF/spine input, so hashing it would make identical conversions drift.
+        if item.suffix.casefold() == ".epub":
+            excluded_derived_members.append(relative)
+            continue
         members[relative] = item.read_bytes()
-    return _parse_epub_members(members, container_label=path.name)
+    return _parse_epub_members(
+        members,
+        container_label=path.name,
+        excluded_derived_members=tuple(excluded_derived_members),
+        container_manifest_policy="canonical-members-exclude-derived-archives-v1",
+    )
