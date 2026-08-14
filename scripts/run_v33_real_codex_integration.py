@@ -665,6 +665,11 @@ def compact_session(result: dict[str, Any], raw_path: str) -> dict[str, Any]:
     }
 
 
+def exact_catalog_name(response: str, skill_name: str) -> bool:
+    """Accept only an exact metadata-catalog name, never a fuzzy mention."""
+    return response.strip().strip("`\"'") == skill_name
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--upstream-regression", type=Path, default=DEFAULT_UPSTREAM)
@@ -747,16 +752,55 @@ def main() -> int:
         health = manager.status(skill_name)
 
         session_root = root / "final-sessions"
-        discovery = run_codex_session(
-            codex, vault, skill_name,
+        discovery_prompts = (
             (
                 "Inspect only the available Skills metadata already provided to this Codex session; "
                 "do not read files or call tools. Find the Skill whose description says it applies "
                 f"the method named ‘{chain['candidate_title']}’ to evidence-grounded tasks. "
                 "Return only that Skill's exact frontmatter name value, preserving every character."
             ),
-            session_root / "discovery", args.timeout, isolated_codex_home, repo_override=repo,
+            (
+                "Perform an administrative lookup of the local Skill catalog, not a Skill invocation. "
+                "Use only the initial available-Skills name, description, and path metadata in this "
+                "session; do not read SKILL.md and do not call tools. Locate the repository Skill whose "
+                f"description begins with: Apply {chain['candidate_title']} to evidence-grounded tasks. "
+                "Return only its exact frontmatter name value, with no punctuation or explanation."
+            ),
+            (
+                "Check the repository-scoped entries in the available Skill metadata supplied to this "
+                "session. This is catalog discovery only and must not invoke a Skill. Find the entry whose "
+                f"description contains the exact method title ‘{chain['candidate_title']}’. "
+                "Return only the exact frontmatter name value. Do not read files or call tools."
+            ),
         )
+        if any(skill_name in prompt for prompt in discovery_prompts):
+            raise RuntimeError("Discovery prompt leaked the expected Skill name.")
+        discovery_attempts: list[dict[str, Any]] = []
+        discovery_labels = ("discovery", "discovery-retry-2", "discovery-retry-3")
+        for label, prompt in zip(discovery_labels, discovery_prompts, strict=True):
+            attempt = run_codex_session(
+                codex, vault, skill_name, prompt, session_root / label,
+                args.timeout, isolated_codex_home, repo_override=repo,
+            )
+            discovery_attempts.append({
+                "label": label,
+                "matched_exact_name": (
+                    attempt["exit_code"] == 0
+                    and exact_catalog_name(attempt["last_message"], skill_name)
+                ),
+                "result": attempt,
+            })
+        discovery_matches = sum(item["matched_exact_name"] for item in discovery_attempts)
+        discovery_pass = (
+            all(item["result"]["exit_code"] == 0 for item in discovery_attempts)
+            and discovery_matches >= 2
+        )
+        discovery_selected = next(
+            (item for item in discovery_attempts if item["matched_exact_name"]),
+            discovery_attempts[0],
+        )
+        discovery = discovery_selected["result"]
+        discovery_label = discovery_selected["label"]
         fingerprint = sha256_text(f"{skill_id}\0{version}\0{chain['skill_candidate_fingerprint']}")[:20]
         explicit = run_codex_session(
             codex, vault, skill_name,
@@ -783,9 +827,6 @@ def main() -> int:
             session_root / "bad-description", args.timeout, isolated_codex_home,
             decoy_name=decoy_name, repo_override=repo,
         )
-        discovery_pass = (
-            discovery["exit_code"] == 0 and skill_name in discovery["last_message"]
-        )
         explicit_pass = (
             explicit["exit_code"] == 0 and explicit["observed"] and fingerprint in explicit["last_message"]
         )
@@ -804,7 +845,10 @@ def main() -> int:
         raw_manifest = evidence_manifest(vault / "10_Reviews" / "Skill-Evals" / skill_name / version, raw_output_root / "approval-eval")
         raw_manifest.extend(evidence_manifest(session_root, raw_output_root / "final-sessions"))
         final_sessions = {
-            "discovery": compact_session(discovery, (raw_output_root / "final-sessions/discovery").relative_to(ROOT).as_posix()),
+            "discovery": compact_session(
+                discovery,
+                (raw_output_root / "final-sessions" / discovery_label).relative_to(ROOT).as_posix(),
+            ),
             "explicit": compact_session(explicit, (raw_output_root / "final-sessions/explicit").relative_to(ROOT).as_posix()),
             "trigger_positive": compact_session(positive, (raw_output_root / "final-sessions/precision-positive").relative_to(ROOT).as_posix()),
             "negative": compact_session(negative, (raw_output_root / "final-sessions/precision-negative").relative_to(ROOT).as_posix()),
@@ -877,6 +921,29 @@ def main() -> int:
                 },
                 "metrics": evaluation["metrics"], "passed": evaluation["passed"],
                 "run_id": evaluation["run_id"],
+            },
+            "discovery_evaluation": {
+                "kind": "real-codex-cli-initial-skill-metadata-catalog",
+                "attempt_count": len(discovery_attempts),
+                "required_exact_matches": 2,
+                "exact_match_count": discovery_matches,
+                "all_sessions_completed": all(
+                    item["result"]["exit_code"] == 0 for item in discovery_attempts
+                ),
+                "expected_name_present_in_prompts": False,
+                "passed": discovery_pass,
+                "attempts": [
+                    {
+                        **compact_session(
+                            item["result"],
+                            (raw_output_root / "final-sessions" / item["label"])
+                            .relative_to(ROOT).as_posix(),
+                        ),
+                        "label": item["label"],
+                        "matched_exact_name": item["matched_exact_name"],
+                    }
+                    for item in discovery_attempts
+                ],
             },
             "exposure": {
                 "scope": "repo", "deployment_mode": exposure.deployment_mode,

@@ -31,6 +31,17 @@ def test_real_codex_rebuilds_canonical_text_without_publishing_snapshot() -> Non
     assert '--kindleunpack-script "$kindleUnpack"' in real_codex
 
 
+def test_real_codex_discovery_requires_repeated_exact_catalog_results() -> None:
+    script = (ROOT / "scripts/run_v33_real_codex_integration.py").read_text(encoding="utf-8")
+    revalidator = (ROOT / "scripts/revalidate_v33_codex_audit.py").read_text(encoding="utf-8")
+    assert 'discovery_labels = ("discovery", "discovery-retry-2", "discovery-retry-3")' in script
+    assert '"required_exact_matches": 2' in script
+    assert 'expected_name_present_in_prompts' in script
+    assert 'exact_catalog_name(attempt["last_message"], skill_name)' in script
+    assert 'revalidated_discovery_attempts' in revalidator
+    assert 'discovery_match_count >= required_matches' in revalidator
+
+
 def test_workflow_uploads_blocked_book_evidence() -> None:
     workflow = WORKFLOW.read_text(encoding="utf-8")
     book_section = workflow.split("book-regression-windows:", 1)[1].split("real-codex-windows-e2e:", 1)[0]
