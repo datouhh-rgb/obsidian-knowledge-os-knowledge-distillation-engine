@@ -14,10 +14,13 @@ import argparse
 import hashlib
 import json
 import os
+import queue
 import shutil
 import subprocess
 import sys
 import tempfile
+import threading
+import time
 import uuid
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
@@ -77,6 +80,20 @@ def resolve_codex(command: str) -> str:
     if not resolved:
         raise RuntimeError(f"Codex CLI is unavailable: {command}")
     return resolved
+
+
+def resolve_app_server_executable(codex: str) -> str:
+    """Use the native binary bundled with the same npm Codex installation on Windows."""
+    path = Path(codex)
+    if os.name != "nt" or path.suffix.casefold() not in {".cmd", ".bat"}:
+        return codex
+    package_root = path.parent / "node_modules" / "@openai" / "codex" / "node_modules" / "@openai"
+    candidates = sorted(package_root.glob("codex-win32-*/vendor/*/bin/codex.exe"))
+    if len(candidates) != 1:
+        raise RuntimeError(
+            "The native app-server executable for this Codex CLI installation is missing or ambiguous."
+        )
+    return str(candidates[0])
 
 
 def codex_version(command: str) -> str:
@@ -665,9 +682,207 @@ def compact_session(result: dict[str, Any], raw_path: str) -> dict[str, Any]:
     }
 
 
-def exact_catalog_name(response: str, skill_name: str) -> bool:
-    """Accept only an exact metadata-catalog name, never a fuzzy mention."""
-    return response.strip().strip("`\"'") == skill_name
+def _normalized_path(path: str | Path) -> str:
+    return os.path.normcase(os.path.abspath(os.fspath(path)))
+
+
+def validate_skills_list_response(
+    response: dict[str, Any] | None,
+    repo: Path,
+    skill_name: str,
+    description: str,
+) -> dict[str, Any]:
+    """Validate a real Codex app-server skills/list response fail closed."""
+    expected_cwd = _normalized_path(repo)
+    expected_path = _normalized_path(repo / ".agents/skills" / skill_name / "SKILL.md")
+    matching_entries: list[dict[str, Any]] = []
+    errors: list[str] = []
+    data = (response or {}).get("result", {}).get("data", [])
+    if not isinstance(data, list):
+        data = []
+    for scope in data:
+        if not isinstance(scope, dict) or _normalized_path(str(scope.get("cwd", ""))) != expected_cwd:
+            continue
+        scope_errors = scope.get("errors", [])
+        if isinstance(scope_errors, list):
+            errors.extend(str(item) for item in scope_errors)
+        skills = scope.get("skills", [])
+        if not isinstance(skills, list):
+            continue
+        for item in skills:
+            if not isinstance(item, dict):
+                continue
+            if (
+                item.get("name") == skill_name
+                and item.get("description") == description
+                and item.get("scope") == "repo"
+                and item.get("enabled") is True
+                and _normalized_path(str(item.get("path", ""))) == expected_path
+            ):
+                matching_entries.append(item)
+    return {
+        "method": "skills/list",
+        "force_reload": True,
+        "cwd_scope": "disposable-exposure-repo",
+        "matching_entry_count": len(matching_entries),
+        "exact_name": len(matching_entries) == 1,
+        "exact_description": len(matching_entries) == 1,
+        "repo_scope": len(matching_entries) == 1,
+        "enabled": len(matching_entries) == 1,
+        "canonical_exposure_path": len(matching_entries) == 1,
+        "errors": errors,
+        "passed": len(matching_entries) == 1 and not errors,
+    }
+
+
+def run_codex_catalog_discovery(
+    codex: str,
+    repo: Path,
+    skill_name: str,
+    description: str,
+    session_root: Path,
+    timeout: int,
+    codex_home: Path,
+) -> dict[str, Any]:
+    """Query Codex's official app-server Skill catalog and retain the raw protocol."""
+    session_root.mkdir(parents=True, exist_ok=True)
+    command = [resolve_app_server_executable(codex), "app-server", "--listen", "stdio://"]
+    requests = [
+        {
+            "method": "initialize",
+            "id": 0,
+            "params": {
+                "clientInfo": {
+                    "name": "knowledge_distillation_release_gate",
+                    "title": "Knowledge Distillation Release Gate",
+                    "version": "3.3.0",
+                }
+            },
+        },
+        {"method": "initialized", "params": {}},
+        {
+            "method": "skills/list",
+            "id": 25,
+            "params": {"cwds": [str(repo)], "forceReload": True},
+        },
+    ]
+    stdout_lines: list[str] = []
+    stderr_lines: list[str] = []
+    stdout_queue: queue.Queue[str] = queue.Queue()
+    response: dict[str, Any] | None = None
+    process: subprocess.Popen[str] | None = None
+    failure = ""
+
+    def read_stream(stream: Any, target: list[str], output_queue: queue.Queue[str] | None = None) -> None:
+        for line in iter(stream.readline, ""):
+            target.append(line)
+            if output_queue is not None:
+                output_queue.put(line)
+
+    def send(message: dict[str, Any]) -> None:
+        assert process is not None and process.stdin is not None
+        process.stdin.write(json.dumps(message, ensure_ascii=False) + "\n")
+        process.stdin.flush()
+
+    def await_response(request_id: int, deadline: float) -> dict[str, Any]:
+        while time.monotonic() < deadline:
+            try:
+                line = stdout_queue.get(timeout=min(1.0, max(0.01, deadline - time.monotonic())))
+            except queue.Empty:
+                continue
+            try:
+                event = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if event.get("id") == request_id:
+                return event
+        raise TimeoutError(f"Codex app-server response {request_id} timed out.")
+
+    try:
+        process = subprocess.Popen(
+            command, cwd=repo, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE, text=True, encoding="utf-8", errors="replace",
+            shell=False,
+            env={
+                **os.environ,
+                "CODEX_HOME": str(codex_home),
+                "HOME": str(codex_home),
+                "USERPROFILE": str(codex_home),
+            },
+        )
+        assert process.stdout is not None and process.stderr is not None
+        threading.Thread(
+            target=read_stream, args=(process.stdout, stdout_lines, stdout_queue), daemon=True,
+        ).start()
+        threading.Thread(
+            target=read_stream, args=(process.stderr, stderr_lines), daemon=True,
+        ).start()
+        deadline = time.monotonic() + timeout
+        send(requests[0])
+        initialize_response = await_response(0, deadline)
+        if "error" in initialize_response:
+            raise RuntimeError(f"Codex app-server initialize failed: {initialize_response['error']}")
+        send(requests[1])
+        send(requests[2])
+        response = await_response(25, deadline)
+        if "error" in response:
+            raise RuntimeError(f"Codex app-server skills/list failed: {response['error']}")
+    except Exception as exc:  # fail-closed evidence must survive transport failures
+        failure = f"{type(exc).__name__}: {exc}"
+        stderr_lines.append(failure + "\n")
+    finally:
+        if process is not None:
+            if process.stdin is not None:
+                try:
+                    process.stdin.close()
+                except OSError:
+                    pass
+            try:
+                process.wait(timeout=10)
+            except subprocess.TimeoutExpired:
+                process.terminate()
+                try:
+                    process.wait(timeout=10)
+                except subprocess.TimeoutExpired:
+                    process.kill()
+                    process.wait(timeout=10)
+
+    stdout = "".join(stdout_lines)
+    stderr = "".join(stderr_lines)
+    catalog = validate_skills_list_response(response, repo, skill_name, description)
+    if failure:
+        catalog["errors"] = [*catalog["errors"], failure]
+        catalog["passed"] = False
+    exit_code = 0 if catalog["passed"] else (process.returncode if process and process.returncode else 1)
+    last = skill_name if catalog["passed"] else ""
+    write_text(session_root / "requests.jsonl", "".join(
+        json.dumps(item, ensure_ascii=False, sort_keys=True) + "\n" for item in requests
+    ))
+    write_text(session_root / "stdout.jsonl", stdout)
+    write_text(session_root / "stderr.txt", stderr)
+    write_text(session_root / "last-message.txt", last)
+    matching_event = canonical_json(response) if response else ""
+    command_hash = sha256_text(canonical_json([
+        *command,
+        "<INITIALIZE_REQUEST>", sha256_text(canonical_json(requests[0])),
+        "<SKILLS_LIST_REQUEST>", sha256_text(canonical_json(requests[2])),
+    ]))
+    return {
+        "exit_code": exit_code,
+        "stdout": stdout,
+        "stderr": stderr,
+        "last_message": last,
+        "observed": False,
+        "detection": "codex-app-server-skills-list-exact-repo-entry",
+        "matching_event": matching_event,
+        "decoy_observed": False,
+        "decoy_matching_event": "",
+        "command_sha256": command_hash,
+        "stdout_path": session_root / "stdout.jsonl",
+        "stderr_path": session_root / "stderr.txt",
+        "last_path": session_root / "last-message.txt",
+        "catalog": catalog,
+    }
 
 
 def main() -> int:
@@ -752,55 +967,11 @@ def main() -> int:
         health = manager.status(skill_name)
 
         session_root = root / "final-sessions"
-        discovery_prompts = (
-            (
-                "Inspect only the available Skills metadata already provided to this Codex session; "
-                "do not read files or call tools. Find the Skill whose description says it applies "
-                f"the method named ‘{chain['candidate_title']}’ to evidence-grounded tasks. "
-                "Return only that Skill's exact frontmatter name value, preserving every character."
-            ),
-            (
-                "Perform an administrative lookup of the local Skill catalog, not a Skill invocation. "
-                "Use only the initial available-Skills name, description, and path metadata in this "
-                "session; do not read SKILL.md and do not call tools. Locate the repository Skill whose "
-                f"description begins with: Apply {chain['candidate_title']} to evidence-grounded tasks. "
-                "Return only its exact frontmatter name value, with no punctuation or explanation."
-            ),
-            (
-                "Check the repository-scoped entries in the available Skill metadata supplied to this "
-                "session. This is catalog discovery only and must not invoke a Skill. Find the entry whose "
-                f"description contains the exact method title ‘{chain['candidate_title']}’. "
-                "Return only the exact frontmatter name value. Do not read files or call tools."
-            ),
+        discovery = run_codex_catalog_discovery(
+            codex, repo, skill_name, str(chain["skill_metadata"]["description"]),
+            session_root / "discovery", args.timeout, isolated_codex_home,
         )
-        if any(skill_name in prompt for prompt in discovery_prompts):
-            raise RuntimeError("Discovery prompt leaked the expected Skill name.")
-        discovery_attempts: list[dict[str, Any]] = []
-        discovery_labels = ("discovery", "discovery-retry-2", "discovery-retry-3")
-        for label, prompt in zip(discovery_labels, discovery_prompts, strict=True):
-            attempt = run_codex_session(
-                codex, vault, skill_name, prompt, session_root / label,
-                args.timeout, isolated_codex_home, repo_override=repo,
-            )
-            discovery_attempts.append({
-                "label": label,
-                "matched_exact_name": (
-                    attempt["exit_code"] == 0
-                    and exact_catalog_name(attempt["last_message"], skill_name)
-                ),
-                "result": attempt,
-            })
-        discovery_matches = sum(item["matched_exact_name"] for item in discovery_attempts)
-        discovery_pass = (
-            all(item["result"]["exit_code"] == 0 for item in discovery_attempts)
-            and discovery_matches >= 2
-        )
-        discovery_selected = next(
-            (item for item in discovery_attempts if item["matched_exact_name"]),
-            discovery_attempts[0],
-        )
-        discovery = discovery_selected["result"]
-        discovery_label = discovery_selected["label"]
+        discovery_pass = discovery["exit_code"] == 0 and discovery["catalog"]["passed"]
         fingerprint = sha256_text(f"{skill_id}\0{version}\0{chain['skill_candidate_fingerprint']}")[:20]
         explicit = run_codex_session(
             codex, vault, skill_name,
@@ -847,7 +1018,7 @@ def main() -> int:
         final_sessions = {
             "discovery": compact_session(
                 discovery,
-                (raw_output_root / "final-sessions" / discovery_label).relative_to(ROOT).as_posix(),
+                (raw_output_root / "final-sessions/discovery").relative_to(ROOT).as_posix(),
             ),
             "explicit": compact_session(explicit, (raw_output_root / "final-sessions/explicit").relative_to(ROOT).as_posix()),
             "trigger_positive": compact_session(positive, (raw_output_root / "final-sessions/precision-positive").relative_to(ROOT).as_posix()),
@@ -923,27 +1094,8 @@ def main() -> int:
                 "run_id": evaluation["run_id"],
             },
             "discovery_evaluation": {
-                "kind": "real-codex-cli-initial-skill-metadata-catalog",
-                "attempt_count": len(discovery_attempts),
-                "required_exact_matches": 2,
-                "exact_match_count": discovery_matches,
-                "all_sessions_completed": all(
-                    item["result"]["exit_code"] == 0 for item in discovery_attempts
-                ),
-                "expected_name_present_in_prompts": False,
-                "passed": discovery_pass,
-                "attempts": [
-                    {
-                        **compact_session(
-                            item["result"],
-                            (raw_output_root / "final-sessions" / item["label"])
-                            .relative_to(ROOT).as_posix(),
-                        ),
-                        "label": item["label"],
-                        "matched_exact_name": item["matched_exact_name"],
-                    }
-                    for item in discovery_attempts
-                ],
+                "kind": "real-codex-app-server-skills-list",
+                **discovery["catalog"],
             },
             "exposure": {
                 "scope": "repo", "deployment_mode": exposure.deployment_mode,

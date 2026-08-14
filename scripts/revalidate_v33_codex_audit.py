@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
 from typing import Any
 
@@ -46,8 +47,57 @@ def strict_skill_read(text: str, skill_name: str) -> bool:
     return False
 
 
-def exact_catalog_name(response: str, skill_name: str) -> bool:
-    return response.strip().strip("`\"'") == skill_name
+def _normalized_path(path: str | Path) -> str:
+    return os.path.normcase(os.path.abspath(os.fspath(path)))
+
+
+def revalidate_skills_list(
+    stdout: str,
+    raw_directory: Path,
+    skill_name: str,
+    description: str,
+) -> dict[str, Any]:
+    response: dict[str, Any] | None = None
+    for line in stdout.splitlines():
+        try:
+            event = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if event.get("id") == 25:
+            response = event
+            break
+    data = (response or {}).get("result", {}).get("data", [])
+    matches: list[dict[str, Any]] = []
+    errors: list[str] = []
+    for scope in data if isinstance(data, list) else []:
+        if not isinstance(scope, dict):
+            continue
+        if isinstance(scope.get("errors"), list):
+            errors.extend(str(item) for item in scope["errors"])
+        for item in scope.get("skills", []) if isinstance(scope.get("skills"), list) else []:
+            if not isinstance(item, dict):
+                continue
+            path = _normalized_path(str(item.get("path", ""))).replace("\\", "/")
+            expected_suffix = f"/.agents/skills/{skill_name}/skill.md".casefold()
+            if (
+                item.get("name") == skill_name
+                and item.get("description") == description
+                and item.get("scope") == "repo"
+                and item.get("enabled") is True
+                and path.casefold().endswith(expected_suffix)
+                and "/versions/" not in path.casefold()
+            ):
+                matches.append(item)
+    requests = raw_directory / "requests.jsonl"
+    request_text = requests.read_text(encoding="utf-8", errors="replace") if requests.is_file() else ""
+    force_reload = '"forceReload": true' in request_text or '"forceReload":true' in request_text
+    return {
+        "method": "skills/list",
+        "force_reload": force_reload,
+        "matching_entry_count": len(matches),
+        "errors": errors,
+        "passed": len(matches) == 1 and not errors and force_reload,
+    }
 
 
 def main() -> int:
@@ -78,47 +128,16 @@ def main() -> int:
 
     discovery = sessions["discovery"]
     explicit = sessions["explicit"]
-    discovery_evaluation = payload.get("discovery_evaluation")
-    if isinstance(discovery_evaluation, dict) and discovery_evaluation.get("attempts"):
-        revalidated_discovery_attempts: list[dict[str, Any]] = []
-        for attempt in discovery_evaluation["attempts"]:
-            raw_directory = ROOT / attempt["raw_directory"]
-            last_path = raw_directory / "last-message.txt"
-            last_message = (
-                last_path.read_text(encoding="utf-8", errors="replace")
-                if last_path.is_file()
-                else str(attempt.get("last_message", ""))
-            )
-            matched = (
-                attempt.get("exit_code") == 0
-                and exact_catalog_name(last_message, skill_name)
-            )
-            revalidated_discovery_attempts.append({
-                "label": attempt.get("label"),
-                "exit_code": attempt.get("exit_code"),
-                "matched_exact_name": matched,
-                "response_sha256": sha256_text(last_message),
-                "raw_directory": attempt["raw_directory"],
-            })
-        required_matches = int(discovery_evaluation.get("required_exact_matches", 2))
-        discovery_match_count = sum(item["matched_exact_name"] for item in revalidated_discovery_attempts)
-        discovery_pass = (
-            len(revalidated_discovery_attempts) == int(discovery_evaluation.get("attempt_count", 0))
-            and all(item["exit_code"] == 0 for item in revalidated_discovery_attempts)
-            and discovery_match_count >= required_matches
-            and discovery_evaluation.get("expected_name_present_in_prompts") is False
-        )
-    else:
-        revalidated_discovery_attempts = [{
-            "label": "legacy-single-attempt",
-            "exit_code": discovery["exit_code"],
-            "matched_exact_name": exact_catalog_name(discovery["last_message"], skill_name),
-            "response_sha256": sha256_text(discovery["last_message"]),
-            "raw_directory": discovery["raw_directory"],
-        }]
-        discovery_match_count = sum(item["matched_exact_name"] for item in revalidated_discovery_attempts)
-        required_matches = 1
-        discovery_pass = discovery["exit_code"] == 0 and discovery_match_count == 1
+    discovery_raw = ROOT / discovery["raw_directory"]
+    discovery_stdout = discovery_raw / "stdout.jsonl"
+    catalog_revalidation = revalidate_skills_list(
+        discovery_stdout.read_text(encoding="utf-8", errors="replace")
+        if discovery_stdout.is_file() else "",
+        discovery_raw,
+        skill_name,
+        str(payload["skill"]["frontmatter"]["description"]),
+    )
+    discovery_pass = discovery["exit_code"] == 0 and catalog_revalidation["passed"]
     explicit_pass = explicit["exit_code"] == 0 and observed["explicit"] and fingerprint in explicit["last_message"]
 
     raw_root = Path(sessions["discovery"]["raw_directory"]).parents[1]
@@ -180,12 +199,7 @@ def main() -> int:
             "approval_evaluation": strict_eval,
             "artifact_failures": artifact_failures,
             "discovery_response_sha256": sha256_text(discovery["last_message"]),
-            "discovery_evaluation": {
-                "required_exact_matches": required_matches,
-                "exact_match_count": discovery_match_count,
-                "attempts": revalidated_discovery_attempts,
-                "passed": discovery_pass,
-            },
+            "discovery_evaluation": catalog_revalidation,
             "explicit_response_sha256": sha256_text(explicit["last_message"]),
         },
         "checks": checks,
