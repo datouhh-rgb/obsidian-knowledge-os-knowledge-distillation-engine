@@ -329,7 +329,7 @@ class DistillationPipeline:
                 reason = "; ".join(f"{issue.code}: {issue.message}" for issue in structural.errors)
                 return self._archive_blocked(source, conversion, analysis, reason, edition_id, dry_run, structural, chunk_run, book_quality, conversion_quality)
 
-            if source.warnings and not allow_warnings:
+            if self.quality.material_conversion_warnings(source.warnings) and not allow_warnings:
                 # Warnings are archived as review snapshots, never silently promoted.
                 provider_result.warnings.append("conversion warning: candidate lifecycle remains review/blocked regardless of --allow-warnings")
 

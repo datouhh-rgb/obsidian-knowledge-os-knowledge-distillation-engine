@@ -10,6 +10,31 @@ from .gates import SkillExecutabilityGate
 
 class SkillQualityEvaluator:
     HIGH_DUPLICATE_THRESHOLD = 85.0
+    _AUDITED_NON_TEXT_WARNING_PATTERNS = (
+        re.compile(r"^EPUB contains \d+ declared image omission\(s\)\.$"),
+        re.compile(
+            r"^\d+ image reference\(s\) were declared as omitted; "
+            r"no visual claims were inferred\.$"
+        ),
+    )
+
+    @classmethod
+    def material_conversion_warnings(cls, warnings: Iterable[str]) -> list[str]:
+        """Return warnings that can reduce confidence in text-grounded claims.
+
+        Canonical conversion keeps image omissions in the audit trail. When the
+        converter also attests that no visual claim was inferred, that omission
+        does not make the decoded text or its Evidence less trustworthy.
+        """
+        material: list[str] = []
+        for item in warnings:
+            warning = str(item).strip()
+            if not warning:
+                continue
+            if any(pattern.fullmatch(warning) for pattern in cls._AUDITED_NON_TEXT_WARNING_PATTERNS):
+                continue
+            material.append(warning)
+        return material
 
     def score(
         self,
@@ -34,7 +59,7 @@ class SkillQualityEvaluator:
         executability = SkillExecutabilityGate().score(candidate)
         duplicate = self._duplicate_overlap(candidate, registry_records)
         conflict_coverage = 100.0 if not any(item.status == "conflict" for item in assessed) else 0.0
-        warnings = [str(item) for item in conversion_warnings if str(item).strip()]
+        warnings = self.material_conversion_warnings(conversion_warnings)
         conversion_confidence = max(0.0, 100.0 - 25.0 * len(warnings))
 
         trigger_precision = None

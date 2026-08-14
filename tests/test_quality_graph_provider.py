@@ -62,6 +62,23 @@ def test_conversion_warning_lowers_quality_and_blocks_approval(distilled) -> Non
     assert score.status == "review"
 
 
+def test_audited_image_omission_preserves_text_evidence_confidence(distilled) -> None:
+    registry = SkillRegistry.load(distilled["vault"])
+    _, version, _ = registry.version(distilled["skill"], "1.0.0")
+    candidate = SkillCandidate.from_payload(version["content"])
+    conversion_root = next((distilled["result"].source_root / "conversions").iterdir())
+    catalog = EvidenceCatalog.load(conversion_root / "EVIDENCE_CATALOG.json", conversion_root / "SOURCE_TEXT.md")
+    assessments = SemanticSupportGate().assess_skill(candidate, catalog).assessments
+
+    score = SkillQualityEvaluator().score(candidate, catalog, {}, assessments, [
+        "EPUB contains 21 declared image omission(s).",
+        "21 image reference(s) were declared as omitted; no visual claims were inferred.",
+    ])
+
+    assert score.conversion_confidence == 100
+    assert score.status == "pass"
+
+
 def test_high_duplicate_fails_closed_before_registry(vault: Path, source_factory) -> None:
     one = source_factory(suffix="A")
     two = source_factory(suffix="B")
